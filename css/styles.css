@@ -629,17 +629,20 @@ button {
    Flujo circular diagram
    ========================================================= */
 .flow-layout {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 48px;
-  align-items: center;
+  display: block;
+}
+
+.flow-diagram-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 56px;
 }
 
 .flow-diagram {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  max-width: 480px;
+  max-width: 420px;
   margin-inline: auto;
 }
 
@@ -720,15 +723,29 @@ button {
   .flow-diagram { display: none; }
 }
 
+.flow-groups {
+  display: grid;
+  gap: 40px;
+}
+
+.flow-group__title {
+  font-size: 1.02rem;
+  color: var(--teal-800);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--teal-100);
+}
+
 .flow-list {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
 
 .flow-list li {
   display: flex;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 18px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -736,34 +753,32 @@ button {
 
 .flow-list .num {
   flex-shrink: 0;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--teal-100);
   color: var(--teal-700);
-  font-weight: 700;
-  font-size: 0.85rem;
   display: grid;
   place-items: center;
+}
+
+.flow-list .num svg {
+  width: 17px;
+  height: 17px;
 }
 
 .flow-list strong {
   display: block;
   font-size: 0.95rem;
   color: var(--teal-900);
-  margin-bottom: 2px;
+  margin-bottom: 6px;
 }
 
 .flow-list p {
   margin: 0;
-  font-size: 0.87rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
   color: var(--ink-700);
-}
-
-@media (max-width: 900px) {
-  .flow-layout {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* =========================================================

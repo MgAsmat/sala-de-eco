@@ -1142,21 +1142,23 @@ button {
 }
 
 .comic-card__art {
-  aspect-ratio: 4 / 3;
-  display: grid;
-  place-items: center;
-  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--teal-100);
 }
 
-.comic-card__art svg {
-  width: 64px;
-  height: 64px;
-  color: #fff;
+.comic-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
 }
 
-.comic-card:nth-child(1) .comic-card__art { background: linear-gradient(150deg, var(--gold-500), var(--gold-600)); }
-.comic-card:nth-child(2) .comic-card__art { background: linear-gradient(150deg, var(--teal-500), var(--teal-800)); }
-.comic-card:nth-child(3) .comic-card__art { background: linear-gradient(150deg, #e0577b, #9c2d4d); }
+.comic-card:hover .comic-card__art img {
+  transform: scale(1.04);
+}
 
 .comic-card__body {
   padding: 20px;
@@ -1183,7 +1185,21 @@ button {
 .comic-card__body p {
   font-size: 0.88rem;
   color: var(--ink-700);
-  margin-bottom: 0;
+  margin-bottom: 14px;
+}
+
+.comic-card__download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--teal-700);
+}
+
+.comic-card__download svg {
+  width: 15px;
+  height: 15px;
 }
 
 @media (max-width: 900px) {

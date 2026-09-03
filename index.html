@@ -14,6 +14,7 @@
 <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
 <header class="site-header" id="siteHeader">
+  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="container header-inner">
     <a class="brand" href="#inicio">
       <span class="brand-mark">SE</span>
@@ -75,7 +76,7 @@
         </ul>
       </div>
 
-      <div class="video-card">
+      <div class="video-card" id="videoCard">
         <div class="video-card__bar">
           <div class="dots"><span></span><span></span><span></span></div>
           <div>
@@ -110,78 +111,82 @@
   <!-- FLUJO CIRCULAR -->
   <section class="section" id="flujo-circular">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">El día a día de la economía</span>
         <h2>Flujo Circular de la Economía</h2>
         <p>Todos los días las personas, empresas e instituciones públicas interactúan en transacciones económicas. Compran y venden bienes y servicios, producidos en el país o en otros países. Los individuos además trabajan, y ellos y las empresas ahorran o piden préstamos y pagan impuestos. Todas estas actividades económicas se dan en los diferentes mercados: el de bienes y servicios, el laboral y el financiero.</p>
       </div>
 
       <div class="flow-layout">
-        <div class="flow-diagram-wrap">
-          <div class="flow-diagram" aria-hidden="true">
+        <div class="flow-diagram-wrap reveal">
+          <div class="flow-diagram" id="flowDiagram">
             <div class="flow-diagram__ring"></div>
             <div class="flow-diagram__core">
               <strong>Economía</strong>
               <span>Flujo circular</span>
             </div>
 
-            <div class="flow-node flow-node--1">
-              <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></div>
+            <button type="button" class="flow-node flow-node--1" data-flow="familias">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
               <strong>Familias</strong>
-            </div>
-            <div class="flow-node flow-node--2">
-              <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></div>
+            </button>
+            <button type="button" class="flow-node flow-node--2" data-flow="empresas">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
               <strong>Empresas</strong>
-            </div>
-            <div class="flow-node flow-node--3">
-              <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></div>
+            </button>
+            <button type="button" class="flow-node flow-node--3" data-flow="financiero">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
               <strong>Mercado Financiero</strong>
-            </div>
-            <div class="flow-node flow-node--4">
-              <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></div>
+            </button>
+            <button type="button" class="flow-node flow-node--4" data-flow="gobierno">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
               <strong>Gobierno</strong>
-            </div>
-            <div class="flow-node flow-node--5">
-              <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></div>
+            </button>
+            <button type="button" class="flow-node flow-node--5" data-flow="trabajo">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
               <strong>Mercado de Trabajo</strong>
-            </div>
-            <div class="flow-node flow-node--6">
-              <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></div>
+            </button>
+            <button type="button" class="flow-node flow-node--6" data-flow="bienes-servicios">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
               <strong>Mercado de Bienes y Servicios</strong>
-            </div>
-            <div class="flow-node flow-node--7">
-              <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></div>
+            </button>
+            <button type="button" class="flow-node flow-node--7" data-flow="resto-mundo">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
               <strong>Resto del Mundo</strong>
-            </div>
+            </button>
           </div>
+          <p class="flow-diagram__hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
+            Toca un actor del diagrama para ver su descripción
+          </p>
         </div>
 
         <div class="flow-groups">
-          <div class="flow-group">
+          <div class="flow-group reveal">
             <h3 class="flow-group__title">Agentes económicos</h3>
             <ul class="flow-list">
-              <li>
+              <li id="flow-familias" data-flow="familias">
                 <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
                 <div>
                   <strong>Familias</strong>
                   <p>Las familias son la base de la sociedad. Reciben ingresos trabajando en las empresas o en sus propios negocios, dinero que utilizan en la compra de diversos bienes y servicios como alimentos, transporte, educación, salud, etc. y el pago de impuestos. Lo que no gastan, lo ahorran o pagan préstamos. Así, las familias también interactúan con las instituciones financieras ahorrando y solicitando y pagando créditos.</p>
                 </div>
               </li>
-              <li>
+              <li id="flow-empresas" data-flow="empresas">
                 <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
                 <div>
                   <strong>Empresas</strong>
                   <p>Las empresas producen diversos bienes y servicios que consumimos cada día. Por ejemplo los alimentos, el servicio de transporte, educación, entretenimiento, etc.</p>
                 </div>
               </li>
-              <li>
+              <li id="flow-gobierno" data-flow="gobierno">
                 <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
                 <div>
                   <strong>Gobierno</strong>
                   <p>El Gobierno recibe ingresos principalmente a través de los impuestos que pagan las personas y empresas, y utiliza estos recursos para proveer servicios públicos como seguridad, salud, educación, infraestructura (carreteras, puentes, hospitales, colegios, entre otros), etc.</p>
                 </div>
               </li>
-              <li>
+              <li id="flow-resto-mundo" data-flow="resto-mundo">
                 <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
                 <div>
                   <strong>Resto del Mundo</strong>
@@ -191,24 +196,24 @@
             </ul>
           </div>
 
-          <div class="flow-group">
+          <div class="flow-group reveal">
             <h3 class="flow-group__title">Mercados</h3>
             <ul class="flow-list">
-              <li>
+              <li id="flow-bienes-servicios" data-flow="bienes-servicios">
                 <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
                 <div>
                   <strong>Mercado de Bienes y Servicios</strong>
                   <p>En el mercado de bienes y servicios las personas, empresas y el Gobierno interactúan y compran y venden bienes como alimentos, ropa, electrodomésticos, cemento, etc. y también servicios como transporte, educación, salud y entretenimiento, entre otros. Cuando se vende bienes o servicios al exterior se denomina exportaciones y cuando se compra del exterior, importaciones.</p>
                 </div>
               </li>
-              <li>
+              <li id="flow-trabajo" data-flow="trabajo">
                 <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
                 <div>
                   <strong>Mercado de Trabajo</strong>
                   <p>En el mercado laboral, las personas ofrecen su trabajo, sus habilidades y conocimientos, a las empresas y al Gobierno, a cambio de lo cual reciben una remuneración. Las empresas y el Gobierno requieren contratar a las personas para poder producir los bienes y servicios que ofrecen a la sociedad.</p>
                 </div>
               </li>
-              <li>
+              <li id="flow-financiero" data-flow="financiero">
                 <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
                 <div>
                   <strong>Mercado Financiero</strong>
@@ -225,14 +230,14 @@
   <!-- POLÍTICAS -->
   <section class="section alt" id="politicas">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow gold">Estabilidad macroeconómica</span>
         <h2>Políticas Monetaria y Fiscal</h2>
         <p>Dos pilares distintos y complementarios sostienen el bienestar económico del país.</p>
       </div>
 
       <div class="policy-layout">
-        <div class="policy-outcomes">
+        <div class="policy-outcomes reveal">
           <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.8L21 11l-6.6 2.2L12 20l-2.4-6.8L3 11l6.6-2.2z"/></svg>Mayor bienestar</span>
           <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>Mayor crecimiento</span>
           <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/></svg>Más empleo</span>
@@ -241,10 +246,10 @@
           <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-6"/></svg>Más inversión</span>
         </div>
 
-        <div class="policy-band">Estabilidad Macroeconómica</div>
+        <div class="policy-band reveal">Estabilidad Macroeconómica</div>
 
         <div class="policy-pillars">
-          <div class="pillar-card monetary">
+          <div class="pillar-card monetary reveal">
             <div class="icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
@@ -258,7 +263,7 @@
             </ul>
           </div>
 
-          <div class="pillar-card fiscal">
+          <div class="pillar-card fiscal reveal">
             <div class="icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/><path d="M10 21v-6h4v6"/></svg>
             </div>
@@ -279,14 +284,14 @@
   <!-- SECTORES -->
   <section class="section" id="sectores">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Cómo se organiza la producción</span>
         <h2>Sectores de la Economía</h2>
         <p>Cada sector cumple una función distinta dentro del sistema económico peruano.</p>
       </div>
 
       <div class="card-grid">
-        <article class="sector-card sector-card--real">
+        <article class="sector-card sector-card--real reveal">
           <div class="sector-card__content">
             <div class="icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 6 10 6 13a6 6 0 0012 0c0-3-2-7-6-11z"/></svg>
@@ -303,7 +308,7 @@
           </div>
         </article>
 
-        <article class="sector-card sector-card--externo">
+        <article class="sector-card sector-card--externo reveal">
           <div class="sector-card__content">
             <div class="icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg>
@@ -320,7 +325,7 @@
           </div>
         </article>
 
-        <article class="sector-card sector-card--financiero">
+        <article class="sector-card sector-card--financiero reveal">
           <div class="sector-card__content">
             <div class="icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
@@ -343,27 +348,27 @@
   <!-- BILLETES Y MONEDAS -->
   <section class="section alt" id="billetes">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">El sol peruano</span>
         <h2>Billetes y Monedas</h2>
         <p>Conoce las denominaciones que circulan en el Perú y aprende a identificar sus medidas de seguridad.</p>
       </div>
 
       <div class="bills-grid">
-        <div class="bill bill--10"><span class="label">Billete</span><span class="value">S/ 10</span></div>
-        <div class="bill bill--20"><span class="label">Billete</span><span class="value">S/ 20</span></div>
-        <div class="bill bill--50"><span class="label">Billete</span><span class="value">S/ 50</span></div>
-        <div class="bill bill--100"><span class="label">Billete</span><span class="value">S/ 100</span></div>
-        <div class="bill bill--200"><span class="label">Billete</span><span class="value">S/ 200</span></div>
+        <div class="bill bill--10 reveal"><span class="label">Billete</span><span class="value">S/ 10</span></div>
+        <div class="bill bill--20 reveal"><span class="label">Billete</span><span class="value">S/ 20</span></div>
+        <div class="bill bill--50 reveal"><span class="label">Billete</span><span class="value">S/ 50</span></div>
+        <div class="bill bill--100 reveal"><span class="label">Billete</span><span class="value">S/ 100</span></div>
+        <div class="bill bill--200 reveal"><span class="label">Billete</span><span class="value">S/ 200</span></div>
       </div>
 
       <div class="coins-row">
-        <div class="coin silver">S/ 0.10</div>
-        <div class="coin silver">S/ 0.20</div>
-        <div class="coin silver">S/ 0.50</div>
-        <div class="coin">S/ 1</div>
-        <div class="coin">S/ 2</div>
-        <div class="coin">S/ 5</div>
+        <div class="coin silver reveal">S/ 0.10</div>
+        <div class="coin silver reveal">S/ 0.20</div>
+        <div class="coin silver reveal">S/ 0.50</div>
+        <div class="coin reveal">S/ 1</div>
+        <div class="coin reveal">S/ 2</div>
+        <div class="coin reveal">S/ 5</div>
       </div>
     </div>
   </section>
@@ -371,14 +376,14 @@
   <!-- HISTORIETAS -->
   <section class="section" id="historietas">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Aprende jugando</span>
         <h2>Historietas Educativas</h2>
         <p>Relatos ilustrados que explican conceptos económicos de forma sencilla y entretenida.</p>
       </div>
 
       <div class="comic-grid">
-        <article class="comic-card">
+        <article class="comic-card reveal">
           <a class="comic-card__art" href="assets/historietas/nueva-familia-billetes.pdf" target="_blank" rel="noopener">
             <img src="assets/historietas/cover-nueva-familia-billetes.jpg" alt="Portada de la historieta Beni y Clarita: la nueva familia de billetes peruanos" loading="lazy" />
           </a>
@@ -393,7 +398,7 @@
           </div>
         </article>
 
-        <article class="comic-card">
+        <article class="comic-card reveal">
           <a class="comic-card__art" href="assets/historietas/la-moneda-peruana.pdf" target="_blank" rel="noopener">
             <img src="assets/historietas/cover-la-moneda-peruana.jpg" alt="Portada de la historieta Beni y Clarita: la moneda peruana" loading="lazy" />
           </a>
@@ -408,7 +413,7 @@
           </div>
         </article>
 
-        <article class="comic-card">
+        <article class="comic-card reveal">
           <a class="comic-card__art" href="assets/historietas/bcrp-historia-finalidad-funciones.pdf" target="_blank" rel="noopener">
             <img src="assets/historietas/cover-bcrp-historia-finalidad-funciones.jpg" alt="Portada de la historieta Beni y Clarita: BCRP, historia, finalidad y funciones" loading="lazy" />
           </a>
@@ -423,7 +428,7 @@
           </div>
         </article>
 
-        <article class="comic-card">
+        <article class="comic-card reveal">
           <a class="comic-card__art" href="assets/historietas/billete-falso-paga-mal.pdf" target="_blank" rel="noopener">
             <img src="assets/historietas/cover-billete-falso-paga-mal.jpg" alt="Portada de la historieta El billete falso paga mal" loading="lazy" />
           </a>
@@ -438,7 +443,7 @@
           </div>
         </article>
 
-        <article class="comic-card">
+        <article class="comic-card reveal">
           <a class="comic-card__art" href="assets/historietas/sale-el-sol.pdf" target="_blank" rel="noopener">
             <img src="assets/historietas/cover-sale-el-sol.jpg" alt="Portada de la historieta Sale el sol: fortaleza del Nuevo Sol" loading="lazy" />
           </a>
@@ -459,14 +464,14 @@
   <!-- SUGERENCIAS -->
   <section class="section alt" id="sugerencias">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Tu opinión nos importa</span>
         <h2>Sugerencias</h2>
         <p>Ayúdanos a mejorar la Sala Educativa de Economía compartiendo tus comentarios.</p>
       </div>
 
       <div class="suggest-layout">
-        <div class="suggest-info">
+        <div class="suggest-info reveal">
           <h3>¿Por qué escribirnos?</h3>
           <p>Este espacio educativo mejora gracias a los comentarios de estudiantes, docentes y visitantes como tú.</p>
           <ul>
@@ -485,7 +490,7 @@
           </ul>
         </div>
 
-        <form class="suggest-form" id="suggestForm" novalidate>
+        <form class="suggest-form reveal" id="suggestForm" novalidate>
           <div class="form-row">
             <label for="name">Nombre</label>
             <input type="text" id="name" name="name" placeholder="Escribe tu nombre" required />

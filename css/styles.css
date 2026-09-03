@@ -729,7 +729,7 @@ button {
   flex-shrink: 0;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   .flow-diagram__hint { display: none; }
 }
 
@@ -737,50 +737,78 @@ button {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  max-width: 420px;
+  max-width: 560px;
   margin-inline: auto;
 }
 
-.flow-diagram__ring {
+.flow-diagram__svg {
   position: absolute;
-  inset: 12%;
-  border-radius: 50%;
-  border: 2px dashed var(--teal-300, #bfe4dd);
-  animation: spin-slow 50s linear infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
+.flow-arrow {
+  stroke: var(--teal-300, #bfe4dd);
+  stroke-width: 2.5;
+  color: var(--teal-300, #bfe4dd);
+  opacity: 0.85;
+  transition: stroke 0.25s ease, color 0.25s ease, stroke-width 0.25s ease, opacity 0.25s ease;
 }
 
-.flow-diagram__core {
-  position: absolute;
-  inset: 32%;
-  border-radius: 50%;
-  background: linear-gradient(145deg, var(--teal-600), var(--teal-800));
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: var(--shadow-md);
-  padding: 10px;
+.flow-arrow.is-highlighted {
+  stroke: var(--teal-600);
+  color: var(--teal-600);
+  stroke-width: 3;
+  opacity: 1;
 }
 
-.flow-diagram__core strong {
+.flow-arrow-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--teal-800);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  paint-order: stroke;
+  stroke: var(--teal-50);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+  transition: fill 0.25s ease;
+}
+
+.flow-arrow-label.is-highlighted {
+  fill: var(--teal-900);
+}
+
+@media (max-width: 900px) {
+  .flow-arrow-label { font-size: 15px; }
+}
+
+.flow-diagram__center {
+  filter: drop-shadow(0 8px 16px rgba(9, 41, 38, 0.25));
+}
+
+.flow-diagram__center-title {
   font-family: var(--font-head);
-  font-size: 1rem;
+  font-size: 20px;
+  font-weight: 700;
+  fill: #fff;
+  text-anchor: middle;
 }
 
-.flow-diagram__core span {
-  font-size: 0.7rem;
-  color: var(--teal-100);
-  margin-top: 4px;
+.flow-diagram__center-sub {
+  font-size: 12px;
+  fill: var(--teal-100);
+  text-anchor: middle;
 }
 
 .flow-node {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 118px;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -790,6 +818,15 @@ button {
   font: inherit;
   cursor: pointer;
   z-index: 1;
+}
+
+.flow-node--reverse {
+  flex-direction: column-reverse;
+}
+
+.flow-node--reverse strong {
+  margin-top: 0;
+  margin-bottom: 6px;
 }
 
 .flow-node .dot {
@@ -847,15 +884,7 @@ button {
   color: var(--teal-800);
 }
 
-.flow-node--1 { top: 4%;  left: 50%; }
-.flow-node--2 { top: 22%; left: 92%; }
-.flow-node--3 { top: 62%; left: 100%; }
-.flow-node--4 { top: 96%; left: 62%; }
-.flow-node--5 { top: 96%; left: 15%; }
-.flow-node--6 { top: 62%; left: -2%; }
-.flow-node--7 { top: 22%; left: 6%; }
-
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   .flow-diagram { display: none; }
 }
 

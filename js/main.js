@@ -116,17 +116,26 @@
     }
   }
 
-  // Interactive Flujo Circular diagram: nodes <-> description cards
+  // Interactive Flujo Circular diagram: nodes <-> arrows <-> description cards
   const flowDiagram = document.getElementById("flowDiagram");
   if (flowDiagram) {
     const flowNodes = Array.from(flowDiagram.querySelectorAll(".flow-node"));
     const flowItems = Array.from(document.querySelectorAll(".flow-list li[data-flow]"));
+    const flowArrows = Array.from(flowDiagram.querySelectorAll(".flow-arrow, .flow-arrow-label"));
     const nodeByKey = new Map(flowNodes.map((n) => [n.dataset.flow, n]));
     const itemByKey = new Map(flowItems.map((li) => [li.dataset.flow, li]));
+
+    const highlightArrows = (key) => {
+      flowArrows.forEach((el) => {
+        const connected = key && (el.dataset.a === key || el.dataset.b === key);
+        el.classList.toggle("is-highlighted", Boolean(connected));
+      });
+    };
 
     const setActive = (key) => {
       flowNodes.forEach((n) => n.classList.toggle("is-active", n.dataset.flow === key));
       flowItems.forEach((li) => li.classList.toggle("is-active", li.dataset.flow === key));
+      highlightArrows(key);
     };
 
     flowNodes.forEach((node) => {
@@ -138,16 +147,24 @@
           item.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "center" });
         }
       });
+      node.addEventListener("mouseenter", () => highlightArrows(node.dataset.flow));
+      node.addEventListener("mouseleave", () => {
+        const activeNode = flowNodes.find((n) => n.classList.contains("is-active"));
+        highlightArrows(activeNode ? activeNode.dataset.flow : null);
+      });
     });
 
     flowItems.forEach((li) => {
       li.addEventListener("mouseenter", () => {
         const node = nodeByKey.get(li.dataset.flow);
         if (node) node.classList.add("is-hover");
+        highlightArrows(li.dataset.flow);
       });
       li.addEventListener("mouseleave", () => {
         const node = nodeByKey.get(li.dataset.flow);
         if (node) node.classList.remove("is-hover");
+        const activeNode = flowNodes.find((n) => n.classList.contains("is-active"));
+        highlightArrows(activeNode ? activeNode.dataset.flow : null);
       });
       li.addEventListener("click", () => setActive(li.dataset.flow));
     });

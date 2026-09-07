@@ -220,6 +220,24 @@
     });
   }
 
+  // Filtro de recursos (Infografías, Lecturas, Historietas, Aplicativo, Estadísticas, Enlaces)
+  const resourceGrid = document.getElementById("resourceGrid");
+  const filterChips = Array.from(document.querySelectorAll(".filter-chip"));
+  if (resourceGrid && filterChips.length) {
+    const resourceCards = Array.from(resourceGrid.querySelectorAll(".resource-card"));
+
+    filterChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const filter = chip.dataset.filter;
+        filterChips.forEach((c) => c.classList.toggle("is-active", c === chip));
+        resourceCards.forEach((card) => {
+          const matches = filter === "all" || card.classList.contains(`resource-card--${filter}`);
+          card.classList.toggle("is-filtered-out", !matches);
+        });
+      });
+    });
+  }
+
   // Hero video card: subtle 3D tilt following the pointer (desktop only)
   const videoCard = document.getElementById("videoCard");
   if (videoCard && !prefersReducedMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {

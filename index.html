@@ -376,7 +376,17 @@
         <p>Material oficial del BCRP para repasar los conceptos y consultar las cifras más recientes.</p>
       </div>
 
-      <div class="resource-grid">
+      <div class="resource-filters reveal" role="group" aria-label="Filtrar recursos por tipo">
+        <button type="button" class="filter-chip is-active" data-filter="all">Todos</button>
+        <button type="button" class="filter-chip" data-filter="infografia">Infografías</button>
+        <button type="button" class="filter-chip" data-filter="lectura">Lecturas</button>
+        <button type="button" class="filter-chip" data-filter="comic">Historietas</button>
+        <button type="button" class="filter-chip" data-filter="app">Aplicativo</button>
+        <button type="button" class="filter-chip" data-filter="stat">Estadísticas</button>
+        <button type="button" class="filter-chip" data-filter="link">Enlaces</button>
+      </div>
+
+      <div class="resource-grid" id="resourceGrid">
         <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/007-pilares.pdf" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Infografía</span>

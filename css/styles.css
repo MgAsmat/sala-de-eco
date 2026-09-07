@@ -1311,6 +1311,21 @@ button {
   transform: scale(1.08) translateY(-2px);
 }
 
+/* Vista previa real de la primera página del PDF */
+.resource-card__preview-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.resource-card:hover .resource-card__preview-img {
+  transform: scale(1.04);
+}
+
 .resource-card__chart {
   width: 82%;
   height: 62%;

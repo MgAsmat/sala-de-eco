@@ -6,6 +6,7 @@
   const backToTop = document.getElementById("backToTop");
   const suggestForm = document.getElementById("suggestForm");
   const formSuccess = document.getElementById("formSuccess");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Mobile nav toggle
   navToggle.addEventListener("click", () => {
@@ -56,6 +57,57 @@
 
   sections.forEach((section) => observer.observe(section));
 
+  // Dato curioso: tip carousel
+  const tipCarousel = document.getElementById("tipCarousel");
+  if (tipCarousel) {
+    const tips = [
+      "El 9 de marzo de 2024, el Banco Central de Reserva del Perú cumplió 102 años de vida al servicio del país.",
+      "En 2020, el BCRP fue incorporado como miembro de la Red de Bancos Centrales y Supervisoras para Enverdecer el Sistema Financiero.",
+      "A partir de 2002, el BCRP maneja un esquema de Metas Explícitas de Inflación.",
+      "El rango meta de inflación anual del BCRP es de 1% a 3%.",
+      "Las acciones del BCRP tienen como objetivo que la inflación y sus expectativas se ubiquen dentro del rango meta de 1% a 3%.",
+      "En 2020, el Perú implementó uno de los programas de créditos con garantías estatales de mayor tamaño en términos del PBI.",
+      "El programa Reactiva Perú benefició directamente a más de 502 mil empresas; de las cuales el 98% eran MYPEs.",
+      "El programa Reactiva Perú permitió que principalmente las pequeñas empresas obtuvieran créditos a tasas mínimas.",
+      "La dolarización del crédito bajó 53 puntos porcentuales en los últimos 21 años al pasar de 76% en 2002 a 23% en 2023.",
+      "Los ingresos del gobierno general representaron el 19,8% del PBI en 2023.",
+      "Los ingresos por IGV del gobierno general representaron el 8,4% del PBI en 2023.",
+      "La recaudación por impuesto a la renta alcanza el 6,3% del PBI en 2023.",
+      "La vida promedio de la deuda pública fue 11,7 años en 2023.",
+    ];
+
+    const tipText = document.getElementById("tipCarouselText");
+    const tipDots = document.getElementById("tipDots");
+    const tipPrev = document.getElementById("tipPrev");
+    const tipNext = document.getElementById("tipNext");
+    let tipIndex = 0;
+    let tipTimer = null;
+
+    tips.forEach((_, i) => {
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("is-active");
+      dot.addEventListener("click", () => showTip(i, true));
+      tipDots.appendChild(dot);
+    });
+
+    const showTip = (index, userTriggered) => {
+      tipIndex = (index + tips.length) % tips.length;
+      tipText.textContent = tips[tipIndex];
+      Array.from(tipDots.children).forEach((dot, i) => dot.classList.toggle("is-active", i === tipIndex));
+      if (userTriggered) restartAutoplay();
+    };
+
+    const restartAutoplay = () => {
+      if (tipTimer) clearInterval(tipTimer);
+      if (prefersReducedMotion) return;
+      tipTimer = setInterval(() => showTip(tipIndex + 1, false), 7000);
+    };
+
+    tipPrev.addEventListener("click", () => showTip(tipIndex - 1, true));
+    tipNext.addEventListener("click", () => showTip(tipIndex + 1, true));
+    restartAutoplay();
+  }
+
   // Suggestion form (front-end demo only, no network request)
   if (suggestForm) {
     suggestForm.addEventListener("submit", (event) => {
@@ -70,8 +122,6 @@
       formSuccess.focus();
     });
   }
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Scroll progress bar
   const scrollProgress = document.getElementById("scrollProgress");

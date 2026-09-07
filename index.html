@@ -132,25 +132,15 @@
               </defs>
 
               <line class="flow-arrow" x1="434.2" y1="144.3" x2="463.6" y2="184.6" data-a="familias" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="448.9" y="164.4" data-a="familias" data-b="trabajo">Empleo</text>
               <line class="flow-arrow" x1="615.7" y1="325.8" x2="575.4" y2="296.4" data-a="empresas" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="595.6" y="311.1" data-a="empresas" data-b="trabajo">Remuneración</text>
               <line class="flow-arrow" x1="325.8" y1="144.3" x2="296.4" y2="184.6" data-a="familias" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="311.1" y="164.4" data-a="familias" data-b="bienes-servicios">Consumo</text>
               <line class="flow-arrow" x1="601.8" y1="353.8" x2="325.9" y2="271.9" data-a="empresas" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="463.8" y="312.9" data-a="empresas" data-b="bienes-servicios">Producción</text>
               <line class="flow-arrow" x1="353.8" y1="601.8" x2="271.9" y2="325.9" data-a="gobierno" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="312.9" y="463.8" data-a="gobierno" data-b="bienes-servicios">Gasto público</text>
               <line class="flow-arrow" x1="144.3" y1="325.8" x2="184.6" y2="296.4" data-a="resto-mundo" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="164.4" y="311.1" data-a="resto-mundo" data-b="bienes-servicios">Comercio exterior</text>
               <line class="flow-arrow" x1="406.2" y1="158.2" x2="488.1" y2="434.1" data-a="familias" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="447.1" y="296.2" data-a="familias" data-b="financiero">Ahorro</text>
               <line class="flow-arrow" x1="615.7" y1="434.2" x2="575.4" y2="463.6" data-a="empresas" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="595.6" y="448.9" data-a="empresas" data-b="financiero">Crédito</text>
               <line class="flow-arrow" x1="434.2" y1="615.7" x2="463.6" y2="575.4" data-a="gobierno" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="448.9" y="595.6" data-a="gobierno" data-b="financiero">Transferencias</text>
               <line class="flow-arrow" x1="158.2" y1="406.2" x2="434.1" y2="488.1" data-a="resto-mundo" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <text class="flow-arrow-label" x="296.2" y="447.1" data-a="resto-mundo" data-b="financiero">Inversión</text>
 
               <circle class="flow-diagram__center" cx="380" cy="380" r="66" fill="url(#coreGradient)" />
               <text class="flow-diagram__center-title" x="380" y="374">Economía</text>
@@ -185,6 +175,19 @@
               <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
               <strong>Resto del Mundo</strong>
             </button>
+
+            <svg class="flow-diagram__svg flow-diagram__svg--labels" viewBox="0 0 760 760" aria-hidden="true">
+              <text class="flow-arrow-label" x="448.9" y="164.4" data-a="familias" data-b="trabajo">Empleo</text>
+              <text class="flow-arrow-label" x="595.6" y="311.1" data-a="empresas" data-b="trabajo">Remuneración</text>
+              <text class="flow-arrow-label" x="311.1" y="164.4" data-a="familias" data-b="bienes-servicios">Consumo</text>
+              <text class="flow-arrow-label" x="463.8" y="312.9" data-a="empresas" data-b="bienes-servicios">Producción</text>
+              <text class="flow-arrow-label" x="312.9" y="463.8" data-a="gobierno" data-b="bienes-servicios">Gasto público</text>
+              <text class="flow-arrow-label" x="164.4" y="311.1" data-a="resto-mundo" data-b="bienes-servicios">Comercio exterior</text>
+              <text class="flow-arrow-label" x="447.1" y="296.2" data-a="familias" data-b="financiero">Ahorro</text>
+              <text class="flow-arrow-label" x="595.6" y="448.9" data-a="empresas" data-b="financiero">Crédito</text>
+              <text class="flow-arrow-label" x="448.9" y="595.6" data-a="gobierno" data-b="financiero">Transferencias</text>
+              <text class="flow-arrow-label" x="296.2" y="447.1" data-a="resto-mundo" data-b="financiero">Inversión</text>
+            </svg>
           </div>
           <p class="flow-diagram__hint">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>

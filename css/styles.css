@@ -749,6 +749,10 @@ button {
   pointer-events: none;
 }
 
+.flow-diagram__svg--labels {
+  z-index: 2;
+}
+
 .flow-arrow {
   stroke: var(--teal-300, #bfe4dd);
   stroke-width: 2.25;

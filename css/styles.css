@@ -1264,56 +1264,118 @@ button {
    ========================================================= */
 .resource-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .resource-card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 22px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .resource-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
   border-color: var(--teal-400, var(--teal-500));
 }
 
+/* Panel de vista previa: fondo ilustrado distinto por tipo de recurso */
+.resource-card__preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 18px 18px, rgba(255, 255, 255, 0.16) 1.6px, transparent 1.8px) 0 0/16px 16px,
+    linear-gradient(135deg, var(--teal-600), var(--teal-900));
+}
+
+.resource-card__art {
+  width: 30%;
+  max-width: 56px;
+  height: auto;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 10px rgba(8, 64, 60, 0.25));
+  transition: transform 0.25s ease;
+}
+
+.resource-card:hover .resource-card__art {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.resource-card__chart {
+  width: 82%;
+  height: 62%;
+}
+
 .resource-card__badge {
-  font-size: 0.68rem;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--teal-700);
-  background: var(--teal-100);
+  color: var(--teal-900);
+  background: rgba(255, 255, 255, 0.92);
   padding: 4px 10px;
   border-radius: var(--radius-pill);
 }
 
-.resource-card__icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: var(--teal-50);
-  color: var(--teal-700);
-  display: grid;
-  place-items: center;
+/* Variantes de color por categoría */
+.resource-card--lectura .resource-card__preview {
+  color: var(--teal-900);
+  background:
+    radial-gradient(circle at 18px 18px, rgba(255, 255, 255, 0.35) 1.6px, transparent 1.8px) 0 0/16px 16px,
+    linear-gradient(135deg, var(--gold-400), var(--gold-600));
 }
 
-.resource-card__icon svg {
-  width: 21px;
-  height: 21px;
+.resource-card--lectura .resource-card__art {
+  filter: drop-shadow(0 4px 10px rgba(180, 120, 0, 0.25));
 }
 
-.resource-card h3 {
+.resource-card--comic .resource-card__preview {
+  background:
+    radial-gradient(circle at 18px 18px, rgba(255, 255, 255, 0.2) 1.6px, transparent 1.8px) 0 0/16px 16px,
+    linear-gradient(135deg, var(--teal-400), var(--gold-500));
+}
+
+.resource-card--app .resource-card__preview {
+  background:
+    radial-gradient(circle at 18px 18px, rgba(255, 255, 255, 0.16) 1.6px, transparent 1.8px) 0 0/16px 16px,
+    linear-gradient(135deg, var(--teal-900), var(--teal-600));
+}
+
+.resource-card--stat .resource-card__preview {
+  background:
+    radial-gradient(circle at 18px 18px, rgba(255, 255, 255, 0.14) 1.6px, transparent 1.8px) 0 0/16px 16px,
+    linear-gradient(135deg, var(--teal-800), var(--teal-900));
+}
+
+.resource-card--link .resource-card__preview {
+  background:
+    radial-gradient(circle at 18px 18px, rgba(255, 255, 255, 0.16) 1.6px, transparent 1.8px) 0 0/16px 16px,
+    linear-gradient(135deg, var(--ink-500), var(--ink-700));
+}
+
+.resource-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 20px 20px;
+  flex-grow: 1;
+}
+
+.resource-card__body h3 {
   font-size: 0.98rem;
   line-height: 1.35;
   margin: 0;

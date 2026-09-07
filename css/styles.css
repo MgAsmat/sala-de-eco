@@ -737,7 +737,7 @@ button {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  max-width: 620px;
+  max-width: 680px;
   margin-inline: auto;
 }
 
@@ -753,7 +753,7 @@ button {
   stroke: var(--teal-300, #bfe4dd);
   stroke-width: 2.25;
   color: var(--teal-300, #bfe4dd);
-  opacity: 0.55;
+  opacity: 0.5;
   transition: stroke 0.25s ease, color 0.25s ease, stroke-width 0.25s ease, opacity 0.25s ease;
 }
 
@@ -773,7 +773,7 @@ button {
   dominant-baseline: middle;
   paint-order: stroke;
   stroke: var(--teal-50);
-  stroke-width: 6px;
+  stroke-width: 7px;
   stroke-linejoin: round;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -807,7 +807,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 118px;
+  width: 128px;
   transform: translate(-50%, -50%);
   text-align: center;
   border: none;
@@ -824,7 +824,7 @@ button {
 
 .flow-node--reverse strong {
   margin-top: 0;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .flow-node .dot {
@@ -848,10 +848,14 @@ button {
 
 .flow-node strong {
   display: block;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--ink-900);
-  margin-top: 6px;
-  transition: color 0.2s ease;
+  margin-top: 8px;
+  background: var(--bg);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  line-height: 1.25;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .flow-node:hover .dot,
@@ -880,6 +884,7 @@ button {
 
 .flow-node.is-active strong {
   color: var(--teal-800);
+  background: var(--teal-100);
 }
 
 @media (max-width: 860px) {

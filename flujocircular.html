@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flujo Circular de la Economía · Sala Educativa de Economía BCRP</title>
+<meta name="description" content="Descubre cómo interactúan familias, empresas, gobierno y el resto del mundo en los mercados de bienes y servicios, trabajo y financiero." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">SE</span>
+      <span class="brand-text">
+        <strong>Sala Educativa de</strong>
+        <em>Economía</em>
+        <small>Banco Central de Reserva del Perú</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Abrir menú de navegación">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="flujo-circular.html" class="nav-link">Flujo Circular</a></li>
+        <li><a href="politicas.html" class="nav-link">Políticas Monetaria y Fiscal</a></li>
+        <li><a href="sectores.html" class="nav-link">Sectores</a></li>
+        <li><a href="billetes.html" class="nav-link">Billetes y Monedas</a></li>
+        <li><a href="historietas.html" class="nav-link">Historietas</a></li>
+        <li><a href="sugerencias.html" class="nav-link nav-cta">Sugerencias</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- FLUJO CIRCULAR -->
+  <section class="section" id="flujo-circular">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">El día a día de la economía</span>
+        <h2>Flujo Circular de la Economía</h2>
+        <p>Todos los días las personas, empresas e instituciones públicas interactúan en transacciones económicas. Compran y venden bienes y servicios, producidos en el país o en otros países. Los individuos además trabajan, y ellos y las empresas ahorran o piden préstamos y pagan impuestos. Todas estas actividades económicas se dan en los diferentes mercados: el de bienes y servicios, el laboral y el financiero.</p>
+      </div>
+
+      <div class="flow-layout">
+        <div class="flow-diagram-wrap reveal">
+          <div class="flow-diagram" id="flowDiagram">
+            <svg class="flow-diagram__svg" viewBox="0 0 760 760" aria-hidden="true">
+              <defs>
+                <marker id="arrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M1 1L9 5L1 9Z" fill="currentColor" />
+                </marker>
+                <linearGradient id="coreGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1aa295" />
+                  <stop offset="100%" stop-color="#0b4f4a" />
+                </linearGradient>
+              </defs>
+
+              <line class="flow-arrow" x1="434.2" y1="144.3" x2="463.6" y2="184.6" data-a="familias" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="615.7" y1="325.8" x2="575.4" y2="296.4" data-a="empresas" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="325.8" y1="144.3" x2="296.4" y2="184.6" data-a="familias" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="601.8" y1="353.8" x2="325.9" y2="271.9" data-a="empresas" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="353.8" y1="601.8" x2="271.9" y2="325.9" data-a="gobierno" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="144.3" y1="325.8" x2="184.6" y2="296.4" data-a="resto-mundo" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="406.2" y1="158.2" x2="488.1" y2="434.1" data-a="familias" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="615.7" y1="434.2" x2="575.4" y2="463.6" data-a="empresas" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="434.2" y1="615.7" x2="463.6" y2="575.4" data-a="gobierno" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+              <line class="flow-arrow" x1="158.2" y1="406.2" x2="434.1" y2="488.1" data-a="resto-mundo" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
+
+              <circle class="flow-diagram__center" cx="380" cy="380" r="66" fill="url(#coreGradient)" />
+              <text class="flow-diagram__center-title" x="380" y="374">Economía</text>
+              <text class="flow-diagram__center-sub" x="380" y="394">Flujo circular</text>
+            </svg>
+
+            <button type="button" class="flow-node flow-node--reverse" data-flow="familias" style="left:50.00%;top:9.21%;">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
+              <strong>Familias</strong>
+            </button>
+            <button type="button" class="flow-node" data-flow="empresas" style="left:90.79%;top:50.00%;">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
+              <strong>Empresas</strong>
+            </button>
+            <button type="button" class="flow-node" data-flow="financiero" style="left:67.21%;top:67.21%;">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
+              <strong>Mercado Financiero</strong>
+            </button>
+            <button type="button" class="flow-node" data-flow="gobierno" style="left:50.00%;top:90.79%;">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
+              <strong>Gobierno</strong>
+            </button>
+            <button type="button" class="flow-node" data-flow="trabajo" style="left:67.21%;top:32.79%;">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
+              <strong>Mercado de Trabajo</strong>
+            </button>
+            <button type="button" class="flow-node" data-flow="bienes-servicios" style="left:32.79%;top:32.79%;">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
+              <strong>Mercado de Bienes y Servicios</strong>
+            </button>
+            <button type="button" class="flow-node" data-flow="resto-mundo" style="left:9.21%;top:50.00%;">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
+              <strong>Resto del Mundo</strong>
+            </button>
+
+            <svg class="flow-diagram__svg flow-diagram__svg--labels" viewBox="0 0 760 760" aria-hidden="true">
+              <text class="flow-arrow-label" x="448.9" y="164.4" data-a="familias" data-b="trabajo">Empleo</text>
+              <text class="flow-arrow-label" x="595.6" y="311.1" data-a="empresas" data-b="trabajo">Remuneración</text>
+              <text class="flow-arrow-label" x="311.1" y="164.4" data-a="familias" data-b="bienes-servicios">Consumo</text>
+              <text class="flow-arrow-label" x="463.8" y="312.9" data-a="empresas" data-b="bienes-servicios">Producción</text>
+              <text class="flow-arrow-label" x="312.9" y="463.8" data-a="gobierno" data-b="bienes-servicios">Gasto público</text>
+              <text class="flow-arrow-label" x="164.4" y="311.1" data-a="resto-mundo" data-b="bienes-servicios">Comercio exterior</text>
+              <text class="flow-arrow-label" x="447.1" y="296.2" data-a="familias" data-b="financiero">Ahorro</text>
+              <text class="flow-arrow-label" x="595.6" y="448.9" data-a="empresas" data-b="financiero">Crédito</text>
+              <text class="flow-arrow-label" x="448.9" y="595.6" data-a="gobierno" data-b="financiero">Transferencias</text>
+              <text class="flow-arrow-label" x="296.2" y="447.1" data-a="resto-mundo" data-b="financiero">Inversión</text>
+            </svg>
+          </div>
+          <p class="flow-diagram__hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
+            Toca o pasa el cursor sobre un actor para ver sus conexiones y su descripción
+          </p>
+        </div>
+
+        <div class="flow-groups">
+          <div class="flow-group reveal">
+            <h3 class="flow-group__title">Agentes económicos</h3>
+            <ul class="flow-list">
+              <li id="flow-familias" data-flow="familias">
+                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
+                <div>
+                  <strong>Familias</strong>
+                  <p>Las familias son la base de la sociedad. Reciben ingresos trabajando en las empresas o en sus propios negocios, dinero que utilizan en la compra de diversos bienes y servicios como alimentos, transporte, educación, salud, etc. y el pago de impuestos. Lo que no gastan, lo ahorran o pagan préstamos. Así, las familias también interactúan con las instituciones financieras ahorrando y solicitando y pagando créditos.</p>
+                </div>
+              </li>
+              <li id="flow-empresas" data-flow="empresas">
+                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
+                <div>
+                  <strong>Empresas</strong>
+                  <p>Las empresas producen diversos bienes y servicios que consumimos cada día. Por ejemplo los alimentos, el servicio de transporte, educación, entretenimiento, etc.</p>
+                </div>
+              </li>
+              <li id="flow-gobierno" data-flow="gobierno">
+                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
+                <div>
+                  <strong>Gobierno</strong>
+                  <p>El Gobierno recibe ingresos principalmente a través de los impuestos que pagan las personas y empresas, y utiliza estos recursos para proveer servicios públicos como seguridad, salud, educación, infraestructura (carreteras, puentes, hospitales, colegios, entre otros), etc.</p>
+                </div>
+              </li>
+              <li id="flow-resto-mundo" data-flow="resto-mundo">
+                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
+                <div>
+                  <strong>Resto del Mundo</strong>
+                  <p>En un mundo globalizado, nuestra relación con el resto del mundo es cada vez más activa. Compramos y vendemos productos y servicios del y al exterior. El comercio internacional nos permite exportar, ampliar nuestros mercados, vender más, por ejemplo las uvas, los espárragos, las paltas, los minerales como oro, cobre, zinc y prendas de vestir, entre otros. También nos permite importar, de manera que tenemos mayor diversidad de productos disponibles para consumir como celulares, televisores, microondas, carros, etc. El resto del mundo también nos brinda recursos financieros y oportunidades de ahorro e inversión.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="flow-group reveal">
+            <h3 class="flow-group__title">Mercados</h3>
+            <ul class="flow-list">
+              <li id="flow-bienes-servicios" data-flow="bienes-servicios">
+                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
+                <div>
+                  <strong>Mercado de Bienes y Servicios</strong>
+                  <p>En el mercado de bienes y servicios las personas, empresas y el Gobierno interactúan y compran y venden bienes como alimentos, ropa, electrodomésticos, cemento, etc. y también servicios como transporte, educación, salud y entretenimiento, entre otros. Cuando se vende bienes o servicios al exterior se denomina exportaciones y cuando se compra del exterior, importaciones.</p>
+                </div>
+              </li>
+              <li id="flow-trabajo" data-flow="trabajo">
+                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
+                <div>
+                  <strong>Mercado de Trabajo</strong>
+                  <p>En el mercado laboral, las personas ofrecen su trabajo, sus habilidades y conocimientos, a las empresas y al Gobierno, a cambio de lo cual reciben una remuneración. Las empresas y el Gobierno requieren contratar a las personas para poder producir los bienes y servicios que ofrecen a la sociedad.</p>
+                </div>
+              </li>
+              <li id="flow-financiero" data-flow="financiero">
+                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
+                <div>
+                  <strong>Mercado Financiero</strong>
+                  <p>En el mercado financiero, las personas, las empresas y el Gobierno depositan sus excedentes de dinero y también pueden solicitar préstamos. Entre las principales instituciones financieras se encuentran los bancos, las financieras, las cajas municipales y rurales y las Edpymes. Estas transacciones de ahorro, inversión y créditos también se realizan con entidades financieras del exterior.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">SE</span>
+        <p>Un espacio del Banco Central de Reserva del Perú para acercar la economía a estudiantes, docentes y ciudadanos.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></a>
+          <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contenidos</h4>
+        <ul>
+          <li><a href="flujo-circular.html">Flujo Circular</a></li>
+          <li><a href="politicas.html">Políticas Monetaria y Fiscal</a></li>
+          <li><a href="sectores.html">Sectores</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="billetes.html">Billetes y Monedas</a></li>
+          <li><a href="historietas.html">Historietas</a></li>
+          <li><a href="sugerencias.html">Sugerencias</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Sobre el BCRP</h4>
+        <ul>
+          <li><a href="https://www.bcrp.gob.pe" target="_blank" rel="noopener">Sitio oficial bcrp.gob.pe</a></li>
+          <li><a href="https://www.bcrp.gob.pe/se-de-economia.html" target="_blank" rel="noopener">Sala Educativa original</a></li>
+          <li><a href="index.html">Volver al inicio</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Sala Educativa de Economía — Banco Central de Reserva del Perú.</span>
+      <span>Rediseño de interfaz con fines educativos.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>

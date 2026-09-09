@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Déficit fiscal financiado con ahorro o deuda — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#313b54;
+    --navy-deep:#232a3d;
+    --gold:#f1ab26;
+    --blue:#4079a2;
+    --teal:#5fc3bb;
+    --paper:#faf7f0;
+    --card:#ffffff;
+    --border:#e4dfd2;
+    --text-muted:#6b7180;
+    --shadow-sm: 0 1px 2px rgba(35,42,61,0.06), 0 1px 1px rgba(35,42,61,0.04);
+    --shadow-md: 0 8px 24px rgba(35,42,61,0.08);
+    --ease: cubic-bezier(.4,0,.2,1);
+    --good:#2f8f6b;
+    --bad:#c0483e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--navy-deep);
+    font-family:'Barlow', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px 64px;
+  }
+
+  /* Header */
+  header.masthead{
+    background:var(--navy);
+    color:#fff;
+    padding:22px 0;
+    margin-bottom:0;
+  }
+  .masthead-inner{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .masthead-mark{
+    width:38px;height:38px;flex:0 0 auto;
+    border-radius:50%;
+    background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .masthead-mark svg{width:20px;height:20px;}
+  .masthead-text{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    letter-spacing:0.06em;
+    font-size:15px;
+    text-transform:uppercase;
+  }
+  .masthead-text .sub{
+    display:block;
+    font-family:'Barlow', sans-serif;
+    font-weight:400;
+    letter-spacing:0;
+    text-transform:none;
+    font-size:12.5px;
+    color:#c9cedb;
+    margin-top:1px;
+  }
+
+  .hero{
+    background:linear-gradient(180deg, var(--navy) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:40px 0 56px;
+    margin-bottom:-32px;
+  }
+  .hero-inner{
+    max-width:920px;margin:0 auto;padding:0 24px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:2px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  h1.title{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:clamp(30px, 4.2vw, 44px);
+    line-height:1.1;
+    margin:0 0 12px;
+    max-width:640px;
+  }
+  .hero-sub{
+    color:#d7dbe6;
+    font-size:16px;
+    max-width:560px;
+    margin:0;
+  }
+
+  /* Cards / sections */
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    box-shadow:var(--shadow-md);
+    padding:32px 36px;
+    margin:0 0 24px;
+    position:relative;
+    z-index:1;
+  }
+  .card + .card{ margin-top:24px; }
+
+  section.block{ margin-top:40px; }
+  section.block:first-of-type{ margin-top:0; }
+
+  h2.section-title{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    font-size:22px;
+    color:var(--navy);
+    margin:0 0 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  h2.section-title .num{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    color:var(--gold);
+    font-size:15px;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    width:26px;height:26px;
+    display:flex;align-items:center;justify-content:center;
+    flex:0 0 auto;
+  }
+
+  p{ margin:0 0 14px; color:#3a3f4e; }
+  p:last-child{ margin-bottom:0; }
+  strong{ color:var(--navy); font-weight:700; }
+  em.pullnote{
+    color:var(--blue);
+    font-style:normal;
+    font-weight:600;
+  }
+
+  /* Two-column layout for intro */
+  .split{
+    display:grid;
+    grid-template-columns:1.35fr 1fr;
+    gap:28px;
+    align-items:start;
+  }
+  @media (max-width:720px){
+    .split{ grid-template-columns:1fr; }
+  }
+
+  .tax-icons{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .tax-icon-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px 16px;
+  }
+  .tax-icon-card .icon{
+    width:42px;height:42px;flex:0 0 auto;
+    border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tax-icon-card .icon svg{ width:22px;height:22px; }
+  .tax-icon-card .label{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    letter-spacing:0.01em;
+    color:var(--navy);
+    line-height:1.2;
+  }
+  .icon.navy{ background:var(--navy); } .icon.navy svg{ stroke:var(--gold); }
+  .icon.blue{ background:var(--blue); } .icon.blue svg{ stroke:#fff; }
+  .icon.gold{ background:var(--gold); } .icon.gold svg{ stroke:var(--navy-deep); }
+
+  /* Superavit / Deficit callouts */
+  .balance-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-top:8px;
+  }
+  @media (max-width:640px){ .balance-grid{ grid-template-columns:1fr; } }
+  .balance-card{
+    border-radius:12px;
+    padding:22px 22px 20px;
+    border:1px solid var(--border);
+    background:var(--paper);
+  }
+  .balance-card.surplus{ border-top:4px solid var(--good); }
+  .balance-card.deficit{ border-top:4px solid var(--bad); }
+  .balance-head{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:12px;
+  }
+  .balance-badge{
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex:0 0 auto;
+    color:#fff;
+  }
+  .balance-badge.good{ background:var(--good); }
+  .balance-badge.bad{ background:var(--bad); }
+  .balance-head-text{ line-height:1.25; }
+  .balance-head-text .lead{
+    font-size:13.5px; color:var(--text-muted);
+  }
+  .balance-head-text .term{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:0.02em;
+  }
+  .balance-card.surplus .term{ color:var(--good); }
+  .balance-card.deficit .term{ color:var(--bad); }
+  .balance-card p{ font-size:14.5px; margin:0; color:#4b5063; }
+
+  /* Financing flow */
+  .flow-row{
+    display:flex;
+    gap:16px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .flow-chip{
+    flex:1 1 150px;
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:16px;
+    text-align:center;
+  }
+  .flow-chip .icon{
+    width:38px;height:38px;margin:0 auto 8px;
+    border-radius:50%;
+    background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .flow-chip .icon svg{ width:19px;height:19px; stroke:var(--gold); }
+  .flow-chip .label{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    color:var(--navy);
+  }
+
+  .org-row{
+    display:flex;
+    gap:12px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  .org-chip{
+    display:flex;align-items:center;gap:8px;
+    background:var(--navy);
+    color:#fff;
+    border-radius:999px;
+    padding:9px 16px 9px 10px;
+  }
+  .org-chip .dot{
+    width:24px;height:24px;border-radius:50%;
+    background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:10.5px;
+    color:var(--navy-deep);
+    flex:0 0 auto;
+  }
+  .org-chip .name{
+    font-size:13.5px;
+    font-weight:600;
+  }
+
+  .riskbox{
+    display:flex;
+    gap:20px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .risk-col{
+    flex:1 1 220px;
+    border-radius:10px;
+    padding:16px 18px;
+    border:1px solid var(--border);
+  }
+  .risk-col.low{ background:rgba(47,143,107,0.07); border-color:rgba(47,143,107,0.25); }
+  .risk-col.high{ background:rgba(192,72,62,0.07); border-color:rgba(192,72,62,0.25); }
+  .risk-col .tag{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+    display:block;
+  }
+  .risk-col.low .tag{ color:var(--good); }
+  .risk-col.high .tag{ color:var(--bad); }
+  .risk-col p{ font-size:14px; margin:0; color:#4b5063; }
+
+  /* Chart section */
+  .chart-card{
+    padding:32px 36px 20px;
+  }
+  .chart-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .chart-head h3{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    color:var(--navy);
+    margin:0;
+  }
+  .chart-head .unit{
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  .chart-wrap{
+    position:relative;
+    margin-top:14px;
+  }
+  .chart-wrap svg{ display:block; width:100%; height:auto; overflow:visible; }
+  .chart-wrap .bar{ transition:opacity .15s var(--ease); }
+  .chart-wrap .bar:hover{ opacity:0.75; }
+  .chart-wrap .val-label{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+  }
+  .chart-wrap .year-label{
+    font-family:'Barlow', sans-serif;
+    font-size:11px;
+    fill:var(--text-muted);
+  }
+  .chart-legend{
+    display:flex;
+    gap:22px;
+    margin-top:4px;
+    flex-wrap:wrap;
+  }
+  .chart-legend .item{
+    display:flex;align-items:center;gap:7px;
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  .chart-legend .swatch{
+    width:11px;height:11px;border-radius:3px;
+  }
+  .chart-foot{
+    font-size:12.5px;
+    color:var(--text-muted);
+    margin-top:16px;
+    padding-top:14px;
+    border-top:1px solid var(--border);
+  }
+
+  footer.page-footer{
+    text-align:center;
+    margin-top:40px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    color:var(--text-muted);
+    font-size:12.5px;
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#232a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/>
+      </svg>
+    </div>
+    <div class="masthead-text">
+      Banco Central de Reserva del Perú
+      <span class="sub">Serie Lecturas · Educación económica</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Finanzas públicas</div>
+    <h1 class="title">Déficit fiscal financiado con ahorro o deuda</h1>
+    <p class="hero-sub">Cómo se financian los gobiernos cuando gastan más de lo que recaudan, y qué determina el costo de esa deuda.</p>
+  </div>
+</div>
+
+<div class="page">
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">1</span>Ingresos y gastos del gobierno</h2>
+      <div class="split">
+        <div>
+          <p><strong>Al igual que una familia</strong>, los gobiernos tienen ingresos y gastos; los primeros provienen, en su mayoría, de la recaudación de los impuestos y justamente sirven para financiar a los segundos. Los <strong>ingresos</strong> se dividen en tributarios (principalmente, impuesto a la renta, IGV, ISC) y no tributarios, por ejemplo las contribuciones a la seguridad social. Los <strong>gastos</strong> suelen dividirse en gasto corriente (con el objetivo de simplificarlo, planilla de sueldos) y gastos de capital o inversión pública en seguridad, educación, salud de calidad, etc.</p>
+        </div>
+        <div class="tax-icons">
+          <div class="tax-icon-card">
+            <div class="icon navy">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="label">Impuesto a la Renta</div>
+          </div>
+          <div class="tax-icon-card">
+            <div class="icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+            <div class="label">Impuesto General a las Ventas</div>
+          </div>
+          <div class="tax-icon-card">
+            <div class="icon gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M9 4h6M8 10h8l1.5 10a2 2 0 0 1-2 2.2H8.5a2 2 0 0 1-2-2.2L8 10Z"/></svg>
+            </div>
+            <div class="label">Impuesto Selectivo al Consumo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>Y ante un déficit fiscal…</h2>
+      <p>Pues lo mismo que haría una familia si tiene un exceso de gastos sobre sus ingresos; esa diferencia debe ser cubierta o financiada con <strong>deuda interna</strong>, <strong>deuda externa</strong> o el uso de <strong>ahorros anteriores</strong>.</p>
+      <p><strong>¿Y cómo se endeudan los gobiernos?</strong> A través de préstamos y de la emisión de unos documentos llamados <strong>bonos</strong>, que ponen a la venta a través de la bolsa de valores (sea de Lima o de Nueva York); el bono genera un interés, por lo que quien compra el bono le "presta" al gobierno del país y a cambio se queda con el documento que luego le genera un interés.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">3</span>La posición fiscal</h2>
+      <p>La <strong>posición fiscal</strong>, también conocida como <strong>resultado económico</strong>, es la diferencia entre los ingresos y gastos del gobierno. Si es positiva se denomina <strong>superávit</strong> o ahorro fiscal, <strong>equilibrio</strong> en caso sean iguales y <strong>déficit</strong> cuando los gastos superan a los ingresos. Si hay un superávit fiscal, el mensaje es claro: <em class="pullnote">"Ahorrar en los tiempos de bonanza para usar el ahorro en los tiempos difíciles"</em>, tal como lo haría cualquier familia previsora.</p>
+
+      <div class="balance-grid">
+        <div class="balance-card surplus">
+          <div class="balance-head">
+            <div class="balance-badge good">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+            <div class="balance-head-text">
+              <div class="lead">Si gana más de lo que gasta, tiene</div>
+              <div class="term">SUPERÁVIT</div>
+            </div>
+          </div>
+          <p>Si hay <strong>Superávit Fiscal</strong>, entonces se incrementa el ahorro y/o se reduce la deuda del Gobierno.</p>
+        </div>
+        <div class="balance-card deficit">
+          <div class="balance-head">
+            <div class="balance-badge bad">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg>
+            </div>
+            <div class="balance-head-text">
+              <div class="lead">Si gasta más de lo que gana, tiene</div>
+              <div class="term">DÉFICIT</div>
+            </div>
+          </div>
+          <p>Si hay <strong>Déficit Fiscal</strong>, entonces se reduce el ahorro y/o se incrementa la deuda del Gobierno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">4</span>¿Cómo se financia el déficit en el Perú?</h2>
+      <p>En el caso de Perú, el financiamiento del déficit fiscal proviene básicamente del <strong>endeudamiento externo e interno</strong>.</p>
+      <div class="flow-row">
+        <div class="flow-chip">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></div>
+          <div class="label">Deuda externa</div>
+        </div>
+        <div class="flow-chip">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="9" rx="1"/><path d="M3 10 12 4l9 6M7 10v9M12 10v9M17 10v9"/></svg></div>
+          <div class="label">Deuda interna</div>
+        </div>
+        <div class="flow-chip">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12h8M12 8v8"/></svg></div>
+          <div class="label">Ahorros anteriores</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>Riesgo país y costo de la deuda</h2>
+      <p>Los mercados internacionales constantemente evalúan la <strong>capacidad de pago</strong> del país, que se resume en el <strong>riesgo país</strong> y el nivel de deuda del gobierno.</p>
+      <div class="riskbox">
+        <div class="risk-col low">
+          <span class="tag">Bajo riesgo, deuda adecuada</span>
+          <p>El gobierno paga un interés muy bajo por el bono que emite.</p>
+        </div>
+        <div class="risk-col high">
+          <span class="tag">Alto riesgo, sobreendeudado</span>
+          <p>O le compran los bonos pero exigen una tasa de interés muy alta, o simplemente no le compran.</p>
+        </div>
+      </div>
+      <p style="margin-top:18px;">El Gobierno también pide préstamos a <strong>organismos multilaterales</strong> para financiar principalmente sus proyectos de sanidad, educación o infraestructuras, entre otros.</p>
+      <div class="org-row">
+        <div class="org-chip"><span class="dot">BM</span><span class="name">Banco Mundial</span></div>
+        <div class="org-chip"><span class="dot">BID</span><span class="name">Banco Interamericano de Desarrollo</span></div>
+        <div class="org-chip"><span class="dot">FMI</span><span class="name">Fondo Monetario Internacional</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card chart-card">
+      <div class="chart-head">
+        <h3>Resultado Económico del sector público no financiero</h3>
+        <span class="unit">% del PBI</span>
+      </div>
+      <div class="chart-wrap" id="resultadoChart"></div>
+      <div class="chart-legend">
+        <div class="item"><span class="swatch" style="background:#5fc3bb;"></span>Superávit</div>
+        <div class="item"><span class="swatch" style="background:#313b54;"></span>Déficit</div>
+      </div>
+      <div class="chart-foot">Fuente: BCRP. Serie 2005–2023.</div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Banco Central de Reserva del Perú · Serie Lecturas
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const years  = [2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
+  const values = [-0.4,2.5,3.1,2.5,-1.3,-0.2,2.1,2.3,0.9,-0.3,-1.9,-2.3,-3.0,-2.3,-1.6,-8.9,-2.5,-1.7,-2.8];
+
+  const W = 848, H = 320;
+  const padL = 6, padR = 6, padTop = 30, padBottom = 26;
+  const plotW = W - padL - padR;
+  const plotH = H - padTop - padBottom;
+
+  const maxVal = 4.5, minVal = -10;
+  const range = maxVal - minVal;
+  const zeroY = padTop + plotH * (maxVal / range);
+
+  const n = years.length;
+  const gap = 6;
+  const barW = (plotW - gap * (n - 1)) / n;
+
+  const fmt = v => (v > 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
+
+  let bars = '';
+  let labels = '';
+  years.forEach((y, i) => {
+    const v = values[i];
+    const x = padL + i * (barW + gap);
+    const barH = Math.abs(v) / range * plotH;
+    const barY = v >= 0 ? zeroY - barH : zeroY;
+    const fill = v >= 0 ? '#5fc3bb' : '#313b54';
+    const labelY = v >= 0 ? barY - 6 : barY + barH + 14;
+    const labelFill = v >= 0 ? '#2f8f6b' : '#313b54';
+
+    bars += `<rect class="bar" x="${x.toFixed(2)}" y="${barY.toFixed(2)}" width="${barW.toFixed(2)}" height="${Math.max(barH,1.5).toFixed(2)}" rx="2.5" fill="${fill}"><title>${y}: ${fmt(v)}% del PBI</title></rect>`;
+    bars += `<text class="val-label" x="${(x+barW/2).toFixed(2)}" y="${labelY.toFixed(2)}" text-anchor="middle" fill="${labelFill}">${fmt(v)}</text>`;
+
+    if (y % 2 === 1) {
+      labels += `<text class="year-label" x="${(x+barW/2).toFixed(2)}" y="${H - 6}" text-anchor="middle">${y}</text>`;
+    }
+  });
+
+  const svg = `
+    <svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      <line x1="${padL}" y1="${zeroY.toFixed(2)}" x2="${W - padR}" y2="${zeroY.toFixed(2)}" stroke="#e4dfd2" stroke-width="1.5"/>
+      ${bars}
+      ${labels}
+    </svg>
+  `;
+  document.getElementById('resultadoChart').innerHTML = svg;
+})();
+</script>
+
+</body>
+</html>

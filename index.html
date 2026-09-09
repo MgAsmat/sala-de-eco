@@ -16,7 +16,7 @@
 <header class="site-header" id="siteHeader">
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="container header-inner">
-    <a class="brand" href="#inicio">
+    <a class="brand" href="index.html">
       <span class="brand-mark">SE</span>
       <span class="brand-text">
         <strong>Sala Educativa de</strong>
@@ -31,13 +31,13 @@
 
     <nav class="primary-nav" id="primaryNav" aria-label="Navegación principal">
       <ul>
-        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-        <li><a href="#flujo-circular" class="nav-link">Flujo Circular</a></li>
-        <li><a href="#politicas" class="nav-link">Políticas Monetaria y Fiscal</a></li>
-        <li><a href="#sectores" class="nav-link">Sectores</a></li>
-        <li><a href="#billetes" class="nav-link">Billetes y Monedas</a></li>
-        <li><a href="#historietas" class="nav-link">Historietas</a></li>
-        <li><a href="#sugerencias" class="nav-link nav-cta">Sugerencias</a></li>
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="flujo-circular.html" class="nav-link">Flujo Circular</a></li>
+        <li><a href="politicas.html" class="nav-link">Políticas Monetaria y Fiscal</a></li>
+        <li><a href="sectores.html" class="nav-link">Sectores</a></li>
+        <li><a href="billetes.html" class="nav-link">Billetes y Monedas</a></li>
+        <li><a href="historietas.html" class="nav-link">Historietas</a></li>
+        <li><a href="sugerencias.html" class="nav-link nav-cta">Sugerencias</a></li>
       </ul>
     </nav>
   </div>
@@ -53,7 +53,7 @@
         <h1>Descubre cómo funciona la <span>economía peruana</span></h1>
         <p>Un espacio educativo del Banco Central de Reserva del Perú para aprender, de forma clara y visual, cómo se mueve el dinero, cómo se toman las decisiones de política económica y qué papel cumple cada sector del país.</p>
         <div class="hero-actions">
-          <a href="#flujo-circular" class="btn btn-primary">
+          <a href="flujo-circular.html" class="btn btn-primary">
             Explorar el flujo circular
           </a>
           <a href="https://www.bcrp.gob.pe/se-de-economia.html" class="btn btn-ghost" target="_blank" rel="noopener">
@@ -108,694 +108,99 @@
     </div>
   </section>
 
-  <!-- FLUJO CIRCULAR -->
-  <section class="section" id="flujo-circular">
+  <!-- EXPLORAR LA SALA -->
+  <section class="section" id="explorar">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">El día a día de la economía</span>
-        <h2>Flujo Circular de la Economía</h2>
-        <p>Todos los días las personas, empresas e instituciones públicas interactúan en transacciones económicas. Compran y venden bienes y servicios, producidos en el país o en otros países. Los individuos además trabajan, y ellos y las empresas ahorran o piden préstamos y pagan impuestos. Todas estas actividades económicas se dan en los diferentes mercados: el de bienes y servicios, el laboral y el financiero.</p>
-      </div>
-
-      <div class="flow-layout">
-        <div class="flow-diagram-wrap reveal">
-          <div class="flow-diagram" id="flowDiagram">
-            <svg class="flow-diagram__svg" viewBox="0 0 760 760" aria-hidden="true">
-              <defs>
-                <marker id="arrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M1 1L9 5L1 9Z" fill="currentColor" />
-                </marker>
-                <linearGradient id="coreGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#1aa295" />
-                  <stop offset="100%" stop-color="#0b4f4a" />
-                </linearGradient>
-              </defs>
-
-              <line class="flow-arrow" x1="434.2" y1="144.3" x2="463.6" y2="184.6" data-a="familias" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="615.7" y1="325.8" x2="575.4" y2="296.4" data-a="empresas" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="325.8" y1="144.3" x2="296.4" y2="184.6" data-a="familias" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="601.8" y1="353.8" x2="325.9" y2="271.9" data-a="empresas" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="353.8" y1="601.8" x2="271.9" y2="325.9" data-a="gobierno" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="144.3" y1="325.8" x2="184.6" y2="296.4" data-a="resto-mundo" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="406.2" y1="158.2" x2="488.1" y2="434.1" data-a="familias" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="615.7" y1="434.2" x2="575.4" y2="463.6" data-a="empresas" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="434.2" y1="615.7" x2="463.6" y2="575.4" data-a="gobierno" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="158.2" y1="406.2" x2="434.1" y2="488.1" data-a="resto-mundo" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-
-              <circle class="flow-diagram__center" cx="380" cy="380" r="66" fill="url(#coreGradient)" />
-              <text class="flow-diagram__center-title" x="380" y="374">Economía</text>
-              <text class="flow-diagram__center-sub" x="380" y="394">Flujo circular</text>
-            </svg>
-
-            <button type="button" class="flow-node flow-node--reverse" data-flow="familias" style="left:50.00%;top:9.21%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
-              <strong>Familias</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="empresas" style="left:90.79%;top:50.00%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
-              <strong>Empresas</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="financiero" style="left:67.21%;top:67.21%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
-              <strong>Mercado Financiero</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="gobierno" style="left:50.00%;top:90.79%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
-              <strong>Gobierno</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="trabajo" style="left:67.21%;top:32.79%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
-              <strong>Mercado de Trabajo</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="bienes-servicios" style="left:32.79%;top:32.79%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
-              <strong>Mercado de Bienes y Servicios</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="resto-mundo" style="left:9.21%;top:50.00%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
-              <strong>Resto del Mundo</strong>
-            </button>
-
-            <svg class="flow-diagram__svg flow-diagram__svg--labels" viewBox="0 0 760 760" aria-hidden="true">
-              <text class="flow-arrow-label" x="448.9" y="164.4" data-a="familias" data-b="trabajo">Empleo</text>
-              <text class="flow-arrow-label" x="595.6" y="311.1" data-a="empresas" data-b="trabajo">Remuneración</text>
-              <text class="flow-arrow-label" x="311.1" y="164.4" data-a="familias" data-b="bienes-servicios">Consumo</text>
-              <text class="flow-arrow-label" x="463.8" y="312.9" data-a="empresas" data-b="bienes-servicios">Producción</text>
-              <text class="flow-arrow-label" x="312.9" y="463.8" data-a="gobierno" data-b="bienes-servicios">Gasto público</text>
-              <text class="flow-arrow-label" x="164.4" y="311.1" data-a="resto-mundo" data-b="bienes-servicios">Comercio exterior</text>
-              <text class="flow-arrow-label" x="447.1" y="296.2" data-a="familias" data-b="financiero">Ahorro</text>
-              <text class="flow-arrow-label" x="595.6" y="448.9" data-a="empresas" data-b="financiero">Crédito</text>
-              <text class="flow-arrow-label" x="448.9" y="595.6" data-a="gobierno" data-b="financiero">Transferencias</text>
-              <text class="flow-arrow-label" x="296.2" y="447.1" data-a="resto-mundo" data-b="financiero">Inversión</text>
-            </svg>
-          </div>
-          <p class="flow-diagram__hint">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
-            Toca o pasa el cursor sobre un actor para ver sus conexiones y su descripción
-          </p>
-        </div>
-
-        <div class="flow-groups">
-          <div class="flow-group reveal">
-            <h3 class="flow-group__title">Agentes económicos</h3>
-            <ul class="flow-list">
-              <li id="flow-familias" data-flow="familias">
-                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
-                <div>
-                  <strong>Familias</strong>
-                  <p>Las familias son la base de la sociedad. Reciben ingresos trabajando en las empresas o en sus propios negocios, dinero que utilizan en la compra de diversos bienes y servicios como alimentos, transporte, educación, salud, etc. y el pago de impuestos. Lo que no gastan, lo ahorran o pagan préstamos. Así, las familias también interactúan con las instituciones financieras ahorrando y solicitando y pagando créditos.</p>
-                </div>
-              </li>
-              <li id="flow-empresas" data-flow="empresas">
-                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
-                <div>
-                  <strong>Empresas</strong>
-                  <p>Las empresas producen diversos bienes y servicios que consumimos cada día. Por ejemplo los alimentos, el servicio de transporte, educación, entretenimiento, etc.</p>
-                </div>
-              </li>
-              <li id="flow-gobierno" data-flow="gobierno">
-                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
-                <div>
-                  <strong>Gobierno</strong>
-                  <p>El Gobierno recibe ingresos principalmente a través de los impuestos que pagan las personas y empresas, y utiliza estos recursos para proveer servicios públicos como seguridad, salud, educación, infraestructura (carreteras, puentes, hospitales, colegios, entre otros), etc.</p>
-                </div>
-              </li>
-              <li id="flow-resto-mundo" data-flow="resto-mundo">
-                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
-                <div>
-                  <strong>Resto del Mundo</strong>
-                  <p>En un mundo globalizado, nuestra relación con el resto del mundo es cada vez más activa. Compramos y vendemos productos y servicios del y al exterior. El comercio internacional nos permite exportar, ampliar nuestros mercados, vender más, por ejemplo las uvas, los espárragos, las paltas, los minerales como oro, cobre, zinc y prendas de vestir, entre otros. También nos permite importar, de manera que tenemos mayor diversidad de productos disponibles para consumir como celulares, televisores, microondas, carros, etc. El resto del mundo también nos brinda recursos financieros y oportunidades de ahorro e inversión.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="flow-group reveal">
-            <h3 class="flow-group__title">Mercados</h3>
-            <ul class="flow-list">
-              <li id="flow-bienes-servicios" data-flow="bienes-servicios">
-                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
-                <div>
-                  <strong>Mercado de Bienes y Servicios</strong>
-                  <p>En el mercado de bienes y servicios las personas, empresas y el Gobierno interactúan y compran y venden bienes como alimentos, ropa, electrodomésticos, cemento, etc. y también servicios como transporte, educación, salud y entretenimiento, entre otros. Cuando se vende bienes o servicios al exterior se denomina exportaciones y cuando se compra del exterior, importaciones.</p>
-                </div>
-              </li>
-              <li id="flow-trabajo" data-flow="trabajo">
-                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
-                <div>
-                  <strong>Mercado de Trabajo</strong>
-                  <p>En el mercado laboral, las personas ofrecen su trabajo, sus habilidades y conocimientos, a las empresas y al Gobierno, a cambio de lo cual reciben una remuneración. Las empresas y el Gobierno requieren contratar a las personas para poder producir los bienes y servicios que ofrecen a la sociedad.</p>
-                </div>
-              </li>
-              <li id="flow-financiero" data-flow="financiero">
-                <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
-                <div>
-                  <strong>Mercado Financiero</strong>
-                  <p>En el mercado financiero, las personas, las empresas y el Gobierno depositan sus excedentes de dinero y también pueden solicitar préstamos. Entre las principales instituciones financieras se encuentran los bancos, las financieras, las cajas municipales y rurales y las Edpymes. Estas transacciones de ahorro, inversión y créditos también se realizan con entidades financieras del exterior.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- POLÍTICAS -->
-  <section class="section alt" id="politicas">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow gold">Estabilidad macroeconómica</span>
-        <h2>Políticas Monetaria y Fiscal</h2>
-        <p>Las políticas monetaria y fiscal tienen una estrecha relación con la estabilidad macroeconómica. En esta sala aprenderás que el buen manejo de ambas políticas conlleva a la estabilidad macroeconómica: inflación baja y cuentas fiscales sostenibles son requisitos básicos para el crecimiento de la economía y del empleo, lo que redunda finalmente en un mayor bienestar de la población.</p>
-      </div>
-
-      <div class="policy-layout">
-        <div class="policy-outcomes reveal">
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.8L21 11l-6.6 2.2L12 20l-2.4-6.8L3 11l6.6-2.2z"/></svg>Mayor bienestar</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>Mayor crecimiento</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/></svg>Más empleo</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Menos pobreza</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>Mejor educación</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-6"/></svg>Más inversión</span>
-        </div>
-
-        <div class="policy-band reveal">Estabilidad Macroeconómica</div>
-
-        <div class="policy-pillars">
-          <div class="pillar-card monetary reveal">
-            <div class="icon-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
-            <span class="owner">A cargo del BCRP</span>
-            <h3>Política Monetaria</h3>
-            <p>Se encarga de la estabilidad monetaria, para que el dinero preserve su valor en el tiempo.</p>
-            <ul>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Autonomía del Banco Central</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Control de la inflación</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Estabilidad financiera</li>
-            </ul>
-          </div>
-
-          <div class="pillar-card fiscal reveal">
-            <div class="icon-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/><path d="M10 21v-6h4v6"/></svg>
-            </div>
-            <span class="owner">A cargo del Gobierno</span>
-            <h3>Política Fiscal</h3>
-            <p>Fomenta el desarrollo de la economía garantizando infraestructura, educación e inversión.</p>
-            <ul>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Sostenibilidad fiscal</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Inversión pública</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Gasto social responsable</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- DATO CURIOSO: carrusel interactivo -->
-        <div class="tip-carousel reveal" id="tipCarousel" aria-roledescription="carrusel" aria-label="Datos curiosos sobre el BCRP y la economía peruana">
-          <div class="tip-carousel__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
-          </div>
-          <div class="tip-carousel__body">
-            <span class="tip-carousel__label">¿Sabías que…?</span>
-            <p class="tip-carousel__text" id="tipCarouselText" aria-live="polite">El 9 de marzo de 2024, el Banco Central de Reserva del Perú cumplió 102 años de vida al servicio del país.</p>
-          </div>
-          <div class="tip-carousel__controls">
-            <button type="button" class="tip-carousel__btn" id="tipPrev" aria-label="Dato anterior">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <div class="tip-carousel__dots" id="tipDots"></div>
-            <button type="button" class="tip-carousel__btn" id="tipNext" aria-label="Siguiente dato">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEOS INSTITUCIONALES -->
-  <section class="section" id="videos-politica">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Contenido audiovisual</span>
-        <h2>Videos Institucionales</h2>
-        <p>Tres videos del BCRP que explican, en pocos minutos, la estabilidad monetaria, las finanzas públicas y las reservas internacionales.</p>
-      </div>
-
-      <div class="video-grid">
-        <article class="video-embed-card reveal">
-          <div class="video-embed-card__frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/onTzJtBA2zo" title="Estabilidad Monetaria" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-          </div>
-          <h3>Estabilidad Monetaria</h3>
-        </article>
-        <article class="video-embed-card reveal">
-          <div class="video-embed-card__frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/ElLnD2jJTwQ" title="Finanzas Públicas" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-          </div>
-          <h3>Finanzas Públicas</h3>
-        </article>
-        <article class="video-embed-card reveal">
-          <div class="video-embed-card__frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/zP1XH_KnC30" title="Reservas Internacionales" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-          </div>
-          <h3>Reservas Internacionales</h3>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- RECURSOS: infografías, lecturas, historietas, estadísticas y enlaces -->
-  <section class="section alt" id="recursos-politica">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Para profundizar</span>
-        <h2>Infografías, Lecturas y Estadísticas</h2>
-        <p>Material oficial del BCRP para repasar los conceptos y consultar las cifras más recientes.</p>
-      </div>
-
-      <div class="resource-filters reveal" role="group" aria-label="Filtrar recursos por tipo">
-        <button type="button" class="filter-chip is-active" data-filter="all">Todos</button>
-        <button type="button" class="filter-chip" data-filter="infografia">Infografías</button>
-        <button type="button" class="filter-chip" data-filter="lectura">Lecturas</button>
-        <button type="button" class="filter-chip" data-filter="comic">Historietas</button>
-        <button type="button" class="filter-chip" data-filter="app">Aplicativo</button>
-        <button type="button" class="filter-chip" data-filter="stat">Estadísticas</button>
-        <button type="button" class="filter-chip" data-filter="link">Enlaces</button>
-      </div>
-
-      <div class="resource-grid" id="resourceGrid">
-        <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/007-pilares.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Infografía</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-pilares.jpg" alt="Primera página de la infografía Pilares de una economía sólida" loading="lazy" />
-          </div>
-          <div class="resource-card__body">
-            <h3>Pilares de una economía sólida</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/010-mision-funciones.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Infografía</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-mision-funciones.jpg" alt="Primera página de la infografía Misión y funciones del BCRP" loading="lazy" />
-          </div>
-          <div class="resource-card__body">
-            <h3>Misión y funciones del BCRP</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/008-inflacion.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Infografía</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-inflacion-deflacion.jpg" alt="Primera página de la infografía Inflación, deflación e hiperinflación" loading="lazy" />
-          </div>
-          <div class="resource-card__body">
-            <h3>Inflación, deflación e hiperinflación</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/009-mecanismos.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Infografía</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-mecanismos-inflacion.jpg" alt="Primera página de la infografía Cómo el Banco Central influye en la inflación" loading="lazy" />
-          </div>
-          <div class="resource-card__body">
-            <h3>Cómo el Banco Central influye en la inflación</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/006-ingresos-gastos.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Infografía</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-ingresos-gastos.jpg" alt="Primera página de la infografía Ingresos y gastos públicos" loading="lazy" />
-          </div>
-          <div class="resource-card__body">
-            <h3>Ingresos y gastos públicos</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="resource-card resource-card--lectura reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/lecturas/sector-fiscal/lectura-pm-politica-monetaria.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Lectura</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M9 7h7M9 11h7M9 15h4"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Lectura: Política Monetaria</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--lectura reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/lecturas/sector-fiscal/lectura-sf-deficit-fiscal.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Lectura</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M9 7h7M9 11h7M9 15h4"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Lectura: Déficit Fiscal</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="resource-card resource-card--comic reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/historieta/historieta-bcrp.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Historieta</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-historieta-bcrp.jpg" alt="Primera página de la historieta BCRP" loading="lazy" />
-          </div>
-          <div class="resource-card__body">
-            <h3>Historieta: BCRP</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--comic reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/historieta/historieta-politica-monetaria-fiscal.pdf" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Historieta</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-historieta-gobierno.jpg" alt="Primera página de la historieta El Gobierno" loading="lazy" />
-          </div>
-          <div class="resource-card__body">
-            <h3>Historieta: El Gobierno</h3>
-            <span class="resource-card__link">Ver PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="resource-card resource-card--app reveal" href="https://www.bcrp.gob.pe/apps/estabilidad-macroeconomica/index.html" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Aplicativo</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 14l3-4 3 2 4-6" stroke="var(--gold-400)"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Simulador de Estabilidad Macroeconómica</h3>
-            <span class="resource-card__link">Abrir aplicativo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/tasas-de-interes" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><polyline points="4,34 20,34 20,26 38,26 38,18 56,18 56,24 74,24 74,12 96,12" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Tasa de Interés de Referencia</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/inflacion" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="26" x2="100" y2="26" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 3"/><polyline points="4,20 16,30 28,14 40,32 52,22 64,10 76,28 88,16 96,24" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Inflación (var% 12 meses)</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultado-economico" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><rect x="6" y="17" width="10" height="8" fill="var(--gold-400)"/><rect x="22" y="25" width="10" height="9" fill="rgba(255,255,255,0.4)"/><rect x="38" y="10" width="10" height="15" fill="var(--gold-400)"/><rect x="54" y="25" width="10" height="6" fill="rgba(255,255,255,0.4)"/><rect x="70" y="13" width="10" height="12" fill="var(--gold-400)"/><rect x="86" y="25" width="10" height="11" fill="rgba(255,255,255,0.4)"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Resultado Económico del SPNF</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/trimestrales/deuda-publica" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><rect x="6" y="34" width="10" height="8" fill="var(--gold-400)"/><rect x="22" y="28" width="10" height="14" fill="var(--gold-400)"/><rect x="38" y="24" width="10" height="18" fill="var(--gold-400)"/><rect x="54" y="18" width="10" height="24" fill="var(--gold-400)"/><rect x="70" y="12" width="10" height="30" fill="var(--gold-400)"/><rect x="86" y="8" width="10" height="34" fill="var(--gold-400)"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Deuda Pública</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="resource-card resource-card--link reveal" href="https://www.bcrp.gob.pe/se-de-economia/see-politica-economica/glosario-politicas-monetario-y-fiscal.html" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Enlace</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M9 7h6M9 11h6"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Glosario de Políticas Monetaria y Fiscal</h3>
-            <span class="resource-card__link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-        <a class="resource-card resource-card--link reveal" href="https://www.bcrp.gob.pe/se-de-economia/see-politica-economica/bibliografia-politicas-monetaria-y-fiscal.html" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Enlace</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.5C10.5 5 8 4.5 5 5v13.5c3-.5 5.5 0 7 1.5 1.5-1.5 4-2 7-1.5V5c-3-.5-5.5 0-7 1.5z"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Bibliografía</h3>
-            <span class="resource-card__link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTORES -->
-  <section class="section" id="sectores">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Cómo se organiza la producción</span>
-        <h2>Sectores de la Economía</h2>
-        <p>Cada sector cumple una función distinta dentro del sistema económico peruano.</p>
+        <span class="eyebrow">Recorre la sala</span>
+        <h2>Explora cada sección</h2>
+        <p>Cada tema de la Sala Educativa de Economía tiene ahora su propia página. Elige por dónde empezar.</p>
       </div>
 
       <div class="card-grid">
-        <article class="sector-card sector-card--real reveal">
+        <article class="sector-card sector-card--flujo reveal">
           <div class="sector-card__content">
             <div class="icon-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 6 10 6 13a6 6 0 0012 0c0-3-2-7-6-11z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
             </div>
-            <h3>Sector Real</h3>
-            <p>Agricultura, pesca, minería, manufactura y construcción: la producción de bienes del país.</p>
-            <div class="tag-row">
-              <span>Agricultura</span><span>Pesca</span><span>Minería</span>
-            </div>
-            <a class="card-link" href="https://www.bcrp.gob.pe/se-de-economia.html" target="_blank" rel="noopener">
-              Explorar sector
+            <h3>Flujo Circular</h3>
+            <p>Cómo interactúan familias, empresas, gobierno y el resto del mundo en los mercados.</p>
+            <a class="card-link" href="flujo-circular.html">
+              Ver sección
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
 
-        <article class="sector-card sector-card--externo reveal">
+        <article class="sector-card sector-card--politicas reveal">
+          <div class="sector-card__content">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Políticas Monetaria y Fiscal</h3>
+            <p>Estabilidad macroeconómica, videos institucionales, infografías y estadísticas.</p>
+            <a class="card-link" href="politicas.html">
+              Ver sección
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="sector-card sector-card--sectores reveal">
           <div class="sector-card__content">
             <div class="icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg>
             </div>
-            <h3>Sector Externo</h3>
-            <p>Exportaciones, importaciones y flujos de capital que conectan al Perú con el resto del mundo.</p>
-            <div class="tag-row">
-              <span>Exportaciones</span><span>Comercio</span><span>Divisas</span>
-            </div>
-            <a class="card-link" href="https://www.bcrp.gob.pe/se-de-economia.html" target="_blank" rel="noopener">
-              Explorar sector
+            <h3>Sectores de la Economía</h3>
+            <p>Sector real, sector externo y sector financiero: cómo se organiza la producción.</p>
+            <a class="card-link" href="sectores.html">
+              Ver sección
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
 
-        <article class="sector-card sector-card--financiero reveal">
+        <article class="sector-card sector-card--billetes reveal">
           <div class="sector-card__content">
             <div class="icon-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
-            <h3>Sector Financiero</h3>
-            <p>Bancos, ahorro, crédito e inversión: cómo circula el dinero entre quienes ahorran y quienes invierten.</p>
-            <div class="tag-row">
-              <span>Bancos</span><span>Ahorro</span><span>Crédito</span>
-            </div>
-            <a class="card-link" href="https://www.bcrp.gob.pe/se-de-economia.html" target="_blank" rel="noopener">
-              Explorar sector
+            <h3>Billetes y Monedas</h3>
+            <p>Conoce las denominaciones del sol peruano y sus medidas de seguridad.</p>
+            <a class="card-link" href="billetes.html">
+              Ver sección
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- BILLETES Y MONEDAS -->
-  <section class="section alt" id="billetes">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">El sol peruano</span>
-        <h2>Billetes y Monedas</h2>
-        <p>Conoce las denominaciones que circulan en el Perú y aprende a identificar sus medidas de seguridad.</p>
-      </div>
-
-      <div class="bills-grid">
-        <div class="bill bill--10 reveal"><span class="label">Billete</span><span class="value">S/ 10</span></div>
-        <div class="bill bill--20 reveal"><span class="label">Billete</span><span class="value">S/ 20</span></div>
-        <div class="bill bill--50 reveal"><span class="label">Billete</span><span class="value">S/ 50</span></div>
-        <div class="bill bill--100 reveal"><span class="label">Billete</span><span class="value">S/ 100</span></div>
-        <div class="bill bill--200 reveal"><span class="label">Billete</span><span class="value">S/ 200</span></div>
-      </div>
-
-      <div class="coins-row">
-        <div class="coin silver reveal">S/ 0.10</div>
-        <div class="coin silver reveal">S/ 0.20</div>
-        <div class="coin silver reveal">S/ 0.50</div>
-        <div class="coin reveal">S/ 1</div>
-        <div class="coin reveal">S/ 2</div>
-        <div class="coin reveal">S/ 5</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HISTORIETAS -->
-  <section class="section" id="historietas">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Aprende jugando</span>
-        <h2>Historietas Educativas</h2>
-        <p>Relatos ilustrados que explican conceptos económicos de forma sencilla y entretenida.</p>
-      </div>
-
-      <div class="comic-grid">
-        <article class="comic-card reveal">
-          <a class="comic-card__art" href="assets/historietas/nueva-familia-billetes.pdf" target="_blank" rel="noopener">
-            <img src="assets/historietas/cover-nueva-familia-billetes.jpg" alt="Portada de la historieta Beni y Clarita: la nueva familia de billetes peruanos" loading="lazy" />
-          </a>
-          <div class="comic-card__body">
-            <span class="badge">Billetes</span>
-            <h3>Beni y Clarita: la nueva familia de billetes peruanos</h3>
-            <p>Clarita explica las medidas de seguridad en la nueva familia de billetes peruanos.</p>
-            <a class="comic-card__download" href="assets/historietas/nueva-familia-billetes.pdf" target="_blank" rel="noopener">
-              Descargar historieta (PDF)
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        <article class="sector-card sector-card--historietas reveal">
+          <div class="sector-card__content">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v13H8l-4 4V4z"/></svg>
+            </div>
+            <h3>Historietas Educativas</h3>
+            <p>Relatos ilustrados que explican conceptos económicos de forma sencilla.</p>
+            <a class="card-link" href="historietas.html">
+              Ver sección
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
 
-        <article class="comic-card reveal">
-          <a class="comic-card__art" href="assets/historietas/la-moneda-peruana.pdf" target="_blank" rel="noopener">
-            <img src="assets/historietas/cover-la-moneda-peruana.jpg" alt="Portada de la historieta Beni y Clarita: la moneda peruana" loading="lazy" />
-          </a>
-          <div class="comic-card__body">
-            <span class="badge">Moneda</span>
-            <h3>Beni y Clarita: la moneda peruana</h3>
-            <p>El abuelo de Beni y Clarita les explica sobre la historia de la moneda peruana.</p>
-            <a class="comic-card__download" href="assets/historietas/la-moneda-peruana.pdf" target="_blank" rel="noopener">
-              Descargar historieta (PDF)
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        <article class="sector-card sector-card--sugerencias reveal">
+          <div class="sector-card__content">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <h3>Sugerencias</h3>
+            <p>Comparte tus comentarios para ayudarnos a mejorar la Sala Educativa.</p>
+            <a class="card-link" href="sugerencias.html">
+              Ver sección
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
-
-        <article class="comic-card reveal">
-          <a class="comic-card__art" href="assets/historietas/bcrp-historia-finalidad-funciones.pdf" target="_blank" rel="noopener">
-            <img src="assets/historietas/cover-bcrp-historia-finalidad-funciones.jpg" alt="Portada de la historieta Beni y Clarita: BCRP, historia, finalidad y funciones" loading="lazy" />
-          </a>
-          <div class="comic-card__body">
-            <span class="badge">BCRP</span>
-            <h3>Beni y Clarita: BCRP, historia, finalidad y funciones</h3>
-            <p>El abuelo de Beni y Clarita les explica sobre la importancia de la estabilidad económica y el BCRP.</p>
-            <a class="comic-card__download" href="assets/historietas/bcrp-historia-finalidad-funciones.pdf" target="_blank" rel="noopener">
-              Descargar historieta (PDF)
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="comic-card reveal">
-          <a class="comic-card__art" href="assets/historietas/billete-falso-paga-mal.pdf" target="_blank" rel="noopener">
-            <img src="assets/historietas/cover-billete-falso-paga-mal.jpg" alt="Portada de la historieta El billete falso paga mal" loading="lazy" />
-          </a>
-          <div class="comic-card__body">
-            <span class="badge">Seguridad</span>
-            <h3>El billete falso paga mal</h3>
-            <p>Pablo le enseña a Doña Justa cómo reconocer los billetes genuinos, y en una fiesta conoce a su sobrina.</p>
-            <a class="comic-card__download" href="assets/historietas/billete-falso-paga-mal.pdf" target="_blank" rel="noopener">
-              Descargar historieta (PDF)
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="comic-card reveal">
-          <a class="comic-card__art" href="assets/historietas/sale-el-sol.pdf" target="_blank" rel="noopener">
-            <img src="assets/historietas/cover-sale-el-sol.jpg" alt="Portada de la historieta Sale el sol: fortaleza del Nuevo Sol" loading="lazy" />
-          </a>
-          <div class="comic-card__body">
-            <span class="badge">Nuevo Sol</span>
-            <h3>Sale el sol: fortaleza del Nuevo Sol</h3>
-            <p>Pepito tuvo un sueño extraño con dos lindas cambistas y no sabía a cuál de ellas atender.</p>
-            <a class="comic-card__download" href="assets/historietas/sale-el-sol.pdf" target="_blank" rel="noopener">
-              Descargar historieta (PDF)
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-            </a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- SUGERENCIAS -->
-  <section class="section alt" id="sugerencias">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Tu opinión nos importa</span>
-        <h2>Sugerencias</h2>
-        <p>Ayúdanos a mejorar la Sala Educativa de Economía compartiendo tus comentarios.</p>
-      </div>
-
-      <div class="suggest-layout">
-        <div class="suggest-info reveal">
-          <h3>¿Por qué escribirnos?</h3>
-          <p>Este espacio educativo mejora gracias a los comentarios de estudiantes, docentes y visitantes como tú.</p>
-          <ul>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-              Propón temas o recursos nuevos
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-              Reporta contenido que no funciona
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-              Comparte tu experiencia de aprendizaje
-            </li>
-          </ul>
-        </div>
-
-        <form class="suggest-form reveal" id="suggestForm" novalidate>
-          <div class="form-row">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Escribe tu nombre" required />
-          </div>
-          <div class="form-row">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
-          </div>
-          <div class="form-row">
-            <label for="topic">Tema</label>
-            <select id="topic" name="topic">
-              <option>Flujo circular de la economía</option>
-              <option>Políticas monetaria y fiscal</option>
-              <option>Sectores económicos</option>
-              <option>Billetes y monedas</option>
-              <option>Historietas</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" placeholder="Cuéntanos tu sugerencia" required></textarea>
-          </div>
-          <p class="form-note">Interfaz de demostración: este formulario no envía información a un servidor.</p>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar sugerencia</button>
-          <div class="form-success" id="formSuccess">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>
-            ¡Gracias! Tu sugerencia fue registrada.
-          </div>
-        </form>
       </div>
     </div>
   </section>
@@ -818,18 +223,18 @@
       <div class="footer-col">
         <h4>Contenidos</h4>
         <ul>
-          <li><a href="#flujo-circular">Flujo Circular</a></li>
-          <li><a href="#politicas">Políticas Monetaria y Fiscal</a></li>
-          <li><a href="#sectores">Sectores</a></li>
+          <li><a href="flujo-circular.html">Flujo Circular</a></li>
+          <li><a href="politicas.html">Políticas Monetaria y Fiscal</a></li>
+          <li><a href="sectores.html">Sectores</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Recursos</h4>
         <ul>
-          <li><a href="#billetes">Billetes y Monedas</a></li>
-          <li><a href="#historietas">Historietas</a></li>
-          <li><a href="#sugerencias">Sugerencias</a></li>
+          <li><a href="billetes.html">Billetes y Monedas</a></li>
+          <li><a href="historietas.html">Historietas</a></li>
+          <li><a href="sugerencias.html">Sugerencias</a></li>
         </ul>
       </div>
 
@@ -838,7 +243,7 @@
         <ul>
           <li><a href="https://www.bcrp.gob.pe" target="_blank" rel="noopener">Sitio oficial bcrp.gob.pe</a></li>
           <li><a href="https://www.bcrp.gob.pe/se-de-economia.html" target="_blank" rel="noopener">Sala Educativa original</a></li>
-          <li><a href="#inicio">Volver al inicio</a></li>
+          <li><a href="index.html">Volver al inicio</a></li>
         </ul>
       </div>
     </div>

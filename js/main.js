@@ -35,36 +35,29 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Highlight the nav link matching the current page
+  // Highlight the nav link matching the current page (sector detail pages highlight "Sectores")
   const currentPage = location.pathname.split("/").pop() || "index.html";
+  const navHighlightPage = currentPage.startsWith("sector-") ? "sectores.html" : currentPage;
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
-    link.classList.toggle("active", href === currentPage);
+    link.classList.toggle("active", href === navHighlightPage);
   });
 
-  // Dato curioso: tip carousel
-  const tipCarousel = document.getElementById("tipCarousel");
-  if (tipCarousel) {
-    const tips = [
-      "El 9 de marzo de 2024, el Banco Central de Reserva del Perú cumplió 102 años de vida al servicio del país.",
-      "En 2020, el BCRP fue incorporado como miembro de la Red de Bancos Centrales y Supervisoras para Enverdecer el Sistema Financiero.",
-      "A partir de 2002, el BCRP maneja un esquema de Metas Explícitas de Inflación.",
-      "El rango meta de inflación anual del BCRP es de 1% a 3%.",
-      "Las acciones del BCRP tienen como objetivo que la inflación y sus expectativas se ubiquen dentro del rango meta de 1% a 3%.",
-      "En 2020, el Perú implementó uno de los programas de créditos con garantías estatales de mayor tamaño en términos del PBI.",
-      "El programa Reactiva Perú benefició directamente a más de 502 mil empresas; de las cuales el 98% eran MYPEs.",
-      "El programa Reactiva Perú permitió que principalmente las pequeñas empresas obtuvieran créditos a tasas mínimas.",
-      "La dolarización del crédito bajó 53 puntos porcentuales en los últimos 21 años al pasar de 76% en 2002 a 23% en 2023.",
-      "Los ingresos del gobierno general representaron el 19,8% del PBI en 2023.",
-      "Los ingresos por IGV del gobierno general representaron el 8,4% del PBI en 2023.",
-      "La recaudación por impuesto a la renta alcanza el 6,3% del PBI en 2023.",
-      "La vida promedio de la deuda pública fue 11,7 años en 2023.",
-    ];
+  // Dato curioso: tip carousel(s) — each instance reads its own tips from an embedded JSON block
+  Array.from(document.querySelectorAll(".tip-carousel")).forEach((tipCarousel) => {
+    const dataEl = tipCarousel.querySelector(".tip-carousel__data");
+    let tips = [];
+    try {
+      tips = dataEl ? JSON.parse(dataEl.textContent) : [];
+    } catch (e) {
+      tips = [];
+    }
+    if (!tips.length) return;
 
-    const tipText = document.getElementById("tipCarouselText");
-    const tipDots = document.getElementById("tipDots");
-    const tipPrev = document.getElementById("tipPrev");
-    const tipNext = document.getElementById("tipNext");
+    const tipText = tipCarousel.querySelector(".tip-carousel__text");
+    const tipDots = tipCarousel.querySelector(".tip-carousel__dots");
+    const tipPrev = tipCarousel.querySelector(".tip-carousel__btn--prev");
+    const tipNext = tipCarousel.querySelector(".tip-carousel__btn--next");
     let tipIndex = 0;
     let tipTimer = null;
 
@@ -91,7 +84,7 @@
     tipPrev.addEventListener("click", () => showTip(tipIndex - 1, true));
     tipNext.addEventListener("click", () => showTip(tipIndex + 1, true));
     restartAutoplay();
-  }
+  });
 
   // Suggestion form (front-end demo only, no network request)
   if (suggestForm) {

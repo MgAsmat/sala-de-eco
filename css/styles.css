@@ -1230,6 +1230,11 @@ button {
   gap: 24px;
 }
 
+.video-grid--single {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
+
 .video-embed-card__frame {
   position: relative;
   aspect-ratio: 16 / 9;

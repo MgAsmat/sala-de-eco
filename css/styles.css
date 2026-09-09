@@ -1494,6 +1494,13 @@ button {
 .sector-card--externo::before { background: linear-gradient(160deg, #c9770f, #7a3e08); }
 .sector-card--financiero::before { background: linear-gradient(160deg, #175e8f, #0b3556); }
 
+.sector-card--flujo::before { background: linear-gradient(160deg, var(--teal-500), var(--teal-800)); }
+.sector-card--politicas::before { background: linear-gradient(160deg, var(--gold-500), #7a4e00); }
+.sector-card--sectores::before { background: linear-gradient(160deg, #0d7d55, #0a4d38); }
+.sector-card--billetes::before { background: linear-gradient(160deg, #175e8f, #0b3556); }
+.sector-card--historietas::before { background: linear-gradient(160deg, #c9770f, #7a3e08); }
+.sector-card--sugerencias::before { background: linear-gradient(160deg, #6b3fa0, #3c2159); }
+
 .sector-card__content {
   position: relative;
   z-index: 1;

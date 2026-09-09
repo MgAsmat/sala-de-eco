@@ -35,27 +35,12 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Scrollspy via IntersectionObserver
-  const sections = Array.from(document.querySelectorAll("main section[id]"));
-  const linkById = new Map(
-    Array.from(navLinks).map((link) => [link.getAttribute("href").replace("#", ""), link])
-  );
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const link = linkById.get(entry.target.id);
-        if (!link) return;
-        if (entry.isIntersecting) {
-          navLinks.forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
-        }
-      });
-    },
-    { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-  );
-
-  sections.forEach((section) => observer.observe(section));
+  // Highlight the nav link matching the current page
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    link.classList.toggle("active", href === currentPage);
+  });
 
   // Dato curioso: tip carousel
   const tipCarousel = document.getElementById("tipCarousel");

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosario Políticas Monetario y Fiscal — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#313b54;
+    --navy-deep:#232a3d;
+    --gold:#f1ab26;
+    --blue:#4079a2;
+    --teal:#5fc3bb;
+    --maroon:#c0483e;
+    --paper:#faf7f0;
+    --card:#ffffff;
+    --border:#e4dfd2;
+    --text-muted:#6b7180;
+    --shadow-md: 0 8px 24px rgba(35,42,61,0.08);
+    --ease: cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--navy-deep);
+    font-family:'Barlow', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{ max-width:980px; margin:0 auto; padding:0 24px 64px; }
+
+  header.masthead{ background:var(--navy); color:#fff; padding:22px 0; }
+  .masthead-inner{ max-width:980px; margin:0 auto; padding:0 24px; display:flex; align-items:center; gap:14px; }
+  .masthead-mark{ width:38px;height:38px;flex:0 0 auto; border-radius:50%; background:var(--gold); display:flex;align-items:center;justify-content:center; }
+  .masthead-mark svg{ width:20px;height:20px; }
+  .masthead-text{ font-family:'Barlow Condensed', sans-serif; font-weight:600; letter-spacing:0.06em; font-size:15px; text-transform:uppercase; }
+  .masthead-text .sub{ display:block; font-family:'Barlow', sans-serif; font-weight:400; letter-spacing:0; text-transform:none; font-size:12.5px; color:#c9cedb; margin-top:1px; }
+
+  .hero{ background:linear-gradient(180deg, var(--navy) 0%, var(--navy) 55%, var(--navy-deep) 100%); color:#fff; padding:40px 0 56px; margin-bottom:-32px; }
+  .hero-inner{ max-width:980px;margin:0 auto;padding:0 24px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-family:'Barlow Condensed', sans-serif; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; font-size:12.5px; color:var(--gold); margin-bottom:14px; }
+  .eyebrow::before{ content:""; width:22px;height:2px; background:var(--gold); display:inline-block; }
+  h1.title{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:clamp(28px, 4vw, 42px); line-height:1.12; margin:0 0 12px; max-width:680px; }
+  .hero-sub{ color:#d7dbe6; font-size:16px; max-width:600px; margin:0 0 20px; }
+
+  .hero-jump{ display:flex; gap:10px; flex-wrap:wrap; }
+  .hero-jump a{
+    font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:13.5px;
+    color:#fff; text-decoration:none;
+    border:1px solid rgba(255,255,255,0.35); border-radius:999px;
+    padding:7px 16px; transition:background .15s var(--ease);
+  }
+  .hero-jump a:hover{ background:rgba(255,255,255,0.12); }
+  .hero-jump a .dot{ display:inline-block; width:8px;height:8px;border-radius:50%; margin-right:7px; }
+
+  .card{ background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow-md); padding:32px 36px; margin:0 0 24px; position:relative; z-index:1; }
+  section.block{ margin-top:40px; scroll-margin-top:20px; }
+  section.block:first-of-type{ margin-top:0; }
+
+  .section-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:12.5px;
+    letter-spacing:0.06em; text-transform:uppercase;
+    color:#fff; border-radius:999px; padding:6px 16px 6px 12px;
+    margin-bottom:14px;
+  }
+  .section-tag.monetario{ background:var(--navy); }
+  .section-tag.fiscal{ background:var(--maroon); }
+  .section-tag .count{
+    background:rgba(255,255,255,0.25); border-radius:999px;
+    font-size:11.5px; padding:1px 8px;
+  }
+
+  h2.section-title{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:24px; color:var(--navy); margin:0 0 6px; }
+  .section-intro{ color:var(--text-muted); font-size:14.5px; margin:0 0 20px; }
+
+  .glossary-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 32px; }
+  @media (max-width:680px){ .glossary-grid{ grid-template-columns:1fr; } }
+
+  .term-entry{ padding:14px 0; border-bottom:1px solid var(--border); }
+  .term-entry:nth-last-child(1), .term-entry:nth-last-child(2){ }
+  .term-name{
+    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:16px;
+    color:var(--navy); margin:0 0 4px;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .term-name .letter{
+    flex:0 0 auto; width:20px; height:20px; border-radius:5px;
+    background:var(--paper); border:1px solid var(--border);
+    color:var(--gold); font-size:11px; font-weight:700;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Barlow Condensed', sans-serif;
+  }
+  .term-def{ font-size:14px; margin:0; color:#4b5063; padding-left:28px; }
+
+  footer.page-footer{ text-align:center; margin-top:40px; padding-top:24px; border-top:1px solid var(--border); color:var(--text-muted); font-size:12.5px; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#232a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/>
+      </svg>
+    </div>
+    <div class="masthead-text">
+      Banco Central de Reserva del Perú
+      <span class="sub">Serie Educativa · Glosario</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Glosario económico</div>
+    <h1 class="title">Glosario de Políticas Monetaria y Fiscal</h1>
+    <p class="hero-sub">Términos clave para entender cómo el Banco Central preserva la estabilidad monetaria y cómo el Gobierno maneja sus ingresos y gastos.</p>
+    <div class="hero-jump">
+      <a href="#monetario"><span class="dot" style="background:var(--gold);"></span>Sector Monetario · 13 términos</a>
+      <a href="#fiscal"><span class="dot" style="background:#e07a72;"></span>Sector Fiscal · 27 términos</a>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <section class="block" id="monetario">
+    <div class="card">
+      <span class="section-tag monetario">Sector Monetario<span class="count">13</span></span>
+      <h2 class="section-title">Glosario de términos económicos del Sector Monetario</h2>
+      <p class="section-intro">Conceptos sobre el dinero, los precios y el rol del Banco Central.</p>
+
+      <div class="glossary-grid">
+        <div>
+          <div class="term-entry"><div class="term-name"><span class="letter">B</span>Banco Central de Reserva del Perú (BCRP)</div><p class="term-def">Es la institución autónoma cuya finalidad es preservar la estabilidad monetaria. Sus funciones son regular la cantidad de dinero, administrar las reservas internacionales del país, emitir billetes y monedas e informar al país sobre las finanzas nacionales.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">C</span>Crédito</div><p class="term-def">Es la operación financiera en la que uno se presta dinero y se compromete a devolver la cantidad solicitada, además de un pago adicional (intereses) asociado a la tasa de interés, dentro de un tiempo definido de acuerdo con las condiciones del préstamo.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">D</span>Deflación</div><p class="term-def">Es la baja generalizada y prolongada del nivel de precios de bienes y servicios.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">D</span>Dinero</div><p class="term-def">Es todo medio de pago de aceptación general por parte de compradores y vendedores. Sirve también para expresar los precios de los bienes y servicios y refleja la acumulación de riqueza. Los billetes y monedas son dinero y son emitidos por el Banco Central.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">D</span>Dolarización</div><p class="term-def">Se asocia al uso frecuente de dólares para las transacciones económicas y financieras, establecer precios o acumular riqueza. Los coeficientes de dolarización reflejan el porcentaje de créditos o liquidez totales de las entidades financieras que están en dólares.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">E</span>Estabilidad monetaria</div><p class="term-def">Situación en la que la moneda nacional preserva su poder adquisitivo. Esto ocurre en un entorno donde predomina una inflación baja y estable.</p></div>
+        </div>
+        <div>
+          <div class="term-entry"><div class="term-name"><span class="letter">H</span>Hiperinflación</div><p class="term-def">Es una inflación muy elevada, fuera de control, en la que los precios aumentan rápidamente.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">I</span>Inflación</div><p class="term-def">Es el incremento general y sostenido de los precios y afecta, principalmente, a los más pobres. Es por ello que la misión del Banco Central es mantenerla bajo control.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">P</span>Política monetaria</div><p class="term-def">Se encarga de la estabilidad monetaria, que el dinero preserve su valor en el tiempo.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">T</span>Tasa de interés</div><p class="term-def">Es el precio (costo o rentabilidad) del dinero. Suele expresarse en términos porcentuales y referirse a un período de un año. Si uno tiene un préstamo, la tasa de interés representará el costo por el uso del dinero; si uno tiene un ahorro, indicará la rentabilidad del dinero.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">T</span>Tasa de interés activa</div><p class="term-def">Es la tasa de interés que se cobra por los préstamos otorgados.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">T</span>Tasa de interés pasiva</div><p class="term-def">Es la tasa de interés que se recibe por los ahorros depositados.</p></div>
+          <div class="term-entry" style="border-bottom:none;"><div class="term-name"><span class="letter">T</span>Tipo de cambio</div><p class="term-def">Es el precio de una moneda en términos de otra. Por ejemplo, el precio en Soles del dólar de los Estados Unidos de América.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="fiscal">
+    <div class="card">
+      <span class="section-tag fiscal">Sector Fiscal<span class="count">27</span></span>
+      <h2 class="section-title">Glosario de términos económicos del Sector Fiscal</h2>
+      <p class="section-intro">Conceptos sobre los ingresos, los gastos y la posición fiscal del Gobierno.</p>
+
+      <div class="glossary-grid">
+        <div>
+          <div class="term-entry"><div class="term-name"><span class="letter">A</span>Activo Financiero</div><p class="term-def">Instrumento financiero (documento o título) emitido por una institución privada o pública que otorga a su comprador el derecho a recibir ingresos futuros del vendedor.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">C</span>Choque externo</div><p class="term-def">Suceso externo, independiente de la economía del país, que influye puntualmente en la misma, generalmente produciendo un efecto negativo.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">D</span>Déficit fiscal</div><p class="term-def">Si el gobierno gasta más de lo que gana tiene Déficit fiscal, entonces se reduce el ahorro del gobierno y/o se incrementa la deuda del gobierno. Se valoriza en millones de S/ corrientes y constantes y se mide como % del PBI.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">D</span>Deuda pública</div><p class="term-def">Comprende el conjunto de obligaciones del gobierno que se encuentran aún pendiente de pago.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">E</span>Encaje</div><p class="term-def">Es un porcentaje que las instituciones financieras deben mantener como reservas en sus cajas o en sus cuentas en el Banco Central, por cada depósito que reciben del público.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">E</span>Estabilidad macroeconómica</div><p class="term-def">Se construye sobre dos pilares: la Política Monetaria del BCRP y la Política Fiscal del Gobierno. La estabilidad macroeconómica permite mayor crecimiento, mayor bienestar y menos pobreza.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">G</span>Gasto en bienes y servicios</div><p class="term-def">Es el gasto público en pago de recibos de agua, luz, teléfono, alquiler, útiles de oficina, transporte, etc.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">G</span>Gasto en transferencias</div><p class="term-def">Es el gasto público en pago de pensiones y programas de ayuda social, como, por ejemplo: el Programa Juntos, el Vaso de Leche, comedores populares, etc.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">G</span>Gasto público</div><p class="term-def">Es el uso de recursos provenientes del sector público en bienes, servicios o transferencias. Se realiza en los tres niveles de gobierno: nacional, regional y local.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">G</span>Gobierno</div><p class="term-def">El gobierno cumple un rol importante en la sociedad y financia sus gastos principalmente a través de impuestos. El gobierno debe de tener un presupuesto balanceado y sostenible.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">I</span>Impuesto a la renta</div><p class="term-def">Es el impuesto que pagan las personas y empresas por sus ingresos o utilidades.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">I</span>Impuesto general a las ventas (IGV)</div><p class="term-def">Es el impuesto que pagan las personas y empresas por comprar o vender productos.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">I</span>Impuesto selectivo al consumo (ISC)</div><p class="term-def">Es el impuesto que se paga por el consumo de ciertos bienes, por ejemplo, por la gasolina, los cigarrillos y los licores.</p></div>
+          <div class="term-entry" style="border-bottom:none;"><div class="term-name"><span class="letter">I</span>Ingresos fiscales</div><p class="term-def">Comprende la recaudación que percibe el gobierno por los ingresos tributarios y los ingresos no tributarios.</p></div>
+        </div>
+        <div>
+          <div class="term-entry"><div class="term-name"><span class="letter">I</span>Ingresos no tributarios</div><p class="term-def">Comprende la recaudación del gobierno por la prestación de un servicio público, como por ejemplo las contribuciones a la seguridad social.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">I</span>Ingresos tributarios</div><p class="term-def">Comprende principalmente la recaudación por el impuesto a la renta, el IGV y el ISC.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">I</span>Inversión pública</div><p class="term-def">Son los gastos destinados a las obras públicas, como carreteras, puentes, escuelas, hospitales, etc.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">P</span>Pago de intereses públicos</div><p class="term-def">Es el gasto público que se destina al pago de intereses generados por las deudas del gobierno.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">P</span>Política fiscal</div><p class="term-def">Se encarga de fomentar el desarrollo de la economía, de garantizar la infraestructura económica, la educación, la salud y la promoción de inversión.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">P</span>Presupuesto público</div><p class="term-def">Registra cuánto serán los ingresos y los gastos anuales del gobierno; y debe tener un presupuesto balanceado.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">P</span>Prima de riesgo</div><p class="term-def">Es el diferencial entre la tasa de interés de un crédito o un bono comparado con otro de plazo equivalente tomado por un emisor considerado sin riesgo de crédito.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">R</span>Recaudación tributaria</div><p class="term-def">Registra los ingresos provenientes de los impuestos. Los impuestos son una parte de los precios, ingresos o patrimonio que obligatoriamente van a favor del Estado.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">R</span>Remuneraciones</div><p class="term-def">Es el gasto público en sueldos y salarios de los trabajadores públicos, como por ejemplo en los pagos a médicos, policías, profesores, etc.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">R</span>Resultado económico</div><p class="term-def">Registra la diferencia entre los ingresos fiscales y el gasto público. Cuando el resultado económico es positivo hablamos de un superávit fiscal, y cuando es negativo, de un déficit fiscal.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">R</span>Riesgo país</div><p class="term-def">El riesgo país determina si en un país existe un escenario óptimo para la inversión o no. Por lo tanto, si el riesgo país es alto, entonces el riesgo de invertir en este país es mayor.</p></div>
+          <div class="term-entry"><div class="term-name"><span class="letter">S</span>Superávit fiscal</div><p class="term-def">Si el gobierno gana más de lo que gasta tiene Superávit fiscal, entonces aumenta el ahorro del gobierno y/o se reduce la deuda del gobierno.</p></div>
+          <div class="term-entry" style="border-bottom:none;"><div class="term-name"><span class="letter">S</span>SUNAT</div><p class="term-def">Superintendencia Nacional de Aduanas y de Administración Tributaria: es la entidad encargada de la recaudación de impuestos.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Banco Central de Reserva del Perú · Glosario de Políticas Monetaria y Fiscal
+  </footer>
+
+</div>
+
+</body>
+</html>

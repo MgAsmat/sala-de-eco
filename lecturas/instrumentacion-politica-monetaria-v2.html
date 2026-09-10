@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)https://sala-de-economia.netlify.app/lecturas/instrumentacion-politica-monetaria -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=b2369b40-b570-4cab-ba84-7bcd29951235
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="hosting-provider" content="Netlify">
+<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=b2369b40-b570-4cab-ba84-7bcd29951235">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La instrumentación de la política monetaria — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./La instrumentación de la política monetaria — BCRP_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --navy:#313b54;
+    --navy-deep:#232a3d;
+    --gold:#f1ab26;
+    --blue:#4079a2;
+    --teal:#5fc3bb;
+    --paper:#faf7f0;
+    --card:#ffffff;
+    --border:#e4dfd2;
+    --text-muted:#6b7180;
+    --shadow-sm: 0 1px 2px rgba(35,42,61,0.06), 0 1px 1px rgba(35,42,61,0.04);
+    --shadow-md: 0 8px 24px rgba(35,42,61,0.08);
+    --ease: cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--navy-deep);
+    font-family:'Barlow', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{ max-width:920px; margin:0 auto; padding:0 24px 64px; }
+
+  header.masthead{ background:var(--navy); color:#fff; padding:22px 0; }
+  .masthead-inner{ max-width:920px; margin:0 auto; padding:0 24px; display:flex; align-items:center; gap:14px; }
+  .masthead-mark{ width:38px;height:38px;flex:0 0 auto; border-radius:50%; background:var(--gold); display:flex;align-items:center;justify-content:center; }
+  .masthead-mark svg{ width:20px;height:20px; }
+  .masthead-text{ font-family:'Barlow Condensed', sans-serif; font-weight:600; letter-spacing:0.06em; font-size:15px; text-transform:uppercase; }
+  .masthead-text .sub{ display:block; font-family:'Barlow', sans-serif; font-weight:400; letter-spacing:0; text-transform:none; font-size:12.5px; color:#c9cedb; margin-top:1px; }
+
+  .hero{ background:linear-gradient(180deg, var(--navy) 0%, var(--navy) 55%, var(--navy-deep) 100%); color:#fff; padding:40px 0 56px; margin-bottom:-32px; }
+  .hero-inner{ max-width:920px;margin:0 auto;padding:0 24px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-family:'Barlow Condensed', sans-serif; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; font-size:12.5px; color:var(--gold); margin-bottom:14px; }
+  .eyebrow::before{ content:""; width:22px;height:2px; background:var(--gold); display:inline-block; }
+  h1.title{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:clamp(28px, 4vw, 42px); line-height:1.12; margin:0 0 12px; max-width:680px; }
+  .hero-sub{ color:#d7dbe6; font-size:16px; max-width:600px; margin:0; }
+
+  .card{ background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow-md); padding:32px 36px; margin:0 0 24px; position:relative; z-index:1; }
+  section.block{ margin-top:40px; }
+  section.block:first-of-type{ margin-top:0; }
+
+  h2.section-title{ font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:22px; color:var(--navy); margin:0 0 16px; display:flex; align-items:center; gap:10px; }
+  h2.section-title .num{ font-family:'Barlow Condensed', sans-serif; font-weight:700; color:var(--gold); font-size:15px; border:1.5px solid var(--gold); border-radius:50%; width:26px;height:26px; display:flex;align-items:center;justify-content:center; flex:0 0 auto; }
+
+  p{ margin:0 0 14px; color:#3a3f4e; }
+  p:last-child{ margin-bottom:0; }
+  strong{ color:var(--navy); font-weight:700; }
+  em.term{ color:var(--blue); font-style:italic; font-weight:500; }
+
+  .subhead{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--navy);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    margin:22px 0 10px;
+  }
+  .subhead:first-child{ margin-top:0; }
+
+  /* Dual comparison cards (reused pattern) */
+  .dual-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px; }
+  @media (max-width:640px){ .dual-grid{ grid-template-columns:1fr; } }
+  .dual-card{ border-radius:12px; padding:20px 22px; border:1px solid var(--border); background:var(--paper); }
+  .dual-card.up{ border-top:4px solid var(--teal); }
+  .dual-card.down{ border-top:4px solid var(--navy); }
+  .dual-head{ display:flex;align-items:center;gap:12px; margin-bottom:10px; }
+  .dual-badge{ width:34px;height:34px;border-radius:50%; display:flex;align-items:center;justify-content:center; flex:0 0 auto; color:#fff; }
+  .dual-badge.up{ background:var(--teal); }
+  .dual-badge.down{ background:var(--navy); }
+  .dual-head-text .lead{ font-size:12.5px; color:var(--text-muted); }
+  .dual-head-text .term2{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:17px; letter-spacing:0.01em; color:var(--navy); }
+  .dual-card p{ font-size:14px; margin:0; color:#4b5063; }
+  .dual-card .rate-tag{
+    display:inline-block; margin-top:10px; font-size:12px; font-weight:600;
+    color:var(--navy); background:#fff; border:1px solid var(--border);
+    border-radius:999px; padding:3px 10px;
+  }
+
+  /* Flow diagram: BCRP <-> entidad */
+  .flow-diagram{
+    display:flex; align-items:center; justify-content:center; gap:0;
+    margin:20px 0 8px; flex-wrap:wrap; gap-row:12px;
+  }
+  .flow-node{ display:flex; flex-direction:column; align-items:center; gap:8px; width:120px; }
+  .flow-node .icon{ width:52px;height:52px; border-radius:12px; background:var(--navy); display:flex;align-items:center;justify-content:center; }
+  .flow-node .icon svg{ width:26px;height:26px; stroke:var(--gold); }
+  .flow-node .icon.alt{ background:var(--blue); }
+  .flow-node .icon.alt svg{ stroke:#fff; }
+  .flow-node .cap{ font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:13px; color:var(--navy); text-align:center; }
+  .flow-arrow{ display:flex; flex-direction:column; align-items:center; gap:4px; width:110px; margin:0 4px; }
+  .flow-arrow svg{ width:90px; height:20px; }
+  .flow-arrow .cap{ font-size:11.5px; color:var(--text-muted); text-align:center; line-height:1.25; }
+
+  /* Corridor diagram */
+  .corridor{ margin-top:18px; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  .corridor-row{ display:flex; align-items:center; justify-content:space-between; padding:14px 20px; }
+  .corridor-row.ceil{ background:rgba(49,59,84,0.06); }
+  .corridor-row.mid{ background:rgba(241,171,38,0.12); border-top:1px dashed var(--border); border-bottom:1px dashed var(--border); }
+  .corridor-row.floor{ background:rgba(95,195,187,0.10); }
+  .corridor-label{ font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:14.5px; color:var(--navy); }
+  .corridor-label .small{ display:block; font-family:'Barlow', sans-serif; font-weight:400; font-size:12px; color:var(--text-muted); margin-top:1px; }
+  .corridor-tag{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:12px; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:999px; }
+  .corridor-row.ceil .corridor-tag{ background:var(--navy); color:#fff; }
+  .corridor-row.mid .corridor-tag{ background:var(--gold); color:var(--navy-deep); }
+  .corridor-row.floor .corridor-tag{ background:var(--teal); color:var(--navy-deep); }
+
+  .note-box{
+    margin-top:18px; background:var(--paper); border:1px solid var(--border); border-left:3px solid var(--gold);
+    border-radius:8px; padding:14px 18px;
+  }
+  .note-box p{ font-size:14px; color:#4b5063; }
+
+  footer.page-footer{ text-align:center; margin-top:40px; padding-top:24px; border-top:1px solid var(--border); color:var(--text-muted); font-size:12.5px; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#232a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"></path><path d="M5 21V9l7-5 7 5v12"></path><path d="M9 21v-6h6v6"></path>
+      </svg>
+    </div>
+    <div class="masthead-text">
+      Banco Central de Reserva del Perú
+      <span class="sub">Serie Lecturas · Educación económica</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Política monetaria</div>
+    <h1 class="title">La instrumentación de la política monetaria</h1>
+    <p class="hero-sub">¿Por qué a veces sube la tasa de tu préstamo o tu hipoteca, aunque tú no hayas cambiado nada? La respuesta empieza mucho antes que tu banco: en cuánto se cobran los bancos entre ellos por prestarse dinero cada día.</p>
+  </div>
+</div>
+
+<div class="page">
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">1</span>La meta operativa</h2>
+      <p>El Banco Central quiere lograr <strong>estabilidad de precios</strong>. Pero no puede subir o bajar los precios con un botón. Necesita algo que sí pueda controlar de cerca, día a día, como el termostato de una casa: no controla la temperatura directamente, sino que enciende o apaga la calefacción hasta llegar al nivel deseado.</p>
+      <p>Ese "termostato" del Banco Central es la <strong>tasa interbancaria</strong>: la tasa a la que los bancos se prestan dinero entre sí. Cuando esa tasa se acerca a su meta —la <strong>tasa de referencia</strong>— el Banco Central sabe que sus decisiones están llegando al resto de la economía, incluyendo lo que tú pagas por tus créditos.</p>
+      <p>Si hay muy poco dinero circulando entre bancos (escasez) o demasiado (exceso), esa tasa se aleja de la meta. El Banco Central interviene en ambos casos: cubre la escasez o retira el sobrante. Veamos cómo lo hace.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>Operaciones de Mercado Abierto (OMA)</h2>
+      <p>Imagina que, un día cualquiera, a los bancos les falta dinero para prestarse entre ellos. Sin ayuda de nadie, esa escasez los haría cobrarse tasas más altas. Y si la tasa de referencia es <strong>4.25%</strong>, la interbancaria podría trepar a 4.50% o más.</p>
+      <p>Para evitarlo, el Banco Central usa su herramienta principal: las <strong>Operaciones de Mercado Abierto (OMA)</strong>. Con ellas inyecta o retira dinero del sistema para empujar la tasa interbancaria de vuelta hacia la meta.</p>
+
+      <div class="dual-grid">
+        <div class="dual-card up">
+          <div class="dual-head">
+            <div class="dual-badge up">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+            </div>
+            <div class="dual-head-text"><div class="lead">Falta dinero (escasez)</div><div class="term2">Inyectar liquidez</div></div>
+          </div>
+          <p>El Banco Central le presta dinero a los bancos a cambio de recibir en garantía títulos valores.</p>
+          <p style="margin-top:8px;">A esto se le llama <strong>subasta de repos</strong>: es como un préstamo con "prenda" —el banco entrega bonos como garantía y se compromete a recomprarlos más adelante—, normalmente a un día, aunque puede llegar a más de un año.</p>
+        </div>
+        <div class="dual-card down">
+          <div class="dual-head">
+            <div class="dual-badge down">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
+            </div>
+            <div class="dual-head-text"><div class="lead">Sobra dinero (exceso)</div><div class="term2">Retirar liquidez</div></div>
+          </div>
+          <p>El Banco Central vende sus propios títulos valores a bancos, seguros, AFP y fondos mutuos, entre otros.</p>
+          <p style="margin-top:8px;">Ellos le entregan dinero al Banco Central a cambio de esos títulos, que sí pagan interés. Así "guarda" el dinero sobrante: eso es <strong>esterilizar</strong> el exceso de liquidez.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">3</span>Facilidades de ventanilla</h2>
+      <p>Piensa en el Banco Central como ese familiar al que solo recurres cuando ya intentaste todo lo demás: te presta, pero a una tasa poco conveniente, para que la próxima vez busques primero otras opciones.</p>
+      <p>Así funcionan las <strong>facilidades de ventanilla</strong>: si al terminar el día una entidad financiera todavía necesita dinero, o le sobra, puede acudir directamente al BCRP.</p>
+
+      <div class="flow-diagram">
+        <div class="flow-node">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V9l7-5 7 5v12"></path><path d="M9 21v-6h6v6"></path></svg>
+          </div>
+          <div class="cap">Banco Central</div>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 90 20"><line x1="4" y1="6" x2="86" y2="6" stroke="#c0483e" stroke-width="2"></line><polygon points="86,6 78,2 78,10" fill="#c0483e"></polygon></svg>
+          <div class="cap">Repo directa / CRM<br>(4.75% &gt; 4.25% referencia)</div>
+        </div>
+        <div class="flow-node">
+          <div class="icon alt">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"></rect><path d="M3 7 12 3l9 4"></path><circle cx="12" cy="13.5" r="2.5"></circle></svg>
+          </div>
+          <div class="cap">Entidad financiera</div>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 90 20"><line x1="86" y1="14" x2="4" y2="14" stroke="#2f8f6b" stroke-width="2"></line><polygon points="4,14 12,10 12,18" fill="#2f8f6b"></polygon></svg>
+          <div class="cap">Depósito overnight<br>(2.25% &lt; 4.25% referencia)</div>
+        </div>
+        <div class="flow-node">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V9l7-5 7 5v12"></path><path d="M9 21v-6h6v6"></path></svg>
+          </div>
+          <div class="cap">Banco Central</div>
+        </div>
+      </div>
+
+      <div class="dual-grid">
+        <div class="dual-card down">
+          <div class="dual-head-text"><div class="term2" style="color:var(--navy);">Necesita liquidez</div></div>
+          <p style="margin-top:8px;">Un banco no logró conseguir todo el dinero que necesitaba en el mercado interbancario. Puede pedírselo al BCRP mediante una <strong>repo directa</strong> o un <strong>crédito de regulación monetaria (CRM)</strong>, dejando algo en garantía.</p>
+          <p style="margin-top:8px;">Eso sí: el BCRP le cobrará 4.75%, más caro que el 4.25% de referencia. Por eso conviene buscar primero en el mercado interbancario, y solo al final, en el Banco Central.</p>
+        </div>
+        <div class="dual-card up">
+          <div class="dual-head-text"><div class="term2" style="color:var(--navy);">Excedente de liquidez</div></div>
+          <p style="margin-top:8px;">Un banco tiene dinero de sobra y no logró prestarlo a otros bancos. Puede "guardarlo" por un día en el BCRP mediante un <strong>depósito overnight</strong>.</p>
+          <p style="margin-top:8px;">A cambio recibe solo 2.25%, menos de lo que habría ganado prestándolo en el mercado interbancario. Es el precio de la comodidad.</p>
+        </div>
+      </div>
+
+      <div class="subhead">El corredor de tasas de interés</div>
+      <p>Un banco siempre preferirá negociar con otro banco antes que con el BCRP, porque le sale más barato pedir prestado y más rentable prestar. Por eso la tasa interbancaria se mueve dentro de un <strong>corredor</strong>, como el rango de temperatura que aceptas antes de tocar el termostato:</p>
+      <div class="corridor">
+        <div class="corridor-row ceil">
+          <div class="corridor-label">Repos directas y CRM · 4.75%<span class="small">Lo que cuesta pedirle prestado al BCRP</span></div>
+          <div class="corridor-tag">Techo</div>
+        </div>
+        <div class="corridor-row mid">
+          <div class="corridor-label">Tasa de referencia · 4.25%<span class="small">La meta que persigue la política monetaria</span></div>
+          <div class="corridor-tag">Meta</div>
+        </div>
+        <div class="corridor-row floor">
+          <div class="corridor-label">Depósitos overnight · 2.25%<span class="small">Lo que rinde dejar dinero en el BCRP</span></div>
+          <div class="corridor-tag">Piso</div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <p>En resumen: <strong>(i)</strong> con las OMA, el Banco Central empuja a diario la tasa interbancaria hacia su meta de 4.25%; y <strong>(ii)</strong> las facilidades de ventanilla son la puerta de emergencia —los bancos deciden usarlas cuando lo necesitan, pero pagan un "costo de penalización" (o reciben menos rendimiento) precisamente para no volverlas su primera opción.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">4</span>El encaje</h2>
+      <p>¿Alguna vez te preguntaste por qué tu banco no presta el 100% del dinero que reciben en depósitos? Es a propósito: siempre debe quedar un colchón de seguridad, por si muchos clientes quieren retirar su dinero al mismo tiempo.</p>
+      <p>Ese colchón se llama <strong>encaje</strong>, y es otro instrumento del Banco Central. Complementa lo que ya logra con la tasa de referencia.</p>
+      <p>La <strong>tasa de encaje</strong> es el porcentaje de los depósitos que un banco <strong>no puede</strong> prestar. El BCRP la fija tanto para depósitos en <strong>soles</strong> como en <strong>dólares</strong>, y ese dinero debe quedarse en efectivo en las bóvedas del banco o como depósito en el propio BCRP.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>Para qué sirve el encaje</h2>
+      <p>Subiendo o bajando ese colchón, el Banco Central regula cuánto dinero pueden prestar los bancos a la economía:</p>
+
+      <div class="dual-grid">
+        <div class="dual-card up">
+          <div class="dual-head">
+            <div class="dual-badge up">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"></path></svg>
+            </div>
+            <div class="dual-head-text"><div class="lead">Economía en contracción</div><div class="term2">Reducir el encaje</div></div>
+          </div>
+          <p>Los bancos pueden prestar más de lo que reciben en depósitos: más créditos, más liquidez circulando, más impulso a la economía.</p>
+        </div>
+        <div class="dual-card down">
+          <div class="dual-head">
+            <div class="dual-badge down">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+            </div>
+            <div class="dual-head-text"><div class="lead">Expansión con presión inflacionaria</div><div class="term2">Aumentar el encaje</div></div>
+          </div>
+          <p>Los bancos pueden prestar menos: se frena el ritmo de crédito para que la demanda no siga presionando los precios al alza.</p>
+        </div>
+      </div>
+
+      <div class="subhead">Flujo de capitales y reservas internacionales</div>
+      <p>El encaje también ayuda a filtrar el dinero que entra del exterior: se cobra una tasa <strong>más alta</strong> a los capitales de <strong>corto plazo</strong> —los que entran y salen rápido, y pueden generar volatilidad— que a los de <strong>largo plazo</strong>.</p>
+      <p>Y hay un beneficio más directo para ti: el encaje sobre los depósitos en dólares le permite al BCRP acumular <strong>reservas internacionales</strong>. Es el mismo principio del colchón de seguridad, pero a escala país: tener recursos listos por si muchas personas retiran depósitos o sale capital de golpe, algo especialmente relevante en una economía parcialmente dolarizada como la peruana.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="card">
+      <h2 class="section-title"><span class="num">6</span>Glosario rápido</h2>
+      <p><strong>Tasa de referencia:</strong> la meta que persigue el Banco Central para la tasa interbancaria.</p>
+      <p><strong>Tasa interbancaria:</strong> lo que se cobran los bancos entre sí por prestarse dinero de un día para otro.</p>
+      <p><strong>Repo:</strong> un préstamo con garantía: el banco recibe dinero y entrega títulos valores que recompra más adelante.</p>
+      <p><strong>CRM (créditos de regulación monetaria):</strong> un préstamo de emergencia del BCRP a un banco, con garantía.</p>
+      <p><strong>Esterilizar:</strong> retirar del mercado el dinero sobrante, vendiendo títulos valores a cambio de ese dinero.</p>
+      <p><strong>Encaje:</strong> el porcentaje de los depósitos que un banco debe guardar y no puede prestar.</p>
+      <p style="font-size:13px; color:var(--text-muted); margin-top:16px;">Las tasas usadas como ejemplo en esta lectura (4.25% de referencia, 4.75% en ventanilla de préstamo y 2.25% en depósito overnight) corresponden al Programa Monetario vigente en septiembre de 2026 y se actualizan mensualmente.</p>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Banco Central de Reserva del Perú · Serie Lecturas
+  </footer>
+
+</div>
+
+
+
+<script async="" src="./La instrumentación de la política monetaria — BCRP_files/hud" data-nf-variant="public" data-netlify-site-id="b2369b40-b570-4cab-ba84-7bcd29951235" data-app-host="app.netlify.com"></script>
+<iframe id="nl-badge-frame" title="Powered by Netlify" style="position: fixed; bottom: 0px; right: 0px; border: 0px; margin: 0px; padding: 0px; background: transparent; color-scheme: dark; z-index: 2147483645; width: 196px; height: 63px; clip-path: path(&quot;M 3 3 H 183 V 50 H 3 Z&quot;);" data-nl-ready="1" src="./La instrumentación de la política monetaria — BCRP_files/saved_resource.html"></iframe></body></html>

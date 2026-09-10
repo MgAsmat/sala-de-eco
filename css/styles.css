@@ -1370,6 +1370,11 @@ button {
   justify-content: center;
 }
 
+.video-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+}
+
 .video-embed-card__frame {
   position: relative;
   aspect-ratio: 16 / 9;

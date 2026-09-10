@@ -738,12 +738,52 @@ button {
   .flow-diagram__hint { display: none; }
 }
 
+.flow-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.flow-legend__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-700);
+}
+
+.flow-legend__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 .flow-diagram {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  max-width: 680px;
+  max-width: 980px;
   margin-inline: auto;
+}
+
+.flow-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "resto      financiero  .        "
+    "empresas   gobierno    familias "
+    ".          bienes      trabajo  ";
+  column-gap: 28px;
+  row-gap: 84px;
+  z-index: 2;
 }
 
 .flow-diagram__svg {
@@ -751,153 +791,243 @@ button {
   inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
+  overflow: visible;
   pointer-events: none;
 }
 
-.flow-diagram__svg--labels {
-  z-index: 2;
+.flow-labels-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .flow-arrow {
-  stroke: var(--teal-300, #bfe4dd);
-  stroke-width: 2.25;
-  color: var(--teal-300, #bfe4dd);
-  opacity: 0.5;
-  transition: stroke 0.25s ease, color 0.25s ease, stroke-width 0.25s ease, opacity 0.25s ease;
+  fill: none;
+  stroke-width: 1.8;
+  opacity: 0.55;
+  transition: opacity 0.25s ease, stroke-width 0.25s ease;
+}
+
+.flow-arrow[data-a="empresas"][data-b="gobierno"],
+.flow-arrow[data-a="familias"][data-b="gobierno"] {
+  stroke: var(--teal-900);
+}
+
+.flow-arrow[data-a="empresas"][data-b="financiero"],
+.flow-arrow[data-a="familias"][data-b="financiero"] {
+  stroke: var(--gold-600);
+}
+
+.flow-arrow[data-a="resto-mundo"][data-b="empresas"],
+.flow-arrow[data-a="empresas"][data-b="bienes-servicios"],
+.flow-arrow[data-a="familias"][data-b="bienes-servicios"],
+.flow-arrow[data-a="empresas"][data-b="trabajo"],
+.flow-arrow[data-a="familias"][data-b="trabajo"] {
+  stroke: var(--teal-600);
+}
+
+.flow-arrow--dashed {
+  stroke-dasharray: 5, 5;
+}
+
+.flow-arrow--dotted {
+  stroke-dasharray: 1.5, 5;
 }
 
 .flow-arrow.is-highlighted {
-  stroke: var(--teal-600);
-  color: var(--teal-600);
-  stroke-width: 3;
   opacity: 1;
+  stroke-width: 2.6;
 }
 
 .flow-arrow-label {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 700;
-  fill: var(--teal-800);
-  text-anchor: middle;
-  dominant-baseline: middle;
-  paint-order: stroke;
-  stroke: var(--teal-50);
-  stroke-width: 7px;
-  stroke-linejoin: round;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-500);
+  white-space: nowrap;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 .flow-arrow-label.is-highlighted {
-  fill: var(--teal-900);
   opacity: 1;
+  color: var(--teal-900);
+  border-color: var(--teal-400);
 }
 
-.flow-diagram__center {
-  filter: drop-shadow(0 8px 16px rgba(9, 41, 38, 0.25));
-}
-
-.flow-diagram__center-title {
-  font-family: var(--font-head);
-  font-size: 20px;
-  font-weight: 700;
-  fill: #fff;
-  text-anchor: middle;
-}
-
-.flow-diagram__center-sub {
-  font-size: 12px;
-  fill: var(--teal-100);
-  text-anchor: middle;
-}
+.flow-node[data-flow="resto-mundo"] { grid-area: resto; justify-self: start; }
+.flow-node[data-flow="financiero"] { grid-area: financiero; justify-self: center; }
+.flow-node[data-flow="empresas"] { grid-area: empresas; justify-self: start; }
+.flow-node[data-flow="gobierno"] { grid-area: gobierno; justify-self: center; }
+.flow-node[data-flow="familias"] { grid-area: familias; justify-self: end; }
+.flow-node[data-flow="bienes-servicios"] { grid-area: bienes; justify-self: center; }
+.flow-node[data-flow="trabajo"] { grid-area: trabajo; justify-self: end; }
 
 .flow-node {
-  position: absolute;
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 128px;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  border: none;
-  background: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.flow-node--reverse {
-  flex-direction: column-reverse;
-}
-
-.flow-node--reverse strong {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-.flow-node .dot {
-  width: 46px;
-  height: 46px;
-  margin-inline: auto 6px;
-  border-radius: 50%;
+  gap: 12px;
+  max-width: 236px;
   background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal-800);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
   box-shadow: var(--shadow-sm);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  z-index: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flow-node.is-mercado {
+  border-left-color: var(--gold-500);
+  background: linear-gradient(0deg, var(--gold-100), var(--gold-100)), var(--surface);
+}
+
+.flow-node__icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
-  color: var(--teal-700);
-  border: 2px solid var(--teal-100);
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  background: var(--teal-800);
+  color: #fff;
+  transition: transform 0.2s ease;
 }
 
-.flow-node .dot svg {
-  width: 22px;
-  height: 22px;
+.flow-node.is-mercado .flow-node__icon {
+  background: var(--gold-500);
+  color: var(--teal-900);
 }
 
-.flow-node strong {
+.flow-node__icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.flow-node__text .name {
   display: block;
-  font-size: 0.78rem;
+  font-weight: 700;
+  font-size: 0.86rem;
   color: var(--ink-900);
-  margin-top: 8px;
-  background: var(--bg);
-  padding: 3px 9px;
-  border-radius: var(--radius-pill);
   line-height: 1.25;
-  transition: color 0.2s ease, background 0.2s ease;
 }
 
-.flow-node:hover .dot,
-.flow-node:focus-visible .dot,
-.flow-node.is-hover .dot {
-  transform: scale(1.1);
-  border-color: var(--teal-500);
+.flow-node__text .kind {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ink-500);
+  margin-top: 2px;
+}
+
+.flow-node:hover,
+.flow-node:focus-visible,
+.flow-node.is-hover {
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+.flow-node:hover .flow-node__icon,
+.flow-node:focus-visible .flow-node__icon,
+.flow-node.is-hover .flow-node__icon {
+  transform: scale(1.08);
 }
 
 .flow-node:focus-visible {
   outline: none;
-}
-
-.flow-node:focus-visible .dot {
   box-shadow: 0 0 0 4px rgba(26, 162, 149, 0.25), var(--shadow-md);
 }
 
-.flow-node.is-active .dot {
-  background: linear-gradient(145deg, var(--teal-600), var(--teal-800));
-  border-color: var(--teal-700);
-  color: #fff;
-  transform: scale(1.14);
-  box-shadow: 0 0 0 6px rgba(26, 162, 149, 0.18), var(--shadow-md);
+.flow-node.is-active {
+  border-left-color: var(--teal-600);
+  box-shadow: 0 0 0 3px rgba(26, 162, 149, 0.18), var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-.flow-node.is-active strong {
-  color: var(--teal-800);
-  background: var(--teal-100);
+.flow-node.is-active .flow-node__icon {
+  background: linear-gradient(145deg, var(--teal-600), var(--teal-800));
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.flow-key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 26px;
+  margin-top: 30px;
+}
+
+.flow-key__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  color: var(--ink-700);
+}
+
+.flow-key__line {
+  width: 24px;
+  height: 0;
+  border-top-width: 2px;
+  border-top-style: solid;
+}
+
+.flow-key__line--dashed {
+  border-top-style: dashed;
+}
+
+.flow-key__line--dotted {
+  border-top-style: dotted;
+}
+
+#flowMobileList {
+  display: none;
+}
+
+#flowMobileList ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#flowMobileList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--ink-900);
+}
+
+#flowMobileList li span.flow-nodes {
+  color: var(--ink-500);
+  font-size: 0.74rem;
+  text-align: right;
 }
 
 @media (max-width: 860px) {
-  .flow-diagram { display: none; }
+  .flow-diagram,
+  .flow-key { display: none; }
+  #flowMobileList { display: block; }
 }
 
 .flow-groups {

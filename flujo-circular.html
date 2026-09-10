@@ -58,76 +58,90 @@
 
       <div class="flow-layout">
         <div class="flow-diagram-wrap reveal">
-          <div class="flow-diagram" id="flowDiagram">
-            <svg class="flow-diagram__svg" viewBox="0 0 760 760" aria-hidden="true">
-              <defs>
-                <marker id="arrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M1 1L9 5L1 9Z" fill="currentColor" />
-                </marker>
-                <linearGradient id="coreGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#1aa295" />
-                  <stop offset="100%" stop-color="#0b4f4a" />
-                </linearGradient>
-              </defs>
-
-              <line class="flow-arrow" x1="434.2" y1="144.3" x2="463.6" y2="184.6" data-a="familias" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="615.7" y1="325.8" x2="575.4" y2="296.4" data-a="empresas" data-b="trabajo" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="325.8" y1="144.3" x2="296.4" y2="184.6" data-a="familias" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="601.8" y1="353.8" x2="325.9" y2="271.9" data-a="empresas" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="353.8" y1="601.8" x2="271.9" y2="325.9" data-a="gobierno" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="144.3" y1="325.8" x2="184.6" y2="296.4" data-a="resto-mundo" data-b="bienes-servicios" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="406.2" y1="158.2" x2="488.1" y2="434.1" data-a="familias" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="615.7" y1="434.2" x2="575.4" y2="463.6" data-a="empresas" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="434.2" y1="615.7" x2="463.6" y2="575.4" data-a="gobierno" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-              <line class="flow-arrow" x1="158.2" y1="406.2" x2="434.1" y2="488.1" data-a="resto-mundo" data-b="financiero" marker-end="url(#arrowHead)" marker-start="url(#arrowHead)" />
-
-              <circle class="flow-diagram__center" cx="380" cy="380" r="66" fill="url(#coreGradient)" />
-              <text class="flow-diagram__center-title" x="380" y="374">Economía</text>
-              <text class="flow-diagram__center-sub" x="380" y="394">Flujo circular</text>
-            </svg>
-
-            <button type="button" class="flow-node flow-node--reverse" data-flow="familias" style="left:50.00%;top:9.21%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
-              <strong>Familias</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="empresas" style="left:90.79%;top:50.00%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
-              <strong>Empresas</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="financiero" style="left:67.21%;top:67.21%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
-              <strong>Mercado Financiero</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="gobierno" style="left:50.00%;top:90.79%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
-              <strong>Gobierno</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="trabajo" style="left:67.21%;top:32.79%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
-              <strong>Mercado de Trabajo</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="bienes-servicios" style="left:32.79%;top:32.79%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
-              <strong>Mercado de Bienes y Servicios</strong>
-            </button>
-            <button type="button" class="flow-node" data-flow="resto-mundo" style="left:9.21%;top:50.00%;">
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
-              <strong>Resto del Mundo</strong>
-            </button>
-
-            <svg class="flow-diagram__svg flow-diagram__svg--labels" viewBox="0 0 760 760" aria-hidden="true">
-              <text class="flow-arrow-label" x="448.9" y="164.4" data-a="familias" data-b="trabajo">Empleo</text>
-              <text class="flow-arrow-label" x="595.6" y="311.1" data-a="empresas" data-b="trabajo">Remuneración</text>
-              <text class="flow-arrow-label" x="311.1" y="164.4" data-a="familias" data-b="bienes-servicios">Consumo</text>
-              <text class="flow-arrow-label" x="463.8" y="312.9" data-a="empresas" data-b="bienes-servicios">Producción</text>
-              <text class="flow-arrow-label" x="312.9" y="463.8" data-a="gobierno" data-b="bienes-servicios">Gasto público</text>
-              <text class="flow-arrow-label" x="164.4" y="311.1" data-a="resto-mundo" data-b="bienes-servicios">Comercio exterior</text>
-              <text class="flow-arrow-label" x="447.1" y="296.2" data-a="familias" data-b="financiero">Ahorro</text>
-              <text class="flow-arrow-label" x="595.6" y="448.9" data-a="empresas" data-b="financiero">Crédito</text>
-              <text class="flow-arrow-label" x="448.9" y="595.6" data-a="gobierno" data-b="financiero">Transferencias</text>
-              <text class="flow-arrow-label" x="296.2" y="447.1" data-a="resto-mundo" data-b="financiero">Inversión</text>
-            </svg>
+          <div class="flow-legend">
+            <span class="flow-legend__pill"><span class="flow-legend__dot" style="background:var(--teal-800)"></span>Agentes económicos</span>
+            <span class="flow-legend__pill"><span class="flow-legend__dot" style="background:var(--gold-500)"></span>Mercados</span>
           </div>
+
+          <div class="flow-diagram" id="flowDiagram">
+            <div class="flow-grid">
+
+              <button type="button" class="flow-node is-agente" data-flow="resto-mundo">
+                <span class="flow-node__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></span>
+                <span class="flow-node__text"><span class="name">Resto del Mundo</span><span class="kind">Agente económico</span></span>
+              </button>
+
+              <button type="button" class="flow-node is-mercado" data-flow="financiero">
+                <span class="flow-node__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V6h10v4"/></svg></span>
+                <span class="flow-node__text"><span class="name">Mercado Financiero</span><span class="kind">Mercado</span></span>
+              </button>
+
+              <button type="button" class="flow-node is-agente" data-flow="empresas">
+                <span class="flow-node__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/><path d="M4 8l8-5 8 5"/></svg></span>
+                <span class="flow-node__text"><span class="name">Empresas</span><span class="kind">Agente económico</span></span>
+              </button>
+
+              <button type="button" class="flow-node is-agente" data-flow="gobierno">
+                <span class="flow-node__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg></span>
+                <span class="flow-node__text"><span class="name">Gobierno</span><span class="kind">Agente económico</span></span>
+              </button>
+
+              <button type="button" class="flow-node is-agente" data-flow="familias">
+                <span class="flow-node__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
+                <span class="flow-node__text"><span class="name">Familias</span><span class="kind">Agente económico</span></span>
+              </button>
+
+              <button type="button" class="flow-node is-mercado" data-flow="bienes-servicios">
+                <span class="flow-node__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v7l9 5 9-5V9"/></svg></span>
+                <span class="flow-node__text"><span class="name">Mercado de Bienes y Servicios</span><span class="kind">Mercado</span></span>
+              </button>
+
+              <button type="button" class="flow-node is-mercado" data-flow="trabajo">
+                <span class="flow-node__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></span>
+                <span class="flow-node__text"><span class="name">Mercado de Trabajo</span><span class="kind">Mercado</span></span>
+              </button>
+
+            </div>
+
+            <svg class="flow-diagram__svg" aria-hidden="true">
+              <defs>
+                <marker id="flowArrowHead-navy" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 Z" style="fill:var(--teal-900)" />
+                </marker>
+                <marker id="flowArrowHead-gold" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 Z" style="fill:var(--gold-600)" />
+                </marker>
+                <marker id="flowArrowHead-teal" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 Z" style="fill:var(--teal-600)" />
+                </marker>
+              </defs>
+            </svg>
+
+            <div class="flow-labels-layer"></div>
+          </div>
+
+          <div id="flowMobileList">
+            <ul>
+              <li><span>Exportaciones · Importaciones</span><span class="flow-nodes">Resto del mundo ↔ Empresas</span></li>
+              <li><span>Crédito · Ahorro</span><span class="flow-nodes">Empresas ↔ Financiero</span></li>
+              <li><span>Ahorro · Crédito</span><span class="flow-nodes">Familias ↔ Financiero</span></li>
+              <li><span>Impuestos</span><span class="flow-nodes">Empresas → Gobierno</span></li>
+              <li><span>Impuestos · Transferencias</span><span class="flow-nodes">Familias ↔ Gobierno</span></li>
+              <li><span>Bienes producidos · Insumos</span><span class="flow-nodes">Empresas ↔ Bienes y servicios</span></li>
+              <li><span>Consumo</span><span class="flow-nodes">Familias → Bienes y servicios</span></li>
+              <li><span>Contratación</span><span class="flow-nodes">Empresas → Trabajo</span></li>
+              <li><span>Oferta laboral · Salarios</span><span class="flow-nodes">Familias ↔ Trabajo</span></li>
+            </ul>
+          </div>
+
+          <div class="flow-key">
+            <span class="flow-key__item"><span class="flow-key__line" style="border-color:var(--gold-600)"></span>Flujos financieros (ahorro, crédito)</span>
+            <span class="flow-key__item"><span class="flow-key__line" style="border-color:var(--teal-900)"></span>Flujos con el gobierno (impuestos, transferencias)</span>
+            <span class="flow-key__item"><span class="flow-key__line" style="border-color:var(--teal-600)"></span>Bienes y trabajo</span>
+            <span class="flow-key__item"><span class="flow-key__line flow-key__line--dashed" style="border-color:var(--teal-600)"></span>Mercado laboral</span>
+            <span class="flow-key__item"><span class="flow-key__line flow-key__line--dotted" style="border-color:var(--teal-600)"></span>Comercio exterior</span>
+          </div>
+
           <p class="flow-diagram__hint">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
             Toca o pasa el cursor sobre un actor para ver sus conexiones y su descripción

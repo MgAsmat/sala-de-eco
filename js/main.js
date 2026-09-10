@@ -143,14 +143,97 @@
     }
   }
 
-  // Interactive Flujo Circular diagram: nodes <-> arrows <-> description cards
+  // Interactive Flujo Circular diagram: nodes <-> curved flows <-> description cards
   const flowDiagram = document.getElementById("flowDiagram");
   if (flowDiagram) {
     const flowNodes = Array.from(flowDiagram.querySelectorAll(".flow-node"));
     const flowItems = Array.from(document.querySelectorAll(".flow-list li[data-flow]"));
-    const flowArrows = Array.from(flowDiagram.querySelectorAll(".flow-arrow, .flow-arrow-label"));
     const nodeByKey = new Map(flowNodes.map((n) => [n.dataset.flow, n]));
     const itemByKey = new Map(flowItems.map((li) => [li.dataset.flow, li]));
+
+    const connections = [
+      { from: "resto-mundo", to: "empresas", label: "Exportaciones · Importaciones", dash: "dotted", arrow: "both", marker: "teal" },
+      { from: "empresas", to: "financiero", label: "Crédito · Ahorro", dash: "solid", arrow: "both", marker: "gold" },
+      { from: "familias", to: "financiero", label: "Ahorro · Crédito", dash: "solid", arrow: "both", marker: "gold" },
+      { from: "empresas", to: "gobierno", label: "Impuestos", dash: "solid", arrow: "end", marker: "navy" },
+      { from: "familias", to: "gobierno", label: "Impuestos · Transferencias", dash: "solid", arrow: "both", marker: "navy" },
+      { from: "empresas", to: "bienes-servicios", label: "Bienes producidos · Insumos", dash: "solid", arrow: "both", marker: "teal" },
+      { from: "familias", to: "bienes-servicios", label: "Consumo", dash: "solid", arrow: "end", marker: "teal" },
+      { from: "empresas", to: "trabajo", label: "Contratación", dash: "dashed", arrow: "end", marker: "teal" },
+      { from: "familias", to: "trabajo", label: "Oferta laboral · Salarios", dash: "dashed", arrow: "both", marker: "teal" }
+    ];
+
+    let flowArrows = [];
+    const svg = flowDiagram.querySelector(".flow-diagram__svg");
+    const labelsLayer = flowDiagram.querySelector(".flow-labels-layer");
+
+    if (svg && labelsLayer) {
+      const centerOf = (el, hostRect) => {
+        const r = el.getBoundingClientRect();
+        return { x: r.left + r.width / 2 - hostRect.left, y: r.top + r.height / 2 - hostRect.top };
+      };
+
+      connections.forEach((conn) => {
+        const elA = nodeByKey.get(conn.from);
+        const elB = nodeByKey.get(conn.to);
+        if (!elA || !elB) return;
+
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("class", conn.dash === "solid" ? "flow-arrow" : `flow-arrow flow-arrow--${conn.dash}`);
+        path.dataset.a = conn.from;
+        path.dataset.b = conn.to;
+        if (conn.arrow === "end" || conn.arrow === "both") path.setAttribute("marker-end", `url(#flowArrowHead-${conn.marker})`);
+        if (conn.arrow === "both") path.setAttribute("marker-start", `url(#flowArrowHead-${conn.marker})`);
+        svg.appendChild(path);
+
+        const label = document.createElement("div");
+        label.className = "flow-arrow-label";
+        label.textContent = conn.label;
+        label.dataset.a = conn.from;
+        label.dataset.b = conn.to;
+        labelsLayer.appendChild(label);
+
+        conn.pathEl = path;
+        conn.labelEl = label;
+      });
+
+      flowArrows = connections.flatMap((c) => [c.pathEl, c.labelEl]).filter(Boolean);
+
+      const positionConnections = () => {
+        if (flowDiagram.offsetParent === null) return;
+        const hostRect = flowDiagram.getBoundingClientRect();
+        svg.setAttribute("viewBox", `0 0 ${hostRect.width} ${hostRect.height}`);
+        const cx = hostRect.width / 2;
+        const cy = hostRect.height / 2;
+
+        connections.forEach((conn) => {
+          const elA = nodeByKey.get(conn.from);
+          const elB = nodeByKey.get(conn.to);
+          if (!elA || !elB || !conn.pathEl) return;
+          const a = centerOf(elA, hostRect);
+          const b = centerOf(elB, hostRect);
+          const mx = (a.x + b.x) / 2;
+          const my = (a.y + b.y) / 2;
+          let dx = mx - cx;
+          let dy = my - cy;
+          const dist = Math.hypot(dx, dy) || 1;
+          dx /= dist;
+          dy /= dist;
+          const c = { x: mx + dx * 30, y: my + dy * 30 };
+          conn.pathEl.setAttribute("d", `M ${a.x} ${a.y} Q ${c.x} ${c.y} ${b.x} ${b.y}`);
+
+          const lx = 0.25 * a.x + 0.5 * c.x + 0.25 * b.x;
+          const ly = 0.25 * a.y + 0.5 * c.y + 0.25 * b.y;
+          conn.labelEl.style.left = `${lx}px`;
+          conn.labelEl.style.top = `${ly}px`;
+        });
+      };
+
+      window.addEventListener("resize", positionConnections);
+      window.addEventListener("load", positionConnections);
+      positionConnections();
+      setTimeout(positionConnections, 200);
+    }
 
     const highlightArrows = (key) => {
       flowArrows.forEach((el) => {

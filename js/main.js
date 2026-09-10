@@ -35,12 +35,11 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Highlight the nav link matching the current page (sector detail pages highlight "Sectores")
+  // Highlight the nav link matching the current page (Sector Real/Externo/Financiero each highlight their own item)
   const currentPage = location.pathname.split("/").pop() || "index.html";
-  const navHighlightPage = currentPage.startsWith("sector-") ? "sectores.html" : currentPage;
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
-    link.classList.toggle("active", href === navHighlightPage);
+    link.classList.toggle("active", href === currentPage);
   });
 
   // Dato curioso: tip carousel(s) — each instance reads its own tips from an embedded JSON block

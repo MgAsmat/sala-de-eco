@@ -191,6 +191,23 @@ button {
   font-size: 1.05rem;
 }
 
+.section-head .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.section-head .tag-row span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--teal-100);
+  color: var(--teal-800);
+}
+
 /* =========================================================
    Header / Nav
    ========================================================= */
@@ -1236,6 +1253,20 @@ button {
   color: var(--teal-600);
   flex-shrink: 0;
   margin-top: 2px;
+}
+
+.pillar-card ul li a:hover {
+  text-decoration: underline;
+}
+
+.pillar-card.numismatica .icon-badge {
+  background: linear-gradient(145deg, #6b3fa0, #3c2159);
+}
+
+.policy-pillars--single {
+  grid-template-columns: 1fr;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 @media (max-width: 720px) {

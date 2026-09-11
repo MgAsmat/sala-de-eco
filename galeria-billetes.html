@@ -5,16 +5,15 @@
 <title>Familia de billetes del Perú — Elementos y medidas de seguridad</title>
 <style>
   :root{
-    --bg-page:#f6f3ea;
+    --bg-page:#f6faf9;
     --bg-panel:#ffffff;
-    --line: rgba(31,42,28,0.14);
-    --paper:#22301f;
-    --bronze:#b8894f;
-    --bronze-strong:#8a5a24;
-    --bronze-bright:#e0ac6a;
-    --violet:#7c6aa3;
-    --ink:#2a3225;
-    --ink-dim:#6d7566;
+    --line: rgba(8,64,60,0.14);
+    --paper:#08403c;
+    --bronze:#148a7f;
+    --bronze-strong:#0b4f4a;
+    --bronze-bright:#ffcb3d;
+    --ink:#0e2422;
+    --ink-dim:#61817d;
     --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
@@ -24,8 +23,7 @@
   html,body{
     margin:0;
     padding:0;
-    background:
-      radial-gradient(ellipse at 50% -10%, #ffffff 0%, var(--bg-page) 60%);
+    background:var(--bg-page);
     color:var(--ink);
     font-family:var(--sans);
     min-height:100vh;
@@ -115,7 +113,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 6px 16px -8px rgba(31,42,28,.3);
+    box-shadow:0 6px 16px -8px rgba(8,64,60,.3);
     transition:border-color .2s ease, color .2s ease, transform .15s ease;
   }
   .nav-arrow svg{ width:20px; height:20px; }
@@ -182,8 +180,8 @@
     overflow:hidden;
     box-shadow:
       0 2px 0 rgba(0,0,0,.04) inset,
-      0 24px 48px -20px rgba(31,42,28,.28),
-      0 0 0 1px rgba(31,42,28,.10);
+      0 24px 48px -20px rgba(8,64,60,.28),
+      0 0 0 1px rgba(8,64,60,.10);
   }
   .face-back{
     transform:rotateY(180deg);
@@ -255,7 +253,7 @@
   .hotspot:focus-visible,
   .hotspot.is-active{
     border-color:var(--bronze-bright);
-    box-shadow:0 0 0 2px rgba(224,172,106,.18), 0 0 22px rgba(224,172,106,.35);
+    box-shadow:0 0 0 2px rgba(255,203,61,.25), 0 0 22px rgba(255,203,61,.4);
     outline:none;
   }
 
@@ -268,7 +266,7 @@
     transform:translate(-50%,-50%);
     box-shadow:
       0 0 0 1px rgba(0,0,0,.55),
-      0 0 0 5px rgba(224,172,106,.4),
+      0 0 0 5px rgba(255,203,61,.45),
       0 2px 5px rgba(0,0,0,.4);
     animation:pulse 2.6s ease-in-out infinite;
     pointer-events:none;
@@ -277,13 +275,13 @@
     0%,100%{
       box-shadow:
         0 0 0 1px rgba(0,0,0,.55),
-        0 0 0 5px rgba(224,172,106,.4),
+        0 0 0 5px rgba(255,203,61,.45),
         0 2px 5px rgba(0,0,0,.4);
     }
     50%{
       box-shadow:
         0 0 0 1px rgba(0,0,0,.55),
-        0 0 0 9px rgba(224,172,106,.15),
+        0 0 0 9px rgba(255,203,61,.2),
         0 2px 5px rgba(0,0,0,.4);
     }
   }
@@ -314,11 +312,11 @@
     border-radius:10px;
     padding:22px 26px;
     min-height:104px;
-    box-shadow:0 10px 30px -18px rgba(31,42,28,.25);
+    box-shadow:0 10px 30px -18px rgba(8,64,60,.25);
     transition:border-color .25s ease;
   }
   .caption.is-active{
-    border-color:rgba(224,172,106,.5);
+    border-color:rgba(255,203,61,.6);
   }
   .caption h3{
     font-family:var(--serif);
@@ -363,7 +361,7 @@
     font-family:var(--sans);
     font-size:12.5px;
     color:var(--ink-dim);
-    background:rgba(31,42,28,.035);
+    background:rgba(8,64,60,.035);
     border:1px solid var(--line);
     padding:6px 13px;
     border-radius:999px;
@@ -374,14 +372,14 @@
   .legend button.is-active{
     color:var(--bronze-strong);
     border-color:var(--bronze);
-    background:rgba(184,137,79,.14);
+    background:rgba(20,138,127,.14);
   }
 
   footer{
     text-align:center;
     margin-top:46px;
     font-size:12px;
-    color:#8b9280;
+    color:#7c948f;
   }
 </style>
 </head>
@@ -390,9 +388,9 @@
 <div class="wrap">
   <header>
     <svg class="eyebrow-icon" viewBox="0 0 48 48" fill="none">
-      <rect x="4" y="4" width="40" height="40" rx="4" stroke="#b8894f" stroke-width="1.6"/>
-      <circle cx="24" cy="24" r="10" stroke="#b8894f" stroke-width="1.6"/>
-      <path d="M24 4v6M24 38v6M4 24h6M38 24h6" stroke="#b8894f" stroke-width="1.6"/>
+      <rect x="4" y="4" width="40" height="40" rx="4" stroke="#148a7f" stroke-width="1.6"/>
+      <circle cx="24" cy="24" r="10" stroke="#148a7f" stroke-width="1.6"/>
+      <path d="M24 4v6M24 38v6M4 24h6M38 24h6" stroke="#148a7f" stroke-width="1.6"/>
     </svg>
     <h1 id="page-title">Billete de S/ 10</h1>
   </header>

@@ -248,7 +248,9 @@
       highlightArrows(key);
     };
 
-    const isMobileFlowLayout = () => window.matchMedia("(max-width: 860px)").matches;
+    const isMobileFlowLayout = () =>
+      window.matchMedia("(max-width: 860px)").matches ||
+      window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
     flowNodes.forEach((node) => {
       node.addEventListener("click", () => {

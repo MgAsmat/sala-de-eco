@@ -248,12 +248,14 @@
       highlightArrows(key);
     };
 
+    const isMobileFlowLayout = () => window.matchMedia("(max-width: 860px)").matches;
+
     flowNodes.forEach((node) => {
       node.addEventListener("click", () => {
         const key = node.dataset.flow;
         setActive(key);
         const item = itemByKey.get(key);
-        if (item) {
+        if (item && !isMobileFlowLayout()) {
           item.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "center" });
         }
       });

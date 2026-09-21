@@ -1698,9 +1698,29 @@ button {
 .sector-card--historietas::before { background: linear-gradient(160deg, #c9770f, #7a3e08); }
 .sector-card--sugerencias::before { background: linear-gradient(160deg, #6b3fa0, #3c2159); }
 
+.sector-card__cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+
+.sector-card:hover .sector-card__cover {
+  transform: scale(1.05);
+}
+
+.sector-card--cover::before {
+  z-index: 1;
+  opacity: 1;
+  background: linear-gradient(180deg, rgba(10, 15, 26, 0.05) 0%, rgba(10, 15, 26, 0.55) 55%, rgba(10, 15, 26, 0.92) 100%);
+}
+
 .sector-card__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .sector-card .icon-badge {

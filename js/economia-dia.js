@@ -306,16 +306,16 @@ function select(id){
 
 $("#tab-explorar").addEventListener("click", function(){ setMode("explorar"); });
 $("#tab-recorrido").addEventListener("click", function(){ setMode("recorrido"); });
-var stage = $(".ecodia .stage");
+var explorer = $("#explorar");
 function setFull(on){
-  stage.classList.toggle("full", on);
+  explorer.classList.toggle("is-full", on);
   document.body.classList.toggle("ed-no-scroll", on);
   $("#btn-full").setAttribute("aria-pressed", on);
   $("#full-txt").textContent = on ? "Reducir" : "Ampliar";
   $("#full-ico").setAttribute("d", on ? "M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" : "M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5");
 }
-$("#btn-full").addEventListener("click", function(){ setFull(!stage.classList.contains("full")); });
-document.addEventListener("keydown", function(e){ if (e.key==="Escape" && stage.classList.contains("full")) setFull(false); });
+$("#btn-full").addEventListener("click", function(){ setFull(!explorer.classList.contains("is-full")); });
+document.addEventListener("keydown", function(e){ if (e.key==="Escape" && explorer.classList.contains("is-full")) setFull(false); });
 $("#btn-all").addEventListener("click", function(){ state.sel = null; setMode("explorar"); });
 $all(".ecodia .chip").forEach(function(c){
   c.addEventListener("click", function(){

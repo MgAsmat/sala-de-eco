@@ -1907,8 +1907,7 @@ button {
 .how-steps strong { color: var(--ink-900); }
 
 /* Inflation target meter */
-.target-meter,
-.revenue-bar {
+.target-meter {
   padding: 16px 18px;
   border-radius: var(--radius-md);
   background: var(--c-soft);
@@ -1985,32 +1984,6 @@ button {
   display: flex;
   justify-content: center;
 }
-
-/* Fiscal revenue bar */
-.revenue-bar__track {
-  display: flex;
-  height: 34px;
-  border-radius: var(--radius-pill);
-  overflow: hidden;
-  background: #fff;
-}
-
-.revenue-bar__seg {
-  flex: var(--w) 1 0;
-  display: grid;
-  place-items: center;
-  padding: 0 4px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.revenue-bar__seg--igv { background: var(--c-dark); }
-.revenue-bar__seg--renta { background: var(--c); }
-.revenue-bar__seg--otros { background: #8cc594; color: var(--ink-900); }
 
 @media (max-width: 860px) {
   .how-grid { grid-template-columns: 1fr; }

@@ -151,6 +151,10 @@ button {
   padding: 88px 0;
 }
 
+.section--compact-top {
+  padding-top: 40px;
+}
+
 .section.alt {
   background: linear-gradient(180deg, var(--teal-50), #fff 60%);
 }
@@ -1416,8 +1420,9 @@ button {
   text-align: center;
 }
 
-.pilares__head h3 {
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+.pilares__head h1 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.2;
   margin-bottom: 8px;
 }
 

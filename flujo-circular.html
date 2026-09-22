@@ -97,6 +97,12 @@
               <g id="g-labels"></g>
             </svg>
           </div>
+          <div class="zoom-ctrl" role="group" aria-label="Zoom del diagrama">
+            <button class="zoom-btn" id="zoom-in" aria-label="Acercar" title="Acercar"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+            <button class="zoom-btn" id="zoom-out" aria-label="Alejar" title="Alejar"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+            <button class="zoom-btn" id="zoom-reset" aria-label="Restablecer vista" title="Restablecer vista" disabled><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><circle cx="12" cy="12" r="2.2"/></svg></button>
+          </div>
+          <p class="zoom-tip" id="zoom-tip">Usa + y − para acercar o alejar, y arrastra para mover el diagrama.</p>
         </div>
 
         <aside class="panel" aria-live="polite">

@@ -797,6 +797,19 @@ body.ed-no-scroll { overflow: hidden; }
 .ecodia .explorer.is-full svg.diagram { width: min(1100px, 100%, calc((100dvh - 110px) * 1000 / 720)); height: auto; min-width: 0; }
 .ecodia .explorer.is-full .panel { position: static; max-height: 100%; overflow-y: auto; }
 
+/* Zoom y desplazamiento del diagrama */
+.ecodia svg.diagram { -webkit-user-select: none; user-select: none; }
+.ecodia svg.diagram.zoomed { cursor: grab; touch-action: none; }
+.ecodia svg.diagram.dragging { cursor: grabbing; }
+.ecodia svg.diagram.dragging .node, .ecodia svg.diagram.dragging .flow-hit { cursor: grabbing; }
+.ecodia .zoom-ctrl { position: absolute; right: 14px; bottom: 14px; z-index: 2; display: flex; flex-direction: column; gap: 6px; }
+.ecodia .zoom-btn { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; border: 1.5px solid var(--ed-line); background: var(--ed-surface); color: var(--ed-ink); cursor: pointer; box-shadow: 0 1px 3px rgba(15, 36, 54, 0.1); }
+.ecodia .zoom-btn:hover:not(:disabled) { border-color: var(--ed-ink); }
+.ecodia .zoom-btn:disabled { opacity: 0.4; cursor: default; }
+.ecodia .zoom-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ecodia .zoom-tip { position: relative; margin: 0; padding: 0 18px 14px; padding-right: 64px; font-size: 12.5px; color: var(--ed-muted); }
+.ecodia .explorer.is-full .zoom-tip { padding-bottom: 12px; }
+
 /* Flujos */
 .ecodia .flow { fill: none; stroke-width: 2.4; stroke-linecap: round; transition: opacity 0.35s, stroke-width 0.35s; }
 .ecodia .flow.real { stroke: var(--ed-real); }
@@ -929,6 +942,8 @@ body.ed-no-scroll { overflow: hidden; }
 }
 @media (max-width: 560px) {
   .ecodia .stage, .ecodia .panel { border-radius: 22px; }
+  .ecodia .zoom-ctrl { flex-direction: row; right: 12px; bottom: 12px; }
+  .ecodia .zoom-tip { padding-right: 140px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ecodia *, .ecodia *::before, .ecodia *::after { animation: none !important; transition: none !important; }

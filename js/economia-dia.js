@@ -134,7 +134,7 @@ FLOWS.forEach(function(f){
 });
 // size label pills once fonts are ready
 // Ubica las etiquetas visibles evitando que se superpongan entre sí o con los nombres de los nodos
-var VB = svg.viewBox.baseVal;
+var VB = {x:0, y:0, width:1000, height:720}; // área completa del diagrama (fija aunque se haga zoom)
 function sizeLabels(){
   var fs = 12.5, h = fs*1.76, gap = 6;
   var shown = FLOWS.filter(function(f){ return f.label_g.classList.contains("show"); });
@@ -324,6 +324,85 @@ $all(".ecodia .chip").forEach(function(c){
     refresh();
   });
 });
+
+/* ---------- Zoom y desplazamiento ---------- */
+var view = {x:0, y:0, w:VB.width, h:VB.height}, ZMIN = 1, ZMAX = 4;
+function zoomLevel(){ return VB.width / view.w; }
+function applyView(){
+  // mantiene la vista dentro del diagrama
+  view.x = Math.max(VB.x, Math.min(VB.x + VB.width - view.w, view.x));
+  view.y = Math.max(VB.y, Math.min(VB.y + VB.height - view.h, view.y));
+  svg.setAttribute("viewBox", view.x+" "+view.y+" "+view.w+" "+view.h);
+  var z = zoomLevel();
+  svg.classList.toggle("zoomed", z > 1.001);
+  $("#zoom-in").disabled = z >= ZMAX - 0.001;
+  $("#zoom-out").disabled = z <= ZMIN + 0.001;
+  $("#zoom-reset").disabled = z <= ZMIN + 0.001;
+}
+function zoomAt(factor, cx, cy){ // cx, cy en coordenadas del diagrama
+  var z = Math.max(ZMIN, Math.min(ZMAX, zoomLevel()*factor));
+  var w = VB.width / z, h = VB.height / z;
+  if (cx === undefined){ cx = view.x + view.w/2; cy = view.y + view.h/2; }
+  view.x = cx - (cx - view.x) * w / view.w;
+  view.y = cy - (cy - view.y) * h / view.h;
+  view.w = w; view.h = h;
+  applyView();
+}
+function toDiagram(clientX, clientY){
+  var r = svg.getBoundingClientRect();
+  return {x: view.x + (clientX - r.left) * view.w / r.width, y: view.y + (clientY - r.top) * view.h / r.height};
+}
+$("#zoom-in").addEventListener("click", function(){ zoomAt(1.4); });
+$("#zoom-out").addEventListener("click", function(){ zoomAt(1/1.4); });
+$("#zoom-reset").addEventListener("click", function(){ view = {x:0, y:0, w:VB.width, h:VB.height}; applyView(); });
+// Rueda del ratón: en pantalla completa siempre; en la página, con Ctrl/⌘ para no interferir con el scroll
+svg.addEventListener("wheel", function(e){
+  if (!explorer.classList.contains("is-full") && !e.ctrlKey && !e.metaKey) return;
+  e.preventDefault();
+  var p = toDiagram(e.clientX, e.clientY);
+  zoomAt(Math.exp(-e.deltaY * 0.0015), p.x, p.y);
+}, {passive:false});
+// Arrastrar para mover (ratón o un dedo) y pellizcar para hacer zoom (dos dedos)
+var pointers = {}, drag = null, moved = false;
+svg.addEventListener("pointerdown", function(e){
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+  pointers[e.pointerId] = {x:e.clientX, y:e.clientY};
+  moved = false;
+  drag = null;
+});
+svg.addEventListener("pointermove", function(e){
+  var prev = pointers[e.pointerId];
+  if (!prev) return;
+  var ids = Object.keys(pointers), r = svg.getBoundingClientRect();
+  if (ids.length === 2){
+    var other = pointers[ids[0] == e.pointerId ? ids[1] : ids[0]];
+    var d0 = Math.hypot(prev.x - other.x, prev.y - other.y), d1 = Math.hypot(e.clientX - other.x, e.clientY - other.y);
+    if (d0 > 0){
+      var mid = toDiagram((e.clientX + other.x)/2, (e.clientY + other.y)/2);
+      zoomAt(d1/d0, mid.x, mid.y); moved = true;
+    }
+  } else if (ids.length === 1){
+    if (!drag){
+      if (zoomLevel() <= 1.001 || Math.hypot(e.clientX - prev.x, e.clientY - prev.y) < 4) return;
+      drag = true; moved = true;
+      try { svg.setPointerCapture(e.pointerId); } catch(err){}
+      svg.classList.add("dragging");
+    }
+    view.x -= (e.clientX - prev.x) * view.w / r.width;
+    view.y -= (e.clientY - prev.y) * view.h / r.height;
+    applyView();
+  }
+  pointers[e.pointerId] = {x:e.clientX, y:e.clientY};
+});
+function endPointer(e){
+  delete pointers[e.pointerId];
+  if (!Object.keys(pointers).length){ drag = null; svg.classList.remove("dragging"); }
+}
+svg.addEventListener("pointerup", endPointer);
+svg.addEventListener("pointercancel", endPointer);
+// si hubo arrastre, no se considera un clic sobre un nodo
+svg.addEventListener("click", function(e){ if (moved){ e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+applyView();
 
 /* ---------- Agent cards ---------- */
 var agents = $("#agents");

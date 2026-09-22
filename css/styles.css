@@ -914,8 +914,6 @@ body.ed-no-scroll { overflow: hidden; }
 .ecodia .opt.no { border-color: var(--ed-accent); color: var(--ed-accent); text-decoration: line-through; }
 .ecodia .fb { margin-top: 10px; font-size: 14px; opacity: 0.85; }
 
-.ecodia .ed-source { margin: clamp(40px, 6vw, 64px) 0 0; padding-top: 24px; border-top: 1px solid var(--ed-line); color: var(--ed-muted); font-size: 14px; max-width: 70ch; }
-.ecodia .ed-source a { text-decoration: underline; }
 
 @media (max-width: 980px) {
   .ecodia .ed-hero, .ecodia .explorer, .ecodia .block-head, .ecodia .duo, .ecodia .quiz { grid-template-columns: 1fr; }

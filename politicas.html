@@ -48,65 +48,167 @@
 <main id="main">
 
   <!-- POLÍTICAS -->
-  <section class="section alt" id="politicas">
+  <section class="section section--compact-top alt" id="politicas">
     <div class="container">
-      <div class="section-head reveal">
+      <div class="section-head section-head--wide reveal">
         <span class="eyebrow gold">Estabilidad macroeconómica</span>
         <h2>Políticas Monetaria y Fiscal</h2>
-        <p>Las políticas monetaria y fiscal tienen una estrecha relación con la estabilidad macroeconómica. En esta sala aprenderás que el buen manejo de ambas políticas conlleva a la estabilidad macroeconómica: inflación baja y cuentas fiscales sostenibles son requisitos básicos para el crecimiento de la economía y del empleo, lo que redunda finalmente en un mayor bienestar de la población.</p>
+        <p class="policy-equation">
+          <span class="policy-equation__term policy-equation__term--monetary">Inflación baja y estable</span>
+          <em aria-hidden="true">+</em><span class="sr-only">y</span>
+          <span class="policy-equation__term policy-equation__term--fiscal">Cuentas fiscales sostenibles</span>
+          <em aria-hidden="true">→</em><span class="sr-only">generan</span>
+          <span class="policy-equation__term policy-equation__term--result">Crecimiento, empleo y bienestar</span>
+        </p>
       </div>
 
-      <div class="policy-layout">
-        <div class="policy-outcomes reveal">
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.8L21 11l-6.6 2.2L12 20l-2.4-6.8L3 11l6.6-2.2z"/></svg>Mayor bienestar</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>Mayor crecimiento</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M9 21V13h6v8"/></svg>Más empleo</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Menos pobreza</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>Mejor educación</span>
-          <span class="outcome-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-6"/></svg>Más inversión</span>
-        </div>
+      <!-- INFOGRAFÍA: Pilares de una economía sólida -->
+      <figure class="pilares reveal" aria-labelledby="pilaresTitle">
+        <figcaption class="pilares__head">
+          <h3 id="pilaresTitle">Pilares de una economía sólida</h3>
+          <p>La estabilidad macroeconómica se construye sobre dos pilares: la <strong class="t-monetary">Política Monetaria</strong> del BCRP y la <strong class="t-fiscal">Política Fiscal</strong> del Gobierno. Sobre ella se levantan los beneficios para toda la población.</p>
+        </figcaption>
 
-        <div class="policy-band reveal">Estabilidad Macroeconómica</div>
+        <div class="pilares__stage">
+          <ul class="pilares__pyramid" aria-label="Beneficios de la estabilidad macroeconómica">
+            <li class="pilares__row">
+              <span class="p-block p-block--top" style="--d:6"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 007 0"/><path d="M9 9.5h.01M15 9.5h.01"/></svg></i>Mayor bienestar</span>
+            </li>
+            <li class="pilares__row">
+              <span class="p-block p-block--mid" style="--d:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></i>Menos pobreza</span>
+              <span class="p-block p-block--mid" style="--d:5"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></i>Mayor crecimiento</span>
+            </li>
+            <li class="pilares__row">
+              <span class="p-block" style="--d:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/><path d="M3 13h18"/></svg></i>Más empleo</span>
+              <span class="p-block" style="--d:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5h7a3 3 0 013 3v12a2 2 0 00-2-2H2z"/><path d="M22 5h-7a3 3 0 00-3 3v12a2 2 0 012-2h8z"/></svg></i>Mejor educación</span>
+              <span class="p-block" style="--d:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M4 20V10l5 3V10l5 3V6h6v14"/></svg></i>Más inversión</span>
+            </li>
+          </ul>
 
-        <div class="policy-pillars">
-          <div class="pillar-card monetary reveal">
-            <div class="icon-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+          <div class="pilares__lintel">Estabilidad macroeconómica</div>
+
+          <div class="pilares__column pilares__column--monetary">
+            <span class="pilares__capital" aria-hidden="true"></span>
+            <div class="pilares__shaft">
+              <h4>Política Monetaria</h4>
+              <p class="pilares__eq"><span>Estabilidad monetaria</span><b aria-label="significa">=</b><span>Inflación baja y estable</span></p>
             </div>
-            <span class="owner">A cargo del BCRP</span>
-            <h3>Política Monetaria</h3>
-            <p>Se encarga de la estabilidad monetaria, para que el dinero preserve su valor en el tiempo.</p>
-            <ul>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Autonomía del Banco Central</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Control de la inflación</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Estabilidad financiera</li>
-            </ul>
+            <span class="pilares__plinth">BCRP</span>
           </div>
 
-          <div class="pillar-card fiscal reveal">
-            <div class="icon-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/><path d="M10 21v-6h4v6"/></svg>
+          <div class="pilares__column pilares__column--fiscal">
+            <span class="pilares__capital" aria-hidden="true"></span>
+            <div class="pilares__shaft">
+              <h4>Política Fiscal</h4>
+              <p class="pilares__eq"><span>Equilibrio de las cuentas fiscales</span><b aria-label="significa">=</b><span>Presupuesto balanceado y deuda sostenible</span></p>
             </div>
-            <span class="owner">A cargo del Gobierno</span>
-            <h3>Política Fiscal</h3>
-            <p>Fomenta el desarrollo de la economía garantizando infraestructura, educación e inversión.</p>
-            <ul>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Sostenibilidad fiscal</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Inversión pública</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>Gasto social responsable</li>
-            </ul>
+            <span class="pilares__plinth">Gobierno</span>
+          </div>
+
+          <div class="pilares__note pilares__note--monetary">
+            <span class="pilares__building" aria-hidden="true">
+              <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 44h56"/><path d="M8 44V24h48v20"/><path d="M4 24l28-14 28 14z"/><path d="M32 10V2l8 3-8 3"/><path d="M16 44V30M26 44V30M38 44V30M48 44V30"/></svg>
+            </span>
+            <strong>La Política Monetaria</strong>
+            <p>se encarga de la estabilidad monetaria, es decir, que el dinero <em>preserve su valor en el tiempo</em>.</p>
+          </div>
+
+          <div class="pilares__note pilares__note--fiscal">
+            <span class="pilares__building" aria-hidden="true">
+              <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 44h56"/><path d="M6 44V20h52v24"/><path d="M6 20l6-8h40l6 8"/><path d="M22 12V6h20v6"/><path d="M32 6V0l7 2.5L32 5"/><path d="M28 44v-9a4 4 0 018 0v9"/><path d="M13 27h5M13 35h5M46 27h5M46 35h5"/></svg>
+            </span>
+            <strong>La Política Fiscal</strong>
+            <p>se encarga de fomentar el desarrollo de la economía, de garantizar la <em>infraestructura económica, la educación y la promoción de la inversión</em>.</p>
           </div>
         </div>
+      </figure>
 
-        <!-- DATO CURIOSO: carrusel interactivo -->
-        <div class="tip-carousel reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre el BCRP y la economía peruana">
-          <div class="tip-carousel__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
+      <!-- ¿CÓMO FUNCIONAN? -->
+      <div class="how-grid">
+        <article class="how-card how-card--monetary reveal">
+          <header class="how-card__head">
+            <span class="how-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <div>
+              <span class="how-card__owner">A cargo del BCRP · ¿Cómo funciona?</span>
+              <h3>Política Monetaria</h3>
+            </div>
+          </header>
+
+          <ol class="how-steps">
+            <li><b>1</b><span>El BCRP fija la <strong>tasa de interés de referencia</strong>.</span></li>
+            <li><b>2</b><span>Esa tasa influye en el costo de los <strong>préstamos</strong> y del <strong>ahorro</strong>.</span></li>
+            <li><b>3</b><span>Así, la <strong>inflación</strong> se mantiene en su meta.</span></li>
+          </ol>
+
+          <div class="target-meter" aria-label="Rango meta de inflación del BCRP: entre 1% y 3% anual, con 2% como centro">
+            <div class="target-meter__label">Rango meta de inflación anual</div>
+            <div class="target-meter__track" aria-hidden="true">
+              <span class="target-meter__band"><em>Meta: 1% – 3%</em></span>
+              <span class="target-meter__center"></span>
+            </div>
+            <div class="target-meter__scale" aria-hidden="true"><span>0%</span><span>1%</span><span>2%</span><span>3%</span><span>4%</span><span>5%</span></div>
           </div>
-          <div class="tip-carousel__body">
-            <span class="tip-carousel__label">¿Sabías que…?</span>
-            <p class="tip-carousel__text" aria-live="polite">El 9 de marzo de 2024, el Banco Central de Reserva del Perú cumplió 102 años de vida al servicio del país.</p>
+
+          <div class="how-rules">
+            <div class="how-rule how-rule--up">
+              <span class="how-rule__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+              <p>Si la inflación <strong>sube</strong> por encima de la meta, el BCRP <strong>eleva</strong> su tasa.</p>
+            </div>
+            <div class="how-rule how-rule--down">
+              <span class="how-rule__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+              <p>Si la inflación <strong>cae</strong> por debajo de la meta, el BCRP <strong>reduce</strong> su tasa.</p>
+            </div>
           </div>
+        </article>
+
+        <article class="how-card how-card--fiscal reveal">
+          <header class="how-card__head">
+            <span class="how-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/><path d="M10 21v-6h4v6"/></svg></span>
+            <div>
+              <span class="how-card__owner">A cargo del Gobierno · ¿Cómo funciona?</span>
+              <h3>Política Fiscal</h3>
+            </div>
+          </header>
+
+          <ol class="how-steps">
+            <li><b>1</b><span>El Estado cobra <strong>impuestos</strong>.</span></li>
+            <li><b>2</b><span>Los usa en <strong>educación, salud e infraestructura</strong>.</span></li>
+            <li><b>3</b><span>Cuida que sus <strong>cuentas y su deuda</strong> estén en orden.</span></li>
+          </ol>
+
+          <figure class="budget-scale" aria-label="Presupuesto balanceado: una balanza en equilibrio entre los ingresos del Estado (impuestos) y sus gastos (colegios, salud y obras)">
+            <figcaption class="target-meter__label">Presupuesto balanceado</figcaption>
+            <span class="budget-scale__tag">Equilibrio</span>
+            <svg class="budget-scale__art" viewBox="0 0 480 130" aria-hidden="true">
+              <path class="budget-scale__post" d="M240 34 L222 118 H258 Z"/>
+              <rect class="budget-scale__post" x="198" y="116" width="84" height="10" rx="5"/>
+              <rect class="budget-scale__beam" x="70" y="28" width="340" height="8" rx="4"/>
+              <circle class="budget-scale__pivot" cx="240" cy="32" r="9"/>
+              <path class="budget-scale__string" d="M95 36 L65 86 M95 36 L125 86 M385 36 L355 86 M385 36 L415 86"/>
+              <path class="budget-scale__pan" d="M45 86 H145 a50 22 0 0 1 -100 0 Z"/>
+              <path class="budget-scale__pan" d="M335 86 H435 a50 22 0 0 1 -100 0 Z"/>
+            </svg>
+            <div class="budget-scale__labels" aria-hidden="true">
+              <span><strong>Ingresos</strong>impuestos</span>
+              <span><strong>Gastos</strong>colegios, salud, obras</span>
+            </div>
+          </figure>
+        </article>
+      </div>
+
+      <!-- DATO CURIOSO: carrusel interactivo destacado -->
+      <div class="tip-carousel tip-carousel--featured reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre el BCRP y la economía peruana">
+        <div class="tip-carousel__visual" aria-hidden="true"></div>
+        <div class="tip-carousel__main">
+          <div class="tip-carousel__top">
+            <span class="tip-carousel__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+              ¿Sabías que…?
+            </span>
+            <span class="tip-carousel__tag"></span>
+            <span class="tip-carousel__count"></span>
+          </div>
+          <p class="tip-carousel__text" aria-live="polite">El 9 de marzo de 2024, el Banco Central de Reserva del Perú cumplió 102 años de vida al servicio del país.</p>
           <div class="tip-carousel__controls">
             <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
@@ -116,22 +218,23 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
             </button>
           </div>
-          <script type="application/json" class="tip-carousel__data">[
-            "El 9 de marzo de 2024, el Banco Central de Reserva del Perú cumplió 102 años de vida al servicio del país.",
-            "En 2020, el BCRP fue incorporado como miembro de la Red de Bancos Centrales y Supervisoras para Enverdecer el Sistema Financiero.",
-            "A partir de 2002, el BCRP maneja un esquema de Metas Explícitas de Inflación.",
-            "El rango meta de inflación anual del BCRP es de 1% a 3%.",
-            "Las acciones del BCRP tienen como objetivo que la inflación y sus expectativas se ubiquen dentro del rango meta de 1% a 3%.",
-            "En 2020, el Perú implementó uno de los programas de créditos con garantías estatales de mayor tamaño en términos del PBI.",
-            "El programa Reactiva Perú benefició directamente a más de 502 mil empresas; de las cuales el 98% eran MYPEs.",
-            "El programa Reactiva Perú permitió que principalmente las pequeñas empresas obtuvieran créditos a tasas mínimas.",
-            "La dolarización del crédito bajó 53 puntos porcentuales en los últimos 21 años al pasar de 76% en 2002 a 23% en 2023.",
-            "Los ingresos del gobierno general representaron el 19,8% del PBI en 2023.",
-            "Los ingresos por IGV del gobierno general representaron el 8,4% del PBI en 2023.",
-            "La recaudación por impuesto a la renta alcanza el 6,3% del PBI en 2023.",
-            "La vida promedio de la deuda pública fue 11,7 años en 2023."
-          ]</script>
         </div>
+        <span class="tip-carousel__progress" aria-hidden="true"></span>
+        <script type="application/json" class="tip-carousel__data">[
+          { "text": "El 9 de marzo de 2024, el Banco Central de Reserva del Perú cumplió 102 años de vida al servicio del país.", "tag": "BCRP", "stat": "102", "unit": "años de historia" },
+          { "text": "En 2020, el BCRP fue incorporado como miembro de la Red de Bancos Centrales y Supervisoras para Enverdecer el Sistema Financiero.", "tag": "BCRP", "stat": "2020", "unit": "finanzas verdes" },
+          { "text": "A partir de 2002, el BCRP maneja un esquema de Metas Explícitas de Inflación.", "tag": "Inflación", "stat": "2002", "unit": "metas explícitas de inflación" },
+          { "text": "El rango meta de inflación anual del BCRP es de 1% a 3%.", "tag": "Inflación", "stat": "1%–3%", "unit": "rango meta anual" },
+          { "text": "Las acciones del BCRP tienen como objetivo que la inflación y sus expectativas se ubiquen dentro del rango meta de 1% a 3%.", "tag": "Inflación", "stat": "2%", "unit": "centro del rango meta" },
+          { "text": "En 2020, el Perú implementó uno de los programas de créditos con garantías estatales de mayor tamaño en términos del PBI.", "tag": "Reactiva Perú", "stat": "2020", "unit": "créditos con garantía estatal" },
+          { "text": "El programa Reactiva Perú benefició directamente a más de 502 mil empresas; de las cuales el 98% eran MYPEs.", "tag": "Reactiva Perú", "stat": "502 mil", "unit": "empresas beneficiadas · 98% MYPEs" },
+          { "text": "El programa Reactiva Perú permitió que principalmente las pequeñas empresas obtuvieran créditos a tasas mínimas.", "tag": "Reactiva Perú", "stat": "MYPEs", "unit": "créditos a tasas mínimas" },
+          { "text": "La dolarización del crédito bajó 53 puntos porcentuales en los últimos 21 años al pasar de 76% en 2002 a 23% en 2023.", "tag": "Crédito", "unit": "Dolarización del crédito", "bars": [{ "label": "2002", "value": 76 }, { "label": "2023", "value": 23 }] },
+          { "text": "Los ingresos del gobierno general representaron el 19,8% del PBI en 2023.", "tag": "Finanzas públicas", "stat": "19,8%", "unit": "del PBI en 2023" },
+          { "text": "Los ingresos por IGV del gobierno general representaron el 8,4% del PBI en 2023.", "tag": "Finanzas públicas", "unit": "Ingresos 2023 (% del PBI)", "bars": [{ "label": "Total", "value": 19.8 }, { "label": "IGV", "value": 8.4 }] },
+          { "text": "La recaudación por impuesto a la renta alcanza el 6,3% del PBI en 2023.", "tag": "Finanzas públicas", "unit": "Ingresos 2023 (% del PBI)", "bars": [{ "label": "Total", "value": 19.8 }, { "label": "Renta", "value": 6.3 }] },
+          { "text": "La vida promedio de la deuda pública fue 11,7 años en 2023.", "tag": "Finanzas públicas", "stat": "11,7", "unit": "años de vida promedio de la deuda" }
+        ]</script>
       </div>
     </div>
   </section>
@@ -239,20 +342,20 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--lectura reveal" href="lecturas/instrumentacion-politica-monetaria.html" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--lectura reveal" href="lecturas/instrumentacion-politica-monetaria-escolares.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Lectura</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-lectura-politica-monetaria.jpg" alt="Primera página de la lectura La instrumentación de la política monetaria" loading="lazy" />
+            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-lectura-politica-monetaria.jpg" alt="Primera página de la lectura ¿Cómo hace el BCRP para mover las tasas de interés?" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Lectura: Política Monetaria</h3>
             <span class="resource-card__link">Leer artículo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
-        <a class="resource-card resource-card--lectura reveal" href="lecturas/deficit-fiscal-financiado.html" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--lectura reveal" href="lecturas/deficit-fiscal-escolares.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Lectura</span>
-            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-lectura-deficit-fiscal.jpg" alt="Primera página de la lectura Déficit fiscal financiado con ahorro o deuda" loading="lazy" />
+            <img class="resource-card__preview-img" src="assets/recursos-politica/cover-lectura-deficit-fiscal.jpg" alt="Primera página de la lectura ¿Qué pasa cuando el Estado gasta más de lo que recibe?" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Lectura: Déficit Fiscal</h3>
@@ -333,7 +436,7 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--link reveal" href="lecturas/glosario-politicas-monetaria-fiscal.html" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--link reveal" href="lecturas/glosario-politicas-monetario-fiscal.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Enlace</span>
             <img class="resource-card__preview-img" src="assets/recursos-politica/cover-glosario-politicas.jpg" alt="Primera página del Glosario de Políticas Monetaria y Fiscal" loading="lazy" />

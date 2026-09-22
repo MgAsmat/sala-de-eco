@@ -57,8 +57,53 @@
     const tipDots = tipCarousel.querySelector(".tip-carousel__dots");
     const tipPrev = tipCarousel.querySelector(".tip-carousel__btn--prev");
     const tipNext = tipCarousel.querySelector(".tip-carousel__btn--next");
+    // Optional elements of the featured variant (visual panel, tag, counter, progress bar)
+    const tipVisual = tipCarousel.querySelector(".tip-carousel__visual");
+    const tipTag = tipCarousel.querySelector(".tip-carousel__tag");
+    const tipCount = tipCarousel.querySelector(".tip-carousel__count");
+    const tipProgress = tipCarousel.querySelector(".tip-carousel__progress");
+    const TIP_DELAY = 7000;
     let tipIndex = 0;
     let tipTimer = null;
+    let tipPaused = false;
+
+    // Tips can be plain strings or objects: { text, tag, stat, unit, bars: [{ label, value }] }
+    const normalizeTip = (tip) => (typeof tip === "string" ? { text: tip } : tip);
+
+    const el = (tag, className, text) => {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    };
+
+    const renderVisual = (tip) => {
+      if (!tipVisual) return;
+      tipVisual.replaceChildren();
+      if (tip.bars && tip.bars.length) {
+        const max = Math.max(...tip.bars.map((b) => b.value));
+        const chart = el("div", "tip-chart");
+        tip.bars.forEach((bar) => {
+          const col = el("div", "tip-chart__col");
+          const value = String(bar.value).replace(".", ",") + "%";
+          col.appendChild(el("span", "tip-chart__value", value));
+          const fill = el("span", "tip-chart__bar");
+          fill.style.setProperty("--h", ((bar.value / max) * 100).toFixed(1) + "%");
+          col.appendChild(fill);
+          col.appendChild(el("span", "tip-chart__label", bar.label));
+          chart.appendChild(col);
+        });
+        tipVisual.appendChild(chart);
+        if (tip.unit) tipVisual.appendChild(el("span", "tip-visual__unit", tip.unit));
+      } else if (tip.stat) {
+        const stat = el("span", "tip-visual__stat", tip.stat);
+        if (tip.stat.length > 5) stat.classList.add("is-long");
+        tipVisual.appendChild(stat);
+        if (tip.unit) tipVisual.appendChild(el("span", "tip-visual__unit", tip.unit));
+      } else {
+        tipVisual.appendChild(el("span", "tip-visual__stat tip-visual__stat--icon", "?"));
+      }
+    };
 
     tips.forEach((_, i) => {
       const dot = document.createElement("span");
@@ -67,21 +112,54 @@
       tipDots.appendChild(dot);
     });
 
+    const restartProgress = () => {
+      if (!tipProgress) return;
+      tipProgress.classList.remove("is-running");
+      void tipProgress.offsetWidth; // reflow so the CSS animation restarts
+      if (!prefersReducedMotion) tipProgress.classList.add("is-running");
+    };
+
     const showTip = (index, userTriggered) => {
       tipIndex = (index + tips.length) % tips.length;
-      tipText.textContent = tips[tipIndex];
+      const tip = normalizeTip(tips[tipIndex]);
+      tipText.textContent = tip.text;
+      if (tipTag) {
+        tipTag.textContent = tip.tag || "";
+        tipTag.hidden = !tip.tag;
+      }
+      if (tipCount) tipCount.textContent = tipIndex + 1 + " / " + tips.length;
+      renderVisual(tip);
+      tipCarousel.classList.remove("is-changing");
+      void tipCarousel.offsetWidth;
+      tipCarousel.classList.add("is-changing");
       Array.from(tipDots.children).forEach((dot, i) => dot.classList.toggle("is-active", i === tipIndex));
       if (userTriggered) restartAutoplay();
+      else restartProgress();
     };
 
     const restartAutoplay = () => {
       if (tipTimer) clearInterval(tipTimer);
       if (prefersReducedMotion) return;
-      tipTimer = setInterval(() => showTip(tipIndex + 1, false), 7000);
+      restartProgress();
+      tipTimer = setInterval(() => {
+        if (!tipPaused) showTip(tipIndex + 1, false);
+      }, TIP_DELAY);
     };
+
+    // Pause while the reader is hovering or focused on the carousel
+    const setPaused = (paused) => {
+      tipPaused = paused;
+      tipCarousel.classList.toggle("is-paused", paused);
+    };
+    tipCarousel.addEventListener("mouseenter", () => setPaused(true));
+    tipCarousel.addEventListener("mouseleave", () => {
+      setPaused(false);
+      restartAutoplay();
+    });
 
     tipPrev.addEventListener("click", () => showTip(tipIndex - 1, true));
     tipNext.addEventListener("click", () => showTip(tipIndex + 1, true));
+    showTip(0, false);
     restartAutoplay();
   });
 

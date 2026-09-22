@@ -148,6 +148,17 @@
             </div>
             <div class="target-meter__scale" aria-hidden="true"><span>0%</span><span>1%</span><span>2%</span><span>3%</span><span>4%</span><span>5%</span></div>
           </div>
+
+          <div class="how-rules">
+            <div class="how-rule how-rule--up">
+              <span class="how-rule__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+              <p>Si la inflación <strong>sube</strong> por encima de la meta, el BCRP <strong>eleva</strong> su tasa.</p>
+            </div>
+            <div class="how-rule how-rule--down">
+              <span class="how-rule__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+              <p>Si la inflación <strong>cae</strong> por debajo de la meta, el BCRP <strong>reduce</strong> su tasa.</p>
+            </div>
+          </div>
         </article>
 
         <article class="how-card how-card--fiscal reveal">
@@ -164,6 +175,24 @@
             <li><b>2</b><span>Los usa en <strong>educación, salud e infraestructura</strong>.</span></li>
             <li><b>3</b><span>Cuida que sus <strong>cuentas y su deuda</strong> estén en orden.</span></li>
           </ol>
+
+          <figure class="budget-scale" aria-label="Presupuesto balanceado: una balanza en equilibrio entre los ingresos del Estado (impuestos) y sus gastos (colegios, salud y obras)">
+            <figcaption class="target-meter__label">Presupuesto balanceado</figcaption>
+            <span class="budget-scale__tag">Equilibrio</span>
+            <svg class="budget-scale__art" viewBox="0 0 480 130" aria-hidden="true">
+              <path class="budget-scale__post" d="M240 34 L222 118 H258 Z"/>
+              <rect class="budget-scale__post" x="198" y="116" width="84" height="10" rx="5"/>
+              <rect class="budget-scale__beam" x="70" y="28" width="340" height="8" rx="4"/>
+              <circle class="budget-scale__pivot" cx="240" cy="32" r="9"/>
+              <path class="budget-scale__string" d="M95 36 L65 86 M95 36 L125 86 M385 36 L355 86 M385 36 L415 86"/>
+              <path class="budget-scale__pan" d="M45 86 H145 a50 22 0 0 1 -100 0 Z"/>
+              <path class="budget-scale__pan" d="M335 86 H435 a50 22 0 0 1 -100 0 Z"/>
+            </svg>
+            <div class="budget-scale__labels" aria-hidden="true">
+              <span><strong>Ingresos</strong>impuestos</span>
+              <span><strong>Gastos</strong>colegios, salud, obras</span>
+            </div>
+          </figure>
         </article>
       </div>
 

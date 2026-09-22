@@ -1985,12 +1985,116 @@ button {
   justify-content: center;
 }
 
+/* Rules of thumb */
+.how-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.how-rule {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.how-rule p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-700);
+}
+
+.how-rule strong { color: var(--ink-900); }
+
+.how-rule__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--c);
+}
+
+.how-rule__icon svg { width: 16px; height: 16px; }
+.how-rule--up .how-rule__icon { background: #d9453f; }
+.how-rule--down .how-rule__icon { background: var(--c); }
+
+/* Fiscal balance scale */
+.budget-scale {
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--c-soft);
+  text-align: center;
+}
+
+.budget-scale .target-meter__label {
+  margin-bottom: 4px;
+}
+
+.budget-scale__tag {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c-dark);
+}
+
+.budget-scale__art {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 2px auto 0;
+}
+
+.budget-scale__post { fill: var(--c-dark); }
+.budget-scale__beam { fill: var(--c); }
+.budget-scale__pivot { fill: var(--gold-500); }
+.budget-scale__string { fill: none; stroke: var(--c-dark); stroke-width: 2; }
+.budget-scale__pan { fill: #fff; stroke: var(--c); stroke-width: 2; }
+
+/* Labels sit under each pan: pans are centred at ~20% and ~80% of the art */
+.budget-scale__labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 420px;
+  margin: 4px auto 0;
+  font-size: 0.8rem;
+  color: var(--ink-700);
+}
+
+.budget-scale__labels span {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.budget-scale__labels span:first-child { transform: translateX(-22%); }
+.budget-scale__labels span:last-child { transform: translateX(22%); }
+
+.budget-scale__labels strong {
+  font-size: 0.95rem;
+  color: var(--ink-900);
+}
+
 @media (max-width: 860px) {
   .how-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
   .how-card { padding: 22px 18px; }
+  .how-rules { grid-template-columns: 1fr; }
 }
 
 /* =========================================================

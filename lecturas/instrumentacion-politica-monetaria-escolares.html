@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cómo mueve el BCRP las tasas de interés? — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#313b54; --navy-deep:#232a3d; --gold:#f1ab26; --blue:#4079a2; --teal:#5fc3bb;
+    --paper:#faf7f0; --card:#ffffff; --border:#e4dfd2; --text-muted:#6b7180;
+    --ok:#2f8f6b; --bad:#c0483e;
+    --shadow-md:0 8px 24px rgba(35,42,61,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Barlow',-apple-system,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:880px;margin:0 auto;padding:0 20px 64px;}
+
+  header.masthead{background:var(--navy);color:#fff;padding:18px 0;}
+  .masthead-inner{max-width:880px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:14px;}
+  .masthead-mark{width:38px;height:38px;flex:0 0 auto;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;}
+  .masthead-mark svg{width:20px;height:20px;}
+  .masthead-text{font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.06em;font-size:15px;text-transform:uppercase;}
+  .masthead-text .sub{display:block;font-family:'Barlow',sans-serif;font-weight:400;letter-spacing:0;text-transform:none;font-size:12.5px;color:#c9cedb;margin-top:1px;}
+
+  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy) 55%,var(--navy-deep) 100%);color:#fff;padding:36px 0 60px;margin-bottom:-32px;}
+  .hero-inner{max-width:880px;margin:0 auto;padding:0 20px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-size:12.5px;color:var(--gold);margin-bottom:12px;}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--gold);display:inline-block;}
+  h1.title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:0 0 12px;max-width:680px;}
+  .hero-sub{color:#d7dbe6;font-size:17px;max-width:620px;margin:0 0 18px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-size:13px;font-weight:600;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:4px 12px;color:#fff;}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:30px 32px;margin:0 0 24px;position:relative;z-index:1;}
+  @media (max-width:560px){.card{padding:24px 20px;}}
+  h2.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:25px;line-height:1.2;color:var(--navy);margin:0 0 14px;display:flex;align-items:flex-start;gap:10px;}
+  h2.section-title .num{font-weight:700;color:var(--gold);font-size:15px;border:1.5px solid var(--gold);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  p{margin:0 0 14px;color:#3a3f4e;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--navy);font-weight:700;}
+  .subhead{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;color:var(--navy);text-transform:uppercase;letter-spacing:0.03em;margin:24px 0 10px;}
+
+  /* Callouts */
+  .callout{margin:18px 0 4px;border-radius:10px;padding:14px 18px;border:1px solid var(--border);background:var(--paper);}
+  .callout p{font-size:15.5px;margin:0;}
+  .callout .label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;}
+  .callout.idea{border-left:4px solid var(--gold);} .callout.idea .label{color:#b57a06;}
+  .callout.fact{border-left:4px solid var(--teal);} .callout.fact .label{color:#2c8a82;}
+  .callout.think{border-left:4px solid var(--blue);} .callout.think .label{color:var(--blue);}
+
+  /* Glossary */
+  .gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;}
+  @media (max-width:700px){.gloss-grid{grid-template-columns:1fr;}}
+  .gloss{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--paper);}
+  .gloss .emoji{font-size:26px;line-height:1;}
+  .gloss h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--navy);margin:8px 0 4px;}
+  .gloss p{font-size:15px;margin:0;}
+  .gloss .eg{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
+
+  /* Chain */
+  .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:16px 0 4px;}
+  .chain-step{flex:1 1 130px;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:600;color:var(--navy);display:flex;flex-direction:column;justify-content:center;gap:4px;}
+  .chain-step .e{font-size:22px;}
+  .chain-step.first{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .chain-step.last{background:rgba(241,171,38,0.15);border-color:var(--gold);}
+  .chain-arrow{display:flex;align-items:center;color:var(--gold);font-weight:700;font-size:20px;}
+  @media (max-width:640px){.chain{flex-direction:column;}.chain-arrow{justify-content:center;transform:rotate(90deg);}}
+
+  /* Dual cards */
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;}
+  @media (max-width:640px){.dual-grid{grid-template-columns:1fr;}}
+  .dual-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);background:var(--paper);}
+  .dual-card.up{border-top:4px solid var(--teal);}
+  .dual-card.down{border-top:4px solid var(--navy);}
+  .dual-card .lead{font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+  .dual-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;color:var(--navy);margin:2px 0 8px;}
+  .dual-card p{font-size:15.5px;margin:0 0 8px;}
+  .dual-card p:last-child{margin-bottom:0;}
+  .result{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:700;border-radius:999px;padding:3px 12px;background:#fff;border:1px solid var(--border);color:var(--navy);}
+
+  /* Corridor */
+  .corridor{margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .corridor-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;}
+  .corridor-row.ceil{background:rgba(49,59,84,0.07);}
+  .corridor-row.mid{background:rgba(241,171,38,0.14);border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);}
+  .corridor-row.floor{background:rgba(95,195,187,0.12);}
+  .corridor-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;color:var(--navy);}
+  .corridor-label .small{display:block;font-family:'Barlow',sans-serif;font-weight:400;font-size:13.5px;color:var(--text-muted);}
+  .corridor-tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:0.05em;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap;}
+  .corridor-row.ceil .corridor-tag{background:var(--navy);color:#fff;}
+  .corridor-row.mid .corridor-tag{background:var(--gold);color:var(--navy-deep);}
+  .corridor-row.floor .corridor-tag{background:var(--teal);color:var(--navy-deep);}
+  .tiny{font-size:13px;color:var(--text-muted);margin-top:8px;}
+
+  /* Simulator */
+  .sim{margin-top:14px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .sim label{font-weight:600;color:var(--navy);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .sim input[type=range]{width:100%;margin:12px 0 16px;accent-color:var(--gold);}
+  .bar{display:flex;height:40px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+  .bar .kept{background:var(--navy);color:#fff;}
+  .bar .lend{background:var(--teal);color:var(--navy-deep);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+  .sim-legend{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:14.5px;flex-wrap:wrap;}
+  .sim-legend b{color:var(--navy);}
+
+  /* Summary table */
+  table.sum{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px;}
+  table.sum th{font-family:'Barlow Condensed',sans-serif;font-size:15px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
+  table.sum td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  table.sum tr:nth-child(even) td{background:var(--paper);}
+  @media (max-width:600px){
+    table.sum thead{display:none;}
+    table.sum tr{display:block;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+    table.sum td{display:block;border:none;}
+    table.sum td:first-child{background:var(--navy)!important;color:#fff;font-weight:700;}
+  }
+
+  /* Quiz */
+  .q{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:14px;background:var(--paper);}
+  .q-title{font-weight:700;color:var(--navy);margin-bottom:10px;}
+  .opts{display:grid;gap:8px;}
+  .opts button{font:inherit;font-size:15.5px;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;cursor:pointer;color:var(--navy-deep);transition:border-color .15s ease;}
+  .opts button:hover:not(:disabled){border-color:var(--blue);}
+  .opts button:disabled{cursor:default;}
+  .opts button.right{border-color:var(--ok);background:rgba(47,143,107,0.08);}
+  .opts button.wrong{border-color:var(--bad);background:rgba(192,72,62,0.07);}
+  .fb{display:none;margin-top:10px;font-size:15px;}
+  .fb.show{display:block;}
+  .score{margin-top:18px;font-weight:700;color:var(--navy);text-align:center;font-size:18px;}
+
+  footer.page-footer{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#232a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+    </div>
+    <div class="masthead-text">Banco Central de Reserva del Perú<span class="sub">Serie Lecturas · Educación económica para escolares</span></div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Política monetaria para secundaria</div>
+    <h1 class="title">¿Cómo hace el BCRP para “mover” las tasas de interés?</h1>
+    <p class="hero-sub">Las tres herramientas que usa el Banco Central para cuidar el valor de tu dinero, explicadas paso a paso.</p>
+    <div class="chips"><span class="chip">⏱ Lectura de 10 minutos</span><span class="chip">🎚 Incluye simulador</span><span class="chip">✅ Mini quiz al final</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- 0. Gancho -->
+  <div class="card">
+    <h2 class="section-title">Empecemos con una pregunta</h2>
+    <p>¿Te has fijado que con el tiempo las cosas suelen costar un poco más? Un menú, un pasaje, una entrada al cine. Cuando los precios suben demasiado rápido, tu propina, el sueldo de tu familia y tus ahorros alcanzan para menos. Eso se llama <strong>inflación</strong>.</p>
+    <p>El <strong>Banco Central de Reserva del Perú (BCRP)</strong> tiene una misión principal: mantener los precios <strong>estables</strong>, es decir, que no suban ni muy rápido ni de forma impredecible. En esta lectura vas a descubrir <strong>cómo lo hace en la práctica</strong>.</p>
+  </div>
+
+  <!-- 1. Glosario -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">1</span>Tres ideas que necesitas antes de empezar</h2>
+    <div class="gloss-grid">
+      <div class="gloss">
+        <div class="emoji">🏷️</div>
+        <h3>Tasa de interés</h3>
+        <p>Es el <strong>“precio” del dinero</strong>: lo que pagas por usar dinero prestado, o lo que ganas por prestarlo.</p>
+        <span class="eg">Ej.: si te prestan S/100 al 10 % anual, al año devuelves S/110.</span>
+      </div>
+      <div class="gloss">
+        <div class="emoji">💧</div>
+        <h3>Liquidez</h3>
+        <p>Es el <strong>dinero disponible para usar ya</strong>, sin tener que esperar ni vender nada.</p>
+        <span class="eg">Ej.: los billetes en tu billetera son líquidos; una casa, no tanto.</span>
+      </div>
+      <div class="gloss">
+        <div class="emoji">🤝</div>
+        <h3>Mercado interbancario</h3>
+        <p>Es donde <strong>los bancos se prestan dinero entre ellos</strong>, casi siempre por un solo día.</p>
+        <span class="eg">A la tasa que cobran se le llama <strong>tasa interbancaria</strong>.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Meta operativa -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">2</span>El BCRP no controla los precios… pero sí una tasa</h2>
+    <p>El Banco Central no puede decidir cuánto cuesta el pan o la gasolina. Lo que sí puede hacer es influir en una tasa muy importante: la <strong>tasa interbancaria</strong>. Por eso fija una meta para ella, llamada <strong>tasa de interés de referencia</strong>, y trabaja todos los días para que la tasa interbancaria se mantenga lo más cerca posible de esa meta.</p>
+    <p>¿Por qué funciona? Porque esa tasa se va “contagiando” al resto de la economía:</p>
+    <div class="chain">
+      <div class="chain-step first"><span class="e">🏛️</span>El BCRP fija la tasa de referencia</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-step"><span class="e">🏦</span>Cambia lo que se cobran los bancos entre sí</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-step"><span class="e">💳</span>Cambian las tasas de préstamos y ahorros</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-step"><span class="e">🛒</span>Las personas y empresas gastan más o menos</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-step last"><span class="e">📊</span>Los precios se mantienen estables</div>
+    </div>
+    <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Es como un <strong>termostato</strong>: no puedes controlar el clima de afuera, pero sí regular el aire acondicionado para que tu cuarto esté a la temperatura que quieres.</p></div>
+  </div>
+
+  <!-- 3. El problema -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">3</span>El problema: a veces falta dinero y a veces sobra</h2>
+    <p>La tasa interbancaria funciona como cualquier precio: <strong>cuando algo escasea, se encarece; cuando sobra, se abarata</strong>. Pasa lo mismo que con las entradas a un concierto muy esperado.</p>
+    <div class="dual-grid">
+      <div class="dual-card down">
+        <div class="lead">Situación A</div>
+        <h3>Falta dinero entre los bancos</h3>
+        <p>Muchos bancos quieren pedir prestado y pocos tienen para prestar.</p>
+        <span class="result">⬆ La tasa interbancaria sube por encima de la meta</span>
+      </div>
+      <div class="dual-card up">
+        <div class="lead">Situación B</div>
+        <h3>Sobra dinero entre los bancos</h3>
+        <p>Muchos bancos quieren prestar y pocos necesitan pedir.</p>
+        <span class="result">⬇ La tasa interbancaria baja por debajo de la meta</span>
+      </div>
+    </div>
+    <p style="margin-top:16px;">Ninguna de las dos situaciones le conviene al BCRP. Para corregirlas usa <strong>tres herramientas</strong>. ¡Veámoslas!</p>
+  </div>
+
+  <!-- 4. OMA -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">4</span>Herramienta 1: Operaciones de Mercado Abierto</h2>
+    <p>Es la herramienta principal. Con ella, el BCRP <strong>pone o saca dinero</strong> del mercado interbancario según lo que haga falta. Se les llama <strong>OMA</strong>.</p>
+    <div class="dual-grid">
+      <div class="dual-card up">
+        <div class="lead">Si falta dinero</div>
+        <h3>El BCRP inyecta liquidez 💧</h3>
+        <p>El BCRP le presta soles a los bancos por un tiempo corto. A cambio, el banco deja como <strong>garantía</strong> unos <strong>títulos valores</strong> (documentos que valen dinero, como bonos del Estado) y se compromete a “recomprarlos” después, devolviendo el dinero.</p>
+        <p>A esta operación se le llama <strong>repo</strong>, y el BCRP la ofrece mediante <strong>subastas</strong>.</p>
+      </div>
+      <div class="dual-card down">
+        <div class="lead">Si sobra dinero</div>
+        <h3>El BCRP retira liquidez 🧽</h3>
+        <p>El BCRP ofrece a bancos y otras entidades (como AFP o aseguradoras) sus propios títulos, que <strong>pagan intereses</strong>. Las entidades entregan soles hoy y reciben esos títulos.</p>
+        <p>Así, el dinero que sobraba queda “guardado” en el BCRP. A esto se le llama <strong>esterilizar</strong> la liquidez.</p>
+      </div>
+    </div>
+    <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Una repo se parece a cuando pides prestada una pelota en el colegio y dejas tu carné como garantía: cuando devuelves la pelota, recuperas tu carné.</p></div>
+  </div>
+
+  <!-- 5. Ventanilla -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">5</span>Herramienta 2: Facilidades de ventanilla (el “plan B”)</h2>
+    <p>Imagina que se termina el día y un banco <strong>todavía necesita dinero</strong>, o <strong>todavía le sobra</strong>, porque no logró hacer tratos con otros bancos. Para esos casos existe la <strong>ventanilla</strong> del BCRP. Cualquier entidad financiera puede usarla, pero <strong>con una pequeña “penalidad”</strong> para que sea el último recurso.</p>
+    <div class="dual-grid">
+      <div class="dual-card down">
+        <div class="lead">Le falta dinero</div>
+        <h3>Pide prestado al BCRP</h3>
+        <p>Mediante una <strong>repo directa</strong> o un <strong>crédito de regulación monetaria</strong>, dejando una garantía.</p>
+        <span class="result">Paga una tasa MÁS ALTA que la de referencia</span>
+      </div>
+      <div class="dual-card up">
+        <div class="lead">Le sobra dinero</div>
+        <h3>Lo deposita en el BCRP</h3>
+        <p>Mediante un <strong>depósito overnight</strong>, que dura solo una noche (un día útil).</p>
+        <span class="result">Gana una tasa MÁS BAJA que la de referencia</span>
+      </div>
+    </div>
+
+    <div class="subhead">El resultado: un “corredor” de tasas</div>
+    <p>Como la ventanilla es cara para pedir y paga poco por depositar, a los bancos siempre les conviene más hacer tratos entre ellos. Así, la tasa interbancaria queda <strong>encerrada entre un techo y un piso</strong>:</p>
+    <div class="corridor">
+      <div class="corridor-row ceil"><div class="corridor-label">Pedir prestado al BCRP<span class="small">Nadie pagaría más que esto a otro banco</span></div><div class="corridor-tag">Techo</div></div>
+      <div class="corridor-row mid"><div class="corridor-label">Tasa de referencia<span class="small">La meta del BCRP</span></div><div class="corridor-tag">Meta</div></div>
+      <div class="corridor-row floor"><div class="corridor-label">Depositar en el BCRP<span class="small">Nadie prestaría a otro banco por menos que esto</span></div><div class="corridor-tag">Piso</div></div>
+    </div>
+    <div class="callout think"><span class="label">🤔 Pregúntate</span><p>Si el BCRP te presta al “techo”, ¿aceptarías que otro banco te cobre más que eso? ¡Claro que no! Por eso la tasa interbancaria no puede subir por encima del techo, ni bajar por debajo del piso.</p></div>
+  </div>
+
+  <!-- 6. Encaje -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">6</span>Herramienta 3: El encaje</h2>
+    <p>Cuando alguien deposita dinero en un banco, el banco no puede prestarlo todo. Una parte debe <strong>guardarla</strong>: en su bóveda o en una cuenta en el BCRP. A ese porcentaje que no se puede prestar se le llama <strong>tasa de encaje</strong>, y lo fija el BCRP, tanto para depósitos en soles como en dólares.</p>
+
+    <div class="sim" aria-label="Simulador de encaje">
+      <label for="encaje"><span>🎚 Mueve la barra: tasa de encaje</span><span id="encajeVal">6 %</span></label>
+      <input type="range" id="encaje" min="0" max="50" step="1" value="6">
+      <p style="font-size:15px;margin-bottom:10px;">Si una persona deposita <strong>S/ 1 000</strong> en el banco:</p>
+      <div class="bar"><div class="kept" id="barKept"></div><div class="lend" id="barLend"></div></div>
+      <div class="sim-legend">
+        <span>🔒 El banco guarda: <b id="kept"></b></span>
+        <span>💸 Puede prestar: <b id="lend"></b></span>
+      </div>
+      <p class="tiny">Porcentajes solo de ejemplo, para practicar.</p>
+    </div>
+
+    <div class="subhead">¿Para qué sirve?</div>
+    <div class="dual-grid">
+      <div class="dual-card up">
+        <div class="lead">La economía está frenada</div>
+        <h3>Bajar el encaje ⬇</h3>
+        <p>Los bancos pueden prestar más dinero, lo que ayuda a que las familias y empresas compren e inviertan.</p>
+      </div>
+      <div class="dual-card down">
+        <div class="lead">La economía va muy acelerada y los precios suben</div>
+        <h3>Subir el encaje ⬆</h3>
+        <p>Los bancos pueden prestar menos, lo que enfría el gasto y reduce la presión sobre los precios.</p>
+      </div>
+    </div>
+
+    <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>En el Perú mucha gente ahorra y se presta en <strong>dólares</strong> (decimos que la economía está <strong>parcialmente dolarizada</strong>). El encaje en dólares ayuda al BCRP a acumular <strong>reservas internacionales</strong>: un “colchón” de dólares para responder si mucha gente retira sus depósitos a la vez o si sale mucho dinero del país. Además, el BCRP puede cobrar un encaje más alto al dinero que llega del extranjero solo por poco tiempo, para evitar entradas y salidas bruscas.</p></div>
+  </div>
+
+  <!-- 7. Resumen -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">7</span>Resumen en 30 segundos</h2>
+    <table class="sum">
+      <thead><tr><th>Herramienta</th><th>¿Quién la inicia?</th><th>¿Para qué sirve?</th></tr></thead>
+      <tbody>
+        <tr><td>Operaciones de Mercado Abierto</td><td>El BCRP, con subastas</td><td>Poner o sacar dinero para que la tasa interbancaria llegue a la meta.</td></tr>
+        <tr><td>Facilidades de ventanilla</td><td>Cada banco, cuando lo necesita</td><td>Plan B al final del día. Crea un techo y un piso para la tasa interbancaria.</td></tr>
+        <tr><td>Encaje</td><td>El BCRP fija el porcentaje</td><td>Regular cuánto pueden prestar los bancos y acumular reservas en dólares.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout idea"><span class="label">🎯 La idea clave</span><p>Todas estas herramientas tienen el mismo fin: que el dinero no pierda su valor y que los precios en el Perú se mantengan estables.</p></div>
+  </div>
+
+  <!-- 8. Quiz -->
+  <div class="card">
+    <h2 class="section-title"><span class="num">8</span>Pon a prueba lo que aprendiste</h2>
+    <p>Elige una respuesta en cada pregunta.</p>
+    <div id="quiz"></div>
+    <div class="score" id="score"></div>
+  </div>
+
+  <footer class="page-footer">Banco Central de Reserva del Perú · Serie Lecturas · Educación económica</footer>
+</div>
+
+<script>
+  // Simulador de encaje
+  const r = document.getElementById('encaje');
+  const fmt = n => 'S/ ' + n.toLocaleString('es-PE');
+  function updateSim(){
+    const p = +r.value, kept = 1000 * p / 100, lend = 1000 - kept;
+    document.getElementById('encajeVal').textContent = p + ' %';
+    document.getElementById('kept').textContent = fmt(kept);
+    document.getElementById('lend').textContent = fmt(lend);
+    const bk = document.getElementById('barKept'), bl = document.getElementById('barLend');
+    bk.style.width = p + '%'; bl.style.width = (100 - p) + '%';
+    bk.textContent = p >= 8 ? p + ' %' : '';
+    bl.textContent = (100 - p) + ' %';
+  }
+  r.addEventListener('input', updateSim); updateSim();
+
+  // Quiz
+  const Q = [
+    {q:'1. Si entre los bancos falta dinero, ¿qué pasa con la tasa interbancaria?',
+     o:['Baja por debajo de la meta','Sube por encima de la meta','No cambia'], a:1,
+     e:'Cuando algo escasea, su precio sube. Y la tasa de interés es el precio del dinero.'},
+    {q:'2. ¿Qué hace el BCRP para inyectar liquidez con una repo?',
+     o:['Presta soles a los bancos a cambio de una garantía','Sube el encaje','Vende sus propios títulos a los bancos'], a:0,
+     e:'En una repo el BCRP entrega soles y recibe títulos valores como garantía, que el banco recompra después.'},
+    {q:'3. ¿Dónde está la tasa de los depósitos overnight en el corredor?',
+     o:['En el techo','En la meta','En el piso'], a:2,
+     e:'Depositar en el BCRP paga menos que la tasa de referencia, así que marca el piso del corredor.'},
+    {q:'4. La economía crece muy rápido y los precios suben. ¿Qué podría hacer el BCRP con el encaje?',
+     o:['Bajarlo para que haya más préstamos','Subirlo para que los bancos presten menos','Eliminarlo'], a:1,
+     e:'Un encaje más alto reduce el dinero disponible para préstamos y ayuda a calmar los precios.'}
+  ];
+  let answered = 0, correct = 0;
+  const quiz = document.getElementById('quiz');
+  Q.forEach(item => {
+    const box = document.createElement('div'); box.className = 'q';
+    box.innerHTML = `<div class="q-title">${item.q}</div><div class="opts"></div><div class="fb"></div>`;
+    const opts = box.querySelector('.opts'), fb = box.querySelector('.fb');
+    item.o.forEach((txt, i) => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
+      b.addEventListener('click', () => {
+        opts.querySelectorAll('button').forEach((x, j) => { x.disabled = true; if (j === item.a) x.classList.add('right'); });
+        const ok = i === item.a;
+        if (!ok) b.classList.add('wrong');
+        fb.innerHTML = (ok ? '<strong style="color:var(--ok)">¡Correcto!</strong> ' : '<strong style="color:var(--bad)">Casi.</strong> ') + item.e;
+        fb.classList.add('show');
+        answered++; if (ok) correct++;
+        if (answered === Q.length) {
+          document.getElementById('score').textContent =
+            `Obtuviste ${correct} de ${Q.length}. ` + (correct === Q.length ? '¡Excelente! 🎉' : correct >= 2 ? '¡Bien hecho! Repasa lo que fallaste.' : 'Vuelve a leer las secciones 3 a 6 y lo tendrás.');
+        }
+      });
+      opts.appendChild(b);
+    });
+    quiz.appendChild(box);
+  });
+</script>
+</body>
+</html>

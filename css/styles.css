@@ -2011,55 +2011,12 @@ button {
 .revenue-bar__seg--renta { background: var(--c); }
 .revenue-bar__seg--otros { background: #8cc594; color: var(--ink-900); }
 
-/* Rules of thumb */
-.how-rules {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: auto;
-}
-
-.how-rule {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  padding: 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: var(--bg);
-}
-
-.how-rule p {
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.45;
-  color: var(--ink-700);
-}
-
-.how-rule strong { color: var(--ink-900); }
-
-.how-rule__icon {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  background: var(--c);
-}
-
-.how-rule__icon svg { width: 16px; height: 16px; }
-.how-rule--up .how-rule__icon { background: #d9453f; }
-.how-rule--down .how-rule__icon { background: var(--c); }
-
 @media (max-width: 860px) {
   .how-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
   .how-card { padding: 22px 18px; }
-  .how-rules { grid-template-columns: 1fr; }
 }
 
 /* =========================================================

@@ -348,10 +348,11 @@ function zoomAt(factor, cx, cy){ // cx, cy en coordenadas del diagrama
   view.w = w; view.h = h;
   applyView();
 }
-function toDiagram(clientX, clientY){
-  var r = svg.getBoundingClientRect();
-  return {x: view.x + (clientX - r.left) * view.w / r.width, y: view.y + (clientY - r.top) * view.h / r.height};
+function toDiagram(clientX, clientY){ // usa la matriz real del SVG (el lienzo puede ser más ancho que el diagrama)
+  var m = svg.getScreenCTM().inverse();
+  return {x: m.a*clientX + m.c*clientY + m.e, y: m.b*clientX + m.d*clientY + m.f};
 }
+function pxToUnits(){ return 1 / svg.getScreenCTM().a; }
 $("#zoom-in").addEventListener("click", function(){ zoomAt(1.4); });
 $("#zoom-out").addEventListener("click", function(){ zoomAt(1/1.4); });
 $("#zoom-reset").addEventListener("click", function(){ view = {x:0, y:0, w:VB.width, h:VB.height}; applyView(); });
@@ -373,7 +374,7 @@ svg.addEventListener("pointerdown", function(e){
 svg.addEventListener("pointermove", function(e){
   var prev = pointers[e.pointerId];
   if (!prev) return;
-  var ids = Object.keys(pointers), r = svg.getBoundingClientRect();
+  var ids = Object.keys(pointers);
   if (ids.length === 2){
     var other = pointers[ids[0] == e.pointerId ? ids[1] : ids[0]];
     var d0 = Math.hypot(prev.x - other.x, prev.y - other.y), d1 = Math.hypot(e.clientX - other.x, e.clientY - other.y);
@@ -388,8 +389,9 @@ svg.addEventListener("pointermove", function(e){
       try { svg.setPointerCapture(e.pointerId); } catch(err){}
       svg.classList.add("dragging");
     }
-    view.x -= (e.clientX - prev.x) * view.w / r.width;
-    view.y -= (e.clientY - prev.y) * view.h / r.height;
+    var k = pxToUnits();
+    view.x -= (e.clientX - prev.x) * k;
+    view.y -= (e.clientY - prev.y) * k;
     applyView();
   }
   pointers[e.pointerId] = {x:e.clientX, y:e.clientY};

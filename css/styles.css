@@ -793,8 +793,9 @@ body.ed-no-scroll { overflow: hidden; }
 .ecodia .explorer.is-full { position: fixed; inset: 0; z-index: 900; margin: 0; padding: 16px; background: var(--ed-ground);
   grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); align-items: stretch; height: 100vh; height: 100dvh; }
 .ecodia .explorer.is-full .stage { display: flex; flex-direction: column; min-height: 0; }
-.ecodia .explorer.is-full .diagram-scroll { flex: 1; min-height: 0; display: grid; place-items: center; padding: 8px 16px 16px; }
-.ecodia .explorer.is-full svg.diagram { width: min(1100px, 100%, calc((100dvh - 110px) * 1000 / 720)); height: auto; min-width: 0; }
+.ecodia .explorer.is-full .diagram-scroll { flex: 1; min-height: 0; overflow: hidden; }
+/* el lienzo ocupa toda la pizarra: al hacer zoom se aprovecha todo el espacio disponible */
+.ecodia .explorer.is-full svg.diagram { position: absolute; inset: 0; width: 100%; height: 100%; min-width: 0; }
 .ecodia .explorer.is-full .panel { position: static; max-height: 100%; overflow-y: auto; }
 
 /* Zoom y desplazamiento del diagrama */
@@ -936,7 +937,7 @@ body.ed-no-scroll { overflow: hidden; }
   .ecodia .panel { position: static; }
   .ecodia .explorer.is-full { display: block; overflow-y: auto; }
   .ecodia .explorer.is-full .diagram-scroll { flex: none; display: block; }
-  .ecodia .explorer.is-full svg.diagram { width: 100%; }
+  .ecodia .explorer.is-full svg.diagram { position: static; width: 100%; height: auto; }
   .ecodia .explorer.is-full .panel { margin-top: 16px; max-height: none; overflow: visible; }
   .ecodia .legend .chip { font-size: 13.5px; }
 }

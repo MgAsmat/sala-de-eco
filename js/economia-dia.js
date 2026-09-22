@@ -255,10 +255,8 @@ function renderExplorar(){
   var n = NODES[state.sel], info = INFO[state.sel];
   var rel = FLOWS.filter(function(f){ return f.from===state.sel || f.to===state.sel; });
   var items = rel.map(function(f){
-    var out = f.from===state.sel;
-    var other = out ? f.to : f.from;
     var mark = f.k==="dinero" ? '<span class="dot"></span>' : '<span class="sq"></span>';
-    return '<li data-flow="'+f.id+'">'+mark+'<span><b>'+esc(f.label)+'</b> <span class="dir">'+(out?'→ entrega a ':'← recibe de ')+esc(nodeTitle(other).replace(/^Mercado /,"m. "))+'</span></span></li>';
+    return '<li data-flow="'+f.id+'">'+mark+'<span><b>'+esc(f.label)+'</b></span></li>';
   }).join("");
   pane.innerHTML = '<div class="pane-anim">'+
     '<span class="tag '+(n.kind==="mercado"?"m":"a")+'">'+(n.kind==="mercado"?"Mercado":"Agente económico")+'</span>'+

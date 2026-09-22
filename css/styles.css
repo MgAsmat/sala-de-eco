@@ -930,6 +930,7 @@ body.ed-no-scroll { overflow: hidden; }
 .ecodia .opt.ok { background: var(--ed-real); border-color: var(--ed-real); color: #fff; }
 .ecodia .opt.no { border-color: var(--ed-accent); color: var(--ed-accent); text-decoration: line-through; }
 .ecodia .fb { margin-top: 10px; font-size: 14px; opacity: 0.85; }
+.ed-confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; }
 
 
 @media (max-width: 980px) {

@@ -451,10 +451,56 @@ place();
 setPlaying(state.playing);
 document.addEventListener("visibilitychange", function(){ if (document.hidden && state.playing){ state._resume = true; state.playing = false; } else if (!document.hidden && state._resume){ state._resume = false; setPlaying(true); } });
 
+/* ---------- Confeti al responder todo bien ---------- */
+function confetti(){
+  if (reduce) return;
+  var cv = document.createElement("canvas"), ctx = cv.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cv.className = "ed-confetti"; cv.setAttribute("aria-hidden", "true");
+  document.body.appendChild(cv);
+  var W, H;
+  function size(){ W = window.innerWidth; H = window.innerHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  size(); window.addEventListener("resize", size);
+  var COLORS = ["#0e8a86", "#3cc6c0", "#c9850c", "#f2b84b", "#c8323c", "#0f2436", "#d5efee"];
+  var parts = [];
+  function burst(x, y, angle, n){
+    for (var i=0;i<n;i++){
+      var a = angle + (Math.random()-0.5)*1.1, v = 9 + Math.random()*9;
+      parts.push({x:x, y:y, vx:Math.cos(a)*v, vy:Math.sin(a)*v, r:Math.random()*Math.PI*2, vr:(Math.random()-0.5)*0.35,
+        w:6+Math.random()*7, h:4+Math.random()*6, c:COLORS[(Math.random()*COLORS.length)|0], round:Math.random()<0.3,
+        tilt:Math.random()*Math.PI*2, life:0});
+    }
+  }
+  // dos cañones desde las esquinas inferiores y una lluvia desde arriba
+  burst(0, H, -Math.PI/3, 90);
+  burst(W, H, -Math.PI*2/3, 90);
+  for (var i=0;i<70;i++) parts.push({x:Math.random()*W, y:-20-Math.random()*H*0.5, vx:(Math.random()-0.5)*2, vy:2+Math.random()*3,
+    r:Math.random()*Math.PI*2, vr:(Math.random()-0.5)*0.3, w:6+Math.random()*7, h:4+Math.random()*6,
+    c:COLORS[(Math.random()*COLORS.length)|0], round:Math.random()<0.3, tilt:Math.random()*Math.PI*2, life:0});
+  var start = performance.now(), DUR = 4200;
+  function tick(now){
+    var t = now - start;
+    ctx.clearRect(0,0,W,H);
+    parts.forEach(function(p){
+      p.vy += 0.28; p.vx *= 0.985; p.vy *= 0.985;
+      p.x += p.vx + Math.sin(p.tilt)*0.6; p.y += p.vy; p.r += p.vr; p.tilt += 0.08;
+      ctx.save();
+      ctx.globalAlpha = t > DUR-900 ? Math.max(0, (DUR-t)/900) : 1;
+      ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.fillStyle = p.c;
+      if (p.round){ ctx.beginPath(); ctx.arc(0,0,p.h/1.6,0,Math.PI*2); ctx.fill(); }
+      else ctx.fillRect(-p.w/2, -p.h/2*Math.abs(Math.cos(p.tilt)), p.w, p.h*Math.abs(Math.cos(p.tilt)) + 1);
+      ctx.restore();
+    });
+    if (t < DUR) requestAnimationFrame(tick);
+    else { window.removeEventListener("resize", size); cv.remove(); }
+  }
+  requestAnimationFrame(tick);
+}
+
 /* ---------- Quiz ---------- */
 var qWrap = $("#questions"), score = 0;
 function buildQuiz(){
-  score = 0; $("#score").textContent = "0";
+  score = 0; $("#score").textContent = "0"; $("#score-of").textContent = "de "+QUIZ.length+" correctas";
   qWrap.innerHTML = "";
   QUIZ.forEach(function(item, qi){
     var d = document.createElement("div"); d.className = "q";
@@ -467,7 +513,10 @@ function buildQuiz(){
           x.disabled = true;
           if (xi===item.a) x.classList.add("ok");
         });
-        if (oi===item.a){ score++; $("#score").textContent = score; fb.textContent = "✓ "+item.fb; }
+        if (oi===item.a){
+          score++; $("#score").textContent = score; fb.textContent = "✓ "+item.fb;
+          if (score === QUIZ.length){ $("#score-of").textContent = "de "+QUIZ.length+" correctas. ¡Perfecto!"; confetti(); }
+        }
         else { b.classList.add("no"); fb.textContent = "La respuesta es “"+item.o[item.a]+"”. "+item.fb.replace(/^Correcto: /,""); }
         fb.hidden = false;
       });

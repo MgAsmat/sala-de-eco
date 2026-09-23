@@ -6,48 +6,81 @@
 <title>¿Qué pasa cuando el Estado gasta más de lo que recibe? — BCRP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#313b54; --navy-deep:#232a3d; --gold:#f1ab26; --blue:#4079a2; --teal:#5fc3bb;
-    --paper:#faf7f0; --card:#ffffff; --border:#e4dfd2; --text-muted:#6b7180;
-    --ok:#2f8f6b; --bad:#c0483e;
-    --shadow-md:0 8px 24px rgba(35,42,61,0.08);
+    --navy:#0b4f4a; --navy-deep:#08403c; --gold:#f4b400; --blue:#106f67; --teal:#3fc2b2; --teal-soft:#a6e0d8;
+    --paper:#f6faf9; --card:#ffffff; --border:#e0ece9; --text-muted:#4d6b67;
+    --ok:#24785a; --bad:#c0483e;
+    --shadow-md:0 8px 24px rgba(9,41,38,0.08);
   }
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Barlow',-apple-system,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .page{max-width:880px;margin:0 auto;padding:0 20px 64px;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h,90px);}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Inter',-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:880px;margin:0 auto;padding:24px 20px 64px;}
 
-  header.masthead{background:var(--navy);color:#fff;padding:18px 0;}
-  .masthead-inner{max-width:880px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:14px;}
-  .masthead-mark{width:38px;height:38px;flex:0 0 auto;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;}
-  .masthead-mark svg{width:20px;height:20px;}
-  .masthead-text{font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.06em;font-size:15px;text-transform:uppercase;}
-  .masthead-text .sub{display:block;font-family:'Barlow',sans-serif;font-weight:400;letter-spacing:0;text-transform:none;font-size:12.5px;color:#c9cedb;margin-top:1px;}
+  /* Encabezado y portada con el estilo de la Sala Educativa */
+  header.masthead{background:rgba(255,255,255,0.95);color:var(--navy-deep);border-bottom:1px solid var(--border);padding:14px 0;}
+  .masthead-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0;}
+  .brand-mark{display:grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#106f67,var(--navy-deep));color:#ffcb3d;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;font-family:'Poppins',sans-serif;}
+  .brand-text strong{font-size:15px;color:var(--navy-deep);}
+  .brand-text em{font-style:normal;font-weight:700;font-size:17px;color:#d99a00;}
+  .brand-text small{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);}
+  .back-link{flex:0 0 auto;font-weight:600;font-size:14px;color:#106f67;text-decoration:none;border:2px solid var(--blue);border-radius:999px;padding:8px 16px;white-space:nowrap;transition:background .15s ease;}
+  .back-link:hover{background:#e2f4f1;}
+  .back-link:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  @media (max-width:560px){.brand-text small{display:none;}.back-link{font-size:13px;padding:7px 12px;}.back-link .long{display:none;}}
 
-  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy) 55%,var(--navy-deep) 100%);color:#fff;padding:36px 0 60px;margin-bottom:-32px;}
+  .hero{background:radial-gradient(700px 320px at 50% -10%,rgba(63,194,178,0.20),transparent 70%),radial-gradient(500px 260px at 95% 20%,rgba(244,180,0,0.12),transparent 70%),var(--paper);color:var(--navy-deep);text-align:center;padding:44px 0 36px;}
   .hero-inner{max-width:880px;margin:0 auto;padding:0 20px;}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-size:12.5px;color:var(--gold);margin-bottom:12px;}
-  .eyebrow::before{content:"";width:22px;height:2px;background:var(--gold);display:inline-block;}
-  h1.title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:0 0 12px;max-width:700px;}
-  .hero-sub{color:#d7dbe6;font-size:17px;max-width:620px;margin:0 0 18px;}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{font-size:13px;font-weight:600;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:4px 12px;color:#fff;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:11.5px;color:#8a5f00;background:#fff3d6;padding:7px 16px;border-radius:999px;margin-bottom:14px;}
+  h1.title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,5vw,38px);line-height:1.1;margin:0 auto 12px;max-width:700px;color:var(--navy-deep);}
+  .hero-sub{color:#345350;font-size:17px;max-width:620px;margin:0 auto 20px;}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .chip{font-size:13px;font-weight:600;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--navy);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+
+  /* Navegación por secciones */
+  nav.secnav{position:sticky;top:0;z-index:50;background:rgba(246,250,249,0.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 4px 14px rgba(9,41,38,0.06);}
+  .secnav-inner{max-width:880px;margin:0 auto;padding:8px 20px;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;}
+  .nav-btn{min-width:0;font:inherit;font-size:13px;line-height:1.15;font-weight:600;color:var(--navy);background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:6px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;overflow-wrap:anywhere;transition:background .15s ease,border-color .15s ease,color .15s ease;}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);padding:8px 12px;gap:5px;}.nav-btn{font-size:12px;padding:5px 2px;}}
+  .nav-btn .n{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--gold);color:#8a5f00;}
+  .nav-btn:hover{border-color:var(--blue);}
+  .nav-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .nav-btn[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .nav-btn[aria-selected="true"] .n{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
+  .nav-btn.star{border-color:var(--gold);}
+  .progress{height:3px;background:var(--border);}
+  .progress span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s ease;}
+
+  .panel{display:none;animation:fadeIn .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .pager{display:flex;justify-content:space-between;gap:12px;margin:4px 0 8px;}
+  .pager button{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .pager button.next{background:var(--navy);border-color:var(--navy);color:#fff;margin-left:auto;}
+  .pager button:hover{border-color:var(--blue);}
+  .pager button.next:hover{background:var(--navy-deep);}
 
   .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:30px 32px;margin:0 0 24px;position:relative;z-index:1;}
   @media (max-width:560px){.card{padding:24px 20px;}}
-  h2.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:25px;line-height:1.2;color:var(--navy);margin:0 0 14px;display:flex;align-items:flex-start;gap:10px;}
+  h2.section-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;line-height:1.2;color:var(--navy);margin:0 0 14px;display:flex;align-items:flex-start;gap:10px;}
   h2.section-title .num{font-weight:700;color:var(--gold);font-size:15px;border:1.5px solid var(--gold);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
-  p{margin:0 0 14px;color:#3a3f4e;}
+  p{margin:0 0 14px;color:#345350;}
   p:last-child{margin-bottom:0;}
   strong{color:var(--navy);font-weight:700;}
-  .subhead{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;color:var(--navy);text-transform:uppercase;letter-spacing:0.03em;margin:24px 0 10px;}
+  .subhead{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:0.015em;margin:24px 0 10px;}
 
+  /* Callouts */
   .callout{margin:18px 0 4px;border-radius:10px;padding:14px 18px;border:1px solid var(--border);background:var(--paper);}
   .callout p{font-size:15.5px;margin:0;}
-  .callout .label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;}
-  .callout.idea{border-left:4px solid var(--gold);} .callout.idea .label{color:#b57a06;}
-  .callout.fact{border-left:4px solid var(--teal);} .callout.fact .label{color:#2c8a82;}
+  .callout .label{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px;}
+  .callout.idea{border-left:4px solid var(--gold);} .callout.idea .label{color:#8a5f00;}
+  .callout.fact{border-left:4px solid var(--teal);} .callout.fact .label{color:#106f67;}
   .callout.think{border-left:4px solid var(--blue);} .callout.think .label{color:var(--blue);}
 
   /* Glossary */
@@ -55,13 +88,13 @@
   @media (max-width:700px){.gloss-grid{grid-template-columns:1fr;}}
   .gloss{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--paper);}
   .gloss .emoji{font-size:26px;line-height:1;}
-  .gloss h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--navy);margin:8px 0 4px;}
+  .gloss h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);margin:8px 0 4px;}
   .gloss p{font-size:15px;margin:0;}
   .gloss .eg{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
 
-  /* Compare family vs state */
+  /* Familia vs Estado */
   table.cmp{width:100%;border-collapse:collapse;font-size:15px;margin-top:10px;}
-  table.cmp th{font-family:'Barlow Condensed',sans-serif;font-size:15.5px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
+  table.cmp th{font-family:'Poppins',sans-serif;font-weight:600;font-size:13.5px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
   table.cmp th:first-child{background:var(--navy-deep);}
   table.cmp td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
   table.cmp td:first-child{font-weight:700;color:var(--navy);white-space:nowrap;}
@@ -70,7 +103,7 @@
     table.cmp thead{display:none;}
     table.cmp tr{display:block;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
     table.cmp td{display:block;border:none;white-space:normal!important;}
-    table.cmp td:first-child{background:var(--navy)!important;color:#fff;}
+    table.cmp td:first-child{background:#e2f4f1!important;color:var(--navy);}
     table.cmp td[data-l]::before{content:attr(data-l);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);}
   }
 
@@ -80,76 +113,73 @@
   .dual-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);background:var(--paper);}
   .dual-card.good{border-top:4px solid var(--ok);}
   .dual-card.bad{border-top:4px solid var(--bad);}
-  .dual-card.neutral{border-top:4px solid var(--navy);}
-  .dual-card.teal{border-top:4px solid var(--teal);}
   .dual-card .lead{font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
-  .dual-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;color:var(--navy);margin:2px 0 8px;}
+  .dual-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin:2px 0 8px;}
   .dual-card.good h3{color:var(--ok);} .dual-card.bad h3{color:var(--bad);}
   .dual-card p{font-size:15.5px;margin:0 0 8px;}
   .dual-card p:last-child{margin-bottom:0;}
-  .dual-card ul{margin:6px 0 0;padding-left:20px;font-size:15px;color:#3a3f4e;}
-  .dual-card li{margin-bottom:4px;}
-  .result{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:700;border-radius:999px;padding:3px 12px;background:#fff;border:1px solid var(--border);color:var(--navy);}
+  .rate-num{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;line-height:1.1;}
+  .dual-card.good .rate-num{color:var(--ok);} .dual-card.bad .rate-num{color:var(--bad);}
 
-  /* Three ways */
+  /* Tres caminos */
   .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px;}
   @media (max-width:700px){.three{grid-template-columns:1fr;}}
   .way{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--paper);text-align:center;}
   .way .emoji{font-size:28px;}
-  .way h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--navy);margin:6px 0 4px;}
+  .way h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);margin:6px 0 4px;}
   .way p{font-size:14.5px;margin:0;}
   .way .fam{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
 
-  /* Bond steps */
+  /* Pasos del bono */
   .steps{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:14px 0 4px;}
   .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;font-size:14.5px;color:var(--navy);font-weight:600;display:flex;flex-direction:column;gap:4px;justify-content:center;}
   .step .e{font-size:22px;}
-  .step.hl{background:rgba(241,171,38,0.15);border-color:var(--gold);}
+  .step.hl{background:rgba(244,180,0,0.15);border-color:var(--gold);}
   .arrow{display:flex;align-items:center;color:var(--gold);font-weight:700;font-size:20px;}
   @media (max-width:640px){.steps{flex-direction:column;}.arrow{justify-content:center;transform:rotate(90deg);}}
 
-  /* Simulator */
-  .sim{margin-top:14px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
-  .sim label{font-weight:600;color:var(--navy);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:15.5px;}
-  .sim input[type=range]{width:100%;margin:8px 0 16px;accent-color:var(--gold);}
-  .verdict{border-radius:10px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-left:5px solid var(--navy);}
-  .verdict .big{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;}
-  .verdict p{font-size:15px;margin:4px 0 0;}
-  .tiny{font-size:13px;color:var(--text-muted);margin-top:8px;}
-
-  /* Rate example */
-  .rate-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1.1;}
-  .dual-card.good .rate-num{color:var(--ok);} .dual-card.bad .rate-num{color:var(--bad);}
-
   .org-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
   .org-chip{display:flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border-radius:999px;padding:8px 16px 8px 9px;}
-  .org-chip .dot{min-width:26px;height:26px;padding:0 4px;border-radius:999px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--navy-deep);}
+  .org-chip .dot{min-width:26px;height:26px;padding:0 4px;border-radius:999px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:9.5px;color:var(--navy-deep);}
   .org-chip .name{font-size:14px;font-weight:600;}
 
-  /* Chart */
+  /* Gráfico */
   .chart-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:6px;}
-  .chart-head h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;color:var(--navy);margin:0;}
+  .chart-head h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin:0;}
   .chart-head .unit{font-size:13px;color:var(--text-muted);}
   .chart-scroll{overflow-x:auto;margin-top:12px;-webkit-overflow-scrolling:touch;}
   .chart-scroll svg{display:block;width:100%;min-width:620px;height:auto;}
-  .chart-scroll .bar{transition:opacity .15s ease;}
-  .chart-scroll .bar:hover{opacity:0.75;}
-  .val-label{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:12.5px;}
-  .year-label{font-family:'Barlow',sans-serif;font-size:11px;fill:#6b7180;}
-  .ann{font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;fill:#232a3d;}
+  .chart-scroll .cbar{cursor:pointer;transition:opacity .2s ease;outline:none;}
+  .chart-scroll .cbar:hover{opacity:0.8;}
+  .chart-scroll .cbar.dim{opacity:0.18;}
+  .chart-scroll .cbar.sel{stroke:var(--gold);stroke-width:3;}
+  .chart-scroll .cbar:focus-visible{stroke:var(--blue);stroke-width:3;}
+  .chart-scroll .vl.dim{opacity:0.18;}
+  .val-label{font-family:'Poppins',sans-serif;font-weight:600;font-size:11px;transition:opacity .2s ease;}
+  .year-label{font-family:'Inter',sans-serif;font-size:11px;fill:#61817d;}
+  .ann{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;fill:#08403c;}
   .chart-legend{display:flex;gap:20px;margin-top:6px;flex-wrap:wrap;}
   .chart-legend .item{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--text-muted);}
   .chart-legend .swatch{width:11px;height:11px;border-radius:3px;}
   .chart-foot{font-size:12.5px;color:var(--text-muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
   .read-list{margin:10px 0 0;padding-left:20px;}
-  .read-list li{margin-bottom:6px;color:#3a3f4e;}
+  .read-list li{margin-bottom:6px;color:#345350;}
+  .year-card{margin-top:12px;border-radius:10px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-left:5px solid var(--navy);}
+  .year-card .yc-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+  .year-card .yc-year{font-family:'Poppins',sans-serif;font-weight:700;font-size:20.5px;color:var(--navy);}
+  .year-card .yc-val{font-family:'Poppins',sans-serif;font-weight:700;font-size:19px;}
+  .year-card p{font-size:15px;margin:4px 0 0;}
+  .year-card.sup{border-left-color:var(--ok);} .year-card.sup .yc-val{color:var(--ok);}
+  .year-card.def .yc-val{color:var(--navy);}
 
-  /* Summary */
+  /* Resumen */
+  .summary-card{border-top:4px solid var(--gold);}
   table.sum{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px;}
-  table.sum th{font-family:'Barlow Condensed',sans-serif;font-size:15px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
+  table.sum th{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
   table.sum td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
   table.sum td:first-child{font-weight:700;color:var(--navy);}
   table.sum tr:nth-child(even) td{background:var(--paper);}
+  table.sum a{color:var(--blue);font-weight:700;text-decoration:none;border-bottom:1px dashed var(--blue);cursor:pointer;}
 
   /* Quiz */
   .q{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:14px;background:var(--paper);}
@@ -162,19 +192,133 @@
   .opts button.wrong{border-color:var(--bad);background:rgba(192,72,62,0.07);}
   .fb{display:none;margin-top:10px;font-size:15px;}
   .fb.show{display:block;}
-  .score{margin-top:18px;font-weight:700;color:var(--navy);text-align:center;font-size:18px;}
+
+  .result-box{display:none;margin-top:20px;text-align:center;border-radius:14px;padding:22px 20px;border:2px solid var(--border);background:#fff;}
+  .result-box.show{display:block;animation:pop .45s cubic-bezier(.2,1.4,.4,1);}
+  @keyframes pop{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:none;}}
+  .result-box .emo{font-size:40px;line-height:1;}
+  .result-box .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:32.5px;line-height:1.1;margin:8px 0 4px;}
+  .result-box .detail{font-size:15.5px;color:#345350;margin:0 0 14px;}
+  .result-box.perfect{border-color:var(--gold);background:rgba(244,180,0,0.1);} .result-box.perfect .big{color:#8a5f00;}
+  .result-box.good{border-color:var(--ok);background:rgba(47,143,107,0.07);} .result-box.good .big{color:var(--ok);}
+  .result-box.retry{border-color:var(--blue);background:rgba(20,138,127,0.07);} .result-box.retry .big{color:var(--blue);}
+  .retry-btn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 18px;cursor:pointer;border:none;background:var(--navy);color:#fff;}
+  .retry-btn:hover{background:var(--navy-deep);}
+
+  /* Herramientas interactivas */
+  .tool{margin-top:20px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .tool-head{display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
+  .tool h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;line-height:1.2;margin:0 0 6px;color:var(--navy);}
+  .tool .hint{font-size:14.5px;color:var(--text-muted);margin:0 0 14px;}
+  .ctrl{margin-bottom:12px;}
+  .ctrl label{display:flex;justify-content:space-between;gap:8px;font-weight:600;color:var(--navy);font-size:15px;flex-wrap:wrap;}
+  .ctrl input[type=range]{width:100%;accent-color:var(--gold);margin:6px 0 0;}
+  .seg{display:flex;flex-wrap:wrap;width:fit-content;max-width:100%;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;background:#fff;}
+  .seg button{flex:1 1 auto;text-align:center;font:inherit;font-size:14.5px;font-weight:600;padding:8px 14px;border:none;background:transparent;color:var(--navy);cursor:pointer;}
+  .seg button.on{background:var(--navy);color:#fff;}
+  @media (max-width:560px){.seg{width:100%;}.seg button{font-size:13.5px;padding:8px 8px;}}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px;}
+  .tbtn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .tbtn:hover:not(:disabled){border-color:var(--blue);}
+  .tbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .tbtn:disabled{opacity:.45;cursor:default;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px;}
+  .stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+  .stat .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .stat .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;color:var(--navy);line-height:1.2;}
+  .msg{margin-top:12px;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600;background:#fff;border:1px solid var(--border);border-left:4px solid var(--blue);color:var(--navy-deep);}
+  .msg.ok{border-left-color:var(--ok);} .msg.warn{border-left-color:var(--bad);} .msg.gold{border-left-color:var(--gold);background:rgba(244,180,0,0.1);}
+  .tiny{font-size:13px;color:var(--text-muted);margin-top:8px;}
+
+  /* Barras horizontales */
+  .hbars{display:grid;gap:8px;margin:6px 0 4px;}
+  .hrow{display:grid;grid-template-columns:92px 1fr;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);}
+  .htrack{height:28px;background:#e2f4f1;border-radius:6px;overflow:hidden;}
+  .hfill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 8px;font-size:13px;font-weight:700;white-space:nowrap;transition:width .3s ease;min-width:0;}
+  .hfill.in{background:var(--teal-soft);color:var(--navy-deep);}
+  .hfill.out{background:var(--navy);color:#fff;}
+  .hfill.gold{background:var(--gold);color:var(--navy-deep);}
+  .hfill.bad{background:var(--bad);color:#fff;}
+  .hfill.muted{background:#a9c2be;color:var(--navy-deep);}
+  .rkrow{font-size:14px;font-weight:600;color:var(--text-muted);}
+  .rkrow .rkhead{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:3px;}
+  .rkrow .htrack{height:16px;}
+  .rkrow.cur{color:var(--navy-deep);} .rkrow.cur .htrack{box-shadow:0 0 0 2px var(--gold);}
+  .verdict{margin-top:12px;border-radius:10px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-left:5px solid var(--navy);}
+  .verdict .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:20.5px;}
+  .verdict p{font-size:15px;margin:4px 0 0;}
+
+  /* Comparador de países */
+  .countries{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:640px){.countries{grid-template-columns:1fr;}}
+  .country{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
+  .country h5{font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;margin:0 0 8px;color:var(--navy);}
+  .pct-big{font-family:'Poppins',sans-serif;font-weight:700;font-size:27.5px;line-height:1;color:var(--navy);}
+  .pct-sub{font-size:13px;color:var(--text-muted);font-weight:600;}
+  .pct-track{height:12px;background:#e2f4f1;border-radius:999px;overflow:hidden;margin-top:8px;}
+  .pct-fill{height:100%;background:var(--bad);border-radius:999px;transition:width .3s ease;}
+  .country.worse{box-shadow:0 0 0 2px var(--bad);}
+
+  /* Juego de clasificación */
+  .cls-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;margin-bottom:12px;}
+  .cls-card .emo{font-size:34px;line-height:1;}
+  .cls-card .txt{font-family:'Poppins',sans-serif;font-weight:700;font-size:19px;color:var(--navy);margin-top:6px;line-height:1.2;}
+  .cls-progress{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;color:var(--text-muted);margin-bottom:8px;}
+  .cls-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  @media (max-width:560px){.cls-btns{grid-template-columns:1fr;}}
+  .cls-btns button{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 8px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .cls-btns button:hover:not(:disabled){border-color:var(--blue);}
+  .cls-btns button:disabled{cursor:default;opacity:.6;}
+  .cls-btns button.right{border-color:var(--ok);background:rgba(47,143,107,0.1);opacity:1;}
+  .cls-btns button.wrong{border-color:var(--bad);background:rgba(192,72,62,0.08);opacity:1;}
+
+  /* Cronograma del bono */
+  .timeline{display:flex;align-items:flex-end;gap:6px;height:170px;margin-top:10px;padding-top:18px;}
+  .tcol{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0;}
+  .tstack{width:100%;max-width:46px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:5px 5px 0 0;overflow:hidden;}
+  .tint{background:var(--gold);transition:height .3s ease;}
+  .tcap{background:var(--teal);transition:height .3s ease;}
+  .tval{font-size:11px;min-height:15px;font-weight:700;color:var(--navy);margin-bottom:3px;white-space:nowrap;}
+  .timeline.dense .tcol:first-child .tval{align-self:flex-start;}
+  .timeline.dense .tcol:last-child .tval{align-self:flex-end;}
+  .tyear{font-size:11.5px;color:var(--text-muted);margin-top:4px;font-weight:600;}
+  .tlegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
+  .tlegend span{display:flex;align-items:center;gap:6px;}
+  .tlegend i{width:11px;height:11px;border-radius:3px;display:inline-block;}
+
+  #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100;}
 
   footer.page-footer{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;}
+
+  /* Componentes con el estilo de la Sala Educativa */
+  nav.secnav{background:rgba(255,255,255,0.95);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .nav-btn{border-radius:14px;}
+  .nav-btn[aria-selected="true"]{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .progress span{background:linear-gradient(90deg,var(--gold),#1aa295);}
+  .card{border-radius:24px;box-shadow:0 10px 28px rgba(9,41,38,0.07);}
+  .summary-card{border-top:none;box-shadow:inset 0 4px 0 var(--gold),0 10px 28px rgba(9,41,38,0.07);}
+  h2.section-title .num{background:#fff3d6;color:#8a5f00;}
+  table.sum th,table.cmp th,table.cmp th:first-child{background:#e2f4f1;color:var(--navy);}
+  table.sum th:first-child,table.cmp th:first-child{border-radius:12px 0 0 12px;}
+  table.sum th:last-child,table.cmp th:last-child{border-radius:0 12px 12px 0;}
+  .pager button{border-radius:999px;padding:11px 22px;font-weight:700;border:2px solid var(--blue);color:#106f67;}
+  .pager button:hover{background:#e2f4f1;}
+  .pager button.next{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);box-shadow:0 10px 24px rgba(244,180,0,0.35);}
+  .pager button.next:hover{background:#ffcb3d;}
+  .chain-step.first{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .chain-step.first .fx{color:#fff3d6;}
+  .callout,.gloss,.dual-card,.sim,.tool,.q,.chain-step{border-radius:16px;}
+  .tbtn,.retry-btn,.seg{border-radius:999px;}
+  .tbtn.primary,.retry-btn{background:var(--blue);border-color:var(--blue);}
+  .tbtn.primary:hover:not(:disabled),.retry-btn:hover{background:var(--navy);}
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="masthead-inner">
-    <div class="masthead-mark">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#232a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
-    </div>
-    <div class="masthead-text">Banco Central de Reserva del Perú<span class="sub">Serie Lecturas · Educación económica para escolares</span></div>
+    <a class="brand" href="../index.html" aria-label="Sala Educativa de Economía — Inicio"><span class="brand-mark" aria-hidden="true">SE</span><span class="brand-text"><strong>Sala Educativa de</strong><em>Economía</em><small>Banco Central de Reserva del Perú</small></span></a>
+    <a class="back-link" href="../politicas.html">← Volver<span class="long"> a Políticas</span></a>
   </div>
 </header>
 
@@ -183,207 +327,490 @@
     <div class="eyebrow">Finanzas públicas para secundaria</div>
     <h1 class="title">¿Qué pasa cuando el Estado gasta más de lo que recibe?</h1>
     <p class="hero-sub">Déficit, superávit, deuda y ahorro: cómo se financia un país, explicado como las cuentas de una familia.</p>
-    <div class="chips"><span class="chip">⏱ Lectura de 10 minutos</span><span class="chip">🎚 Incluye simulador</span><span class="chip">📊 Datos reales del Perú</span><span class="chip">✅ Mini quiz al final</span></div>
+    <div class="chips"><span class="chip">⏱ Lectura de 10 minutos</span><span class="chip">🎚 Incluye simuladores</span><span class="chip">📊 Datos reales del Perú</span><span class="chip">✅ Mini quiz al final</span></div>
   </div>
 </div>
 
+<nav class="secnav" aria-label="Secciones de la lectura">
+  <div class="secnav-inner" role="tablist" id="navList">
+    <button class="nav-btn star" role="tab" data-target="resumen"><span class="n">⚡</span>Resumen</button>
+    <button class="nav-btn" role="tab" data-target="conceptos"><span class="n">1</span>Conceptos clave</button>
+    <button class="nav-btn" role="tab" data-target="cuentas"><span class="n">2</span>Las cuentas</button>
+    <button class="nav-btn" role="tab" data-target="saldo"><span class="n">3</span>Déficit y superávit</button>
+    <button class="nav-btn" role="tab" data-target="financiamiento"><span class="n">4</span>Financia&shy;miento</button>
+    <button class="nav-btn" role="tab" data-target="riesgo"><span class="n">5</span>Riesgo país</button>
+    <button class="nav-btn" role="tab" data-target="peru"><span class="n">6</span>El Perú</button>
+    <button class="nav-btn star" role="tab" data-target="quiz-sec"><span class="n">✓</span>Quiz</button>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+</nav>
+
 <div class="page">
 
-  <!-- 0. Gancho -->
-  <div class="card">
-    <h2 class="section-title">Empecemos con una pregunta</h2>
-    <p>¿Quién paga el colegio público, la posta de salud, la pista por la que pasa tu micro o el sueldo de los policías? La respuesta corta es: <strong>el Estado</strong>. Y la respuesta larga es: <strong>todos nosotros</strong>, a través de los impuestos.</p>
-    <p>Pero, ¿qué pasa cuando esa plata no alcanza? Igual que una familia, el Estado tiene que decidir si <strong>usa sus ahorros</strong> o si <strong>se presta</strong>. En esta lectura vas a ver cómo lo hace el Perú y por qué no todos los países consiguen préstamos igual de baratos.</p>
-  </div>
+  <!-- RESUMEN -->
+  <section class="panel" id="resumen" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title">Empecemos con una pregunta</h2>
+      <p>¿Quién paga el colegio público, la posta de salud, la pista por la que pasa tu micro o el sueldo de los policías? La respuesta corta es: <strong>el Estado</strong>. Y la respuesta larga es: <strong>todos nosotros</strong>, a través de los impuestos.</p>
+      <p>Pero, ¿qué pasa cuando esa plata no alcanza? Igual que una familia, el Estado tiene que decidir si <strong>usa sus ahorros</strong> o si <strong>se presta</strong>. En esta lectura vas a ver cómo lo hace el Perú y por qué no todos los países consiguen préstamos igual de baratos.</p>
+    </div>
+    <div class="card summary-card">
+      <h2 class="section-title"><span class="num">⚡</span>Resumen en 30 segundos</h2>
+      <table class="sum">
+        <thead><tr><th>Concepto</th><th>En pocas palabras</th></tr></thead>
+        <tbody>
+          <tr><td><a data-goto="cuentas">Ingresos del Estado</a></td><td>Sobre todo impuestos: Renta, IGV, ISC.</td></tr>
+          <tr><td><a data-goto="cuentas">Gastos del Estado</a></td><td>Del día a día (sueldos, medicinas) y para el futuro (colegios, carreteras).</td></tr>
+          <tr><td><a data-goto="saldo">Superávit</a></td><td>Sobra dinero: se ahorra o se paga deuda.</td></tr>
+          <tr><td><a data-goto="saldo">Déficit</a></td><td>Falta dinero: se usan ahorros o se pide prestado.</td></tr>
+          <tr><td><a data-goto="financiamiento">Bono</a></td><td>Un préstamo que le haces al Estado a cambio de intereses.</td></tr>
+          <tr><td><a data-goto="riesgo">Riesgo país</a></td><td>Qué tan confiable es un país como pagador. Más riesgo, intereses más altos.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout idea"><span class="label">💡 La regla de oro</span><p>Ahorrar en los tiempos buenos para tener con qué enfrentar los tiempos difíciles. Es lo que haría cualquier familia previsora… y también un país responsable.</p></div>
+    </div>
+  </section>
 
-  <!-- 1. Glosario -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">1</span>Tres ideas antes de empezar</h2>
-    <div class="gloss-grid">
-      <div class="gloss">
-        <div class="emoji">🧾</div>
-        <h3>Impuestos</h3>
-        <p>Pagos obligatorios que hacemos personas y empresas al Estado para financiar los servicios públicos.</p>
-        <span class="eg">Ej.: el IGV que va incluido en el precio de casi todo lo que compras.</span>
+  <!-- 1. Conceptos -->
+  <section class="panel" id="conceptos" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">1</span>Tres ideas antes de empezar</h2>
+      <div class="gloss-grid">
+        <div class="gloss">
+          <div class="emoji">🧾</div>
+          <h3>Impuestos</h3>
+          <p>Pagos obligatorios que hacemos personas y empresas al Estado para financiar los servicios públicos.</p>
+          <span class="eg">Ej.: el IGV que va incluido en el precio de casi todo lo que compras.</span>
+        </div>
+        <div class="gloss">
+          <div class="emoji">⚖️</div>
+          <h3>Resultado fiscal</h3>
+          <p>La resta entre lo que el Estado <strong>recibe</strong> y lo que <strong>gasta</strong> en un año.</p>
+          <span class="eg">También se le llama posición fiscal o resultado económico.</span>
+        </div>
+        <div class="gloss">
+          <div class="emoji">📈</div>
+          <h3>PBI</h3>
+          <p>El valor de todo lo que produce un país en un año. Sirve para comparar tamaños.</p>
+          <span class="eg">Decir “déficit de 2 % del PBI” es más útil que dar la cifra en soles.</span>
+        </div>
       </div>
-      <div class="gloss">
-        <div class="emoji">⚖️</div>
-        <h3>Resultado fiscal</h3>
-        <p>La resta entre lo que el Estado <strong>recibe</strong> y lo que <strong>gasta</strong> en un año.</p>
-        <span class="eg">También se le llama posición fiscal o resultado económico.</span>
-      </div>
-      <div class="gloss">
-        <div class="emoji">📈</div>
-        <h3>PBI</h3>
-        <p>El valor de todo lo que produce un país en un año. Sirve para comparar tamaños.</p>
-        <span class="eg">Decir “déficit de 2 % del PBI” es más útil que dar la cifra en soles.</span>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Por qué medir el déficit como % del PBI?</h4>
+        <p class="hint">Compara dos países imaginarios. Mueve las barras y descubre cuál tiene el déficit más “pesado” para su economía.</p>
+        <div class="countries">
+          <div class="country" id="ctyA">
+            <h5>🏙️ País Grande</h5>
+            <div class="ctrl"><label for="aDef"><span>Déficit</span><span id="aDefVal"></span></label><input type="range" id="aDef" min="1" max="60" step="1" value="20"></div>
+            <div class="ctrl"><label for="aPbi"><span>PBI</span><span id="aPbiVal"></span></label><input type="range" id="aPbi" min="50" max="1000" step="10" value="1000"></div>
+            <div class="pct-big" id="aPct"></div><div class="pct-sub">del PBI</div>
+            <div class="pct-track"><div class="pct-fill" id="aFill"></div></div>
+          </div>
+          <div class="country" id="ctyB">
+            <h5>🏡 País Pequeño</h5>
+            <div class="ctrl"><label for="bDef"><span>Déficit</span><span id="bDefVal"></span></label><input type="range" id="bDef" min="1" max="60" step="1" value="10"></div>
+            <div class="ctrl"><label for="bPbi"><span>PBI</span><span id="bPbiVal"></span></label><input type="range" id="bPbi" min="50" max="1000" step="10" value="100"></div>
+            <div class="pct-big" id="bPct"></div><div class="pct-sub">del PBI</div>
+            <div class="pct-track"><div class="pct-fill" id="bFill"></div></div>
+          </div>
+        </div>
+        <div class="msg" id="pbiMsg"></div>
+        <p class="tiny">Cifras inventadas, en miles de millones de soles. La barra roja llega al final cuando el déficit es 10 % del PBI o más.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- 2. Ingresos y gastos -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">2</span>El Estado tiene cuentas, igual que tu familia</h2>
-    <p>Así como en tu casa entra dinero (sueldos) y sale dinero (comida, pasajes, luz), el Estado también tiene <strong>ingresos</strong> y <strong>gastos</strong>:</p>
-    <table class="cmp">
-      <thead><tr><th></th><th>🏠 Una familia</th><th>🏛️ El Estado</th></tr></thead>
-      <tbody>
-        <tr><td>Ingresos</td><td data-l="Familia">Sueldos de los que trabajan</td><td data-l="Estado"><strong>Tributarios</strong> (impuestos como el Impuesto a la Renta, el IGV y el ISC) y <strong>no tributarios</strong> (como los aportes a la seguridad social o las regalías)</td></tr>
-        <tr><td>Gastos del día a día</td><td data-l="Familia">Comida, luz, agua, pasajes</td><td data-l="Estado"><strong>Gasto corriente</strong>: sueldos de docentes, médicos y policías, medicinas, pensiones</td></tr>
-        <tr><td>Gastos para el futuro</td><td data-l="Familia">Ampliar la casa, comprar una refri</td><td data-l="Estado"><strong>Inversión pública</strong>: construir colegios, hospitales, carreteras</td></tr>
-      </tbody>
-    </table>
+  <!-- 2. Las cuentas -->
+  <section class="panel" id="cuentas" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>El Estado tiene cuentas, igual que tu familia</h2>
+      <p>Así como en tu casa entra dinero (sueldos) y sale dinero (comida, pasajes, luz), el Estado también tiene <strong>ingresos</strong> y <strong>gastos</strong>:</p>
+      <table class="cmp">
+        <thead><tr><th></th><th>🏠 Una familia</th><th>🏛️ El Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Ingresos</td><td data-l="Familia">Sueldos de los que trabajan</td><td data-l="Estado"><strong>Tributarios</strong> (impuestos como el Impuesto a la Renta, el IGV y el ISC) y <strong>no tributarios</strong> (como los aportes a la seguridad social o las regalías)</td></tr>
+          <tr><td>Gastos del día a día</td><td data-l="Familia">Comida, luz, agua, pasajes</td><td data-l="Estado"><strong>Gasto corriente</strong>: sueldos de docentes, médicos y policías, medicinas, pensiones</td></tr>
+          <tr><td>Gastos para el futuro</td><td data-l="Familia">Ampliar la casa, comprar una refri</td><td data-l="Estado"><strong>Inversión pública</strong>: construir colegios, hospitales, carreteras</td></tr>
+        </tbody>
+      </table>
 
-    <div class="subhead">Los tres impuestos que más vas a escuchar</div>
-    <div class="three">
-      <div class="way"><div class="emoji">💼</div><h3>Impuesto a la Renta</h3><p>Se paga sobre lo que ganan las personas y las empresas.</p></div>
-      <div class="way"><div class="emoji">🛒</div><h3>IGV</h3><p>Impuesto General a las Ventas: va incluido en el precio de lo que compras.</p></div>
-      <div class="way"><div class="emoji">🥤</div><h3>ISC</h3><p>Impuesto Selectivo al Consumo: se cobra a productos específicos, como bebidas azucaradas, cigarrillos o combustibles.</p></div>
+      <div class="subhead">Los tres impuestos que más vas a escuchar</div>
+      <div class="three">
+        <div class="way"><div class="emoji">💼</div><h3>Impuesto a la Renta</h3><p>Se paga sobre lo que ganan las personas y las empresas.</p></div>
+        <div class="way"><div class="emoji">🛒</div><h3>IGV</h3><p>Impuesto General a las Ventas: va incluido en el precio de lo que compras.</p></div>
+        <div class="way"><div class="emoji">🥤</div><h3>ISC</h3><p>Impuesto Selectivo al Consumo: se cobra a productos específicos, como bebidas azucaradas, cigarrillos o combustibles.</p></div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🎮 Juego</div>
+        <h4>¿Ingreso, gasto corriente o inversión pública?</h4>
+        <p class="hint">Clasifica cada tarjeta en la columna correcta de las cuentas del Estado.</p>
+        <div class="cls-progress"><span id="clsProgress"></span><span id="clsScore"></span></div>
+        <div class="cls-card"><div class="emo" id="clsEmo"></div><div class="txt" id="clsTxt"></div></div>
+        <div class="cls-btns" id="clsBtns">
+          <button type="button" data-c="ing">💰 Ingreso</button>
+          <button type="button" data-c="cor">🧾 Gasto corriente</button>
+          <button type="button" data-c="inv">🏗️ Inversión pública</button>
+        </div>
+        <div class="msg" id="clsMsg">Elige una opción para empezar.</div>
+        <div class="btn-row" style="margin-top:12px;">
+          <button type="button" class="tbtn primary" id="clsNext">Siguiente tarjeta →</button>
+          <button type="button" class="tbtn" id="clsRestart">↻ Empezar de nuevo</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- 3. Superávit / déficit -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">3</span>¿Sobra o falta? Superávit y déficit</h2>
-    <p>Al final del año se hace la resta: <strong>ingresos − gastos</strong>. Hay tres resultados posibles:</p>
-    <div class="dual-grid">
-      <div class="dual-card good">
-        <div class="lead">Ingresos &gt; gastos</div>
-        <h3>Superávit ➕</h3>
-        <p>Sobra dinero. El Estado puede <strong>ahorrar</strong> o <strong>pagar parte de su deuda</strong>.</p>
+  <section class="panel" id="saldo" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">3</span>¿Sobra o falta? Superávit y déficit</h2>
+      <p>Al final del año se hace la resta: <strong>ingresos − gastos</strong>. Hay tres resultados posibles:</p>
+      <div class="dual-grid">
+        <div class="dual-card good">
+          <div class="lead">Ingresos &gt; gastos</div>
+          <h3>Superávit ➕</h3>
+          <p>Sobra dinero. El Estado puede <strong>ahorrar</strong> o <strong>pagar parte de su deuda</strong>.</p>
+        </div>
+        <div class="dual-card bad">
+          <div class="lead">Gastos &gt; ingresos</div>
+          <h3>Déficit ➖</h3>
+          <p>Falta dinero. El Estado tiene que <strong>usar ahorros</strong> o <strong>endeudarse</strong>.</p>
+        </div>
       </div>
-      <div class="dual-card bad">
-        <div class="lead">Gastos &gt; ingresos</div>
-        <h3>Déficit ➖</h3>
-        <p>Falta dinero. El Estado tiene que <strong>usar ahorros</strong> o <strong>endeudarse</strong>.</p>
+      <p style="margin-top:14px;">Si ingresos y gastos son iguales, se dice que hay <strong>equilibrio</strong>.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Las cuentas de un país imaginario</h4>
+        <p class="hint">Mueve las barras y mira qué pasa con el resultado del año.</p>
+        <div class="ctrl"><label for="ing"><span>💰 Ingresos</span><span id="ingVal"></span></label><input type="range" id="ing" min="50" max="150" step="1" value="100"></div>
+        <div class="ctrl"><label for="gas"><span>🧱 Gastos</span><span id="gasVal"></span></label><input type="range" id="gas" min="50" max="150" step="1" value="110"></div>
+        <div class="hbars">
+          <div class="hrow"><span>Ingresos</span><div class="htrack"><div class="hfill in" id="ingBar"></div></div></div>
+          <div class="hrow"><span>Gastos</span><div class="htrack"><div class="hfill out" id="gasBar"></div></div></div>
+        </div>
+        <div class="verdict" id="verdict"><div class="big" id="vBig"></div><p id="vTxt"></p></div>
+        <p class="tiny">Cifras inventadas, en miles de millones de soles, solo para practicar.</p>
       </div>
-    </div>
-    <p style="margin-top:14px;">Si ingresos y gastos son iguales, se dice que hay <strong>equilibrio</strong>.</p>
 
-    <div class="sim" aria-label="Simulador de presupuesto">
-      <p style="font-size:15.5px;margin-bottom:10px;"><strong>🎚 Prueba tú:</strong> mueve las barras y mira qué pasa con las cuentas de un país imaginario.</p>
-      <label for="ing"><span>💰 Ingresos</span><span id="ingVal"></span></label>
-      <input type="range" id="ing" min="50" max="150" step="1" value="100">
-      <label for="gas"><span>🧱 Gastos</span><span id="gasVal"></span></label>
-      <input type="range" id="gas" min="50" max="150" step="1" value="110">
-      <div class="verdict" id="verdict"><div class="big" id="vBig"></div><p id="vTxt"></p></div>
-      <p class="tiny">Cifras inventadas, en miles de millones de soles, solo para practicar.</p>
+      <div class="callout idea"><span class="label">💡 La regla de oro</span><p>Ahorrar en los tiempos buenos para tener con qué enfrentar los tiempos difíciles. Es lo que haría cualquier familia previsora… y también un país responsable.</p></div>
     </div>
-
-    <div class="callout idea"><span class="label">💡 La regla de oro</span><p>Ahorrar en los tiempos buenos para tener con qué enfrentar los tiempos difíciles. Es lo que haría cualquier familia previsora… y también un país responsable.</p></div>
-  </div>
+  </section>
 
   <!-- 4. Financiamiento -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">4</span>Si falta dinero, ¿de dónde sale?</h2>
-    <p>Cuando hay déficit, el Estado tiene tres caminos, muy parecidos a los de una familia:</p>
-    <div class="three">
-      <div class="way"><div class="emoji">🐷</div><h3>Usar ahorros</h3><p>Gastar lo que guardó en años de superávit.</p><span class="fam">Familia: romper el chanchito.</span></div>
-      <div class="way"><div class="emoji">🇵🇪</div><h3>Deuda interna</h3><p>Pedir prestado a personas y empresas <strong>dentro del país</strong>, generalmente en soles.</p><span class="fam">Familia: pedirle a un pariente.</span></div>
-      <div class="way"><div class="emoji">🌎</div><h3>Deuda externa</h3><p>Pedir prestado a inversionistas u organismos <strong>del extranjero</strong>.</p><span class="fam">Familia: pedirle al banco.</span></div>
-    </div>
-    <p style="margin-top:16px;">En el Perú, el déficit se financia sobre todo con <strong>deuda interna y externa</strong>.</p>
+  <section class="panel" id="financiamiento" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">4</span>Si falta dinero, ¿de dónde sale?</h2>
+      <p>Cuando hay déficit, el Estado tiene tres caminos, muy parecidos a los de una familia:</p>
+      <div class="three">
+        <div class="way"><div class="emoji">🐷</div><h3>Usar ahorros</h3><p>Gastar lo que guardó en años de superávit.</p><span class="fam">Familia: romper el chanchito.</span></div>
+        <div class="way"><div class="emoji">🇵🇪</div><h3>Deuda interna</h3><p>Pedir prestado a personas y empresas <strong>dentro del país</strong>, generalmente en soles.</p><span class="fam">Familia: pedirle a un pariente.</span></div>
+        <div class="way"><div class="emoji">🌎</div><h3>Deuda externa</h3><p>Pedir prestado a inversionistas u organismos <strong>del extranjero</strong>.</p><span class="fam">Familia: pedirle al banco.</span></div>
+      </div>
+      <p style="margin-top:16px;">En el Perú, el déficit se financia sobre todo con <strong>deuda interna y externa</strong>.</p>
 
-    <div class="subhead">¿Cómo se presta un país? Con bonos</div>
-    <p>Una de las formas más usadas es vender <strong>bonos</strong>. Un bono es un documento que dice, más o menos: <em>“Me prestaste dinero; te lo devolveré en tal fecha y, mientras tanto, te pagaré intereses”</em>. El Estado los vende a inversionistas en el mercado local y en mercados internacionales.</p>
-    <div class="steps">
-      <div class="step"><span class="e">🏛️</span>El Estado emite un bono</div>
-      <div class="arrow">→</div>
-      <div class="step"><span class="e">🧑‍💼</span>Un inversionista lo compra: le presta dinero al Estado</div>
-      <div class="arrow">→</div>
-      <div class="step"><span class="e">🪙</span>El Estado le paga intereses cada cierto tiempo</div>
-      <div class="arrow">→</div>
-      <div class="step hl"><span class="e">✅</span>Al vencer, el Estado devuelve el dinero prestado</div>
-    </div>
-    <div class="callout think"><span class="label">🤔 Pregúntate</span><p>Comprar un bono, ¿es darle un regalo al Estado? No: es <strong>prestarle</strong> dinero a cambio de intereses.</p></div>
+      <div class="subhead">¿Cómo se presta un país? Con bonos</div>
+      <p>Una de las formas más usadas es vender <strong>bonos</strong>. Un bono es un documento que dice, más o menos: <em>“Me prestaste dinero; te lo devolveré en tal fecha y, mientras tanto, te pagaré intereses”</em>. El Estado los vende a inversionistas en el mercado local y en mercados internacionales.</p>
+      <div class="steps">
+        <div class="step"><span class="e">🏛️</span>El Estado emite un bono</div>
+        <div class="arrow">→</div>
+        <div class="step"><span class="e">🧑‍💼</span>Un inversionista lo compra: le presta dinero al Estado</div>
+        <div class="arrow">→</div>
+        <div class="step"><span class="e">🪙</span>El Estado le paga intereses cada cierto tiempo</div>
+        <div class="arrow">→</div>
+        <div class="step hl"><span class="e">✅</span>Al vencer, el Estado devuelve el dinero prestado</div>
+      </div>
 
-    <div class="subhead">Préstamos de organismos internacionales</div>
-    <p>El Estado también puede pedir préstamos a <strong>organismos multilaterales</strong>, es decir, instituciones formadas por muchos países que financian proyectos de salud, educación o infraestructura, por ejemplo:</p>
-    <div class="org-row">
-      <div class="org-chip"><span class="dot">BM</span><span class="name">Banco Mundial</span></div>
-      <div class="org-chip"><span class="dot">BID</span><span class="name">Banco Interamericano de Desarrollo</span></div>
-      <div class="org-chip"><span class="dot">CAF</span><span class="name">Banco de Desarrollo de América Latina y el Caribe</span></div>
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Compra un bono y mira lo que recibes</h4>
+        <p class="hint">Imagina que le prestas dinero al Estado comprando un bono. Elige el monto, la tasa de interés y el plazo.</p>
+        <div class="ctrl"><label for="bnMonto"><span>Monto que prestas</span><span id="bnMontoVal"></span></label><input type="range" id="bnMonto" min="1000" max="10000" step="500" value="5000"></div>
+        <div class="ctrl"><label for="bnTasa"><span>Tasa de interés anual</span><span id="bnTasaVal"></span></label><input type="range" id="bnTasa" min="1" max="10" step="0.5" value="5"></div>
+        <div class="ctrl"><label for="bnPlazo"><span>Plazo</span><span id="bnPlazoVal"></span></label><input type="range" id="bnPlazo" min="1" max="10" step="1" value="5"></div>
+        <div class="timeline" id="bnTimeline" aria-label="Pagos que recibes cada año"></div>
+        <div class="tlegend"><span>📅 Año de pago →</span><span><i style="background:var(--gold)"></i>Intereses</span><span><i style="background:var(--teal)"></i>Devolución de lo prestado</span></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Intereses cada año</div><div class="v" id="bnAnual"></div></div>
+          <div class="stat"><div class="k">Intereses en total</div><div class="v" id="bnInt"></div></div>
+          <div class="stat"><div class="k">Recibes en total</div><div class="v" id="bnTotal"></div></div>
+        </div>
+        <div class="msg gold" id="bnMsg"></div>
+        <p class="tiny">Ejemplo simplificado de un bono que paga intereses una vez al año.</p>
+      </div>
+
+      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>Comprar un bono, ¿es darle un regalo al Estado? No: es <strong>prestarle</strong> dinero a cambio de intereses.</p></div>
+
+      <div class="subhead">Préstamos de organismos internacionales</div>
+      <p>El Estado también puede pedir préstamos a <strong>organismos multilaterales</strong>, es decir, instituciones formadas por muchos países que financian proyectos de salud, educación o infraestructura, por ejemplo:</p>
+      <div class="org-row">
+        <div class="org-chip"><span class="dot">BM</span><span class="name">Banco Mundial</span></div>
+        <div class="org-chip"><span class="dot">BID</span><span class="name">Banco Interamericano de Desarrollo</span></div>
+        <div class="org-chip"><span class="dot">CAF</span><span class="name">Banco de Desarrollo de América Latina y el Caribe</span></div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- 5. Riesgo país -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">5</span>No todos pagan lo mismo por prestarse</h2>
-    <p>Antes de prestarle a alguien, te preguntas: <strong>“¿me devolverá?”</strong>. Los inversionistas hacen lo mismo con los países. A esa evaluación se le resume en el <strong>riesgo país</strong>: mientras más dudas haya de que un país pueda pagar, más alto es su riesgo.</p>
-    <div class="dual-grid">
-      <div class="dual-card good">
-        <div class="lead">Riesgo bajo, deuda ordenada</div>
-        <h3>Préstamo barato</h3>
-        <p>Los inversionistas confían y aceptan intereses bajos.</p>
-        <div class="rate-num">S/ 30</div>
-        <p>de intereses al año por cada S/ 1 000 prestados <span class="tiny">(ejemplo al 3 %)</span></p>
+  <section class="panel" id="riesgo" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>No todos pagan lo mismo por prestarse</h2>
+      <p>Antes de prestarle a alguien, te preguntas: <strong>“¿me devolverá?”</strong>. Los inversionistas hacen lo mismo con los países. A esa evaluación se le resume en el <strong>riesgo país</strong>: mientras más dudas haya de que un país pueda pagar, más alto es su riesgo.</p>
+      <div class="dual-grid">
+        <div class="dual-card good">
+          <div class="lead">Riesgo bajo, deuda ordenada</div>
+          <h3>Préstamo barato</h3>
+          <p>Los inversionistas confían y aceptan intereses bajos.</p>
+          <div class="rate-num">S/ 30</div>
+          <p>de intereses al año por cada S/ 1 000 prestados <span class="tiny">(ejemplo al 3 %)</span></p>
+        </div>
+        <div class="dual-card bad">
+          <div class="lead">Riesgo alto, demasiada deuda</div>
+          <h3>Préstamo caro… o ninguno</h3>
+          <p>Exigen intereses altos para compensar el riesgo, o simplemente no prestan.</p>
+          <div class="rate-num">S/ 90</div>
+          <p>de intereses al año por cada S/ 1 000 prestados <span class="tiny">(ejemplo al 9 %)</span></p>
+        </div>
       </div>
-      <div class="dual-card bad">
-        <div class="lead">Riesgo alto, demasiada deuda</div>
-        <h3>Préstamo caro… o ninguno</h3>
-        <p>Exigen intereses altos para compensar el riesgo, o simplemente no prestan.</p>
-        <div class="rate-num">S/ 90</div>
-        <p>de intereses al año por cada S/ 1 000 prestados <span class="tiny">(ejemplo al 9 %)</span></p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Cuánto le cuesta a un país su reputación?</h4>
+        <p class="hint">Un país necesita pedir prestado para cubrir su déficit. Elige qué tan confiable lo ven los inversionistas y cuánto necesita.</p>
+        <div class="seg" id="rkMode">
+          <button type="button" class="on" data-m="0">🟢 Riesgo bajo</button>
+          <button type="button" data-m="1">🟡 Medio</button>
+          <button type="button" data-m="2">🟠 Alto</button>
+          <button type="button" data-m="3">🔴 Muy alto</button>
+        </div>
+        <div class="ctrl"><label for="rkMonto"><span>Préstamo que necesita</span><span id="rkMontoVal"></span></label><input type="range" id="rkMonto" min="500" max="5000" step="100" value="1000"></div>
+        <div class="hbars" id="rkBars"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Tasa que le cobran</div><div class="v" id="rkTasa"></div></div>
+          <div class="stat"><div class="k">Intereses al año</div><div class="v" id="rkAnual"></div></div>
+          <div class="stat"><div class="k">Pago extra frente a riesgo bajo, en 10 años</div><div class="v" id="rkExtra"></div></div>
+        </div>
+        <div class="msg" id="rkMsg"></div>
+        <p class="tiny">Tasas de ejemplo: 3 %, 5 % y 9 % anual. Montos en millones de soles.</p>
+      </div>
+
+      <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Es como en el salón: al compañero que siempre devuelve lo que le prestan, todos le prestan sin problema. Al que nunca devuelve, nadie le presta, o le piden algo a cambio. <strong>La reputación de buen pagador vale mucho.</strong></p></div>
+    </div>
+  </section>
+
+  <!-- 6. El Perú -->
+  <section class="panel" id="peru" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">6</span>¿Y qué ha pasado en el Perú?</h2>
+      <div class="chart-head"><h3>Resultado económico del sector público no financiero</h3><span class="unit">% del PBI</span></div>
+      <div class="seg" id="chFilter" style="margin-top:12px;">
+        <button type="button" class="on" data-m="all">Todos los años</button>
+        <button type="button" data-m="sup">Solo superávit</button>
+        <button type="button" data-m="def">Solo déficit</button>
+      </div>
+      <div class="chart-scroll" id="chart"></div>
+      <div class="chart-legend">
+        <div class="item"><span class="swatch" style="background:#3fc2b2;"></span>Superávit (sobró dinero)</div>
+        <div class="item"><span class="swatch" style="background:#0b4f4a;"></span>Déficit (faltó dinero)</div>
+      </div>
+      <div class="year-card" id="yearCard" aria-live="polite">
+        <div class="yc-top"><span class="yc-year" id="ycYear"></span><span class="yc-val" id="ycVal"></span></div>
+        <p id="ycTxt"></p>
+      </div>
+      <div class="msg" id="chCount"></div>
+      <div class="chart-foot">Fuente: BCRP. Serie 2005–2023. Toca o haz clic en una barra para ver qué pasó ese año. En celular, desliza el gráfico hacia los lados.</div>
+
+      <div class="subhead">Aprende a leer el gráfico</div>
+      <ol class="read-list">
+        <li><strong>2006–2008:</strong> años de bonanza. El Estado tuvo superávit y pudo ahorrar.</li>
+        <li><strong>2020:</strong> la barra más grande. Por la pandemia, el Estado gastó mucho más en salud y en apoyo a las familias, mientras que la recaudación cayó.</li>
+        <li>Parte de ese gasto se cubrió con <strong>ahorros de años anteriores</strong>: ¡la regla de oro en acción!</li>
+      </ol>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>El Perú tiene un <strong>Fondo de Estabilización Fiscal</strong>, una especie de “chanchito” del Estado donde se guarda parte de lo que sobra en los años buenos para usarlo en momentos de crisis.</p></div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="panel" id="quiz-sec" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">✓</span>Pon a prueba lo que aprendiste</h2>
+      <p>Elige una respuesta en cada pregunta.</p>
+      <div id="quiz"></div>
+      <div class="result-box" id="resultBox" role="status" aria-live="polite">
+        <div class="emo" id="resultEmo"></div>
+        <div class="big" id="resultTitle"></div>
+        <p class="detail" id="resultDetail"></p>
+        <button type="button" class="retry-btn" id="retryBtn">↻ Intentar de nuevo</button>
       </div>
     </div>
-    <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Es como en el salón: al compañero que siempre devuelve lo que le prestan, todos le prestan sin problema. Al que nunca devuelve, nadie le presta, o le piden algo a cambio. <strong>La reputación de buen pagador vale mucho.</strong></p></div>
-  </div>
-
-  <!-- 6. Gráfico -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">6</span>¿Y qué ha pasado en el Perú?</h2>
-    <div class="chart-head"><h3>Resultado económico del sector público no financiero</h3><span class="unit">% del PBI</span></div>
-    <div class="chart-scroll" id="chart"></div>
-    <div class="chart-legend">
-      <div class="item"><span class="swatch" style="background:#5fc3bb;"></span>Superávit (sobró dinero)</div>
-      <div class="item"><span class="swatch" style="background:#313b54;"></span>Déficit (faltó dinero)</div>
-    </div>
-    <div class="chart-foot">Fuente: BCRP. Serie 2005–2023. Pasa el cursor sobre cada barra para ver el dato. En celular, desliza el gráfico hacia los lados.</div>
-
-    <div class="subhead">Aprende a leer el gráfico</div>
-    <ol class="read-list">
-      <li><strong>2006–2008:</strong> años de bonanza. El Estado tuvo superávit y pudo ahorrar.</li>
-      <li><strong>2020:</strong> la barra más grande. Por la pandemia, el Estado gastó mucho más en salud y en apoyo a las familias, mientras que la recaudación cayó.</li>
-      <li>Parte de ese gasto se cubrió con <strong>ahorros de años anteriores</strong>: ¡la regla de oro en acción!</li>
-    </ol>
-    <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>El Perú tiene un <strong>Fondo de Estabilización Fiscal</strong>, una especie de “chanchito” del Estado donde se guarda parte de lo que sobra en los años buenos para usarlo en momentos de crisis.</p></div>
-  </div>
-
-  <!-- 7. Resumen -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">7</span>Resumen en 30 segundos</h2>
-    <table class="sum">
-      <thead><tr><th>Concepto</th><th>En pocas palabras</th></tr></thead>
-      <tbody>
-        <tr><td>Ingresos del Estado</td><td>Sobre todo impuestos: Renta, IGV, ISC.</td></tr>
-        <tr><td>Gastos del Estado</td><td>Del día a día (sueldos, medicinas) y para el futuro (colegios, carreteras).</td></tr>
-        <tr><td>Superávit</td><td>Sobra dinero: se ahorra o se paga deuda.</td></tr>
-        <tr><td>Déficit</td><td>Falta dinero: se usan ahorros o se pide prestado.</td></tr>
-        <tr><td>Bono</td><td>Un préstamo que le haces al Estado a cambio de intereses.</td></tr>
-        <tr><td>Riesgo país</td><td>Qué tan confiable es un país como pagador. Más riesgo, intereses más altos.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 8. Quiz -->
-  <div class="card">
-    <h2 class="section-title"><span class="num">8</span>Pon a prueba lo que aprendiste</h2>
-    <p>Elige una respuesta en cada pregunta.</p>
-    <div id="quiz"></div>
-    <div class="score" id="score"></div>
-  </div>
+  </section>
 
   <footer class="page-footer">Banco Central de Reserva del Perú · Serie Lecturas · Educación económica</footer>
 </div>
 
+<canvas id="confetti" aria-hidden="true"></canvas>
+
 <script>
-  // Simulador de presupuesto
-  const ing = document.getElementById('ing'), gas = document.getElementById('gas');
-  function sim(){
-    const i = +ing.value, g = +gas.value, r = i - g;
-    document.getElementById('ingVal').textContent = 'S/ ' + i + ' mil millones';
-    document.getElementById('gasVal').textContent = 'S/ ' + g + ' mil millones';
-    const v = document.getElementById('verdict'), big = document.getElementById('vBig'), t = document.getElementById('vTxt');
+  // Ejecuta una inicialización sin que un error detenga al resto de la página
+  function safe(fn){ try { fn(); } catch (e) { console.warn('Error al iniciar herramienta:', e); } }
+  const $ = id => document.getElementById(id);
+  // Formato del texto original: coma decimal y espacio para miles (S/ 1 000; 2,5 %)
+  const num = (v, d = 0) => {
+    const [ent, dec] = Math.abs(v).toFixed(d).split('.');
+    return (v < 0 ? '-' : '') + ent.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') + (dec ? ',' + dec : '');
+  };
+  function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
+  function segControl(id, onChange){
+    const s = $(id);
+    s.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      s.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+      onChange(b.dataset.m);
+    }));
+  }
+
+  /* ===== Navegación por secciones ===== */
+  const panels = [...document.querySelectorAll('.panel')];
+  const navBtns = [...document.querySelectorAll('.nav-btn')];
+  const nav = document.querySelector('nav.secnav');
+  const setNavH = () => document.documentElement.style.setProperty('--nav-h', (nav.offsetHeight + 12) + 'px');
+  safe(setNavH); addEventListener('resize', setNavH);
+  const labels = navBtns.map(b => b.textContent.replace(/\u00AD/g, '').replace(/^[^A-Za-zÁÉÍÓÚáéíóúÑñ]+/, '').trim());
+
+  panels.forEach((p, i) => {
+    const pager = document.createElement('div'); pager.className = 'pager';
+    if (i > 0) {
+      const prev = document.createElement('button'); prev.type = 'button';
+      prev.textContent = '← ' + labels[i - 1];
+      prev.onclick = () => show(panels[i - 1].id, true);
+      pager.appendChild(prev);
+    }
+    if (i < panels.length - 1) {
+      const next = document.createElement('button'); next.type = 'button'; next.className = 'next';
+      next.textContent = labels[i + 1] + ' →';
+      next.onclick = () => show(panels[i + 1].id, true);
+      pager.appendChild(next);
+    }
+    p.appendChild(pager);
+  });
+
+  function show(id, scroll, init) {
+    const idx = panels.findIndex(p => p.id === id);
+    if (idx < 0) return;
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    navBtns.forEach((b, i) => {
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      b.tabIndex = i === idx ? 0 : -1;
+    });
+    $('progressBar').style.width = ((idx + 1) / panels.length * 100) + '%';
+    // Al cargar no se reescribe el #: el navegador saltaría a esa sección y ocultaría la portada.
+    if (!init) try { if (history.replaceState && location.protocol !== 'about:') history.replaceState(null, '', '#' + id); } catch (e) {}
+    if (scroll) window.scrollTo({top: nav.offsetTop, behavior: 'smooth'});
+  }
+
+  navBtns.forEach((b, i) => {
+    b.addEventListener('click', () => show(b.dataset.target, true));
+    b.addEventListener('keydown', e => {
+      let j = null;
+      if (e.key === 'ArrowRight') j = Math.min(i + 1, navBtns.length - 1);
+      if (e.key === 'ArrowLeft') j = Math.max(i - 1, 0);
+      if (j !== null) { e.preventDefault(); navBtns[j].focus(); show(navBtns[j].dataset.target, false); }
+    });
+  });
+  document.querySelectorAll('[data-goto]').forEach(a => a.addEventListener('click', () => show(a.dataset.goto, true)));
+
+  let start = ''; try { start = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+  safe(() => show(panels.some(p => p.id === start) ? start : 'resumen', false, true));
+
+  /* ===== 1. Déficit como % del PBI ===== */
+  function updPbi(){
+    const aD = +$('aDef').value, aP = +$('aPbi').value, bD = +$('bDef').value, bP = +$('bPbi').value;
+    const aPct = aD / aP * 100, bPct = bD / bP * 100;
+    $('aDefVal').textContent = 'S/ ' + aD + ' mil millones'; $('aPbiVal').textContent = 'S/ ' + num(aP) + ' mil millones';
+    $('bDefVal').textContent = 'S/ ' + bD + ' mil millones'; $('bPbiVal').textContent = 'S/ ' + num(bP) + ' mil millones';
+    $('aPct').textContent = num(aPct, 1) + ' %'; $('bPct').textContent = num(bPct, 1) + ' %';
+    $('aFill').style.width = Math.min(100, aPct * 10) + '%'; $('bFill').style.width = Math.min(100, bPct * 10) + '%';
+    $('ctyA').classList.toggle('worse', aPct > bPct + 0.05);
+    $('ctyB').classList.toggle('worse', bPct > aPct + 0.05);
+    if (Math.abs(aPct - bPct) <= 0.05) {
+      setMsg('pbiMsg', '⚖ Los dos déficits pesan lo mismo para sus economías, aunque las cifras en soles sean distintas.', 'ok');
+    } else {
+      const [hi, lo, hiN, loN, hiD, loD] = aPct > bPct ? [aPct, bPct, 'País Grande', 'País Pequeño', aD, bD] : [bPct, aPct, 'País Pequeño', 'País Grande', bD, aD];
+      const veces = hi / lo;
+      let txt = `El déficit del ${hiN} pesa más para su economía: es ${num(hi, 1)} % de su PBI, frente a ${num(lo, 1)} % del ${loN}`;
+      txt += veces >= 1.95 ? ` (unas ${num(veces, 0)} veces más).` : '.';
+      if (hiD < loD) txt += ' ¡Aunque en soles su déficit es más pequeño! Por eso se compara en % del PBI.';
+      setMsg('pbiMsg', txt, hiD < loD ? 'gold' : '');
+    }
+  }
+  ['aDef', 'aPbi', 'bDef', 'bPbi'].forEach(id => $(id).addEventListener('input', updPbi));
+  safe(updPbi);
+
+  /* ===== 2. Juego de clasificación ===== */
+  const CLS_NAMES = {ing: 'Ingreso', cor: 'Gasto corriente', inv: 'Inversión pública'};
+  const CLS_ITEMS = [
+    {e: '👟', t: 'El IGV que pagas al comprar unas zapatillas', c: 'ing', x: 'Es un impuesto: un ingreso tributario del Estado.'},
+    {e: '👩‍🏫', t: 'El sueldo de una profesora de colegio público', c: 'cor', x: 'Se paga todos los meses para que el servicio funcione: es gasto corriente.'},
+    {e: '🏥', t: 'Construir un hospital nuevo', c: 'inv', x: 'Es una obra que servirá por muchos años: es inversión pública.'},
+    {e: '🏢', t: 'El Impuesto a la Renta que paga una empresa', c: 'ing', x: 'Es un impuesto sobre las ganancias: un ingreso tributario.'},
+    {e: '💊', t: 'Medicinas para una posta de salud', c: 'cor', x: 'Se compran una y otra vez para atender a la gente: gasto corriente.'},
+    {e: '🛣️', t: 'Una carretera que une dos regiones', c: 'inv', x: 'Una obra de infraestructura para el futuro: inversión pública.'},
+    {e: '⛏️', t: 'Las regalías que paga una empresa minera', c: 'ing', x: 'No es un impuesto, pero entra al Estado: es un ingreso no tributario.'},
+    {e: '👴', t: 'Las pensiones de los jubilados', c: 'cor', x: 'Se pagan de forma permanente cada mes: gasto corriente.'},
+    {e: '🏫', t: 'Construir nuevas aulas en un colegio', c: 'inv', x: 'Amplía la infraestructura del colegio: inversión pública.'},
+    {e: '🥤', t: 'El ISC que se cobra a las bebidas azucaradas', c: 'ing', x: 'Es el Impuesto Selectivo al Consumo: un ingreso tributario.'}
+  ];
+  let clsOrder = [], clsIdx = 0, clsOk = 0, clsDone = false, clsAnswered = false;
+  const clsBtns = [...document.querySelectorAll('#clsBtns button')];
+  function clsStart(){
+    clsOrder = CLS_ITEMS.map((_, i) => i).sort(() => Math.random() - 0.5);
+    clsIdx = 0; clsOk = 0; clsDone = false; clsRender();
+    setMsg('clsMsg', 'Elige una opción para empezar.');
+  }
+  function clsRender(){
+    const it = CLS_ITEMS[clsOrder[clsIdx]];
+    clsAnswered = false;
+    $('clsEmo').textContent = it.e; $('clsTxt').textContent = it.t;
+    $('clsProgress').textContent = `Tarjeta ${clsIdx + 1} de ${CLS_ITEMS.length}`;
+    $('clsScore').textContent = `✅ ${clsOk} correctas`;
+    clsBtns.forEach(b => { b.disabled = false; b.classList.remove('right', 'wrong'); });
+    $('clsNext').disabled = true;
+    $('clsNext').textContent = clsIdx === CLS_ITEMS.length - 1 ? 'Ver resultado →' : 'Siguiente tarjeta →';
+  }
+  clsBtns.forEach(b => b.addEventListener('click', () => {
+    if (clsAnswered || clsDone) return;
+    clsAnswered = true;
+    const it = CLS_ITEMS[clsOrder[clsIdx]], ok = b.dataset.c === it.c;
+    if (ok) clsOk++;
+    clsBtns.forEach(x => { x.disabled = true; if (x.dataset.c === it.c) x.classList.add('right'); });
+    if (!ok) b.classList.add('wrong');
+    $('clsScore').textContent = `✅ ${clsOk} correctas`;
+    setMsg('clsMsg', (ok ? '✅ ¡Correcto! ' : `❌ Era “${CLS_NAMES[it.c]}”. `) + it.x, ok ? 'ok' : 'warn');
+    $('clsNext').disabled = false;
+  }));
+  $('clsNext').addEventListener('click', () => {
+    if (!clsAnswered) return;
+    if (clsIdx < CLS_ITEMS.length - 1) { clsIdx++; clsRender(); setMsg('clsMsg', '¿En qué columna va esta tarjeta?'); return; }
+    clsDone = true; $('clsNext').disabled = true;
+    $('clsEmo').textContent = clsOk === CLS_ITEMS.length ? '🏆' : '📋';
+    $('clsTxt').textContent = `Clasificaste bien ${clsOk} de ${CLS_ITEMS.length} tarjetas`;
+    $('clsProgress').textContent = 'Juego terminado';
+    clsBtns.forEach(x => { x.disabled = true; x.classList.remove('right', 'wrong'); });
+    setMsg('clsMsg', clsOk === CLS_ITEMS.length ? '🏆 ¡Perfecto! Ya sabes leer las cuentas del Estado.' : clsOk >= 7 ? '👏 ¡Muy bien! Presiona “Empezar de nuevo” para intentar el puntaje perfecto.' : '💪 Revisa la tabla de arriba y vuelve a intentarlo.', 'gold');
+  });
+  $('clsRestart').addEventListener('click', clsStart);
+  safe(clsStart);
+
+  /* ===== 3. Presupuesto ===== */
+  function updBudget(){
+    const i = +$('ing').value, g = +$('gas').value, r = i - g;
+    $('ingVal').textContent = 'S/ ' + i + ' mil millones';
+    $('gasVal').textContent = 'S/ ' + g + ' mil millones';
+    $('ingBar').style.width = (i / 150 * 100) + '%'; $('ingBar').textContent = 'S/ ' + i;
+    $('gasBar').style.width = (g / 150 * 100) + '%'; $('gasBar').textContent = 'S/ ' + g;
+    const v = $('verdict'), big = $('vBig'), t = $('vTxt');
     if (r > 0){
       v.style.borderLeftColor = 'var(--ok)'; big.style.color = 'var(--ok)';
       big.textContent = 'Superávit de S/ ' + r + ' mil millones';
@@ -398,37 +825,161 @@
       t.textContent = 'Los ingresos alcanzan justo para cubrir los gastos. No sobra ni falta.';
     }
   }
-  ing.addEventListener('input', sim); gas.addEventListener('input', sim); sim();
+  ['ing', 'gas'].forEach(id => $(id).addEventListener('input', updBudget));
+  safe(updBudget);
 
-  // Gráfico
-  (function(){
-    const years  = [2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
-    const values = [-0.4,2.5,3.1,2.5,-1.3,-0.2,2.1,2.3,0.9,-0.3,-1.9,-2.3,-3.0,-2.3,-1.6,-8.9,-2.5,-1.7,-2.8];
+  /* ===== 4. Simulador de bono ===== */
+  function updBond(){
+    const m = +$('bnMonto').value, t = +$('bnTasa').value, n = +$('bnPlazo').value;
+    const cup = m * t / 100, maxPay = m + cup;
+    $('bnMontoVal').textContent = 'S/ ' + num(m);
+    $('bnTasaVal').textContent = num(t, 1) + ' %';
+    $('bnPlazoVal').textContent = n + (n === 1 ? ' año' : ' años');
+    let h = '';
+    for (let y = 1; y <= n; y++) {
+      const last = y === n, pay = last ? maxPay : cup;
+      const hi = cup / maxPay * 100, hc = last ? m / maxPay * 100 : 0;
+      const showVal = n <= 5 || y === 1 || last;
+      h += `<div class="tcol" title="Año ${y}: S/ ${num(pay)}"><span class="tval">${showVal ? 'S/ ' + num(pay) : '&nbsp;'}</span><div class="tstack" style="height:${(hi + hc) * 0.82}%"><div class="tint" style="height:${hi / (hi + hc) * 100}%"></div>${last ? `<div class="tcap" style="height:${hc / (hi + hc) * 100}%"></div>` : ''}</div><span class="tyear">${n <= 5 ? 'Año ' + y : y}</span></div>`;
+    }
+    $('bnTimeline').innerHTML = h;
+    $('bnTimeline').classList.toggle('dense', n > 5);
+    $('bnAnual').textContent = 'S/ ' + num(cup);
+    $('bnInt').textContent = 'S/ ' + num(cup * n);
+    $('bnTotal').textContent = 'S/ ' + num(m + cup * n);
+    setMsg('bnMsg', `Le prestas S/ ${num(m)} al Estado. Cada año te paga S/ ${num(cup)} de intereses y, al final del año ${n}, te devuelve tus S/ ${num(m)}. En total ganas S/ ${num(cup * n)}.`, 'gold');
+  }
+  ['bnMonto', 'bnTasa', 'bnPlazo'].forEach(id => $(id).addEventListener('input', updBond));
+  safe(updBond);
+
+  /* ===== 5. Riesgo país ===== */
+  const RK = [
+    {n: 'Riesgo bajo', r: 3, c: 'in'},
+    {n: 'Medio', r: 5, c: 'gold'},
+    {n: 'Alto', r: 9, c: 'bad'},
+    {n: 'Muy alto', r: null, c: 'muted'}
+  ];
+  let rkLevel = 0;
+  function updRisk(){
+    const m = +$('rkMonto').value, lvl = RK[rkLevel];
+    $('rkMontoVal').textContent = 'S/ ' + num(m) + ' millones';
+    const maxInt = m * 0.09;
+    $('rkBars').innerHTML = RK.map((k, i) => {
+      const val = k.r === null ? 0 : m * k.r / 100;
+      const w = k.r === null ? 100 : val / maxInt * 100;
+      const label = k.r === null ? '🚫 Nadie le presta' : `S/ ${num(val)} mill. al año (${num(k.r)} %)`;
+      return `<div class="rkrow ${i === rkLevel ? 'cur' : ''}"><div class="rkhead"><span>${k.n}</span><span>${label}</span></div><div class="htrack"><div class="hfill ${k.c}" style="width:${w}%"></div></div></div>`;
+    }).join('');
+    if (lvl.r === null) {
+      $('rkTasa').textContent = '—'; $('rkAnual').textContent = '—'; $('rkExtra').textContent = '—';
+      setMsg('rkMsg', '🚫 Con un riesgo tan alto, los inversionistas no quieren prestarle. El país tendría que recortar gastos de golpe o usar sus ahorros, si los tiene.', 'warn');
+      return;
+    }
+    const anual = m * lvl.r / 100, extra = (anual - m * RK[0].r / 100) * 10;
+    $('rkTasa').textContent = num(lvl.r) + ' %';
+    $('rkAnual').textContent = 'S/ ' + num(anual) + ' mill.';
+    $('rkExtra').textContent = 'S/ ' + num(extra) + ' mill.';
+    if (rkLevel === 0) setMsg('rkMsg', '✅ Con buena reputación, el país consigue el préstamo más barato. Así le queda más dinero para colegios, hospitales y carreteras.', 'ok');
+    else setMsg('rkMsg', `⚠ Por ser menos confiable, en 10 años el país pagaría S/ ${num(extra)} millones más en intereses que un país de riesgo bajo. Ese dinero ya no se podría usar en servicios públicos.`, 'warn');
+  }
+  $('rkMonto').addEventListener('input', updRisk);
+  segControl('rkMode', m => { rkLevel = +m; updRisk(); });
+  safe(updRisk);
+
+  /* ===== 6. Gráfico interactivo ===== */
+  const years  = [2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
+  const values = [-0.4,2.5,3.1,2.5,-1.3,-0.2,2.1,2.3,0.9,-0.3,-1.9,-2.3,-3.0,-2.3,-1.6,-8.9,-2.5,-1.7,-2.8];
+  const NOTES = {
+    2006: 'Años de bonanza: el Estado recaudó más de lo que gastó y pudo ahorrar.',
+    2007: 'El superávit más alto de la serie. Se ahorró para los tiempos difíciles.',
+    2008: 'Tercer año seguido de superávit: la regla de oro en acción.',
+    2009: 'Crisis financiera internacional: el Estado gastó más para sostener la economía y los ingresos bajaron.',
+    2020: 'Pandemia: se gastó mucho más en salud y apoyo a las familias, mientras la recaudación cayó. Parte se cubrió con ahorros de años anteriores.'
+  };
+  const fmtV = v => (v > 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
+  let chSel = 2020, chFilt = 'all';
+  function drawChart(){
     const W = 848, H = 330, padL = 6, padR = 6, padTop = 44, padBottom = 26;
     const plotW = W - padL - padR, plotH = H - padTop - padBottom;
     const maxVal = 4, minVal = -10, range = maxVal - minVal;
     const zeroY = padTop + plotH * (maxVal / range);
     const n = years.length, gap = 6, barW = (plotW - gap * (n - 1)) / n;
-    const fmt = v => (v > 0 ? '+' : '') + v.toFixed(1).replace('.', ',');
-    let out = `<line x1="${padL}" y1="${zeroY}" x2="${W-padR}" y2="${zeroY}" stroke="#c9c3b3" stroke-width="1.5"/>`;
     const cx = i => padL + i * (barW + gap) + barW / 2;
+    let out = `<line x1="${padL}" y1="${zeroY}" x2="${W - padR}" y2="${zeroY}" stroke="#a9c2be" stroke-width="1.5"/>`;
     years.forEach((y, i) => {
       const v = values[i], x = padL + i * (barW + gap), h = Math.abs(v) / range * plotH;
-      const by = v >= 0 ? zeroY - h : zeroY, fill = v >= 0 ? '#5fc3bb' : '#313b54';
-      const ly = v >= 0 ? by - 6 : by + h + 14, lf = v >= 0 ? '#2f8f6b' : '#313b54';
-      out += `<rect class="bar" x="${x.toFixed(2)}" y="${by.toFixed(2)}" width="${barW.toFixed(2)}" height="${Math.max(h,1.5).toFixed(2)}" rx="2.5" fill="${fill}"><title>${y}: ${fmt(v)} % del PBI</title></rect>`;
-      out += `<text class="val-label" x="${(x+barW/2).toFixed(2)}" y="${ly.toFixed(2)}" text-anchor="middle" fill="${lf}">${fmt(v)}</text>`;
-      if (y % 2 === 1) out += `<text class="year-label" x="${(x+barW/2).toFixed(2)}" y="${H-6}" text-anchor="middle">${y}</text>`;
+      const by = v >= 0 ? zeroY - h : zeroY, fill = v >= 0 ? '#3fc2b2' : '#0b4f4a';
+      const ly = v >= 0 ? by - 6 : by + h + 14, lf = v >= 0 ? '#2f8f6b' : '#0b4f4a';
+      out += `<rect class="cbar" data-i="${i}" tabindex="0" role="button" aria-label="${y}: ${fmtV(v)} % del PBI" x="${x.toFixed(2)}" y="${by.toFixed(2)}" width="${barW.toFixed(2)}" height="${Math.max(h, 1.5).toFixed(2)}" rx="2.5" fill="${fill}"><title>${y}: ${fmtV(v)} % del PBI</title></rect>`;
+      out += `<text class="val-label vl" data-i="${i}" x="${(x + barW / 2).toFixed(2)}" y="${ly.toFixed(2)}" text-anchor="middle" fill="${lf}">${fmtV(v)}</text>`;
+      if (y % 2 === 1) out += `<text class="year-label" x="${(x + barW / 2).toFixed(2)}" y="${H - 6}" text-anchor="middle">${y}</text>`;
     });
-    // Anotaciones
-    const bx = cx(2), by = padTop - 30;
-    out += `<text class="ann" x="${bx}" y="${by+8}" text-anchor="middle">Bonanza: se ahorra</text>`;
-    const px = cx(15);
-    out += `<text class="ann" x="${px - 30}" y="${zeroY + 115}" text-anchor="end">Pandemia →</text>`;
-    document.getElementById('chart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de barras del resultado económico del Perú entre 2005 y 2023">${out}</svg>`;
-  })();
+    out += `<text class="ann" x="${cx(2)}" y="${padTop - 22}" text-anchor="middle">Bonanza: se ahorra</text>`;
+    out += `<text class="ann" x="${cx(15) - 30}" y="${zeroY + 115}" text-anchor="end">Pandemia →</text>`;
+    $('chart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico de barras del resultado económico del Perú entre 2005 y 2023">${out}</svg>`;
+    $('chart').querySelectorAll('.cbar').forEach(r => {
+      const pick = () => { chSel = years[+r.dataset.i]; updChart(); };
+      r.addEventListener('click', pick);
+      r.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+    });
+  }
+  function updChart(){
+    const vis = v => chFilt === 'all' || (chFilt === 'sup' ? v > 0 : v < 0);
+    $('chart').querySelectorAll('.cbar').forEach(r => {
+      const i = +r.dataset.i;
+      r.classList.toggle('dim', !vis(values[i]));
+      r.classList.toggle('sel', years[i] === chSel);
+    });
+    $('chart').querySelectorAll('.vl').forEach(t => t.classList.toggle('dim', !vis(values[+t.dataset.i])));
+    const i = years.indexOf(chSel), v = values[i], sup = v > 0;
+    $('yearCard').className = 'year-card ' + (sup ? 'sup' : 'def');
+    $('ycYear').textContent = chSel;
+    $('ycVal').textContent = (sup ? 'Superávit ' : 'Déficit ') + fmtV(v) + ' % del PBI';
+    $('ycTxt').textContent = NOTES[chSel] || (sup ? 'Sobró dinero: el Estado pudo ahorrar o pagar deuda.' : 'Faltó dinero: el Estado tuvo que usar ahorros o endeudarse.');
+    const nSup = values.filter(x => x > 0).length, nDef = values.filter(x => x < 0).length;
+    if (chFilt === 'sup') setMsg('chCount', `🟢 Entre 2005 y 2023 hubo ${nSup} años con superávit. La mayoría fueron entre 2006 y 2013.`, 'ok');
+    else if (chFilt === 'def') setMsg('chCount', `🔵 Entre 2005 y 2023 hubo ${nDef} años con déficit. Desde 2014, todos los años fueron de déficit.`);
+    else setMsg('chCount', `📊 De ${years.length} años: ${nSup} con superávit y ${nDef} con déficit. Toca una barra para ver qué pasó.`);
+  }
+  segControl('chFilter', m => { chFilt = m; updChart(); });
+  safe(drawChart); safe(updChart);
 
-  // Quiz
+  /* ===== Confeti ===== */
+  const cv = $('confetti'), ctx = cv.getContext('2d');
+  let pieces = [], rafId = null;
+  function resizeCanvas(){ const d = window.devicePixelRatio || 1; cv.width = innerWidth * d; cv.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+  addEventListener('resize', resizeCanvas); safe(resizeCanvas);
+  function launchConfetti(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const colors = ['#f4b400', '#3fc2b2', '#148a7f', '#0b4f4a', '#c0483e', '#ffffff'];
+    const W = innerWidth, H = innerHeight;
+    for (let k = 0; k < 180; k++) {
+      const fromLeft = k % 2 === 0;
+      pieces.push({
+        x: fromLeft ? -10 : W + 10, y: H * (0.35 + Math.random() * 0.3),
+        vx: (fromLeft ? 1 : -1) * (4 + Math.random() * 8), vy: -(7 + Math.random() * 9),
+        w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+        rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.3,
+        c: colors[Math.floor(Math.random() * colors.length)], life: 0
+      });
+    }
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+  function tick(){
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    pieces.forEach(p => {
+      p.vy += 0.25; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - p.life / 220);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life / 8)));
+      ctx.restore();
+    });
+    pieces = pieces.filter(p => p.y < innerHeight + 40 && p.life < 220);
+    if (pieces.length) rafId = requestAnimationFrame(tick);
+    else { rafId = null; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+  }
+
+  /* ===== Quiz ===== */
   const Q = [
     {q:'1. El IGV que pagas al comprar una gaseosa es un ingreso…',
      o:['Tributario del Estado','No tributario del Estado','De la tienda, no del Estado'], a:0,
@@ -447,29 +998,58 @@
      e:'La pandemia obligó a gastar más en salud y apoyo a las familias, mientras la economía y los impuestos caían.'}
   ];
   let answered = 0, correct = 0;
-  const quiz = document.getElementById('quiz');
-  Q.forEach(item => {
-    const box = document.createElement('div'); box.className = 'q';
-    box.innerHTML = `<div class="q-title">${item.q}</div><div class="opts"></div><div class="fb"></div>`;
-    const opts = box.querySelector('.opts'), fb = box.querySelector('.fb');
-    item.o.forEach((txt, i) => {
-      const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
-      b.addEventListener('click', () => {
-        opts.querySelectorAll('button').forEach((x, j) => { x.disabled = true; if (j === item.a) x.classList.add('right'); });
-        const ok = i === item.a;
-        if (!ok) b.classList.add('wrong');
-        fb.innerHTML = (ok ? '<strong style="color:var(--ok)">¡Correcto!</strong> ' : '<strong style="color:var(--bad)">Casi.</strong> ') + item.e;
-        fb.classList.add('show');
-        answered++; if (ok) correct++;
-        if (answered === Q.length) {
-          document.getElementById('score').textContent =
-            `Obtuviste ${correct} de ${Q.length}. ` + (correct === Q.length ? '¡Excelente! 🎉' : correct >= 3 ? '¡Bien hecho! Repasa lo que fallaste.' : 'Vuelve a leer las secciones 3 a 5 y lo tendrás.');
-        }
+  const quiz = $('quiz'), box = $('resultBox');
+
+  function buildQuiz(){
+    answered = 0; correct = 0; quiz.innerHTML = '';
+    box.className = 'result-box';
+    Q.forEach(item => {
+      const qb = document.createElement('div'); qb.className = 'q';
+      qb.innerHTML = `<div class="q-title">${item.q}</div><div class="opts"></div><div class="fb"></div>`;
+      const opts = qb.querySelector('.opts'), fb = qb.querySelector('.fb');
+      item.o.forEach((txt, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
+        b.addEventListener('click', () => {
+          opts.querySelectorAll('button').forEach((x, j) => { x.disabled = true; if (j === item.a) x.classList.add('right'); });
+          const ok = i === item.a;
+          if (!ok) b.classList.add('wrong');
+          fb.innerHTML = (ok ? '<strong style="color:var(--ok)">¡Correcto!</strong> ' : '<strong style="color:var(--bad)">Casi.</strong> ') + item.e;
+          fb.classList.add('show');
+          answered++; if (ok) correct++;
+          if (answered === Q.length) showResult();
+        });
+        opts.appendChild(b);
       });
-      opts.appendChild(b);
+      quiz.appendChild(qb);
     });
-    quiz.appendChild(box);
+  }
+
+  function showResult(){
+    const total = Q.length;
+    let cls, emo, title, detail;
+    if (correct === total) {
+      cls = 'perfect'; emo = '🎉'; title = '¡Perfecto!';
+      detail = `Respondiste bien las ${total} preguntas. ¡Ya sabes cómo se financia un país!`;
+    } else if (correct >= total - 2) {
+      cls = 'good'; emo = '👏'; title = '¡Muy bien!';
+      detail = `Obtuviste ${correct} de ${total}. Revisa las explicaciones de las que fallaste.`;
+    } else {
+      cls = 'retry'; emo = '💪'; title = 'Sigue intentando';
+      detail = `Obtuviste ${correct} de ${total}. Repasa las secciones 2 a 6 y vuelve a intentarlo.`;
+    }
+    $('resultEmo').textContent = emo;
+    $('resultTitle').textContent = title;
+    $('resultDetail').textContent = detail;
+    box.className = 'result-box show ' + cls;
+    box.scrollIntoView({behavior: 'smooth', block: 'center'});
+    if (cls === 'perfect') setTimeout(launchConfetti, 250);
+  }
+
+  $('retryBtn').addEventListener('click', () => {
+    buildQuiz();
+    $('quiz-sec').scrollIntoView({behavior: 'smooth'});
   });
+  safe(buildQuiz);
 </script>
 </body>
 </html>

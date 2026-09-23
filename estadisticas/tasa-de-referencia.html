@@ -1,0 +1,307 @@
+<!doctype html><html lang="es"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Tasa de Referencia BCRP</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0B2A4A; --gold:#C9A227; --teal:#1F8A8A; --up:#B5473A;
+  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#12263A; --muted:#5B6B7C;
+  --line:#DCE2E9; --grid:#E9EDF2; --chip:#EEF1F5; --fill:rgba(31,138,138,.12);
+  --accent-ink:#0B2A4A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0A1522; --surface:#10202F; --ink:#E6ECF2; --muted:#94A6B8;
+    --line:#223649; --grid:#1A2C3D; --chip:#172A3C; --fill:rgba(56,178,172,.16);
+    --teal:#3BB2AC; --gold:#D9B545; --up:#E07565; --accent-ink:#E6ECF2;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A1522; --surface:#10202F; --ink:#E6ECF2; --muted:#94A6B8;
+  --line:#223649; --grid:#1A2C3D; --chip:#172A3C; --fill:rgba(56,178,172,.16);
+  --teal:#3BB2AC; --gold:#D9B545; --up:#E07565; --accent-ink:#E6ECF2;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;padding-inline:16px;padding-block:28px 40px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:20px}
+.cond{font-family:"Barlow Condensed","Arial Narrow",Barlow,sans-serif}
+.num{font-variant-numeric:tabular-nums}
+
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;border-bottom:3px solid var(--gold);padding-bottom:18px}
+.eyebrow{font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+h1{font:700 clamp(28px,5vw,40px)/1.05 "Barlow Condensed",sans-serif;margin:0;color:var(--accent-ink);text-wrap:balance}
+.sub{margin:8px 0 0;color:var(--muted);max-width:60ch}
+.now{display:flex;align-items:flex-end;gap:14px}
+.now .val{font:700 clamp(48px,9vw,68px)/.9 "Barlow Condensed",sans-serif;color:var(--accent-ink)}
+.now .val small{font-size:.45em;font-weight:600;margin-left:2px;color:var(--gold)}
+.now .meta{font-size:13px;color:var(--muted);line-height:1.35;padding-bottom:4px}
+.now .meta b{color:var(--ink);font-weight:600}
+.pill{display:inline-block;font:600 12px/1 Barlow,sans-serif;padding:4px 8px;border-radius:999px;margin-top:4px}
+.pill.down{background:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--teal)}
+.pill.up{background:color-mix(in srgb,var(--up) 16%,transparent);color:var(--up)}
+.pill.flat{background:var(--chip);color:var(--muted)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:space-between;align-items:center;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:600 13px/1 Barlow,sans-serif;border:1px solid var(--line);background:var(--chip);color:var(--ink);padding:8px 12px;border-radius:4px;cursor:pointer}
+.chips button:hover{border-color:var(--teal)}
+.chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+:root[data-theme="dark"] .chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#0A1522}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#0A1522}}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.range{font:600 15px/1.2 "Barlow Condensed",sans-serif;color:var(--ink);letter-spacing:.02em}
+.range span{color:var(--muted);font-weight:500}
+.brush{position:relative;height:58px;margin-top:4px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:pointer}
+.brush .track{position:absolute;left:0;right:0;top:40px;height:4px;margin-top:-2px;border-radius:2px;background:var(--line)}
+.brush .win{position:absolute;top:40px;height:6px;margin-top:-3px;border-radius:3px;background:var(--gold);cursor:grab}
+.brush .win:active{cursor:grabbing}
+.brush .h{position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;background:var(--surface);border:3px solid var(--gold);border-radius:50%;cursor:ew-resize;box-shadow:0 1px 3px rgba(0,0,0,.2);touch-action:none}
+.brush .h.l{left:-9px}.brush .h.r{right:-9px}
+.brush .h:hover,.brush .h:focus-visible{transform:scale(1.15)}
+.brush .h:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.brush .tag{position:absolute;top:6px;font:600 13px/1 "Barlow Condensed",sans-serif;letter-spacing:.02em;color:var(--ink);background:var(--chip);border:1px solid var(--line);padding:4px 7px;border-radius:4px;white-space:nowrap;pointer-events:none;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.chartbox{position:relative;height:clamp(280px,48vw,420px)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px}
+.stat .k{font:600 11px/1.2 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font:700 30px/1.1 "Barlow Condensed",sans-serif;margin-top:6px}
+.stat .d{font-size:12px;color:var(--muted)}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+h2{font:700 20px/1.2 "Barlow Condensed",sans-serif;margin:0 0 4px;color:var(--accent-ink)}
+.hint{margin:0 0 12px;font-size:13px;color:var(--muted)}
+.tablewrap{max-height:340px;overflow:auto;border-top:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{position:sticky;top:0;background:var(--surface);text-align:left;font:600 11px/1 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:10px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--grid)}
+td.r,th.r{text-align:right}
+tr.row{cursor:pointer}
+tr.row:hover td{background:var(--chip)}
+footer{font-size:12px;color:var(--muted)}
+footer a{color:var(--teal)}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <p class="eyebrow">Política Monetaria · Serie mensual</p>
+      <h1>Tasa de Interés de Referencia</h1>
+      <p class="sub">Evolución de la tasa de referencia de la política monetaria del BCRP desde septiembre de 2003, cuando se adoptó como instrumento operativo.</p>
+    </div>
+    <div class="now">
+      <div class="val num" id="nowVal">–</div>
+      <div class="meta" id="nowMeta"></div>
+    </div>
+  </header>
+
+  <section class="panel" aria-label="Gráfico">
+    <div class="toolbar">
+      <div class="chips" role="group" aria-label="Periodo">
+        <button type="button" id="r1" data-y="1">1 año</button>
+        <button type="button" id="r3" data-y="3">3 años</button>
+        <button type="button" id="r5" data-y="5">5 años</button>
+        <button type="button" id="r10" data-y="10">10 años</button>
+        <button type="button" id="rAll" data-y="all">Toda la serie</button>
+      </div>
+      <div class="range" id="rangeLbl" aria-live="polite"></div>
+    </div>
+    <div class="chartbox"><canvas id="chart" aria-label="Gráfico de la tasa de referencia" role="img"></canvas></div>
+    <div class="brush" id="brush" aria-label="Selector de periodo: arrastra las manijas o la franja dorada">
+      <div class="track"></div>
+      <span class="tag" id="tagL"></span><span class="tag" id="tagR"></span>
+      <div class="win" id="win"><div class="h l" id="hL" tabindex="0" role="slider" aria-label="Inicio del periodo"></div><div class="h r" id="hR" tabindex="0" role="slider" aria-label="Fin del periodo"></div></div>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--up)"></i>Alza de tasa</span>
+      <span><i class="dot" style="background:var(--teal)"></i>Reducción de tasa</span>
+      <span>Arrastra las manijas para cambiar el inicio o el fin; arrastra la franja dorada para mover el periodo.</span>
+    </div>
+  </section>
+
+  <section class="stats" id="stats" aria-label="Resumen del periodo"></section>
+
+  <section class="panel">
+    <h2>Cambios de la tasa en el periodo</h2>
+    <p class="hint" id="chgHint"></p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Mes</th><th class="r">Anterior</th><th class="r">Nueva</th><th class="r">Variación</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Fuente: BCRP, Estadísticas – serie PD04722MM, “Tasa de Referencia de la Política Monetaria” (% , fin de periodo). Datos hasta agosto de 2026.
+    <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PD04722MM/html" target="_blank" rel="noopener">Ver serie en BCRPData</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script>
+(function(){
+  // Serie PD04722MM, Sep.2003 – Ago.2026, codificada como [valor, nº de meses]
+  const RLE=[[2.75,2],[2.5,9],[2.75,2],[3,14],[3.25,1],[3.5,1],[3.75,1],[4,1],[4.25,1],[4.5,14],[4.75,2],[5,4],[5.25,3],[5.5,2],[5.75,1],[6,1],[6.25,1],[6.5,5],[6.25,1],[6,1],[5,1],[4,1],[3,1],[2,1],[1.25,9],[1.5,1],[1.75,1],[2,1],[2.5,1],[3,4],[3.25,1],[3.5,1],[3.75,1],[4,1],[4.25,30],[4,8],[3.75,2],[3.5,4],[3.25,8],[3.5,3],[3.75,1],[4,1],[4.25,15],[4,2],[3.75,2],[3.5,2],[3.25,2],[3,2],[2.75,17],[2.5,3],[2.25,4],[1.25,1],[0.25,16],[0.5,1],[1,1],[1.5,1],[2,1],[2.5,1],[3,1],[3.5,1],[4,1],[4.5,1],[5,1],[5.5,1],[6,1],[6.5,1],[6.75,1],[7,1],[7.25,1],[7.5,1],[7.75,8],[7.5,1],[7.25,1],[7,1],[6.75,1],[6.5,1],[6.25,2],[6,1],[5.75,3],[5.5,1],[5.25,2],[5,2],[4.75,4],[4.5,4],[4.25,12]];
+  const MES=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+  const MESL=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  const data=[]; let y=2003,m=8;
+  RLE.forEach(([v,n])=>{for(let i=0;i<n;i++){data.push({y,m,v,lab:MES[m]+"."+y});m++;if(m>11){m=0;y++;}}});
+  const N=data.length;
+
+  const fmt=v=>v.toLocaleString("es-PE",{minimumFractionDigits:2,maximumFractionDigits:2});
+  const pb=d=>(d>0?"+":d<0?"−":"")+Math.abs(Math.round(d*100))+" pb";
+  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+  // Encabezado: nivel vigente
+  const last=data[N-1];
+  let k=N-1; while(k>0&&data[k-1].v===last.v)k--;
+  const chg=k>0?last.v-data[k-1].v:0;
+  document.getElementById("nowVal").innerHTML=fmt(last.v)+"<small>%</small>";
+  document.getElementById("nowMeta").innerHTML=
+    `Nivel a <b>${MESL[last.m]} ${last.y}</b><br>Vigente desde ${MESL[data[k].m]} ${data[k].y}<br>`+
+    `<span class="pill ${chg<0?"down":chg>0?"up":"flat"}">Último cambio ${pb(chg)}</span>`;
+
+  // Selectores
+  let a=0,b=N-1;
+
+  const ctx=document.getElementById("chart");
+  const chart=new Chart(ctx,{
+    type:"line",
+    data:{labels:[],datasets:[{data:[],stepped:"before",borderWidth:2.25,fill:true,tension:0,pointHitRadius:6}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,animation:{duration:window.matchMedia("(prefers-reduced-motion: reduce)").matches?0:450},
+      interaction:{mode:"index",intersect:false},
+      layout:{padding:{top:8,right:8}},
+      scales:{
+        x:{grid:{display:false},border:{display:false},ticks:{autoSkip:false,maxRotation:0,font:{family:"Barlow",size:12}}},
+        y:{beginAtZero:true,border:{display:false},ticks:{font:{family:"Barlow",size:12},callback:v=>fmt(v)+"%"}}
+      },
+      plugins:{
+        legend:{display:false},
+        tooltip:{displayColors:false,padding:10,titleFont:{family:"Barlow Condensed",size:14,weight:"600"},bodyFont:{family:"Barlow",size:13},
+          callbacks:{
+            title:it=>{const d=data[a+it[0].dataIndex];return MESL[d.m].replace(/^./,c=>c.toUpperCase())+" "+d.y;},
+            label:it=>"Tasa: "+fmt(it.parsed.y)+"%",
+            afterLabel:it=>{const i=a+it.dataIndex;if(i===0)return"";const d=data[i].v-data[i-1].v;return d?"Cambio: "+pb(d):"Sin cambio";}
+          }}
+      }
+    },
+    plugins:[{id:"cross",afterDatasetsDraw(c){const t=c.tooltip;if(!t||!t.getActiveElements().length)return;const x=t.getActiveElements()[0].element.x,g=c.ctx;g.save();g.strokeStyle=css("--gold");g.lineWidth=1;g.setLineDash([4,3]);g.beginPath();g.moveTo(x,c.chartArea.top);g.lineTo(x,c.chartArea.bottom);g.stroke();g.restore();}}]
+  });
+
+  function paint(){
+    const ds=chart.data.datasets[0], teal=css("--teal"), up=css("--up");
+    ds.borderColor=css("--navy")&&(document.documentElement.dataset.theme==="dark"||(matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.dataset.theme!=="light"))?teal:css("--navy");
+    ds.backgroundColor=css("--fill");
+    const col=i=>{const g=a+i;if(g===0)return"transparent";const d=data[g].v-data[g-1].v;return d>0?up:d<0?teal:"transparent";};
+    ds.pointBackgroundColor=c=>col(c.dataIndex);
+    ds.pointBorderColor=c=>col(c.dataIndex)==="transparent"?"transparent":css("--surface");
+    ds.pointRadius=c=>col(c.dataIndex)==="transparent"?0:((b-a)>150?3:4.5);
+    ds.pointHoverRadius=5; ds.pointHoverBackgroundColor=css("--gold");
+    const o=chart.options;
+    o.scales.x.ticks.color=o.scales.y.ticks.color=css("--muted");
+    o.scales.y.grid={color:css("--grid")};
+    o.plugins.tooltip.backgroundColor=css("--ink");o.plugins.tooltip.titleColor=o.plugins.tooltip.bodyColor=css("--bg");
+  }
+
+  function render(){
+    const sl=data.slice(a,b+1), span=b-a;
+    chart.data.labels=sl.map(d=>d.lab);
+    chart.data.datasets[0].data=sl.map(d=>d.v);
+    const step=span>150?24:span>72?12:span>30?6:span>14?3:1;
+    chart.options.scales.x.ticks.callback=function(v,i){const d=sl[i];if(step>=12)return d.m===0&&(d.y%(step/12)===0)?String(d.y):"";return (d.y*12+d.m)%step===0?d.lab:"";};
+    chart.options.scales.y.suggestedMax=Math.ceil(Math.max(...sl.map(d=>d.v))+0.5);
+    paint(); chart.update(drag?"none":undefined);
+    document.getElementById("rangeLbl").innerHTML=`<span>Periodo:</span> ${b-a+1} meses`;
+    drawMini(); placeBrush();
+
+    // Estadísticas
+    let mx=sl[0],mn=sl[0];sl.forEach(d=>{if(d.v>mx.v)mx=d;if(d.v<mn.v)mn=d;});
+    const ch=[];for(let i=Math.max(a,1);i<=b;i++){const d=data[i].v-data[i-1].v;if(d)ch.push({i,d});}
+    const ups=ch.filter(c=>c.d>0).length, dns=ch.length-ups;
+    const net=sl[sl.length-1].v-(a>0?data[a-1].v:sl[0].v);
+    document.getElementById("stats").innerHTML=[
+      ["Nivel al cierre",fmt(sl[sl.length-1].v)+"%",sl[sl.length-1].lab],
+      ["Máximo",fmt(mx.v)+"%","desde "+mx.lab],
+      ["Mínimo",fmt(mn.v)+"%","desde "+mn.lab],
+      ["Decisiones de cambio",String(ch.length),`${ups} alzas · ${dns} reducciones · neto ${pb(net)}`]
+    ].map(([k,v,d])=>`<div class="stat"><div class="k">${k}</div><div class="v num">${v}</div><div class="d">${d}</div></div>`).join("");
+
+    // Tabla
+    document.getElementById("chgHint").textContent=ch.length?`${ch.length} cambios entre ${sl[0].lab} y ${sl[sl.length-1].lab}, del más reciente al más antiguo.`:"No hubo cambios de tasa en este periodo.";
+    document.getElementById("tbody").innerHTML=ch.slice().reverse().map(c=>{const d=data[c.i];return `<tr class="row" data-i="${c.i}" tabindex="0"><td>${MESL[d.m].replace(/^./,x=>x.toUpperCase())} ${d.y}</td><td class="r num">${fmt(data[c.i-1].v)}%</td><td class="r num">${fmt(d.v)}%</td><td class="r num"><span class="pill ${c.d>0?"up":"down"}">${pb(c.d)}</span></td></tr>`;}).join("");
+  }
+
+  function setChip(id){document.querySelectorAll(".chips button").forEach(x=>x.setAttribute("aria-pressed",x.id===id?"true":"false"));}
+  document.querySelectorAll(".chips button").forEach(btn=>btn.addEventListener("click",()=>{
+    const yv=btn.dataset.y; b=N-1; a=yv==="all"?0:Math.max(0,N-12*(+yv)); setChip(btn.id); render();
+  }));
+  // ---- Selector de periodo arrastrable ----
+  const brush=document.getElementById("brush"),win=document.getElementById("win"),tagL=document.getElementById("tagL"),tagR=document.getElementById("tagR");
+  const MINSPAN=6;
+  const W=()=>brush.clientWidth;
+  const xOf=i=>i/(N-1)*W();
+  const iOf=x=>Math.round(Math.min(Math.max(x/W(),0),1)*(N-1));
+  function drawMini(){ // alinea el deslizador con el área del gráfico
+    const ca=chart.chartArea;if(!ca)return;const box=chart.canvas.clientWidth;
+    brush.style.marginLeft=ca.left+"px";brush.style.marginRight=Math.max(0,box-ca.right)+"px";
+  }
+  function placeBrush(){
+    const l=xOf(a),r=xOf(b),w=W();
+    win.style.left=l+"px";win.style.width=Math.max(r-l,2)+"px";
+    tagL.textContent=data[a].lab;tagR.textContent=data[b].lab;
+    const wl=tagL.offsetWidth,wr=tagR.offsetWidth,gap=6;
+    let xl=l-wl/2,xr=r-wr/2;
+    const ov=xl+wl+gap-xr;if(ov>0){xl-=ov/2;xr+=ov/2;}
+    const pad=-Math.min(24,parseFloat(brush.style.marginLeft)||0);
+    if(xl<pad){xr+=pad-xl;xl=pad;}
+    const maxR=w+Math.min(24,parseFloat(brush.style.marginRight)||0);
+    if(xr+wr>maxR){const d=xr+wr-maxR;xr-=d;if(xl+wl+gap>xr)xl=xr-gap-wl;}
+    tagL.style.left=xl+"px";tagR.style.left=xr+"px";
+    document.getElementById("hL").setAttribute("aria-valuetext",data[a].lab);
+    document.getElementById("hR").setAttribute("aria-valuetext",data[b].lab);
+  }
+  let drag=null,raf=0;
+  function schedule(){if(!raf)raf=requestAnimationFrame(()=>{raf=0;render();});}
+  brush.addEventListener("pointerdown",e=>{
+    const rect=brush.getBoundingClientRect(),x=e.clientX-rect.left,t=e.target;
+    if(t.id==="hL")drag={mode:"l"};else if(t.id==="hR")drag={mode:"r"};
+    else if(t===win)drag={mode:"move",off:iOf(x)-a,span:b-a};
+    else{const i=iOf(x);if(Math.abs(i-a)<Math.abs(i-b)){a=Math.min(i,b-MINSPAN);drag={mode:"l"};}else{b=Math.max(i,a+MINSPAN);drag={mode:"r"};}a=Math.max(0,a);b=Math.min(N-1,b);}
+    brush.setPointerCapture(e.pointerId);setChip("");schedule();e.preventDefault();
+  });
+  brush.addEventListener("pointermove",e=>{
+    if(!drag)return;const i=iOf(e.clientX-brush.getBoundingClientRect().left);
+    if(drag.mode==="l")a=Math.min(i,b-MINSPAN);
+    else if(drag.mode==="r")b=Math.max(i,a+MINSPAN);
+    else if(drag.mode==="move"){a=Math.min(Math.max(i-drag.off,0),N-1-drag.span);b=a+drag.span;}
+    else{let lo=Math.min(i,drag.anchor),hi=Math.max(i,drag.anchor);if(hi-lo<MINSPAN){if(i>=drag.anchor)hi=Math.min(N-1,lo+MINSPAN);else lo=Math.max(0,hi-MINSPAN);}a=lo;b=hi;}
+    a=Math.max(0,a);b=Math.min(N-1,b);schedule();
+  });
+  const end=()=>{drag=null;};brush.addEventListener("pointerup",end);brush.addEventListener("pointercancel",end);
+  function keyH(which){return e=>{const d=e.key==="ArrowLeft"?-1:e.key==="ArrowRight"?1:0;if(!d)return;e.preventDefault();const s=e.shiftKey?12:1;
+    if(which==="l")a=Math.min(Math.max(0,a+d*s),b-MINSPAN);else b=Math.max(Math.min(N-1,b+d*s),a+MINSPAN);setChip("");render();};}
+  document.getElementById("hL").addEventListener("keydown",keyH("l"));
+  document.getElementById("hR").addEventListener("keydown",keyH("r"));
+  new ResizeObserver(()=>{requestAnimationFrame(()=>{drawMini();placeBrush();});}).observe(document.querySelector(".chartbox"));
+  document.getElementById("tbody").addEventListener("click",e=>{
+    const tr=e.target.closest("tr.row");if(!tr)return;const i=+tr.dataset.i-a;
+    chart.setActiveElements([{datasetIndex:0,index:i}]);chart.tooltip.setActiveElements([{datasetIndex:0,index:i}],{x:0,y:0});chart.update();
+    document.querySelector(".chartbox").scrollIntoView({behavior:"smooth",block:"center"});
+  });
+  document.getElementById("tbody").addEventListener("keydown",e=>{if(e.key==="Enter")e.target.click();});
+  new MutationObserver(()=>{paint();chart.update("none");drawMini();}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{paint();chart.update("none");drawMini();});
+
+  a=Math.max(0,N-120); setChip("r10"); drawMini(); render();
+})();
+</script>
+
+</body></html>

@@ -6,114 +6,82 @@
 <title>Glosario Políticas Monetario y Fiscal — BCRP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#313b54;
-    --navy-deep:#232a3d;
-    --gold:#f1ab26;
-    --blue:#4079a2;
-    --teal:#5fc3bb;
-    --maroon:#c0483e;
-    --paper:#faf7f0;
-    --card:#ffffff;
-    --border:#e4dfd2;
-    --text-muted:#6b7180;
-    --shadow-md: 0 8px 24px rgba(35,42,61,0.08);
-    --ease: cubic-bezier(.4,0,.2,1);
+    --navy:#0b4f4a; --navy-deep:#08403c; --gold:#f4b400; --blue:#106f67; --teal:#3fc2b2;
+    --paper:#f6faf9; --card:#ffffff; --border:#e0ece9; --text-muted:#4d6b67;
+    --monetary:#2f7fc1; --monetary-dark:#1d5a91; --monetary-soft:#e3f0fb;
+    --fiscal:#3f9a4a; --fiscal-dark:#2a7234; --fiscal-soft:#e5f4e6;
+    --ease:cubic-bezier(.4,0,.2,1);
   }
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--navy-deep);
-    font-family:'Barlow', -apple-system, sans-serif;
-    font-size:16px;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  .page{ max-width:980px; margin:0 auto; padding:0 24px 64px; }
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Inter',-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:980px;margin:0 auto;padding:8px 24px 64px;}
+  @media (max-width:560px){.page{padding:8px 16px 48px;}}
 
-  header.masthead{ background:var(--navy); color:#fff; padding:22px 0; }
-  .masthead-inner{ max-width:980px; margin:0 auto; padding:0 24px; display:flex; align-items:center; gap:14px; }
-  .masthead-mark{ width:38px;height:38px;flex:0 0 auto; border-radius:50%; background:var(--gold); display:flex;align-items:center;justify-content:center; }
-  .masthead-mark svg{ width:20px;height:20px; }
-  .masthead-text{ font-family:'Barlow Condensed', sans-serif; font-weight:600; letter-spacing:0.06em; font-size:15px; text-transform:uppercase; }
-  .masthead-text .sub{ display:block; font-family:'Barlow', sans-serif; font-weight:400; letter-spacing:0; text-transform:none; font-size:12.5px; color:#c9cedb; margin-top:1px; }
+  /* Encabezado y portada con el estilo de la Sala Educativa */
+  header.masthead{background:rgba(255,255,255,0.95);color:var(--navy-deep);border-bottom:1px solid var(--border);padding:14px 0;}
+  .masthead-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0;}
+  .brand-mark{display:grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#106f67,var(--navy-deep));color:#ffcb3d;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;font-family:'Poppins',sans-serif;}
+  .brand-text strong{font-size:15px;color:var(--navy-deep);}
+  .brand-text em{font-style:normal;font-weight:700;font-size:17px;color:#d99a00;}
+  .brand-text small{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);}
+  .back-link{flex:0 0 auto;font-weight:600;font-size:14px;color:var(--blue);text-decoration:none;border:2px solid var(--blue);border-radius:999px;padding:8px 16px;white-space:nowrap;transition:background .15s ease;}
+  .back-link:hover{background:#e2f4f1;}
+  .back-link:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  @media (max-width:560px){.brand-text small{display:none;}.back-link{font-size:13px;padding:7px 12px;}.back-link .long{display:none;}}
 
-  .hero{ background:linear-gradient(180deg, var(--navy) 0%, var(--navy) 55%, var(--navy-deep) 100%); color:#fff; padding:40px 0 56px; margin-bottom:-32px; }
-  .hero-inner{ max-width:980px;margin:0 auto;padding:0 24px; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-family:'Barlow Condensed', sans-serif; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; font-size:12.5px; color:var(--gold); margin-bottom:14px; }
-  .eyebrow::before{ content:""; width:22px;height:2px; background:var(--gold); display:inline-block; }
-  h1.title{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:clamp(28px, 4vw, 42px); line-height:1.12; margin:0 0 12px; max-width:680px; }
-  .hero-sub{ color:#d7dbe6; font-size:16px; max-width:600px; margin:0 0 20px; }
+  .hero{background:radial-gradient(700px 320px at 50% -10%,rgba(63,194,178,0.20),transparent 70%),radial-gradient(500px 260px at 95% 20%,rgba(244,180,0,0.12),transparent 70%),var(--paper);color:var(--navy-deep);text-align:center;padding:44px 0 36px;}
+  .hero-inner{max-width:980px;margin:0 auto;padding:0 20px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:11.5px;color:#8a5f00;background:#fff3d6;padding:7px 16px;border-radius:999px;margin-bottom:14px;}
+  h1.title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,4.5vw,38px);line-height:1.12;margin:0 auto 12px;max-width:720px;color:var(--navy-deep);}
+  .hero-sub{color:#345350;font-size:17px;max-width:620px;margin:0 auto 20px;}
 
-  .hero-jump{ display:flex; gap:10px; flex-wrap:wrap; }
-  .hero-jump a{
-    font-family:'Barlow Condensed', sans-serif; font-weight:600; font-size:13.5px;
-    color:#fff; text-decoration:none;
-    border:1px solid rgba(255,255,255,0.35); border-radius:999px;
-    padding:7px 16px; transition:background .15s var(--ease);
-  }
-  .hero-jump a:hover{ background:rgba(255,255,255,0.12); }
-  .hero-jump a .dot{ display:inline-block; width:8px;height:8px;border-radius:50%; margin-right:7px; }
+  .hero-jump{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .hero-jump a{font-size:14px;font-weight:600;color:var(--navy);text-decoration:none;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 16px;box-shadow:0 2px 10px rgba(9,41,38,0.06);transition:border-color .15s var(--ease),transform .15s var(--ease);}
+  .hero-jump a:hover{border-color:var(--blue);transform:translateY(-1px);}
+  .hero-jump a:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .hero-jump a .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;}
 
-  .card{ background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow-md); padding:32px 36px; margin:0 0 24px; position:relative; z-index:1; }
-  section.block{ margin-top:40px; scroll-margin-top:20px; }
-  section.block:first-of-type{ margin-top:0; }
+  .card{background:var(--card);border:1px solid var(--border);border-radius:24px;box-shadow:0 10px 28px rgba(9,41,38,0.07);padding:32px 36px;margin:0 0 24px;position:relative;z-index:1;}
+  @media (max-width:560px){.card{padding:24px 20px;}}
+  section.block{margin-top:28px;scroll-margin-top:20px;}
+  section.block:first-of-type{margin-top:0;}
+  section.block#monetario .card{box-shadow:inset 0 4px 0 var(--monetary),0 10px 28px rgba(9,41,38,0.07);}
+  section.block#fiscal .card{box-shadow:inset 0 4px 0 var(--fiscal),0 10px 28px rgba(9,41,38,0.07);}
 
-  .section-tag{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:12.5px;
-    letter-spacing:0.06em; text-transform:uppercase;
-    color:#fff; border-radius:999px; padding:6px 16px 6px 12px;
-    margin-bottom:14px;
-  }
-  .section-tag.monetario{ background:var(--navy); }
-  .section-tag.fiscal{ background:var(--maroon); }
-  .section-tag .count{
-    background:rgba(255,255,255,0.25); border-radius:999px;
-    font-size:11.5px; padding:1px 8px;
-  }
+  .section-tag{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;border-radius:999px;padding:6px 14px 6px 14px;margin-bottom:14px;}
+  .section-tag.monetario{background:var(--monetary-soft);color:var(--monetary-dark);}
+  .section-tag.fiscal{background:var(--fiscal-soft);color:var(--fiscal-dark);}
+  .section-tag .count{background:#fff;border-radius:999px;font-size:11px;padding:1px 8px;}
 
-  h2.section-title{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:24px; color:var(--navy); margin:0 0 6px; }
-  .section-intro{ color:var(--text-muted); font-size:14.5px; margin:0 0 20px; }
+  h2.section-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;line-height:1.25;color:var(--navy);margin:0 0 6px;}
+  .section-intro{color:var(--text-muted);font-size:15px;margin:0 0 18px;}
 
-  .glossary-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 32px; }
-  @media (max-width:680px){ .glossary-grid{ grid-template-columns:1fr; } }
+  .glossary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;}
+  @media (max-width:680px){.glossary-grid{grid-template-columns:1fr;}}
 
-  .term-entry{ padding:14px 0; border-bottom:1px solid var(--border); }
-  .term-entry:nth-last-child(1), .term-entry:nth-last-child(2){ }
-  .term-name{
-    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:16px;
-    color:var(--navy); margin:0 0 4px;
-    display:flex; align-items:baseline; gap:8px;
-  }
-  .term-name .letter{
-    flex:0 0 auto; width:20px; height:20px; border-radius:5px;
-    background:var(--paper); border:1px solid var(--border);
-    color:var(--gold); font-size:11px; font-weight:700;
-    display:inline-flex; align-items:center; justify-content:center;
-    font-family:'Barlow Condensed', sans-serif;
-  }
-  .term-def{ font-size:14px; margin:0; color:#4b5063; padding-left:28px; }
+  .term-entry{padding:14px 0;border-bottom:1px solid var(--border);}
+  .term-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;line-height:1.35;color:var(--navy);margin:0 0 4px;display:flex;align-items:baseline;gap:8px;}
+  .term-name .letter{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:#fff3d6;color:#8a5f00;font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;}
+  #monetario .term-name .letter{background:var(--monetary-soft);color:var(--monetary-dark);}
+  #fiscal .term-name .letter{background:var(--fiscal-soft);color:var(--fiscal-dark);}
+  .term-def{font-size:14.5px;margin:0;color:#345350;padding-left:30px;}
 
-  footer.page-footer{ text-align:center; margin-top:40px; padding-top:24px; border-top:1px solid var(--border); color:var(--text-muted); font-size:12.5px; }
+  footer.page-footer{text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;}
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="masthead-inner">
-    <div class="masthead-mark">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#232a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/>
-      </svg>
-    </div>
-    <div class="masthead-text">
-      Banco Central de Reserva del Perú
-      <span class="sub">Serie Educativa · Glosario</span>
-    </div>
+    <a class="brand" href="../index.html" aria-label="Sala Educativa de Economía — Inicio"><span class="brand-mark" aria-hidden="true">SE</span><span class="brand-text"><strong>Sala Educativa de</strong><em>Economía</em><small>Banco Central de Reserva del Perú</small></span></a>
+    <a class="back-link" href="../politicas.html">← Volver<span class="long"> a Políticas</span></a>
   </div>
 </header>
 
@@ -123,8 +91,8 @@
     <h1 class="title">Glosario de Políticas Monetaria y Fiscal</h1>
     <p class="hero-sub">Términos clave para entender cómo el Banco Central preserva la estabilidad monetaria y cómo el Gobierno maneja sus ingresos y gastos.</p>
     <div class="hero-jump">
-      <a href="#monetario"><span class="dot" style="background:var(--gold);"></span>Sector Monetario · 13 términos</a>
-      <a href="#fiscal"><span class="dot" style="background:#e07a72;"></span>Sector Fiscal · 27 términos</a>
+      <a href="#monetario"><span class="dot" style="background:var(--monetary);"></span>Sector Monetario · 13 términos</a>
+      <a href="#fiscal"><span class="dot" style="background:var(--fiscal);"></span>Sector Fiscal · 27 términos</a>
     </div>
   </div>
 </div>

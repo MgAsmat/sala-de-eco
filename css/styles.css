@@ -860,10 +860,6 @@ body.ed-no-scroll { overflow: hidden; }
 .ecodia .tag { display: inline-flex; align-items: center; gap: 6px; font: 700 10.5px/1 var(--ed-f-mono); letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--ed-surface-2); color: var(--ed-muted); }
 .ecodia .tag.m { background: var(--ed-real-soft); color: var(--ed-real); }
 .ecodia .tag.a { background: var(--ed-money-soft); color: var(--ed-money); }
-.ecodia .flows-list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
-.ecodia .flows-list li { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; font-size: 14.5px; padding: 9px 12px; border-radius: 14px; background: var(--ed-surface-2); cursor: default; }
-.ecodia .flows-list li:hover { outline: 1.5px solid var(--ed-line); }
-.ecodia .flows-list .dir { font: 500 12px var(--ed-f-mono); color: var(--ed-muted); }
 .ecodia .box { margin-top: 18px; padding: 14px 16px; border-radius: 16px; border: 1.5px dashed var(--ed-line); }
 .ecodia .box b { display: block; font: 700 10.5px/1 var(--ed-f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ed-accent); margin-bottom: 8px; }
 .ecodia .box p { margin: 0; font-size: 15px; }

@@ -253,26 +253,13 @@ function renderExplorar(){
     return;
   }
   var n = NODES[state.sel], info = INFO[state.sel];
-  var rel = FLOWS.filter(function(f){ return f.from===state.sel || f.to===state.sel; });
-  var items = rel.map(function(f){
-    var out = f.from===state.sel;
-    var other = out ? f.to : f.from;
-    var mark = f.k==="dinero" ? '<span class="dot"></span>' : '<span class="sq"></span>';
-    return '<li data-flow="'+f.id+'">'+mark+'<span><b>'+esc(f.label)+'</b> <span class="dir">'+(out?'→ entrega a ':'← recibe de ')+esc(nodeTitle(other).replace(/^Mercado /,"m. "))+'</span></span></li>';
-  }).join("");
   pane.innerHTML = '<div class="pane-anim">'+
     '<span class="tag '+(n.kind==="mercado"?"m":"a")+'">'+(n.kind==="mercado"?"Mercado":"Agente económico")+'</span>'+
     '<h2>'+esc(nodeTitle(state.sel))+'</h2>'+
     '<p class="lede">'+esc(info.lede)+'</p>'+
-    '<ul class="flows-list">'+items+'</ul>'+
     '<div class="box"><b>En la vida diaria</b><p>'+esc(info.ej)+'</p></div>'+
     '<div class="box" style="border-style:solid;background:var(--ed-surface-2)"><b>¿Sabías que…?</b><p>'+esc(info.dato)+'</p></div>'+
   '</div>';
-  $all(".flows-list li").forEach(function(li){
-    var f = FLOWS.filter(function(x){ return x.id===li.dataset.flow; })[0];
-    li.addEventListener("mouseenter", function(){ f.path.style.strokeWidth = "6"; });
-    li.addEventListener("mouseleave", function(){ f.path.style.strokeWidth = ""; });
-  });
 }
 
 function renderRecorrido(){

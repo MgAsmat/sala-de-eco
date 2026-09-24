@@ -143,19 +143,19 @@ footer a{color:var(--teal)}
   </section>
 
   <footer>
-    Fuente: BCRP, Estadísticas – serie PN39524FM, “Operaciones del sector público no financiero – Resultado económico (acumulado 12 meses, % del PBI)”. Datos hasta agosto de 2026. El valor de 2026 es el acumulado a doce meses al último mes disponible.
+    Fuente: BCRP, Estadísticas – serie PN39524FM, “Operaciones del sector público no financiero – Resultado económico (acumulado 12 meses, % del PBI)”. <span id="estadoDatos"></span>
     <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN39524FM/html" target="_blank" rel="noopener">Ver serie en BCRPData</a>
   </footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script src="datos.js"></script>
+<script src="bcrp.js"></script>
 <script>
-(function(){
-  // Serie PN39524FM, Ene.2007 – Ago.2026 (acumulado 12 meses, % del PBI; redondeada a 2 decimales)
-  const V=[2.47,2.59,2.69,2.91,3.16,3.35,3.33,3.36,3.47,3.38,3.29,3.07,3.21,3.07,2.91,2.60,2.47,2.35,2.21,2.15,2.26,2.08,2.16,2.52,2.67,2.66,2.52,2.15,1.87,1.62,1.20,0.81,0.32,0.22,-0.23,-1.29,-1.63,-1.66,-1.43,-1.43,-1.35,-1.24,-0.95,-0.79,-0.75,-0.59,-0.47,-0.18,0.22,0.51,0.72,1.37,1.60,1.69,1.63,1.94,2.22,2.30,2.61,2.08,2.38,2.46,2.46,2.47,2.62,2.86,3.08,2.75,2.76,2.61,2.40,2.27,2.16,2.11,2.08,1.66,1.43,1.33,0.99,1.06,1.01,0.97,0.99,0.88,0.87,0.89,0.90,1.12,1.02,0.69,0.45,0.37,0.26,0.07,0.25,-0.25,-0.27,-0.33,-0.40,-0.68,-0.87,-0.94,-0.90,-1.00,-1.33,-1.44,-1.82,-1.92,-1.97,-2.33,-2.65,-2.75,-2.77,-2.83,-3.05,-3.25,-3.08,-2.98,-2.97,-2.32,-2.47,-2.42,-2.38,-2.38,-2.59,-2.64,-2.45,-2.58,-2.74,-2.73,-2.79,-2.95,-2.89,-2.98,-2.86,-2.58,-2.21,-2.10,-2.07,-2.02,-2.02,-2.09,-2.12,-2.26,-2.02,-1.81,-1.75,-1.72,-1.56,-1.62,-1.62,-1.79,-1.57,-1.55,-1.56,-1.59,-1.70,-1.99,-2.62,-3.85,-4.50,-4.70,-5.06,-5.53,-6.07,-6.95,-7.44,-8.71,-8.67,-8.69,-8.23,-6.88,-6.42,-6.15,-5.77,-4.78,-4.63,-3.89,-3.15,-2.48,-2.39,-2.18,-1.53,-1.02,-0.94,-0.96,-1.10,-1.52,-1.16,-1.22,-1.64,-1.68,-1.79,-1.84,-2.04,-2.33,-2.26,-2.50,-2.49,-2.62,-2.79,-2.74,-2.64,-2.75,-2.60,-2.95,-3.33,-3.52,-3.88,-3.84,-3.87,-3.87,-3.94,-4.00,-3.89,-3.45,-3.56,-3.46,-3.30,-2.87,-2.66,-2.58,-2.58,-2.38,-2.44,-2.29,-2.13,-2.18,-2.11,-2.15,-2.10,-1.84,-1.61,-1.26,-1.01,-1.03];
+function iniciar(D){
   const MES=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
   const MESL=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-  const data=V.map((v,i)=>{const y=2007+Math.floor(i/12),m=i%12;return {y,m,v,lab:MES[m]+"."+y,s:v<0?-1:1};});
+  const data=D.filas.map((f,i)=>{const k=D.inicio[0]*12+D.inicio[1]-1+i,y=Math.floor(k/12),m=k%12,v=f[0];return {y,m,v,lab:MES[m]+"."+y,s:v<0?-1:1};});
   const N=data.length;
 
   const fmt=v=>v.toLocaleString("es-PE",{minimumFractionDigits:1,maximumFractionDigits:1});
@@ -219,7 +219,7 @@ footer a{color:var(--teal)}
   }
 
   // Cierre anual (diciembre; para el último año, el último mes disponible)
-  const YEARS=[];for(let y=2007;y<=data[N-1].y;y++){const idx=data.reduce((k,d,i)=>d.y===y?i:k,-1);YEARS.push({y,i:idx,d:data[idx]});}
+  const YEARS=[];for(let y=data[0].y;y<=data[N-1].y;y++){const idx=data.reduce((k,d,i)=>d.y===y?i:k,-1);YEARS.push({y,i:idx,d:data[idx]});}
 
   function render(){
     const sl=data.slice(a,b+1), span=b-a;
@@ -318,7 +318,10 @@ footer a{color:var(--teal)}
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change",repaint);
 
   a=Math.max(0,N-120); setChip("r10"); render();
-})();
+  // Fuente de los datos mostrados
+  document.getElementById("estadoDatos").textContent="Datos hasta "+MESL[data[N-1].m]+" de "+data[N-1].y+"."+(data[N-1].m!==11?" El valor de "+data[N-1].y+" es el acumulado a doce meses al último mes disponible.":"")+(D.vivo?" Leídos en vivo de BCRPData.":" Copia de BCRPData actualizada el "+D.fecha.split("-").reverse().join("/")+".");
+}
+BCRP.cargar("resultado").then(D=>{if(D)iniciar(D);});
 </script>
 
 </body></html>

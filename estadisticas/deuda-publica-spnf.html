@@ -158,18 +158,18 @@ footer a{color:var(--teal)}
   </section>
 
   <footer>
-    Fuente: BCRP, Estadísticas – “Saldo de la deuda del sector público no financiero (porcentaje del PBI)”: series PN03432FQ (deuda pública), PN03433FQ (externa), PN03442FQ (interna) y PN03481FQ (deuda neta). Datos trimestrales de I trim. 1999 a II trim. 2026.
+    Fuente: BCRP, Estadísticas – “Saldo de la deuda del sector público no financiero (porcentaje del PBI)”: series PN03432FQ (deuda pública), PN03433FQ (externa), PN03442FQ (interna) y PN03481FQ (deuda neta). <span id="estadoDatos"></span>
     <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN03432FQ-PN03433FQ-PN03442FQ-PN03481FQ/html" target="_blank" rel="noopener">Ver serie en BCRPData</a>
   </footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script src="datos.js"></script>
+<script src="bcrp.js"></script>
 <script>
-(function(){
-  // Series PN03432FQ, PN03433FQ, PN03442FQ, PN03481FQ (% del PBI), T1.1999 – T2.2026: [bruta, externa, interna, neta]
-  const R=[[47.64,40.13,7.51,32.92],[47.73,40.04,7.69,32.76],[51.09,42.68,8.41,36.87],[51.46,41.54,9.92,37.69],[50.32,40.25,10.06,36.67],[48.61,39,9.6,35.97],[47.85,38.15,9.7,35.35],[48.3,38.55,9.75,36.86],[47.43,37.66,9.77,36.3],[48.18,37.88,10.3,36.94],[48.53,38.19,10.34,37.93],[47.44,36.45,10.99,38.69],[47.16,36.35,10.81,36.61],[48.43,37.8,10.63,38.26],[49.9,38.99,10.91,38.99],[48.81,38.32,10.49,39.64],[48.69,38.41,10.28,37.78],[47.74,37.65,10.08,37.56],[47.78,37.58,10.2,38.34],[48.85,38.69,10.16,40.09],[47.36,37.73,9.63,39.27],[45.98,36.92,9.07,37.59],[43.76,34.72,9.04,35.9],[44.69,35.56,9.13,36.35],[43.39,34.65,8.74,34.67],[41.51,32.91,8.6,32.57],[41.33,31.55,9.78,32.66],[41.85,31.24,10.61,33.35],[38.9,29.26,9.64,30.55],[36.36,27.21,9.15,27.34],[34.39,25.57,8.81,25.39],[33.82,24.56,9.26,24.93],[31.96,23.29,8.68,22.7],[31.16,22.41,8.75,19.79],[31.68,21.55,10.13,18.2],[29.57,18.82,10.75,17.62],[26,15.91,10.09,15.48],[26.52,16.45,10.07,13.89],[25.62,15.83,9.79,12.87],[26.6,16.89,9.71,13.68],[26.85,17.44,9.41,12.97],[26.19,16.66,9.54,11.97],[25.81,16.18,9.63,12.28],[26.58,16.01,10.57,13.21],[25.08,15.27,9.82,11.92],[23.86,14.21,9.66,10.59],[23.26,13.71,9.54,10.42],[23.75,13.1,10.65,11.24],[22.85,12.75,10.1,9.4],[21.75,12.12,9.63,7.13],[21.3,11.9,9.39,6.64],[21.64,11.4,10.24,7.64],[20.62,11.05,9.57,5.26],[19.98,10.79,9.19,3.42],[19.55,10.3,9.24,2.86],[19.88,9.8,10.09,3.95],[18.92,9.42,9.5,2.43],[18.54,9.14,9.4,1.46],[18.22,8.97,9.25,1.37],[19.15,8.77,10.38,2.74],[17.97,8.65,9.32,1.13],[18.14,8.66,9.48,0.45],[18.3,8.69,9.61,0.86],[19.74,8.69,11.05,3.01],[19.65,9.03,10.62,1.8],[19.61,9.01,10.6,1.49],[20.82,9.96,10.87,2.67],[22.97,10.97,11.99,5.36],[22.45,11.19,11.26,4.99],[21.77,10.69,11.08,4.37],[22.3,10.78,11.51,5.11],[23.33,10.13,13.19,6.7],[22.52,9.6,12.91,6.08],[23.62,10.22,13.4,6.37],[23.67,8.76,14.91,7.72],[24.3,8.54,15.76,9.3],[23.29,8.44,14.84,8.84],[23.18,8.29,14.89,8.33],[23.44,8.27,15.18,9.21],[25.25,8.67,16.58,11.08],[24.8,8.56,16.24,10.25],[25.2,8.57,16.64,10.02],[25.09,8.55,16.54,10.85],[26.15,8.32,17.83,12.71],[25.65,8.59,17.06,12.66],[29.49,11.16,18.33,14.81],[31.15,12.55,18.6,18.02],[33.95,14.58,19.37,21.82],[35.57,17.52,18.05,22.09],[33.14,16.56,16.58,20.27],[33.83,17.92,15.91,20.74],[35.29,19.1,16.19,21.38],[32.81,17.31,15.5,19.22],[33.09,17.51,15.58,18.38],[33.71,18.09,15.62,19.58],[33.32,17.28,16.04,20.7],[32.4,16.79,15.62,20.26],[31.72,15.51,16.22,19.1],[31.92,15.96,15.96,20.45],[32.34,15.55,16.79,22.11],[31.67,15.38,16.3,21.92],[32.03,15.74,16.29,21.97],[31.89,15.44,16.44,22.45],[32.02,15.18,16.84,23.41],[31.02,14.52,16.5,22.91],[31.62,14.67,16.95,21.77],[30.85,13.76,17.09,22.38],[30.12,12.86,17.26,22.74],[29.21,12.57,16.64,22.52],[28.25,11.92,16.33,20.42]];
+function iniciar(D){
   const ROM=["I","II","III","IV"];
-  const data=R.map((r,i)=>{const y=1999+Math.floor(i/4),q=i%4;return {y,q,v:r[0],ext:r[1],int:r[2],net:r[3],lab:"T"+(q+1)+"."+y,long:ROM[q]+" trim. "+y};});
+  const data=D.filas.map((r,i)=>{const k=D.inicio[0]*4+D.inicio[1]-1+i,y=Math.floor(k/4),q=k%4;return {y,q,v:r[0],ext:r[1],int:r[2],net:r[3],lab:"T"+(q+1)+"."+y,long:ROM[q]+" trim. "+y};});
   const N=data.length;
 
   const fmt=v=>v.toLocaleString("es-PE",{minimumFractionDigits:1,maximumFractionDigits:1});
@@ -241,7 +241,7 @@ footer a{color:var(--teal)}
     tt.footerFont={family:"Barlow",size:12,weight:"400"};
   }
 
-  const YEARS=[];for(let y=1999;y<=data[N-1].y;y++){const idx=data.reduce((k,d,i)=>d.y===y?i:k,-1);YEARS.push({y,i:idx,d:data[idx]});}
+  const YEARS=[];for(let y=data[0].y;y<=data[N-1].y;y++){const idx=data.reduce((k,d,i)=>d.y===y?i:k,-1);YEARS.push({y,i:idx,d:data[idx]});}
 
   function render(){
     const sl=data.slice(a,b+1),span=b-a,[A,B]=chart.data.datasets;
@@ -343,7 +343,10 @@ footer a{color:var(--teal)}
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change",repaint);
 
   a=Math.max(0,N-40); setChip("r10"); render();
-})();
+  // Fuente de los datos mostrados
+  document.getElementById("estadoDatos").textContent="Datos trimestrales de "+data[0].long+" a "+data[N-1].long+"."+(D.vivo?" Leídos en vivo de BCRPData.":" Copia de BCRPData actualizada el "+D.fecha.split("-").reverse().join("/")+".");
+}
+BCRP.cargar("deuda").then(D=>{if(D)iniciar(D);});
 </script>
 
 </body></html>

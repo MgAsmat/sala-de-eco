@@ -1,0 +1,352 @@
+<!doctype html><html lang="es"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Deuda Pública SPNF</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0B2A4A; --gold:#C9A227; --teal:#1F8A8A; --up:#B5473A;
+  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#12263A; --muted:#5B6B7C;
+  --line:#DCE2E9; --grid:#E9EDF2; --chip:#EEF1F5; --fill:rgba(31,138,138,.12);
+  --accent-ink:#0B2A4A; --s1:#0B2A4A; --s2:#1F8A8A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0A1522; --surface:#10202F; --ink:#E6ECF2; --muted:#94A6B8;
+    --line:#223649; --grid:#1A2C3D; --chip:#172A3C; --fill:rgba(56,178,172,.16);
+    --teal:#3BB2AC; --gold:#D9B545; --up:#E07565; --accent-ink:#E6ECF2; --s1:#8FB3DC; --s2:#3BB2AC;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A1522; --surface:#10202F; --ink:#E6ECF2; --muted:#94A6B8;
+  --line:#223649; --grid:#1A2C3D; --chip:#172A3C; --fill:rgba(56,178,172,.16);
+  --teal:#3BB2AC; --gold:#D9B545; --up:#E07565; --accent-ink:#E6ECF2; --s1:#8FB3DC; --s2:#3BB2AC;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;padding-inline:16px;padding-block:28px 40px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:20px}
+.cond{font-family:"Barlow Condensed","Arial Narrow",Barlow,sans-serif}
+.num{font-variant-numeric:tabular-nums}
+
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;border-bottom:3px solid var(--gold);padding-bottom:18px}
+.eyebrow{font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+h1{font:700 clamp(28px,5vw,40px)/1.05 "Barlow Condensed",sans-serif;margin:0;color:var(--accent-ink);text-wrap:balance}
+.sub{margin:8px 0 0;color:var(--muted);max-width:60ch}
+.now{display:flex;align-items:flex-end;gap:14px}
+.now .val{font:700 clamp(48px,9vw,68px)/.9 "Barlow Condensed",sans-serif;color:var(--accent-ink)}
+.now .val small{font-size:.45em;font-weight:600;margin-left:2px;color:var(--gold)}
+.now .meta{font-size:13px;color:var(--muted);line-height:1.35;padding-bottom:4px}
+.now .meta b{color:var(--ink);font-weight:600}
+.pill{display:inline-block;font:600 12px/1 Barlow,sans-serif;padding:4px 8px;border-radius:999px;margin-top:4px}
+.pill.down{background:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--teal)}
+.pill.up{background:color-mix(in srgb,var(--up) 16%,transparent);color:var(--up)}
+.pill.flat{background:var(--chip);color:var(--muted)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:space-between;align-items:center;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:600 13px/1 Barlow,sans-serif;border:1px solid var(--line);background:var(--chip);color:var(--ink);padding:8px 12px;border-radius:4px;cursor:pointer}
+.chips button:hover{border-color:var(--teal)}
+.chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+:root[data-theme="dark"] .chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#0A1522}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#0A1522}}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.range{font:600 15px/1.2 "Barlow Condensed",sans-serif;color:var(--ink);letter-spacing:.02em}
+.range span{color:var(--muted);font-weight:500}
+.brush{position:relative;height:58px;margin-top:4px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:pointer}
+.brush .track{position:absolute;left:0;right:0;top:40px;height:4px;margin-top:-2px;border-radius:2px;background:var(--line)}
+.brush .win{position:absolute;top:40px;height:6px;margin-top:-3px;border-radius:3px;background:var(--gold);cursor:grab}
+.brush .win:active{cursor:grabbing}
+.brush .h{position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;background:var(--surface);border:3px solid var(--gold);border-radius:50%;cursor:ew-resize;box-shadow:0 1px 3px rgba(0,0,0,.2);touch-action:none}
+.brush .h.l{left:-9px}.brush .h.r{right:-9px}
+.brush .h:hover,.brush .h:focus-visible{transform:scale(1.15)}
+.brush .h:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.brush .tag{position:absolute;top:6px;font:600 13px/1 "Barlow Condensed",sans-serif;letter-spacing:.02em;color:var(--ink);background:var(--chip);border:1px solid var(--line);padding:4px 7px;border-radius:4px;white-space:nowrap;pointer-events:none;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.chartbox{position:relative;height:clamp(280px,48vw,420px)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px}
+.stat .k{font:600 11px/1.2 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font:700 30px/1.1 "Barlow Condensed",sans-serif;margin-top:6px}
+.stat .d{font-size:12px;color:var(--muted)}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+h2{font:700 20px/1.2 "Barlow Condensed",sans-serif;margin:0 0 4px;color:var(--accent-ink)}
+.hint{margin:0 0 12px;font-size:13px;color:var(--muted)}
+.tablewrap{max-height:340px;overflow:auto;border-top:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{position:sticky;top:0;background:var(--surface);text-align:left;font:600 11px/1 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:10px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--grid)}
+td.r,th.r{text-align:right}
+tr.row{cursor:pointer}
+tr.row:hover td{background:var(--chip)}
+footer{font-size:12px;color:var(--muted)}
+footer a{color:var(--teal)}
+.band-sw{width:18px;height:10px;border-radius:2px;display:inline-block;background:color-mix(in srgb,var(--gold) 22%,transparent);border-top:1.5px dashed var(--gold)}
+.line-sw{width:18px;height:3px;border-radius:2px;display:inline-block}
+.pill.in{background:color-mix(in srgb,var(--navy) 12%,transparent);color:var(--accent-ink)}
+.side{font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{font:600 13px/1 Barlow,sans-serif;border:0;background:var(--surface);color:var(--muted);padding:8px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--chip);color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.tools-r{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.dash-sw{width:18px;height:0;border-top:2.5px dashed var(--s2);display:inline-block}
+[hidden]{display:none!important}
+.area-sw{width:14px;height:10px;border-radius:2px;display:inline-block}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <p class="eyebrow">Finanzas públicas · Serie trimestral</p>
+      <h1>Deuda Pública del SPNF</h1>
+      <p class="sub">Saldo de la deuda del Sector Público No Financiero al cierre de cada trimestre, como porcentaje del PBI. La deuda neta resta a la deuda bruta los activos financieros del sector público, como sus depósitos.</p>
+    </div>
+    <div class="now">
+      <div class="val num" id="nowVal">–</div>
+      <div class="meta" id="nowMeta"></div>
+    </div>
+  </header>
+
+  <section class="panel" aria-label="Gráfico">
+    <div class="toolbar">
+      <div class="chips" role="group" aria-label="Periodo">
+                <button type="button" id="r3" data-y="3">3 años</button>
+        <button type="button" id="r5" data-y="5">5 años</button>
+        <button type="button" id="r10" data-y="10">10 años</button>
+        <button type="button" id="rAll" data-y="all">Toda la serie</button>
+      </div>
+      <div class="tools-r">
+        <div class="seg" role="group" aria-label="Vista">
+          <button type="button" id="vBN" aria-pressed="true">Bruta y neta</button>
+          <button type="button" id="vEI" aria-pressed="false">Externa e interna</button>
+        </div>
+        <div class="range" id="rangeLbl" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="chartbox"><canvas id="chart" aria-label="Gráfico de la deuda pública del SPNF como porcentaje del PBI" role="img"></canvas></div>
+    <div class="brush" id="brush" aria-label="Selector de periodo: arrastra las manijas o la franja dorada">
+      <div class="track"></div>
+      <span class="tag" id="tagL"></span><span class="tag" id="tagR"></span>
+      <div class="win" id="win"><div class="h l" id="hL" tabindex="0" role="slider" aria-label="Inicio del periodo"></div><div class="h r" id="hR" tabindex="0" role="slider" aria-label="Fin del periodo"></div></div>
+    </div>
+    <div class="legend">
+      <span id="lgBN"><span style="display:inline-flex;gap:6px;align-items:center"><i class="line-sw" style="background:var(--s1)"></i>Deuda bruta</span></span>
+      <span id="lgBN2"><span style="display:inline-flex;gap:6px;align-items:center"><i class="dash-sw"></i>Deuda neta</span></span>
+      <span id="lgEI" hidden><span style="display:inline-flex;gap:6px;align-items:center"><i class="area-sw" style="background:var(--s1)"></i>Externa</span></span>
+      <span id="lgEI2" hidden><span style="display:inline-flex;gap:6px;align-items:center"><i class="area-sw" style="background:var(--s2)"></i>Interna (suman la deuda bruta)</span></span>
+      <span>Arrastra las manijas para cambiar el inicio o el fin; arrastra la franja dorada para mover el periodo.</span>
+    </div>
+  </section>
+
+  <section class="stats" id="stats" aria-label="Resumen del periodo"></section>
+
+  <section class="panel">
+    <h2>Saldo al cierre de cada año</h2>
+    <p class="hint" id="chgHint"></p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Año</th><th class="r">Bruta</th><th class="r">Externa</th><th class="r">Interna</th><th class="r">Neta</th><th class="r">Bruta vs. año anterior</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Fuente: BCRP, Estadísticas – “Saldo de la deuda del sector público no financiero (porcentaje del PBI)”: series PN03432FQ (deuda pública), PN03433FQ (externa), PN03442FQ (interna) y PN03481FQ (deuda neta). <span id="estadoDatos"></span>
+    <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN03432FQ-PN03433FQ-PN03442FQ-PN03481FQ/html" target="_blank" rel="noopener">Ver serie en BCRPData</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script src="datos.js"></script>
+<script src="bcrp.js"></script>
+<script>
+function iniciar(D){
+  const ROM=["I","II","III","IV"];
+  const data=D.filas.map((r,i)=>{const k=D.inicio[0]*4+D.inicio[1]-1+i,y=Math.floor(k/4),q=k%4;return {y,q,v:r[0],ext:r[1],int:r[2],net:r[3],lab:"T"+(q+1)+"."+y,long:ROM[q]+" trim. "+y};});
+  const N=data.length;
+
+  const fmt=v=>v.toLocaleString("es-PE",{minimumFractionDigits:1,maximumFractionDigits:1});
+  const pp=d=>(d>0?"+":d<0?"−":"±")+Math.abs(d).toLocaleString("es-PE",{minimumFractionDigits:1,maximumFractionDigits:1})+" pp";
+  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const rgba=(hex,al)=>{const h=hex.replace("#","");return `rgba(${parseInt(h.slice(0,2),16)},${parseInt(h.slice(2,4),16)},${parseInt(h.slice(4,6),16)},${al})`;};
+  const trend=d=>Math.abs(d)<0.05?"flat":d<0?"down":"up";
+
+  // Encabezado
+  const last=data[N-1],prev=data[N-2],yago=data[N-5];
+  document.getElementById("nowVal").innerHTML=fmt(last.v)+"<small>% PBI</small>";
+  document.getElementById("nowMeta").innerHTML=
+    `Deuda bruta al <b>${last.long}</b><br>Deuda neta: <b>${fmt(last.net)}%</b> del PBI<br>`+
+    `<span class="pill ${trend(last.v-yago.v)}">${pp(last.v-yago.v)} en un año</span> <span class="pill ${trend(last.v-prev.v)}">${pp(last.v-prev.v)} vs. trimestre anterior</span>`;
+
+  let a=0,b=N-1,drag=null,view="BN";
+  const isDark=()=>document.documentElement.dataset.theme==="dark"||(matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.dataset.theme!=="light");
+
+  const chart=new Chart(document.getElementById("chart"),{
+    type:"line",
+    data:{labels:[],datasets:[
+      {label:"Deuda bruta",data:[],borderWidth:2.5,tension:0.25,cubicInterpolationMode:"monotone",pointHitRadius:6},
+      {label:"Deuda neta",data:[],borderWidth:2,borderDash:[6,4],tension:0.25,cubicInterpolationMode:"monotone",pointHitRadius:6}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,animation:{duration:matchMedia("(prefers-reduced-motion: reduce)").matches?0:450},
+      interaction:{mode:"index",intersect:false},
+      layout:{padding:{top:8,right:8}},
+      scales:{
+        x:{grid:{display:false},border:{display:false},ticks:{autoSkip:false,maxRotation:0,font:{family:"Barlow",size:12}}},
+        y:{beginAtZero:true,border:{display:false},ticks:{font:{family:"Barlow",size:12},callback:v=>fmt(v)+"%"}}
+      },
+      plugins:{
+        legend:{display:false},
+        tooltip:{displayColors:true,boxWidth:10,boxHeight:10,usePointStyle:false,padding:10,titleFont:{family:"Barlow Condensed",size:14,weight:"600"},bodyFont:{family:"Barlow",size:13},
+          callbacks:{
+            title:it=>data[a+it[0].dataIndex].long,
+            label:it=>it.dataset.label+": "+fmt(it.parsed.y)+"% del PBI",
+            footer:it=>{const i=a+it[0].dataIndex,d=data[i],r=[];
+              if(view==="EI")r.push("Deuda bruta: "+fmt(d.v)+"%");
+              if(i>0)r.push("Bruta vs. trim. anterior: "+pp(d.v-data[i-1].v));
+              if(i>3)r.push("Bruta vs. hace un año: "+pp(d.v-data[i-4].v));return r;}
+          }}
+      }
+    },
+    plugins:[{id:"cross",afterDatasetsDraw(c){const t=c.tooltip;if(!t||!t.getActiveElements().length)return;const x=t.getActiveElements()[0].element.x,g=c.ctx;g.save();g.strokeStyle=css("--gold");g.lineWidth=1;g.setLineDash([4,3]);g.beginPath();g.moveTo(x,c.chartArea.top);g.lineTo(x,c.chartArea.bottom);g.stroke();g.restore();}}]
+  });
+
+  function paint(){
+    const [A,B]=chart.data.datasets,s1=css("--s1"),s2=css("--s2"),al=isDark()?0.35:0.28;
+    const lastPt=c=>c.dataIndex===b-a?4.5:0;
+    if(view==="BN"){
+      A.label="Deuda bruta";B.label="Deuda neta";
+      A.borderColor=s1;A.backgroundColor=rgba(s1,isDark()?0.12:0.07);A.fill="origin";
+      B.borderColor=s2;B.backgroundColor=s2;B.fill=false;B.borderDash=[6,4];B.borderWidth=2;
+      chart.options.scales.y.stacked=false;
+    }else{
+      A.label="Externa";B.label="Interna";
+      A.borderColor=s1;A.backgroundColor=rgba(s1,al);A.fill="origin";
+      B.borderColor=s2;B.backgroundColor=rgba(s2,al);B.fill="-1";B.borderDash=[];B.borderWidth=2;
+      chart.options.scales.y.stacked=true;
+    }
+    [A,B].forEach(ds=>{ds.pointRadius=lastPt;ds.pointBackgroundColor=ds.borderColor;ds.pointBorderColor=css("--surface");ds.pointBorderWidth=2;
+      ds.pointHoverRadius=5;ds.pointHoverBackgroundColor=css("--gold");ds.pointHoverBorderColor=css("--surface");});
+    const o=chart.options;
+    o.scales.x.ticks.color=o.scales.y.ticks.color=css("--muted");
+    o.scales.y.grid={color:css("--grid")};
+    const tt=o.plugins.tooltip;tt.backgroundColor=css("--ink");tt.titleColor=tt.bodyColor=tt.footerColor=css("--bg");
+    tt.footerFont={family:"Barlow",size:12,weight:"400"};
+  }
+
+  const YEARS=[];for(let y=data[0].y;y<=data[N-1].y;y++){const idx=data.reduce((k,d,i)=>d.y===y?i:k,-1);YEARS.push({y,i:idx,d:data[idx]});}
+
+  function render(){
+    const sl=data.slice(a,b+1),span=b-a,[A,B]=chart.data.datasets;
+    chart.data.labels=sl.map(d=>d.lab);
+    if(view==="BN"){A.data=sl.map(d=>d.v);B.data=sl.map(d=>d.net);}else{A.data=sl.map(d=>d.ext);B.data=sl.map(d=>d.int);}
+    const step=span>60?8:span>24?4:span>10?2:1; // en trimestres
+    chart.options.scales.x.ticks.callback=function(v,i){const d=sl[i];if(step>=4)return d.q===0&&(d.y%(step/4)===0)?String(d.y):"";return (d.y*4+d.q)%step===0?d.lab:"";};
+    chart.options.scales.y.suggestedMax=Math.ceil((Math.max(...sl.map(d=>d.v))+3)/5)*5;
+    paint(); chart.update(drag?"none":undefined);
+    document.getElementById("rangeLbl").innerHTML=`<span>Periodo:</span> ${b-a+1} trimestres`;
+    drawMini(); placeBrush();
+
+    let hi=sl[0],lo=sl[0];sl.forEach(d=>{if(d.v>hi.v)hi=d;if(d.v<lo.v)lo=d;});
+    const e=sl[sl.length-1];
+    document.getElementById("stats").innerHTML=[
+      ["Deuda bruta al cierre",fmt(e.v)+"%",`${e.lab} · neta ${fmt(e.net)}%`],
+      ["Máximo del periodo",fmt(hi.v)+"%",hi.lab],
+      ["Mínimo del periodo",fmt(lo.v)+"%",lo.lab],
+      ["Deuda externa",Math.round(e.ext/e.v*100)+"%",`de la deuda bruta · ${fmt(e.ext)}% externa, ${fmt(e.int)}% interna`]
+    ].map(([k,v,d])=>`<div class="stat"><div class="k">${k}</div><div class="v num">${v}</div><div class="d">${d}</div></div>`).join("");
+
+    const ys=YEARS.filter(Y=>Y.i>=a&&Y.i<=b);
+    document.getElementById("chgHint").textContent=ys.length?"Saldo al cuarto trimestre de cada año, en % del PBI, del más reciente al más antiguo. Clic en un año para enfocarlo en el gráfico.":"El periodo elegido no incluye ningún cierre de año.";
+    document.getElementById("tbody").innerHTML=ys.slice().reverse().map(Y=>{
+      const p=YEARS.find(z=>z.y===Y.y-1),d=Y.d,partial=d.q!==3,dv=p?d.v-p.d.v:null;
+      const chg=dv===null?"<span class=\"side\">–</span>":`<span class="pill ${trend(dv)}">${pp(dv)}</span>`;
+      return `<tr class="row" data-y="${Y.y}" tabindex="0"><td>${Y.y}${partial?` <span class="side">(al ${ROM[d.q]} trim.)</span>`:""}</td><td class="r num"><b>${fmt(d.v)}%</b></td><td class="r num">${fmt(d.ext)}%</td><td class="r num">${fmt(d.int)}%</td><td class="r num">${fmt(d.net)}%</td><td class="r num">${chg}</td></tr>`;}).join("");
+  }
+
+  function setView(v){view=v;document.getElementById("vBN").setAttribute("aria-pressed",v==="BN");document.getElementById("vEI").setAttribute("aria-pressed",v==="EI");
+    document.getElementById("lgBN").hidden=document.getElementById("lgBN2").hidden=v!=="BN";
+    document.getElementById("lgEI").hidden=document.getElementById("lgEI2").hidden=v!=="EI";
+    chart.options.plugins.tooltip.displayColors=true;render();}
+  document.getElementById("vBN").addEventListener("click",()=>setView("BN"));
+  document.getElementById("vEI").addEventListener("click",()=>setView("EI"));
+
+  function setChip(id){document.querySelectorAll(".chips button").forEach(x=>x.setAttribute("aria-pressed",x.id===id?"true":"false"));}
+  document.querySelectorAll(".chips button").forEach(btn=>btn.addEventListener("click",()=>{
+    const yv=btn.dataset.y; b=N-1; a=yv==="all"?0:Math.max(0,N-4*(+yv)); setChip(btn.id); render();
+  }));
+  const tb=document.getElementById("tbody");
+  tb.addEventListener("click",e=>{
+    const tr=e.target.closest("tr.row");if(!tr)return;const y=+tr.dataset.y;
+    const s0=data.findIndex(d=>d.y===y-1),f0=data.reduce((k,d,i)=>d.y===y+1?i:k,-1);
+    a=Math.max(0,s0<0?0:s0);b=Math.min(N-1,f0<0?N-1:f0);if(b-a<4)a=Math.max(0,b-8);setChip("");render();
+    document.querySelector(".chartbox").scrollIntoView({behavior:"smooth",block:"center"});
+  });
+  tb.addEventListener("keydown",e=>{if(e.key==="Enter")e.target.click();});
+
+  // ---- Selector de periodo arrastrable ----
+  const brush=document.getElementById("brush"),win=document.getElementById("win"),tagL=document.getElementById("tagL"),tagR=document.getElementById("tagR");
+  const MINSPAN=3;
+  const W=()=>brush.clientWidth;
+  const xOf=i=>i/(N-1)*W();
+  const iOf=x=>Math.round(Math.min(Math.max(x/W(),0),1)*(N-1));
+  function drawMini(){
+    const ca=chart.chartArea;if(!ca)return;const box=chart.canvas.clientWidth;
+    brush.style.marginLeft=ca.left+"px";brush.style.marginRight=Math.max(0,box-ca.right)+"px";
+  }
+  function placeBrush(){
+    const l=xOf(a),r=xOf(b),w=W();
+    win.style.left=l+"px";win.style.width=Math.max(r-l,2)+"px";
+    tagL.textContent=data[a].lab;tagR.textContent=data[b].lab;
+    const wl=tagL.offsetWidth,wr=tagR.offsetWidth,gap=6;
+    let xl=l-wl/2,xr=r-wr/2;
+    const ov=xl+wl+gap-xr;if(ov>0){xl-=ov/2;xr+=ov/2;}
+    const pad=-Math.min(24,parseFloat(brush.style.marginLeft)||0);
+    if(xl<pad){xr+=pad-xl;xl=pad;}
+    const maxR=w+Math.min(24,parseFloat(brush.style.marginRight)||0);
+    if(xr+wr>maxR){const d=xr+wr-maxR;xr-=d;if(xl+wl+gap>xr)xl=xr-gap-wl;}
+    tagL.style.left=xl+"px";tagR.style.left=xr+"px";
+    document.getElementById("hL").setAttribute("aria-valuetext",data[a].lab);
+    document.getElementById("hR").setAttribute("aria-valuetext",data[b].lab);
+  }
+  let raf=0;
+  function schedule(){if(!raf)raf=requestAnimationFrame(()=>{raf=0;render();});}
+  brush.addEventListener("pointerdown",e=>{
+    const x=e.clientX-brush.getBoundingClientRect().left,t=e.target;
+    if(t.id==="hL")drag={mode:"l"};else if(t.id==="hR")drag={mode:"r"};
+    else if(t===win)drag={mode:"move",off:iOf(x)-a,span:b-a};
+    else{const i=iOf(x);if(Math.abs(i-a)<Math.abs(i-b)){a=Math.max(0,Math.min(i,b-MINSPAN));drag={mode:"l"};}else{b=Math.min(N-1,Math.max(i,a+MINSPAN));drag={mode:"r"};}}
+    brush.setPointerCapture(e.pointerId);setChip("");schedule();e.preventDefault();
+  });
+  brush.addEventListener("pointermove",e=>{
+    if(!drag)return;const i=iOf(e.clientX-brush.getBoundingClientRect().left);
+    if(drag.mode==="l")a=Math.max(0,Math.min(i,b-MINSPAN));
+    else if(drag.mode==="r")b=Math.min(N-1,Math.max(i,a+MINSPAN));
+    else{a=Math.min(Math.max(i-drag.off,0),N-1-drag.span);b=a+drag.span;}
+    schedule();
+  });
+  const end=()=>{drag=null;};brush.addEventListener("pointerup",end);brush.addEventListener("pointercancel",end);
+  function keyH(which){return e=>{const d=e.key==="ArrowLeft"?-1:e.key==="ArrowRight"?1:0;if(!d)return;e.preventDefault();const s=e.shiftKey?4:1;
+    if(which==="l")a=Math.min(Math.max(0,a+d*s),b-MINSPAN);else b=Math.max(Math.min(N-1,b+d*s),a+MINSPAN);setChip("");render();};}
+  document.getElementById("hL").addEventListener("keydown",keyH("l"));
+  document.getElementById("hR").addEventListener("keydown",keyH("r"));
+  new ResizeObserver(()=>{requestAnimationFrame(()=>{drawMini();placeBrush();});}).observe(document.querySelector(".chartbox"));
+  const repaint=()=>{paint();chart.update("none");};
+  new MutationObserver(repaint).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change",repaint);
+
+  a=Math.max(0,N-40); setChip("r10"); render();
+  // Fuente de los datos mostrados
+  document.getElementById("estadoDatos").textContent="Datos trimestrales de "+data[0].long+" a "+data[N-1].long+"."+(D.vivo?" Leídos en vivo de BCRPData.":" Copia de BCRPData actualizada el "+D.fecha.split("-").reverse().join("/")+".");
+}
+BCRP.cargar("deuda").then(D=>{if(D)iniciar(D);});
+</script>
+
+</body></html>

@@ -1,0 +1,35 @@
+name: Actualizar estadísticas (BCRPData)
+
+on:
+  schedule:
+    - cron: "0 14 * * *" # todos los días, 9:00 a. m. hora de Lima
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-estadisticas
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Descargar series de BCRPData
+        run: node scripts/actualizar-estadisticas.mjs
+      - name: Guardar cambios
+        run: |
+          if git diff --quiet -- estadisticas/datos.js; then
+            echo "Sin datos nuevos"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add estadisticas/datos.js
+          git commit -m "Estadísticas: actualizar datos de BCRPData"
+          git push

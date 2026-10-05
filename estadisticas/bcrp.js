@@ -10,15 +10,16 @@
     inflacion: { codigos: ["PN01273PM"], freq: "M", inicio: [2002, 1] },
     resultado: { codigos: ["PN39524FM"], freq: "M", inicio: [2007, 1] },
     deuda:     { codigos: ["PN03432FQ", "PN03433FQ", "PN03442FQ", "PN03481FQ"], freq: "Q", inicio: [1999, 1] },
-    // PBI y sectores (var. % interanual): PBI, agropecuario, pesca, minería e hidrocarburos, manufactura,
-    // electricidad y agua, construcción, comercio y otros servicios.
-    sectores:  { codigos: ["PN01728AM", "PN01713AM", "PN01716AM", "PN01717AM", "PN01720AM", "PN01723AM", "PN01724AM", "PN01725AM", "PN01726AM"], freq: "M", inicio: [1995, 1] },
-    // PBI por tipo de gasto (var. % real): PBI, demanda interna, consumo privado, consumo público,
-    // inversión privada, inversión pública, exportaciones e importaciones.
-    gasto:     { codigos: ["PN02526AQ", "PN02517AQ", "PN02518AQ", "PN02519AQ", "PN02522AQ", "PN02523AQ", "PN02524AQ", "PN02525AQ"], freq: "Q", inicio: [1980, 1] },
-    // Sector formal: puestos de trabajo (miles y var. %), ingreso promedio (S/ y var. %), masa salarial
-    // (millones de S/ y var. %) y remuneración mínima vital (S/).
-    empleo:    { codigos: ["PN31879GM", "PN31880GM", "PN31883GM", "PN31884GM", "PN31885GM", "PN31886GM", "PN02124PM"], freq: "M", inicio: [2016, 1] }
+    // La API devuelve las columnas en orden ascendente de código: las listas siguientes ya están en ese orden.
+    // Sectores (var. % interanual): agropecuario, pesca, minería e hidrocarburos, manufactura,
+    // electricidad y agua, construcción, comercio, otros servicios y PBI.
+    sectores:  { codigos: ["PN01713AM", "PN01716AM", "PN01717AM", "PN01720AM", "PN01723AM", "PN01724AM", "PN01725AM", "PN01726AM", "PN01728AM"], freq: "M", inicio: [1995, 1] },
+    // PBI por tipo de gasto (var. % real): demanda interna, consumo privado, consumo público,
+    // inversión privada, inversión pública, exportaciones, importaciones y PBI.
+    gasto:     { codigos: ["PN02517AQ", "PN02518AQ", "PN02519AQ", "PN02522AQ", "PN02523AQ", "PN02524AQ", "PN02525AQ", "PN02526AQ"], freq: "Q", inicio: [1980, 1] },
+    // Remuneración mínima vital (S/) y sector formal: puestos de trabajo (miles y var. %),
+    // ingreso promedio (S/ y var. %) y masa salarial (millones de S/ y var. %).
+    empleo:    { codigos: ["PN02124PM", "PN31879GM", "PN31880GM", "PN31883GM", "PN31884GM", "PN31885GM", "PN31886GM"], freq: "M", inicio: [2016, 1] }
   };
 
   const MESES = { ene: 1, jan: 1, feb: 2, mar: 3, abr: 4, apr: 4, may: 5, jun: 6, jul: 7, ago: 8, aug: 8,

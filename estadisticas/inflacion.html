@@ -169,8 +169,8 @@ function iniciar(D){
   data.forEach(d=>d.s=d.v>d.hi?1:d.v<d.lo?-1:0);
   const N=data.length;
 
-  const fmt=v=>v.toLocaleString("es-PE",{minimumFractionDigits:2,maximumFractionDigits:2});
-  const f1=v=>v.toLocaleString("es-PE",{maximumFractionDigits:1});
+  const fmt=v=>v.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/[,.]/g, c => c === "," ? "\u00a0" : ",");
+  const f1=v=>v.toLocaleString("en-US",{maximumFractionDigits:1}).replace(/[,.]/g, c => c === "," ? "\u00a0" : ",");
   const pp=d=>(d>0?"+":d<0?"−":"±")+fmt(Math.abs(d))+" pp";
   const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const cap=s=>s.replace(/^./,c=>c.toUpperCase());

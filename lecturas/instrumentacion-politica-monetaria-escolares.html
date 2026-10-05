@@ -365,8 +365,8 @@
           <div class="stat"><div class="k">Tasa de referencia (ejemplo)</div><div class="v" id="refVal"></div></div>
         </div>
         <div class="btn-row">
-          <button type="button" class="tbtn primary" id="refUp">⬆ Subir 0.25</button>
-          <button type="button" class="tbtn teal" id="refDown">⬇ Bajar 0.25</button>
+          <button type="button" class="tbtn primary" id="refUp">⬆ Subir 0,25</button>
+          <button type="button" class="tbtn teal" id="refDown">⬇ Bajar 0,25</button>
         </div>
         <div class="chain" id="metaChain">
           <div class="chain-step first"><span class="e">🏛️</span>El BCRP fija la tasa de referencia<span class="fx"></span></div>
@@ -411,7 +411,7 @@
         <p class="hint">Cambia cuántos bancos necesitan dinero y cuántos tienen de sobra. Mira hacia dónde se mueve la tasa interbancaria.</p>
         <div class="ctrl"><label for="balNeed"><span>🙋 Bancos que necesitan dinero</span><span id="balNeedVal"></span></label><input type="range" id="balNeed" min="0" max="10" step="1" value="5"></div>
         <div class="ctrl"><label for="balHave"><span>💰 Bancos con dinero de sobra</span><span id="balHaveVal"></span></label><input type="range" id="balHave" min="0" max="10" step="1" value="5"></div>
-        <div class="gauge" id="balGauge" data-min="2.5" data-max="6.5" data-marks='[{"v":4.5,"l":"Meta 4.50 %","c":"meta"}]'></div>
+        <div class="gauge" id="balGauge" data-min="2.5" data-max="6.5" data-marks='[{"v":4.5,"l":"Meta 4,50 %","c":"meta"}]'></div>
         <div class="msg" id="balMsg"></div>
       </div>
       <p style="margin-top:16px;">Ninguna de las dos situaciones le conviene al BCRP. Para corregirlas usa <strong>tres herramientas</strong>. ¡Veámoslas!</p>
@@ -441,7 +441,7 @@
         <div class="tool-head">🎮 Misión</div>
         <h4>Lleva la tasa interbancaria a la meta</h4>
         <p class="hint">Cada día el mercado amanece distinto. Tú eres el BCRP: usa las operaciones correctas para que la tasa llegue a la meta con la menor cantidad de operaciones.</p>
-        <div class="gauge" id="omaGauge" data-min="2.5" data-max="6.5" data-marks='[{"v":4.5,"l":"Meta 4.50 %","c":"meta"}]'></div>
+        <div class="gauge" id="omaGauge" data-min="2.5" data-max="6.5" data-marks='[{"v":4.5,"l":"Meta 4,50 %","c":"meta"}]'></div>
         <div class="stats" style="margin-bottom:12px;">
           <div class="stat"><div class="k">Dinero entre los bancos</div><div class="v" id="omaLiq"></div></div>
           <div class="stat"><div class="k">Operaciones realizadas</div><div class="v" id="omaOps"></div></div>
@@ -494,7 +494,7 @@
         <div class="ctrl"><label for="venOffer"><span>Tasa que te ofrece otro banco</span><span id="venOfferVal"></span></label><input type="range" id="venOffer" min="2" max="7" step="0.1" value="6"></div>
         <div class="gauge" id="venGauge" data-min="2" data-max="7" data-band="3.5,5.5" data-marks='[{"v":3.5,"l":"Piso"},{"v":4.5,"l":"Meta","c":"meta"},{"v":5.5,"l":"Techo"}]'></div>
         <div class="msg" id="venMsg"></div>
-        <p class="tiny">Tasas de ejemplo: piso 3.50 %, meta 4.50 %, techo 5.50 %.</p>
+        <p class="tiny">Tasas de ejemplo: piso 3,50 %, meta 4,50 %, techo 5,50 %.</p>
       </div>
     </div>
   </section>
@@ -615,7 +615,7 @@
 
   /* ===== Simulador de encaje ===== */
   const r = document.getElementById('encajeRange');
-  const fmt = n => 'S/ ' + n.toLocaleString('es-PE');
+  const fmt = n => 'S/ ' + n.toLocaleString('en-US').replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
   function updateSim(){
     const p = +r.value, kept = 1000 * p / 100, lend = 1000 - kept;
     document.getElementById('encajeVal').textContent = p + ' %';
@@ -630,8 +630,8 @@
 
   /* ===== Utilidades de los simuladores ===== */
   const $ = id => document.getElementById(id);
-  const pctFmt = v => v.toLocaleString('es-PE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' %';
-  const solFmt = v => 'S/ ' + v.toLocaleString('es-PE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const pctFmt = v => v.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',') + ' %';
+  const solFmt = v => 'S/ ' + v.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
   const META = 4.5;
   function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
   function makeGauge(id){
@@ -658,7 +658,7 @@
   function updInt(){
     const m = +$('intMonto').value, t = +$('intTasa').value, n = +$('intAnios').value;
     const total = m * Math.pow(1 + t / 100, n), it = total - m, pres = intMode === 'prestamo';
-    $('intMontoVal').textContent = 'S/ ' + m.toLocaleString('es-PE');
+    $('intMontoVal').textContent = 'S/ ' + m.toLocaleString('en-US').replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
     $('intTasaVal').textContent = t + ' %';
     $('intAniosVal').textContent = n + (n === 1 ? ' año' : ' años');
     $('intM').textContent = solFmt(m);
@@ -670,7 +670,7 @@
     $('intBarM').style.width = wm + '%'; $('intBarI').style.width = (100 - wm) + '%';
     $('intBarM').textContent = 'Monto'; $('intBarI').textContent = (100 - wm) >= 14 ? 'Intereses' : '';
     setMsg('intMsg', pres
-      ? `Por usar S/ ${m.toLocaleString('es-PE')} prestados durante ${n === 1 ? '1 año' : n + ' años'}, pagas ${solFmt(it)} extra. Si la tasa sube, pedir prestado se vuelve más caro.`
+      ? `Por usar S/ ${m.toLocaleString('en-US').replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',')} prestados durante ${n === 1 ? '1 año' : n + ' años'}, pagas ${solFmt(it)} extra. Si la tasa sube, pedir prestado se vuelve más caro.`
       : `Por dejar tu dinero en el banco durante ${n === 1 ? '1 año' : n + ' años'}, ganas ${solFmt(it)}. Si la tasa sube, ahorrar se vuelve más atractivo.`,
       pres ? 'warn' : 'ok');
   }

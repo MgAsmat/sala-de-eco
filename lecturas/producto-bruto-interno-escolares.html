@@ -491,7 +491,7 @@
       <div class="tool">
         <div class="tool-head">🕹 Pruébalo</div>
         <h4>Un país que solo produce pan</h4>
-        <p class="hint">El año pasado se produjeron 1,000 panes a S/ 0.50 cada uno. Cambia lo que pasa este año.</p>
+        <p class="hint">El año pasado se produjeron 1 000 panes a S/ 0,50 cada uno. Cambia lo que pasa este año.</p>
         <div class="ctrl"><label for="nrQ"><span>🥖 Panes producidos este año</span><span id="nrQVal"></span></label><input type="range" id="nrQ" min="800" max="1300" step="50" value="1000"></div>
         <div class="ctrl"><label for="nrP"><span>🏷 Precio del pan este año</span><span id="nrPVal"></span></label><input type="range" id="nrP" min="0.4" max="0.8" step="0.05" value="0.6"></div>
         <div class="hbars" id="nrBars"></div>
@@ -661,7 +661,7 @@
 
   /* ===== Utilidades ===== */
   const $ = id => document.getElementById(id);
-  const num = (v, d = 0) => v.toLocaleString('es-PE', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const num = (v, d = 0) => v.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
   const pct = v => (v > 0 ? '+' : '') + num(v, 1) + ' %';
   function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
 

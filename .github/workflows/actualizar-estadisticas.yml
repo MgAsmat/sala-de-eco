@@ -20,8 +20,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Sondear series (temporal)
-        run: node scripts/sondear-series.mjs
       - name: Descargar series de BCRPData
         run: node scripts/actualizar-estadisticas.mjs
       - name: Guardar cambios

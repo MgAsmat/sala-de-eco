@@ -151,40 +151,46 @@
         </ul>
       </figure>
 
-      <!-- DATO CURIOSO: carrusel interactivo -->
-      <div class="tip-carousel reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre la producción peruana">
-        <div class="tip-carousel__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
-        </div>
-        <div class="tip-carousel__body">
-          <span class="tip-carousel__label">¿Sabías que…?</span>
+      <!-- DATO CURIOSO: carrusel interactivo destacado -->
+      <div class="tip-carousel tip-carousel--featured reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre la producción peruana">
+        <div class="tip-carousel__visual" aria-hidden="true"></div>
+        <div class="tip-carousel__main">
+          <div class="tip-carousel__top">
+            <span class="tip-carousel__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+              ¿Sabías que…?
+            </span>
+            <span class="tip-carousel__tag"></span>
+            <span class="tip-carousel__count"></span>
+          </div>
           <p class="tip-carousel__text" aria-live="polite">Perú fue el segundo productor mundial de cobre y el segundo con las mayores reservas en 2023.</p>
+          <div class="tip-carousel__controls">
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="tip-carousel__dots"></div>
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
-        <div class="tip-carousel__controls">
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <div class="tip-carousel__dots"></div>
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
+        <span class="tip-carousel__progress" aria-hidden="true"></span>
         <script type="application/json" class="tip-carousel__data">[
-          "Perú fue el segundo productor mundial de cobre y el segundo con las mayores reservas en 2023.",
-          "Perú fue el undécimo productor mundial de oro y el segundo en Latinoamérica en 2023.",
-          "Perú fue el tercer productor mundial de plata en 2023 y el segundo en Latinoamérica.",
-          "Perú fue el segundo productor mundial de zinc en 2023 y el primero en Latinoamérica.",
-          "Perú fue el cuarto productor mundial de estaño en 2023 y el primero en Latinoamérica.",
-          "Perú fue el tercer productor mundial de molibdeno en 2023 y el segundo en Latinoamérica.",
-          "Perú fue el cuarto productor mundial de plomo en 2023 y el segundo en Latinoamérica.",
-          "La producción de mandarina creció 112% en los últimos 10 años, siendo Ica, Lima y Junín las regiones con mayor producción.",
-          "La producción de cacao creció 132% en los últimos 10 años, siendo San Martín, Junín y Ucayali las principales regiones productoras.",
-          "La producción de palma aceitera creció más de 156% en los últimos 10 años, siendo Ucayali, Junín y Loreto las principales regiones productoras.",
-          "La producción de quinua se expandió cerca de 35% en los últimos 10 años, siendo Puno, Ayacucho y Apurímac las principales regiones productoras.",
-          "Perú fue el principal productor mundial de quinua en 2023.",
-          "La producción de aceituna se incrementó en 258% entre 2013 y 2023, siendo Tacna, Arequipa e Ica las principales regiones productoras.",
-          "La producción de uva se incrementó más de 133% en los últimos 10 años, siendo Ica, Piura y La Libertad las principales regiones productoras.",
-          "La producción de palta se incrementó en 215% entre 2013 y 2023, siendo La Libertad, Lambayeque y Lima las principales regiones productoras."
+          {"text": "Perú fue el segundo productor mundial de cobre y el segundo con las mayores reservas en 2023.", "tag": "Minería", "stat": "2.º", "unit": "productor mundial de cobre · 2023"},
+          {"text": "Perú fue el undécimo productor mundial de oro y el segundo en Latinoamérica en 2023.", "tag": "Minería", "stat": "11.º", "unit": "productor mundial de oro · 2023"},
+          {"text": "Perú fue el tercer productor mundial de plata en 2023 y el segundo en Latinoamérica.", "tag": "Minería", "stat": "3.º", "unit": "productor mundial de plata · 2023"},
+          {"text": "Perú fue el segundo productor mundial de zinc en 2023 y el primero en Latinoamérica.", "tag": "Minería", "stat": "2.º", "unit": "productor mundial de zinc · 2023"},
+          {"text": "Perú fue el cuarto productor mundial de estaño en 2023 y el primero en Latinoamérica.", "tag": "Minería", "stat": "4.º", "unit": "productor mundial de estaño · 2023"},
+          {"text": "Perú fue el tercer productor mundial de molibdeno en 2023 y el segundo en Latinoamérica.", "tag": "Minería", "stat": "3.º", "unit": "productor mundial de molibdeno · 2023"},
+          {"text": "Perú fue el cuarto productor mundial de plomo en 2023 y el segundo en Latinoamérica.", "tag": "Minería", "stat": "4.º", "unit": "productor mundial de plomo · 2023"},
+          {"text": "La producción de mandarina creció 112% en los últimos 10 años, siendo Ica, Lima y Junín las regiones con mayor producción.", "tag": "Agro", "unit": "Producción de mandarina (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 212}]},
+          {"text": "La producción de cacao creció 132% en los últimos 10 años, siendo San Martín, Junín y Ucayali las principales regiones productoras.", "tag": "Agro", "unit": "Producción de cacao (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 232}]},
+          {"text": "La producción de palma aceitera creció más de 156% en los últimos 10 años, siendo Ucayali, Junín y Loreto las principales regiones productoras.", "tag": "Agro", "unit": "Producción de palma aceitera (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 256}]},
+          {"text": "La producción de quinua se expandió cerca de 35% en los últimos 10 años, siendo Puno, Ayacucho y Apurímac las principales regiones productoras.", "tag": "Agro", "unit": "Producción de quinua (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 135}]},
+          {"text": "Perú fue el principal productor mundial de quinua en 2023.", "tag": "Agro", "stat": "1.º", "unit": "productor mundial de quinua · 2023"},
+          {"text": "La producción de aceituna se incrementó en 258% entre 2013 y 2023, siendo Tacna, Arequipa e Ica las principales regiones productoras.", "tag": "Agro", "unit": "Producción de aceituna (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 358}]},
+          {"text": "La producción de uva se incrementó más de 133% en los últimos 10 años, siendo Ica, Piura y La Libertad las principales regiones productoras.", "tag": "Agro", "unit": "Producción de uva (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 233}]},
+          {"text": "La producción de palta se incrementó en 215% entre 2013 y 2023, siendo La Libertad, Lambayeque y Lima las principales regiones productoras.", "tag": "Agro", "unit": "Producción de palta (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 315}]}
         ]</script>
       </div>
     </div>

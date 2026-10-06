@@ -1340,7 +1340,7 @@ body.ed-no-scroll { overflow: hidden; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(170px, 230px) minmax(60px, 1fr) minmax(170px, 230px) minmax(0, 1fr);
   grid-template-areas:
-    ".    pyr  pyr  pyr  ."
+    "btn  pyr  pyr  pyr  ."
     ".    lin  lin  lin  ."
     "nm   colm .    colf nf";
   column-gap: 20px;
@@ -1552,7 +1552,14 @@ body.ed-no-scroll { overflow: hidden; }
 
 /* "¿Qué pasa si un pilar falla?" — collapse simulation (driven by js/main.js) */
 .pilares__trigger {
-  margin-top: 18px;
+  grid-area: btn;
+  align-self: center;
+  justify-self: start;
+  max-width: 100%;
+  padding: 14px 18px;
+  border-radius: var(--radius-lg);
+  line-height: 1.25;
+  text-align: left;
   background: var(--lintel);
   color: #fff;
   box-shadow: 0 10px 22px rgba(154, 34, 32, 0.28);
@@ -1562,7 +1569,12 @@ body.ed-no-scroll { overflow: hidden; }
   background: var(--lintel-dark);
 }
 
-.pilares__trigger svg,
+.pilares__trigger svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
 .pilares__rebuild svg {
   width: 18px;
   height: 18px;
@@ -1687,6 +1699,22 @@ body.ed-no-scroll { overflow: hidden; }
   .pilares.is-visible .p-block:hover { transform: translateY(-3px); transition-delay: 0s; }
 }
 
+/* Not enough room on the side: the trigger moves below the infographic */
+@media (max-width: 1100px) {
+  .pilares__stage {
+    grid-template-areas:
+      ".    pyr  pyr  pyr  ."
+      ".    lin  lin  lin  ."
+      "nm   colm .    colf nf"
+      "btn  btn  btn  btn  btn";
+  }
+  .pilares__trigger {
+    justify-self: center;
+    margin: 24px 0 28px;
+    border-radius: var(--radius-pill);
+  }
+}
+
 @media (max-width: 900px) {
   .pilares {
     padding: 28px 18px 0;
@@ -1697,7 +1725,8 @@ body.ed-no-scroll { overflow: hidden; }
       "pyr  pyr"
       "lin  lin"
       "colm colf"
-      "nm   nf";
+      "nm   nf"
+      "btn  btn";
     column-gap: 14px;
   }
   .pilares__lintel { margin: 0 -8px; }

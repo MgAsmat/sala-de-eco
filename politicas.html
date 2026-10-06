@@ -70,6 +70,10 @@
         </figcaption>
 
         <div class="pilares__stage">
+          <button type="button" class="btn pilares__trigger" id="pilaresFail" aria-controls="pilaresAlert">
+            <span class="pilares__trigger-inner">¿Qué pasa si un pilar falla?</span>
+          </button>
+
           <ul class="pilares__pyramid" aria-label="Beneficios de la estabilidad macroeconómica">
             <li class="pilares__row">
               <span class="p-block p-block--top" style="--d:6"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 007 0"/><path d="M9 9.5h.01M15 9.5h.01"/></svg></i>Mayor bienestar</span>
@@ -106,19 +110,23 @@
           </div>
 
           <div class="pilares__note pilares__note--monetary">
-            <span class="pilares__building" aria-hidden="true">
-              <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 44h56"/><path d="M8 44V24h48v20"/><path d="M4 24l28-14 28 14z"/><path d="M32 10V2l8 3-8 3"/><path d="M16 44V30M26 44V30M38 44V30M48 44V30"/></svg>
-            </span>
             <strong>La Política Monetaria</strong>
             <p>se encarga de la estabilidad monetaria, es decir, que el dinero <em>preserve su valor en el tiempo</em>.</p>
           </div>
 
           <div class="pilares__note pilares__note--fiscal">
-            <span class="pilares__building" aria-hidden="true">
-              <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 44h56"/><path d="M6 44V20h52v24"/><path d="M6 20l6-8h40l6 8"/><path d="M22 12V6h20v6"/><path d="M32 6V0l7 2.5L32 5"/><path d="M28 44v-9a4 4 0 018 0v9"/><path d="M13 27h5M13 35h5M46 27h5M46 35h5"/></svg>
-            </span>
             <strong>La Política Fiscal</strong>
             <p>se encarga de fomentar el desarrollo de la economía, de garantizar la <em>infraestructura económica, la educación y la promoción de la inversión</em>.</p>
+          </div>
+
+          <div class="pilares__alert" id="pilaresAlert" role="status" aria-live="polite" hidden>
+            <strong class="pilares__alert-title"></strong>
+            <p class="pilares__alert-text"></p>
+            <p class="pilares__alert-moral">Ambos pilares son necesarios: si uno cae, la estabilidad se derrumba y con ella los beneficios para toda la población.</p>
+            <button type="button" class="btn pilares__rebuild" id="pilaresRebuild">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0115.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg>
+              Reconstruir los pilares
+            </button>
           </div>
         </div>
       </figure>

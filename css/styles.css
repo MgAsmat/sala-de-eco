@@ -1340,7 +1340,7 @@ body.ed-no-scroll { overflow: hidden; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(170px, 230px) minmax(60px, 1fr) minmax(170px, 230px) minmax(0, 1fr);
   grid-template-areas:
-    ".    pyr  pyr  pyr  ."
+    ".    pyr  pyr  pyr  btn"
     ".    lin  lin  lin  ."
     "nm   colm .    colf nf";
   column-gap: 20px;
@@ -1550,13 +1550,139 @@ body.ed-no-scroll { overflow: hidden; }
   color: var(--ink-900);
 }
 
-.pilares__building {
-  width: 78px;
-  margin-bottom: 6px;
+/* "¿Qué pasa si un pilar falla?" — collapse simulation (driven by js/main.js) */
+.pilares__trigger {
+  grid-area: btn;
+  align-self: center;
+  justify-self: end;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  padding: 18px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  line-height: 1.2;
+  text-align: center;
+  background: radial-gradient(circle at 35% 30%, #e0463f, var(--lintel) 65%);
+  color: #fff;
+  box-shadow: 0 0 0 3px var(--lintel), 0 12px 26px rgba(154, 34, 32, 0.32);
 }
 
-.pilares__note--monetary .pilares__building { color: var(--monetary-dark); }
-.pilares__note--fiscal .pilares__building { color: var(--fiscal-dark); }
+.pilares__trigger-inner {
+  display: block;
+  font-size: 1.05rem;
+  transform: rotate(-8deg);
+}
+
+.pilares__trigger:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.pilares__trigger:hover {
+  background: var(--lintel-dark);
+}
+
+.pilares__rebuild svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.pilares__trigger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pilares__column { position: relative; }
+
+.pilares__crack {
+  position: absolute;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.pilares__crack polyline {
+  fill: none;
+  stroke: #10263a;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: pilares-crack 0.5s ease-out forwards;
+}
+
+@keyframes pilares-crack {
+  to { stroke-dashoffset: 0; }
+}
+
+.pilares__shaft--fragment {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  pointer-events: none;
+}
+
+.pilares__capital { position: relative; z-index: 3; }
+
+.pilares.is-failing .p-block { position: relative; z-index: 4; pointer-events: none; }
+.pilares.is-failing .pilares__lintel { z-index: 3; }
+
+.pilares__note { transition: opacity 0.4s ease; }
+.pilares.is-collapsed .pilares__note { opacity: 0.3; }
+
+.pilares__alert {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 6;
+  width: min(460px, calc(100% - 8px));
+  padding: 20px 22px;
+  border-radius: var(--radius-lg);
+  border-top: 6px solid var(--lintel);
+  background: #fff;
+  box-shadow: var(--shadow-md), 0 18px 40px rgba(16, 38, 58, 0.18);
+  text-align: center;
+  transform: translateX(-50%);
+  animation: pilares-alert-in 0.45s cubic-bezier(0.2, 0.8, 0.3, 1.2);
+}
+
+.pilares__alert[hidden] { display: none; }
+
+@keyframes pilares-alert-in {
+  from { opacity: 0; transform: translate(-50%, -14px) scale(0.96); }
+}
+
+.pilares__alert-title {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  color: var(--lintel-dark);
+}
+
+.pilares__alert p {
+  margin: 0 0 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-700);
+}
+
+.pilares__alert .pilares__alert-moral {
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.pilares__rebuild {
+  margin-top: 4px;
+  background: var(--teal-700);
+  color: #fff;
+}
+
+.pilares__rebuild:hover {
+  background: var(--teal-900);
+}
 
 /* Build-up animation when the figure scrolls into view */
 @media (prefers-reduced-motion: no-preference) {
@@ -1580,6 +1706,21 @@ body.ed-no-scroll { overflow: hidden; }
   .pilares.is-visible .p-block:hover { transform: translateY(-3px); transition-delay: 0s; }
 }
 
+/* Not enough room on the side: the trigger moves below the infographic */
+@media (max-width: 1100px) {
+  .pilares__stage {
+    grid-template-areas:
+      ".    pyr  pyr  pyr  ."
+      ".    lin  lin  lin  ."
+      "nm   colm .    colf nf"
+      "btn  btn  btn  btn  btn";
+  }
+  .pilares__trigger {
+    justify-self: center;
+    margin: 24px 0 28px;
+  }
+}
+
 @media (max-width: 900px) {
   .pilares {
     padding: 28px 18px 0;
@@ -1590,7 +1731,8 @@ body.ed-no-scroll { overflow: hidden; }
       "pyr  pyr"
       "lin  lin"
       "colm colf"
-      "nm   nf";
+      "nm   nf"
+      "btn  btn";
     column-gap: 14px;
   }
   .pilares__lintel { margin: 0 -8px; }
@@ -1610,10 +1752,11 @@ body.ed-no-scroll { overflow: hidden; }
 }
 
 @media (max-width: 480px) {
+  .pilares__alert { padding: 16px 14px; }
+  .pilares__alert p { font-size: 0.84rem; }
   .pilares__shaft { padding: 16px 8px 18px; }
   .pilares__shaft h4 { font-size: 0.9rem; }
   .pilares__eq { font-size: 0.74rem; }
-  .pilares__building { width: 56px; }
 }
 
 /* =========================================================

@@ -1550,14 +1550,6 @@ body.ed-no-scroll { overflow: hidden; }
   color: var(--ink-900);
 }
 
-.pilares__building {
-  width: 78px;
-  margin-bottom: 6px;
-}
-
-.pilares__note--monetary .pilares__building { color: var(--monetary-dark); }
-.pilares__note--fiscal .pilares__building { color: var(--fiscal-dark); }
-
 /* "¿Qué pasa si un pilar falla?" — collapse simulation (driven by js/main.js) */
 .pilares__trigger {
   margin-top: 18px;
@@ -1730,7 +1722,6 @@ body.ed-no-scroll { overflow: hidden; }
   .pilares__shaft { padding: 16px 8px 18px; }
   .pilares__shaft h4 { font-size: 0.9rem; }
   .pilares__eq { font-size: 0.74rem; }
-  .pilares__building { width: 56px; }
 }
 
 /* =========================================================

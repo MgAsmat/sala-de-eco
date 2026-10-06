@@ -67,7 +67,8 @@
     let tipTimer = null;
     let tipPaused = false;
 
-    // Tips can be plain strings or objects: { text, tag, stat, unit, bars: [{ label, value }] }
+    // Tips can be plain strings or objects: { text, tag, stat, unit, suffix, bars: [{ label, value, suffix }] }
+    // (bar values are shown with a "%" suffix unless the tip or bar sets its own)
     const normalizeTip = (tip) => (typeof tip === "string" ? { text: tip } : tip);
 
     const el = (tag, className, text) => {
@@ -85,7 +86,8 @@
         const chart = el("div", "tip-chart");
         tip.bars.forEach((bar) => {
           const col = el("div", "tip-chart__col");
-          const value = String(bar.value).replace(".", ",") + "%";
+          const suffix = bar.suffix ?? tip.suffix ?? "%";
+          const value = String(bar.value).replace(".", ",") + suffix;
           col.appendChild(el("span", "tip-chart__value", value));
           const fill = el("span", "tip-chart__bar");
           fill.style.setProperty("--h", ((bar.value / max) * 100).toFixed(1) + "%");

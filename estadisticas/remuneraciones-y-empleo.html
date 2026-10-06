@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Deuda Pública SPNF</title></head><body>
+<!doctype html><html lang="es"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Remuneraciones y Empleo</title></head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap">
@@ -102,17 +102,32 @@ footer a{color:var(--teal)}
 .dash-sw{width:18px;height:0;border-top:2.5px dashed var(--s2);display:inline-block}
 [hidden]{display:none!important}
 .area-sw{width:14px;height:10px;border-radius:2px;display:inline-block}
+
+.pill.pos{background:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--teal)}
+.pill.neg{background:color-mix(in srgb,var(--up) 16%,transparent);color:var(--up)}
+.picker{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:12px 0 0;border-top:1px solid var(--grid)}
+.picker .lbl{font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.picker .chips button[aria-pressed="true"]{background:var(--s2);border-color:var(--s2);color:#fff}
+:root[data-theme="dark"] .picker .chips button[aria-pressed="true"]{color:#0A1522}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .picker .chips button[aria-pressed="true"]{color:#0A1522}}
+.barsbox{position:relative;height:var(--bars-h,340px)}
+td.sel,th.sel{background:color-mix(in srgb,var(--s2) 9%,transparent)}
+td .neg{color:var(--up)}
+tr.row.on td{box-shadow:inset 0 -2px 0 var(--gold)}
+.tablewrap{overflow:auto}
+.wrap>*{min-width:0}
+th{white-space:nowrap}
 </style>
 
 <div class="wrap">
   <nav class="topbar" aria-label="Navegación">
-    <a class="back-link" href="../politicas.html">← Volver<span class="long"> a Políticas</span></a>
+    <a class="back-link" href="../sector-real.html">← Volver<span class="long"> a Sector Real</span></a>
   </nav>
   <header>
     <div>
-      <p class="eyebrow">Finanzas públicas · Serie trimestral</p>
-      <h1>Deuda Pública del SPNF</h1>
-      <p class="sub">Saldo de la deuda del Sector Público No Financiero al cierre de cada trimestre, como porcentaje del PBI. La deuda neta resta a la deuda bruta los activos financieros del sector público, como sus depósitos.</p>
+      <p class="eyebrow">Sector real · Serie mensual</p>
+      <h1>Remuneraciones y empleo formal</h1>
+      <p class="sub">Puestos de trabajo del sector formal (registrados en la planilla electrónica, públicos y privados), el ingreso promedio que reciben y la masa salarial, es decir, la suma de todos esos ingresos.</p>
     </div>
     <div class="now">
       <div class="val num" id="nowVal">–</div>
@@ -122,51 +137,53 @@ footer a{color:var(--teal)}
 
   <section class="panel" aria-label="Gráfico">
     <div class="toolbar">
-      <div class="chips" role="group" aria-label="Periodo">
-                <button type="button" id="r3" data-y="3">3 años</button>
+      <div class="chips" id="periodos" role="group" aria-label="Periodo">
+        <button type="button" id="r1" data-y="1">1 año</button>
+        <button type="button" id="r3" data-y="3">3 años</button>
         <button type="button" id="r5" data-y="5">5 años</button>
-        <button type="button" id="r10" data-y="10">10 años</button>
         <button type="button" id="rAll" data-y="all">Toda la serie</button>
       </div>
       <div class="tools-r">
-        <div class="seg" role="group" aria-label="Vista">
-          <button type="button" id="vBN" aria-pressed="true">Bruta y neta</button>
-          <button type="button" id="vEI" aria-pressed="false">Externa e interna</button>
+        <div class="seg" role="group" aria-label="Medida">
+          <button type="button" id="mN" aria-pressed="true">Nivel</button>
+          <button type="button" id="mV" aria-pressed="false">Var. % 12 meses</button>
         </div>
         <div class="range" id="rangeLbl" aria-live="polite"></div>
       </div>
     </div>
-    <div class="chartbox"><canvas id="chart" aria-label="Gráfico de la deuda pública del SPNF como porcentaje del PBI" role="img"></canvas></div>
+    <div class="picker">
+      <span class="lbl">Indicador</span>
+      <div class="chips" id="pick" role="group" aria-label="Indicador">
+        <button type="button" data-k="E" aria-pressed="true">Puestos de trabajo</button>
+        <button type="button" data-k="I" aria-pressed="false">Ingreso promedio</button>
+        <button type="button" data-k="M" aria-pressed="false">Masa salarial</button>
+      </div>
+    </div>
+    <div class="chartbox"><canvas id="chart" aria-label="Gráfico del indicador de empleo formal elegido" role="img"></canvas></div>
     <div class="brush" id="brush" aria-label="Selector de periodo: arrastra las manijas o la franja dorada">
       <div class="track"></div>
       <span class="tag" id="tagL"></span><span class="tag" id="tagR"></span>
       <div class="win" id="win"><div class="h l" id="hL" tabindex="0" role="slider" aria-label="Inicio del periodo"></div><div class="h r" id="hR" tabindex="0" role="slider" aria-label="Fin del periodo"></div></div>
     </div>
-    <div class="legend">
-      <span id="lgBN"><span style="display:inline-flex;gap:6px;align-items:center"><i class="line-sw" style="background:var(--s1)"></i>Deuda bruta</span></span>
-      <span id="lgBN2"><span style="display:inline-flex;gap:6px;align-items:center"><i class="dash-sw"></i>Deuda neta</span></span>
-      <span id="lgEI" hidden><span style="display:inline-flex;gap:6px;align-items:center"><i class="area-sw" style="background:var(--s1)"></i>Externa</span></span>
-      <span id="lgEI2" hidden><span style="display:inline-flex;gap:6px;align-items:center"><i class="area-sw" style="background:var(--s2)"></i>Interna (suman la deuda bruta)</span></span>
-      <span>Arrastra las manijas para cambiar el inicio o el fin; arrastra la franja dorada para mover el periodo.</span>
-    </div>
+    <div class="legend" id="legend"></div>
   </section>
 
   <section class="stats" id="stats" aria-label="Resumen del periodo"></section>
 
   <section class="panel">
-    <h2>Saldo al cierre de cada año</h2>
-    <p class="hint" id="chgHint"></p>
+    <h2>Promedio de cada año</h2>
+    <p class="hint" id="tblHint"></p>
     <div class="tablewrap">
       <table>
-        <thead><tr><th>Año</th><th class="r">Bruta</th><th class="r">Externa</th><th class="r">Interna</th><th class="r">Neta</th><th class="r">Bruta vs. año anterior</th></tr></thead>
+        <thead><tr><th>Año</th><th class="r">Puestos de trabajo (miles)</th><th class="r">Ingreso promedio (S/)</th><th class="r">Masa salarial (millones S/)</th><th class="r" id="thVar">Var. %</th></tr></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
   </section>
 
   <footer>
-    Fuente: BCRP, Estadísticas – “Saldo de la deuda del sector público no financiero (porcentaje del PBI)”: series PN03432FQ (deuda pública), PN03433FQ (externa), PN03442FQ (interna) y PN03481FQ (deuda neta). <span id="estadoDatos"></span>
-    <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN03432FQ-PN03433FQ-PN03442FQ-PN03481FQ/html" target="_blank" rel="noopener">Ver serie en BCRPData</a>
+    Fuente: BCRP, Estadísticas – “Puestos de trabajo e ingresos del sector formal”: series PN31879GM y PN31880GM (puestos de trabajo del sector formal total), PN31883GM y PN31884GM (ingreso promedio nominal), PN31885GM y PN31886GM (masa salarial nominal); y “Remuneraciones”: PN02124PM (remuneración mínima vital). <span id="estadoDatos"></span>
+    <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN31879GM-PN31880GM-PN31883GM-PN31884GM-PN31885GM-PN31886GM-PN02124PM/html" target="_blank" rel="noopener">Ver series en BCRPData</a>
   </footer>
 </div>
 
@@ -175,50 +192,57 @@ footer a{color:var(--teal)}
 <script src="bcrp.js"></script>
 <script>
 function iniciar(D){
-  const ROM=["I","II","III","IV"];
-  const data=D.filas.map((r,i)=>{const k=D.inicio[0]*4+D.inicio[1]-1+i,y=Math.floor(k/4),q=k%4;return {y,q,v:r[0],ext:r[1],int:r[2],net:r[3],lab:"T"+(q+1)+"."+y,long:ROM[q]+" trim. "+y};});
-  const N=data.length;
+  const MES=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+  const MESL=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  const data=D.filas.map((f,i)=>{const k=D.inicio[0]*12+D.inicio[1]-1+i,y=Math.floor(k/12),m=k%12;
+    return {y,m,rmv:f[0],E:f[1],Ev:f[2],I:f[3],Iv:f[4],M:f[5],Mv:f[6],lab:MES[m]+"."+y,long:MESL[m]+" "+y};});
+  const N=data.length,$=id=>document.getElementById(id);
+  const IND={
+    E:{nombre:"Puestos de trabajo formales",corto:"Puestos de trabajo",unidad:"miles de puestos",dec:0,pre:"",suf:" mil"},
+    I:{nombre:"Ingreso promedio mensual",corto:"Ingreso promedio",unidad:"soles por mes",dec:0,pre:"S/ ",suf:""},
+    M:{nombre:"Masa salarial",corto:"Masa salarial",unidad:"millones de soles",dec:0,pre:"S/ ",suf:" mill."}
+  };
 
-  const fmt=v=>v.toLocaleString("en-US",{minimumFractionDigits:1,maximumFractionDigits:1}).replace(/[,.]/g, c => c === "," ? "\u00a0" : ",");
-  const pp=d=>(d>0?"+":d<0?"−":"±")+Math.abs(d).toLocaleString("en-US",{minimumFractionDigits:1,maximumFractionDigits:1}).replace(/[,.]/g, c => c === "," ? "\u00a0" : ",")+" pp";
+  const nf=(v,d)=>v.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d}).replace(/[,.]/g, c => c === "," ? " " : ",");
+  const sg=v=>(v>0?"+":v<0?"−":"")+nf(Math.abs(v),1);
+  const lvl=(k,v)=>IND[k].pre+nf(v,IND[k].dec)+IND[k].suf;
   const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const rgba=(hex,al)=>{const h=hex.replace("#","");return `rgba(${parseInt(h.slice(0,2),16)},${parseInt(h.slice(2,4),16)},${parseInt(h.slice(4,6),16)},${al})`;};
-  const trend=d=>Math.abs(d)<0.05?"flat":d<0?"down":"up";
-
-  // Encabezado
-  const last=data[N-1],prev=data[N-2],yago=data[N-5];
-  document.getElementById("nowVal").innerHTML=fmt(last.v)+"<small>% PBI</small>";
-  document.getElementById("nowMeta").innerHTML=
-    `Deuda bruta al <b>${last.long}</b><br>Deuda neta: <b>${fmt(last.net)}%</b> del PBI<br>`+
-    `<span class="pill ${trend(last.v-yago.v)}">${pp(last.v-yago.v)} en un año</span> <span class="pill ${trend(last.v-prev.v)}">${pp(last.v-prev.v)} vs. trimestre anterior</span>`;
-
-  let a=0,b=N-1,drag=null,view="BN";
+  const sube=v=>Math.abs(v)<0.05?"flat":v>0?"pos":"neg";
+  const cap=s=>s.replace(/^./,c=>c.toUpperCase());
   const isDark=()=>document.documentElement.dataset.theme==="dark"||(matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.dataset.theme!=="light");
+  const anim=matchMedia("(prefers-reduced-motion: reduce)").matches?0:450;
 
-  const chart=new Chart(document.getElementById("chart"),{
-    type:"line",
+  // Encabezado: puestos de trabajo
+  const last=data[N-1];
+  $("nowVal").innerHTML=nf(last.E/1000,2)+"<small> millones</small>";
+  $("nowMeta").innerHTML=`Puestos de trabajo formales en <b>${last.long}</b><br>Ingreso promedio: <b>${lvl("I",last.I)}</b><br>`+
+    `<span class="pill ${sube(last.Ev)}">${sg(last.Ev)}% en 12 meses</span>`;
+
+  let a=0,b=N-1,drag=null,ind="E",med="N";
+
+  const chart=new Chart($("chart"),{
     data:{labels:[],datasets:[
-      {label:"Deuda bruta",data:[],borderWidth:2.5,tension:0.25,cubicInterpolationMode:"monotone",pointHitRadius:6},
-      {label:"Deuda neta",data:[],borderWidth:2,borderDash:[6,4],tension:0.25,cubicInterpolationMode:"monotone",pointHitRadius:6}
+      {type:"line",label:"",data:[],borderWidth:2.5,tension:0.25,cubicInterpolationMode:"monotone",pointHitRadius:6,fill:"origin"},
+      {type:"line",label:"Remuneración mínima vital",data:[],borderWidth:2,borderDash:[6,4],stepped:"before",pointRadius:0,pointHitRadius:6,fill:false},
+      {type:"bar",label:"",data:[],borderRadius:2,barPercentage:1,categoryPercentage:0.85}
     ]},
     options:{
-      responsive:true,maintainAspectRatio:false,animation:{duration:matchMedia("(prefers-reduced-motion: reduce)").matches?0:450},
+      responsive:true,maintainAspectRatio:false,animation:{duration:anim},
       interaction:{mode:"index",intersect:false},
       layout:{padding:{top:8,right:8}},
       scales:{
         x:{grid:{display:false},border:{display:false},ticks:{autoSkip:false,maxRotation:0,font:{family:"Barlow",size:12}}},
-        y:{beginAtZero:true,border:{display:false},ticks:{font:{family:"Barlow",size:12},callback:v=>fmt(v)+"%"}}
+        y:{border:{display:false},ticks:{font:{family:"Barlow",size:12}}}
       },
       plugins:{
         legend:{display:false},
-        tooltip:{displayColors:true,boxWidth:10,boxHeight:10,usePointStyle:false,padding:10,titleFont:{family:"Barlow Condensed",size:14,weight:"600"},bodyFont:{family:"Barlow",size:13},
+        tooltip:{displayColors:true,boxWidth:10,boxHeight:10,padding:10,titleFont:{family:"Barlow Condensed",size:14,weight:"600"},bodyFont:{family:"Barlow",size:13},footerFont:{family:"Barlow",size:12,weight:"400"},
+          filter:it=>!it.dataset.hidden,
           callbacks:{
-            title:it=>data[a+it[0].dataIndex].long,
-            label:it=>it.dataset.label+": "+fmt(it.parsed.y)+"% del PBI",
-            footer:it=>{const i=a+it[0].dataIndex,d=data[i],r=[];
-              if(view==="EI")r.push("Deuda bruta: "+fmt(d.v)+"%");
-              if(i>0)r.push("Bruta vs. trim. anterior: "+pp(d.v-data[i-1].v));
-              if(i>3)r.push("Bruta vs. hace un año: "+pp(d.v-data[i-4].v));return r;}
+            title:it=>cap(data[a+it[0].dataIndex].long),
+            label:it=>it.datasetIndex===2?IND[ind].corto+": "+sg(it.parsed.y)+"% en 12 meses":it.dataset.label+": "+lvl(it.datasetIndex===1?"I":ind,it.parsed.y),
+            footer:it=>{const d=data[a+it[0].dataIndex];return med==="N"?"Var. % 12 meses: "+sg(d[ind+"v"])+"%":IND[ind].corto+": "+lvl(ind,d[ind]);}
           }}
       }
     },
@@ -226,81 +250,79 @@ function iniciar(D){
   });
 
   function paint(){
-    const [A,B]=chart.data.datasets,s1=css("--s1"),s2=css("--s2"),al=isDark()?0.35:0.28;
-    const lastPt=c=>c.dataIndex===b-a?4.5:0;
-    if(view==="BN"){
-      A.label="Deuda bruta";B.label="Deuda neta";
-      A.borderColor=s1;A.backgroundColor=rgba(s1,isDark()?0.12:0.07);A.fill="origin";
-      B.borderColor=s2;B.backgroundColor=s2;B.fill=false;B.borderDash=[6,4];B.borderWidth=2;
-      chart.options.scales.y.stacked=false;
-    }else{
-      A.label="Externa";B.label="Interna";
-      A.borderColor=s1;A.backgroundColor=rgba(s1,al);A.fill="origin";
-      B.borderColor=s2;B.backgroundColor=rgba(s2,al);B.fill="-1";B.borderDash=[];B.borderWidth=2;
-      chart.options.scales.y.stacked=true;
-    }
-    [A,B].forEach(ds=>{ds.pointRadius=lastPt;ds.pointBackgroundColor=ds.borderColor;ds.pointBorderColor=css("--surface");ds.pointBorderWidth=2;
-      ds.pointHoverRadius=5;ds.pointHoverBackgroundColor=css("--gold");ds.pointHoverBorderColor=css("--surface");});
+    const [L,R,B]=chart.data.datasets,s1=css("--s1"),s2=css("--s2");
+    L.borderColor=L.pointBackgroundColor=s1;L.backgroundColor=rgba(s1,isDark()?0.14:0.08);
+    L.pointRadius=c=>c.dataIndex===b-a?4.5:0;L.pointBorderColor=css("--surface");L.pointBorderWidth=2;L.pointHoverRadius=5;L.pointHoverBackgroundColor=css("--gold");
+    R.borderColor=R.backgroundColor=css("--gold");
+    B.backgroundColor=B.data.map(v=>rgba(v<0?css("--up"):s2,0.85));
     const o=chart.options;
     o.scales.x.ticks.color=o.scales.y.ticks.color=css("--muted");
-    o.scales.y.grid={color:css("--grid")};
+    o.scales.y.grid={color:c=>c.tick&&c.tick.value===0&&med==="V"?css("--muted"):css("--grid")};
     const tt=o.plugins.tooltip;tt.backgroundColor=css("--ink");tt.titleColor=tt.bodyColor=tt.footerColor=css("--bg");
-    tt.footerFont={family:"Barlow",size:12,weight:"400"};
   }
 
-  const YEARS=[];for(let y=data[0].y;y<=data[N-1].y;y++){const idx=data.reduce((k,d,i)=>d.y===y?i:k,-1);YEARS.push({y,i:idx,d:data[idx]});}
+  // Promedios anuales (para la tabla); un año incompleto se compara con los mismos meses del año anterior
+  const YEARS=[];for(let y=data[0].y;y<=data[N-1].y;y++){const ms=data.filter(d=>d.y===y);YEARS.push({y,ms});}
+  const avg=(ms,k)=>ms.reduce((s,d)=>s+d[k],0)/ms.length;
 
   function render(){
-    const sl=data.slice(a,b+1),span=b-a,[A,B]=chart.data.datasets;
+    const sl=data.slice(a,b+1),span=b-a,[L,R,B]=chart.data.datasets,I=IND[ind],e=sl[sl.length-1];
     chart.data.labels=sl.map(d=>d.lab);
-    if(view==="BN"){A.data=sl.map(d=>d.v);B.data=sl.map(d=>d.net);}else{A.data=sl.map(d=>d.ext);B.data=sl.map(d=>d.int);}
-    const step=span>60?8:span>24?4:span>10?2:1; // en trimestres
-    chart.options.scales.x.ticks.callback=function(v,i){const d=sl[i];if(step>=4)return d.q===0&&(d.y%(step/4)===0)?String(d.y):"";return (d.y*4+d.q)%step===0?d.lab:"";};
-    chart.options.scales.y.suggestedMax=Math.ceil((Math.max(...sl.map(d=>d.v))+3)/5)*5;
-    paint(); chart.update(drag?"none":undefined);
-    document.getElementById("rangeLbl").innerHTML=`<span>Periodo:</span> ${b-a+1} trimestres`;
-    drawMini(); placeBrush();
+    const nivel=med==="N";
+    L.hidden=!nivel;B.hidden=nivel;R.hidden=!(nivel&&ind==="I");
+    L.label=I.corto;L.data=sl.map(d=>d[ind]);R.data=sl.map(d=>d.rmv);B.data=sl.map(d=>d[ind+"v"]);
+    chart.options.scales.y.ticks.callback=nivel?(v=>I.pre+nf(v,0)+(ind==="E"?"":"")):(v=>nf(v,0)+"%");
+    chart.options.scales.y.beginAtZero=!nivel?true:ind!=="E";
+    const maxL=Math.max(3,Math.floor((chart.width||600)/80)),cand=[1,3,6,12,24,60];
+    const step=cand.find(s=>span/s<=maxL)||60;
+    chart.options.scales.x.ticks.callback=function(v,i){const d=sl[i];if(step>=12)return d.m===0&&d.y%(step/12)===0?String(d.y):"";return (d.y*12+d.m)%step===0?d.lab:"";};
+    paint();chart.update(drag?"none":undefined);
+    $("rangeLbl").innerHTML=`<span>Periodo:</span> ${b-a+1} meses`;
+    $("legend").innerHTML=(nivel?`<span><i class="line-sw" style="background:var(--s1)"></i>${I.nombre} (${I.unidad})</span>`+(ind==="I"?`<span><i class="dash-sw" style="border-color:var(--gold)"></i>Remuneración mínima vital</span>`:"")
+      :`<span><i class="area-sw" style="background:var(--s2)"></i>Creció</span><span><i class="area-sw" style="background:var(--up)"></i>Cayó</span><span>${I.nombre}: variación % respecto al mismo mes del año anterior</span>`)+
+      `<span>Arrastra las manijas para cambiar el inicio o el fin; arrastra la franja dorada para mover el periodo.</span>`;
+    drawMini();placeBrush();
 
-    let hi=sl[0],lo=sl[0];sl.forEach(d=>{if(d.v>hi.v)hi=d;if(d.v<lo.v)lo=d;});
-    const e=sl[sl.length-1];
-    document.getElementById("stats").innerHTML=[
-      ["Deuda bruta al cierre",fmt(e.v)+"%",`${e.lab} · neta ${fmt(e.net)}%`],
-      ["Máximo del periodo",fmt(hi.v)+"%",hi.lab],
-      ["Mínimo del periodo",fmt(lo.v)+"%",lo.lab],
-      ["Deuda externa",Math.round(e.ext/e.v*100)+"%",`de la deuda bruta · ${fmt(e.ext)}% externa, ${fmt(e.int)}% interna`]
+    let hi=sl[0],lo=sl[0];sl.forEach(d=>{if(d[ind]>hi[ind])hi=d;if(d[ind]<lo[ind])lo=d;});
+    const mv=sl.reduce((s,d)=>s+d[ind+"v"],0)/sl.length;
+    $("stats").innerHTML=[
+      [I.corto+" al cierre",lvl(ind,e[ind]),`${e.lab} · ${sg(e[ind+"v"])}% en 12 meses`],
+      ["Crecimiento promedio",sg(mv)+"%","var. % 12 meses, promedio del periodo"],
+      ["Máximo del periodo",lvl(ind,hi[ind]),hi.lab],
+      ["Mínimo del periodo",lvl(ind,lo[ind]),lo.lab]
     ].map(([k,v,d])=>`<div class="stat"><div class="k">${k}</div><div class="v num">${v}</div><div class="d">${d}</div></div>`).join("");
 
-    const ys=YEARS.filter(Y=>Y.i>=a&&Y.i<=b);
-    document.getElementById("chgHint").textContent=ys.length?"Saldo al cuarto trimestre de cada año, en % del PBI, del más reciente al más antiguo. Clic en un año para enfocarlo en el gráfico.":"El periodo elegido no incluye ningún cierre de año.";
-    document.getElementById("tbody").innerHTML=ys.slice().reverse().map(Y=>{
-      const p=YEARS.find(z=>z.y===Y.y-1),d=Y.d,partial=d.q!==3,dv=p?d.v-p.d.v:null;
-      const chg=dv===null?"<span class=\"side\">–</span>":`<span class="pill ${trend(dv)}">${pp(dv)}</span>`;
-      return `<tr class="row" data-y="${Y.y}" tabindex="0"><td>${Y.y}${partial?` <span class="side">(al ${ROM[d.q]} trim.)</span>`:""}</td><td class="r num"><b>${fmt(d.v)}%</b></td><td class="r num">${fmt(d.ext)}%</td><td class="r num">${fmt(d.int)}%</td><td class="r num">${fmt(d.net)}%</td><td class="r num">${chg}</td></tr>`;}).join("");
+    $("thVar").textContent=I.corto+" vs. año anterior";
+    const ys=YEARS.filter(Y=>Y.ms.some(d=>{const i=data.indexOf(d);return i>=a&&i<=b;}));
+    $("tblHint").textContent="Promedio mensual de cada año, del más reciente al más antiguo. La última columna compara el promedio del indicador elegido con el del año anterior (en un año incompleto, con los mismos meses). Clic en un año para enfocarlo en el gráfico.";
+    $("tbody").innerHTML=ys.slice().reverse().map(Y=>{
+      const ms=Y.ms,partial=ms.length<12,p=YEARS.find(z=>z.y===Y.y-1);
+      let chg="<span class=\"side\">–</span>";
+      if(p&&p.ms.length>=ms.length){const pm=p.ms.filter(d=>d.m<=ms[ms.length-1].m),v=(avg(ms,ind)/avg(pm,ind)-1)*100;chg=`<span class="pill ${sube(v)}">${sg(v)}%</span>`;}
+      return `<tr class="row" data-y="${Y.y}" tabindex="0"><td>${Y.y}${partial?` <span class="side">(${MES[ms[0].m].toLowerCase()}–${MES[ms[ms.length-1].m].toLowerCase()})</span>`:""}</td>`+
+        `<td class="r num">${nf(avg(ms,"E"),0)}</td><td class="r num">${nf(avg(ms,"I"),0)}</td><td class="r num">${nf(avg(ms,"M"),0)}</td><td class="r num">${chg}</td></tr>`;}).join("");
   }
 
-  function setView(v){view=v;document.getElementById("vBN").setAttribute("aria-pressed",v==="BN");document.getElementById("vEI").setAttribute("aria-pressed",v==="EI");
-    document.getElementById("lgBN").hidden=document.getElementById("lgBN2").hidden=v!=="BN";
-    document.getElementById("lgEI").hidden=document.getElementById("lgEI2").hidden=v!=="EI";
-    chart.options.plugins.tooltip.displayColors=true;render();}
-  document.getElementById("vBN").addEventListener("click",()=>setView("BN"));
-  document.getElementById("vEI").addEventListener("click",()=>setView("EI"));
+  function setInd(k){ind=k;$("pick").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.k===k?"true":"false"));render();}
+  $("pick").addEventListener("click",e=>{const t=e.target.closest("button");if(t)setInd(t.dataset.k);});
+  function setMed(m){med=m;$("mN").setAttribute("aria-pressed",m==="N");$("mV").setAttribute("aria-pressed",m==="V");render();}
+  $("mN").addEventListener("click",()=>setMed("N"));$("mV").addEventListener("click",()=>setMed("V"));
 
-  function setChip(id){document.querySelectorAll(".chips button").forEach(x=>x.setAttribute("aria-pressed",x.id===id?"true":"false"));}
-  document.querySelectorAll(".chips button").forEach(btn=>btn.addEventListener("click",()=>{
-    const yv=btn.dataset.y; b=N-1; a=yv==="all"?0:Math.max(0,N-4*(+yv)); setChip(btn.id); render();
+  function setChip(id){document.querySelectorAll("#periodos button").forEach(x=>x.setAttribute("aria-pressed",x.id===id?"true":"false"));}
+  document.querySelectorAll("#periodos button").forEach(btn=>btn.addEventListener("click",()=>{
+    const yv=btn.dataset.y;b=N-1;a=yv==="all"?0:Math.max(0,N-12*(+yv));setChip(btn.id);render();
   }));
-  const tb=document.getElementById("tbody");
+  const tb=$("tbody");
   tb.addEventListener("click",e=>{
     const tr=e.target.closest("tr.row");if(!tr)return;const y=+tr.dataset.y;
-    const s0=data.findIndex(d=>d.y===y-1),f0=data.reduce((k,d,i)=>d.y===y+1?i:k,-1);
-    a=Math.max(0,s0<0?0:s0);b=Math.min(N-1,f0<0?N-1:f0);if(b-a<4)a=Math.max(0,b-8);setChip("");render();
+    a=Math.max(0,data.findIndex(d=>d.y===y));b=Math.min(N-1,data.reduce((k,d,i)=>d.y===y?i:k,-1));if(b-a<MINSPAN)a=Math.max(0,b-MINSPAN);setChip("");render();
     document.querySelector(".chartbox").scrollIntoView({behavior:"smooth",block:"center"});
   });
   tb.addEventListener("keydown",e=>{if(e.key==="Enter")e.target.click();});
 
   // ---- Selector de periodo arrastrable ----
-  const brush=document.getElementById("brush"),win=document.getElementById("win"),tagL=document.getElementById("tagL"),tagR=document.getElementById("tagR");
-  const MINSPAN=3;
+  const brush=$("brush"),win=$("win"),tagL=$("tagL"),tagR=$("tagR");
+  const MINSPAN=6;
   const W=()=>brush.clientWidth;
   const xOf=i=>i/(N-1)*W();
   const iOf=x=>Math.round(Math.min(Math.max(x/W(),0),1)*(N-1));
@@ -320,8 +342,8 @@ function iniciar(D){
     const maxR=w+Math.min(24,parseFloat(brush.style.marginRight)||0);
     if(xr+wr>maxR){const d=xr+wr-maxR;xr-=d;if(xl+wl+gap>xr)xl=xr-gap-wl;}
     tagL.style.left=xl+"px";tagR.style.left=xr+"px";
-    document.getElementById("hL").setAttribute("aria-valuetext",data[a].lab);
-    document.getElementById("hR").setAttribute("aria-valuetext",data[b].lab);
+    $("hL").setAttribute("aria-valuetext",data[a].lab);
+    $("hR").setAttribute("aria-valuetext",data[b].lab);
   }
   let raf=0;
   function schedule(){if(!raf)raf=requestAnimationFrame(()=>{raf=0;render();});}
@@ -340,20 +362,20 @@ function iniciar(D){
     schedule();
   });
   const end=()=>{drag=null;};brush.addEventListener("pointerup",end);brush.addEventListener("pointercancel",end);
-  function keyH(which){return e=>{const d=e.key==="ArrowLeft"?-1:e.key==="ArrowRight"?1:0;if(!d)return;e.preventDefault();const s=e.shiftKey?4:1;
+  function keyH(which){return e=>{const d=e.key==="ArrowLeft"?-1:e.key==="ArrowRight"?1:0;if(!d)return;e.preventDefault();const s=e.shiftKey?12:1;
     if(which==="l")a=Math.min(Math.max(0,a+d*s),b-MINSPAN);else b=Math.max(Math.min(N-1,b+d*s),a+MINSPAN);setChip("");render();};}
-  document.getElementById("hL").addEventListener("keydown",keyH("l"));
-  document.getElementById("hR").addEventListener("keydown",keyH("r"));
+  $("hL").addEventListener("keydown",keyH("l"));
+  $("hR").addEventListener("keydown",keyH("r"));
   new ResizeObserver(()=>{requestAnimationFrame(()=>{drawMini();placeBrush();});}).observe(document.querySelector(".chartbox"));
   const repaint=()=>{paint();chart.update("none");};
   new MutationObserver(repaint).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change",repaint);
 
-  a=Math.max(0,N-40); setChip("r10"); render();
-  // Fuente de los datos mostrados
-  document.getElementById("estadoDatos").textContent="Datos trimestrales de "+data[0].long+" a "+data[N-1].long+"."+(D.vivo?" Leídos en vivo de BCRPData.":" Copia de BCRPData actualizada el "+D.fecha.split("-").reverse().join("/")+".");
+  a=Math.max(0,N-36);setChip("r3");render();
+  $("estadoDatos").textContent="Datos mensuales de "+data[0].long+" a "+data[N-1].long+"."+(D.vivo?" Leídos en vivo de BCRPData.":" Copia de BCRPData actualizada el "+D.fecha.split("-").reverse().join("/")+".")+
+    " En julio y diciembre el ingreso promedio y la masa salarial suben por las gratificaciones.";
 }
-BCRP.cargar("deuda").then(D=>{if(D)iniciar(D);});
+BCRP.cargar("empleo").then(D=>{if(D)iniciar(D);});
 </script>
 
 </body></html>

@@ -48,48 +48,149 @@
 <main id="main">
 
   <!-- INTRODUCCIÓN -->
-  <section class="section alt" id="sector-real">
+  <section class="section section--compact-top alt" id="sector-real">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow gold">Indicador macroeconómico central</span>
         <h2>Sector Real</h2>
-        <p>Esta sala del Sector Real presenta uno de los principales indicadores macroeconómicos de un país, el Producto Bruto Interno (PBI), así como las diversas actividades que lo conforman. Mediante este indicador se podrá comparar la evolución de la economía peruana con la de los otros países de la región.</p>
+        <p>Aquí puedes ver uno de los principales indicadores macroeconómicos de un país, el Producto Bruto Interno (PBI), así como las diversas actividades que lo conforman. Mediante este indicador se podrá comparar la evolución de la economía peruana con la de los otros países de la región.</p>
       </div>
 
-      <!-- DATO CURIOSO: carrusel interactivo -->
-      <div class="tip-carousel reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre la producción peruana">
-        <div class="tip-carousel__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
+      <!-- INFOGRAFÍA: ¿Qué es el PBI? -->
+      <figure class="pbi-map reveal" aria-labelledby="pbiMapTitle">
+        <figcaption class="pbi-map__head">
+          <h3 id="pbiMapTitle">El PBI: todo lo que produce el país</h3>
+          <p>El <strong>Producto Bruto Interno (PBI)</strong> es el valor de todos los bienes y servicios finales producidos dentro del país durante un periodo. Se forma con la producción de los <strong class="t-primary">sectores primarios</strong> y de los <strong class="t-nonprimary">sectores no primarios</strong>.</p>
+        </figcaption>
+
+        <div class="pbi-map__stage">
+          <div class="pbi-map__group pbi-map__group--primary">
+            <h4 class="pbi-map__label">Sectores primarios</h4>
+            <p class="pbi-map__hint">Extraen y procesan recursos naturales</p>
+            <ul class="pbi-map__sectors">
+              <li class="pbi-sector" style="--d:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11C12 6.5 8.5 4 4 4c0 4.5 3.5 7 8 7z"/><path d="M12 14c0-4 3-6.5 8-6.5 0 4.5-3 6.5-8 6.5z"/></svg></i>Agropecuario</li>
+              <li class="pbi-sector" style="--d:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4.5 8.5-6 13-2.5L21 6v12l-5-3.5C11.5 18 6 16.5 3 12z"/><path d="M8 11h.01"/></svg></i>Pesca</li>
+              <li class="pbi-sector" style="--d:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20l7-12 4 6 3-4 6 10z"/><path d="M7.5 10.5l1.5 1 1.5-1"/></svg></i>Minería e hidrocarburos</li>
+              <li class="pbi-sector" style="--d:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3v-3l5 3V6h7v15z"/><path d="M2 21h20"/><path d="M16 10h1M16 14h1"/></svg></i>Manufactura primaria</li>
+            </ul>
+          </div>
+
+          <span class="pbi-map__flow pbi-map__flow--primary" aria-hidden="true">
+            <svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M2 12H70"/><path d="M62 4l10 8-10 8"/></svg>
+          </span>
+
+          <div class="pbi-map__core">
+            <div class="pbi-map__coin">
+              <span class="pbi-map__coin-tag">PBI</span>
+              <strong>Producto Bruto Interno</strong>
+              <span class="pbi-map__coin-note">Bienes + servicios finales producidos en el Perú</span>
+            </div>
+          </div>
+
+          <span class="pbi-map__flow pbi-map__flow--nonprimary" aria-hidden="true">
+            <svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M78 12H10"/><path d="M18 4L8 12l10 8"/></svg>
+          </span>
+
+          <div class="pbi-map__group pbi-map__group--nonprimary">
+            <h4 class="pbi-map__label">Sectores no primarios</h4>
+            <p class="pbi-map__hint">Transforman, construyen y brindan servicios</p>
+            <ul class="pbi-map__sectors">
+              <li class="pbi-sector" style="--d:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></i>Manufactura no primaria</li>
+              <li class="pbi-sector" style="--d:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></i>Electricidad y agua</li>
+              <li class="pbi-sector" style="--d:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M5 18v-2a7 7 0 0114 0v2"/><path d="M10 9V5h4v4"/></svg></i>Construcción</li>
+              <li class="pbi-sector" style="--d:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h12l2-8H6"/></svg></i>Comercio</li>
+              <li class="pbi-sector" style="--d:5"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/><path d="M3 13h18"/></svg></i>Servicios<small>transporte, finanzas, salud, educación…</small></li>
+            </ul>
+          </div>
         </div>
-        <div class="tip-carousel__body">
-          <span class="tip-carousel__label">¿Sabías que…?</span>
+
+        <!-- Dos formas de medir el mismo PBI -->
+        <div class="pbi-measure">
+          <h4 class="pbi-measure__title">Dos formas de medir el mismo PBI</h4>
+          <div class="pbi-measure__row">
+            <article class="pbi-measure__card pbi-measure__card--supply">
+              <span class="pbi-measure__side">Lado de la oferta</span>
+              <h5>Por la producción</h5>
+              <p>Se suma el <strong>valor agregado</strong> de cada sector: lo que cada actividad añade al valor de lo que compra a otras.</p>
+              <p class="pbi-measure__formula" aria-label="Agropecuario más pesca más minería más los demás sectores">Agro + Pesca + Minería + … + Servicios</p>
+            </article>
+
+            <span class="pbi-measure__equals" aria-hidden="true">=</span>
+            <span class="sr-only">es igual a</span>
+
+            <article class="pbi-measure__card pbi-measure__card--demand">
+              <span class="pbi-measure__side">Lado de la demanda</span>
+              <h5>Por el gasto</h5>
+              <p>Se suma todo lo que se <strong>gasta</strong> en los bienes y servicios finales producidos en el país.</p>
+              <p class="pbi-measure__formula" aria-label="Consumo más inversión más gasto público más exportaciones menos importaciones">C + I + G + X − M</p>
+              <ul class="pbi-measure__legend" aria-hidden="true">
+                <li><b>C</b>Consumo</li>
+                <li><b>I</b>Inversión</li>
+                <li><b>G</b>Gasto público</li>
+                <li><b>X</b>Exportaciones</li>
+                <li><b>M</b>Importaciones</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <!-- ¿Para qué sirve? -->
+        <ul class="pbi-uses" aria-label="¿Para qué sirve el PBI?">
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></i>
+            <div><strong>Mide el crecimiento</strong><span>Si el PBI aumenta de un año a otro, la economía crece, y con ella el empleo y los ingresos.</span></div>
+          </li>
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 21v-1a6 6 0 0112 0v1"/><path d="M17 4v7M14 7.5h6"/></svg></i>
+            <div><strong>PBI per cápita</strong><span>PBI ÷ población: la producción promedio por habitante.</span></div>
+          </li>
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></i>
+            <div><strong>Compara países</strong><span>Permite comparar la economía peruana con la de otros países de la región.</span></div>
+          </li>
+        </ul>
+      </figure>
+
+      <!-- DATO CURIOSO: carrusel interactivo destacado -->
+      <div class="tip-carousel tip-carousel--featured reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre la producción peruana">
+        <div class="tip-carousel__visual" aria-hidden="true"></div>
+        <div class="tip-carousel__main">
+          <div class="tip-carousel__top">
+            <span class="tip-carousel__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+              ¿Sabías que…?
+            </span>
+            <span class="tip-carousel__tag"></span>
+            <span class="tip-carousel__count"></span>
+          </div>
           <p class="tip-carousel__text" aria-live="polite">Perú fue el segundo productor mundial de cobre y el segundo con las mayores reservas en 2023.</p>
+          <div class="tip-carousel__controls">
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="tip-carousel__dots"></div>
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
-        <div class="tip-carousel__controls">
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <div class="tip-carousel__dots"></div>
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
+        <span class="tip-carousel__progress" aria-hidden="true"></span>
         <script type="application/json" class="tip-carousel__data">[
-          "Perú fue el segundo productor mundial de cobre y el segundo con las mayores reservas en 2023.",
-          "Perú fue el undécimo productor mundial de oro y el segundo en Latinoamérica en 2023.",
-          "Perú fue el tercer productor mundial de plata en 2023 y el segundo en Latinoamérica.",
-          "Perú fue el segundo productor mundial de zinc en 2023 y el primero en Latinoamérica.",
-          "Perú fue el cuarto productor mundial de estaño en 2023 y el primero en Latinoamérica.",
-          "Perú fue el tercer productor mundial de molibdeno en 2023 y el segundo en Latinoamérica.",
-          "Perú fue el cuarto productor mundial de plomo en 2023 y el segundo en Latinoamérica.",
-          "La producción de mandarina creció 112% en los últimos 10 años, siendo Ica, Lima y Junín las regiones con mayor producción.",
-          "La producción de cacao creció 132% en los últimos 10 años, siendo San Martín, Junín y Ucayali las principales regiones productoras.",
-          "La producción de palma aceitera creció más de 156% en los últimos 10 años, siendo Ucayali, Junín y Loreto las principales regiones productoras.",
-          "La producción de quinua se expandió cerca de 35% en los últimos 10 años, siendo Puno, Ayacucho y Apurímac las principales regiones productoras.",
-          "Perú fue el principal productor mundial de quinua en 2023.",
-          "La producción de aceituna se incrementó en 258% entre 2013 y 2023, siendo Tacna, Arequipa e Ica las principales regiones productoras.",
-          "La producción de uva se incrementó más de 133% en los últimos 10 años, siendo Ica, Piura y La Libertad las principales regiones productoras.",
-          "La producción de palta se incrementó en 215% entre 2013 y 2023, siendo La Libertad, Lambayeque y Lima las principales regiones productoras."
+          {"text": "Perú fue el segundo productor mundial de cobre y el segundo con las mayores reservas en 2023.", "tag": "Minería", "stat": "2.º", "unit": "productor mundial de cobre · 2023"},
+          {"text": "Perú fue el undécimo productor mundial de oro y el segundo en Latinoamérica en 2023.", "tag": "Minería", "stat": "11.º", "unit": "productor mundial de oro · 2023"},
+          {"text": "Perú fue el tercer productor mundial de plata en 2023 y el segundo en Latinoamérica.", "tag": "Minería", "stat": "3.º", "unit": "productor mundial de plata · 2023"},
+          {"text": "Perú fue el segundo productor mundial de zinc en 2023 y el primero en Latinoamérica.", "tag": "Minería", "stat": "2.º", "unit": "productor mundial de zinc · 2023"},
+          {"text": "Perú fue el cuarto productor mundial de estaño en 2023 y el primero en Latinoamérica.", "tag": "Minería", "stat": "4.º", "unit": "productor mundial de estaño · 2023"},
+          {"text": "Perú fue el tercer productor mundial de molibdeno en 2023 y el segundo en Latinoamérica.", "tag": "Minería", "stat": "3.º", "unit": "productor mundial de molibdeno · 2023"},
+          {"text": "Perú fue el cuarto productor mundial de plomo en 2023 y el segundo en Latinoamérica.", "tag": "Minería", "stat": "4.º", "unit": "productor mundial de plomo · 2023"},
+          {"text": "La producción de mandarina creció 112% en los últimos 10 años, siendo Ica, Lima y Junín las regiones con mayor producción.", "tag": "Agro", "unit": "Producción de mandarina (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 212}]},
+          {"text": "La producción de cacao creció 132% en los últimos 10 años, siendo San Martín, Junín y Ucayali las principales regiones productoras.", "tag": "Agro", "unit": "Producción de cacao (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 232}]},
+          {"text": "La producción de palma aceitera creció más de 156% en los últimos 10 años, siendo Ucayali, Junín y Loreto las principales regiones productoras.", "tag": "Agro", "unit": "Producción de palma aceitera (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 256}]},
+          {"text": "La producción de quinua se expandió cerca de 35% en los últimos 10 años, siendo Puno, Ayacucho y Apurímac las principales regiones productoras.", "tag": "Agro", "unit": "Producción de quinua (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 135}]},
+          {"text": "Perú fue el principal productor mundial de quinua en 2023.", "tag": "Agro", "stat": "1.º", "unit": "productor mundial de quinua · 2023"},
+          {"text": "La producción de aceituna se incrementó en 258% entre 2013 y 2023, siendo Tacna, Arequipa e Ica las principales regiones productoras.", "tag": "Agro", "unit": "Producción de aceituna (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 358}]},
+          {"text": "La producción de uva se incrementó más de 133% en los últimos 10 años, siendo Ica, Piura y La Libertad las principales regiones productoras.", "tag": "Agro", "unit": "Producción de uva (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 233}]},
+          {"text": "La producción de palta se incrementó en 215% entre 2013 y 2023, siendo La Libertad, Lambayeque y Lima las principales regiones productoras.", "tag": "Agro", "unit": "Producción de palta (índice 2013 = 100)", "suffix": "", "bars": [{"label": "2013", "value": 100}, {"label": "2023", "value": 315}]}
         ]</script>
       </div>
     </div>
@@ -179,7 +280,7 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--lectura reveal" href="lecturas/producto-bruto-interno.html" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--lectura reveal" href="lecturas/producto-bruto-interno-escolares.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Lectura</span>
             <img class="resource-card__preview-img" src="assets/recursos-sector-real/cover-lectura-pbi.jpg" alt="Primera página de la lectura ¿Qué es el PBI?" loading="lazy" />
@@ -245,58 +346,36 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/pbi-por-sectores" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/pbi-por-sectores.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><polyline points="4,34 20,34 20,26 38,26 38,18 56,18 56,24 74,24 74,12 96,12" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-real/cover-estadistica-pbi-sectores.jpg" alt="Captura del gráfico interactivo de PBI por Sectores" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>PBI por Sectores</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/trimestrales/pbi-gasto" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/pbi-gasto.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><rect x="6" y="17" width="10" height="8" fill="var(--gold-400)"/><rect x="22" y="25" width="10" height="9" fill="rgba(255,255,255,0.4)"/><rect x="38" y="10" width="10" height="15" fill="var(--gold-400)"/><rect x="54" y="25" width="10" height="6" fill="rgba(255,255,255,0.4)"/><rect x="70" y="13" width="10" height="12" fill="var(--gold-400)"/><rect x="86" y="25" width="10" height="11" fill="rgba(255,255,255,0.4)"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-real/cover-estadistica-pbi-gasto.jpg" alt="Captura del gráfico interactivo de PBI por Tipo de Gasto" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>PBI Gasto (Demanda Interna)</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/remuneraciones-y-empleo" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/remuneraciones-y-empleo.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="26" x2="100" y2="26" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 3"/><polyline points="4,20 16,30 28,14 40,32 52,22 64,10 76,28 88,16 96,24" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-real/cover-estadistica-remuneraciones-empleo.jpg" alt="Captura del gráfico interactivo de Remuneraciones y Empleo" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Remuneraciones y Empleo</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="resource-card resource-card--stat reveal" href="https://www.bcrp.gob.pe/estadisticas/cuadros-de-la-nota-semanal.html#se-pbi-mensual" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><rect x="4" y="6" width="92" height="38" rx="2" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="4" y1="18" x2="96" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1"/><line x1="4" y1="30" x2="96" y2="30" stroke="rgba(255,255,255,0.4)" stroke-width="1"/><line x1="34" y1="6" x2="34" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1"/><line x1="66" y1="6" x2="66" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Cuadros Mensuales de la Nota Semanal</h3>
-            <span class="resource-card__link">Ver cuadros <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-          </div>
-        </a>
-
-        <a class="resource-card resource-card--stat reveal" href="https://www.bcrp.gob.pe/estadisticas/cuadros-de-la-nota-semanal.html#se-trimestral" target="_blank" rel="noopener">
-          <div class="resource-card__preview">
-            <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><rect x="4" y="6" width="92" height="38" rx="2" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="4" y1="18" x2="96" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1"/><line x1="4" y1="30" x2="96" y2="30" stroke="rgba(255,255,255,0.4)" stroke-width="1"/><line x1="34" y1="6" x2="34" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1"/><line x1="66" y1="6" x2="66" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1"/></svg>
-          </div>
-          <div class="resource-card__body">
-            <h3>Cuadros Trimestrales de la Nota Semanal</h3>
-            <span class="resource-card__link">Ver cuadros <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 

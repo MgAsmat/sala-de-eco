@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¿Cómo mueve el BCRP las tasas de interés? — BCRP</title>
+<title>¿Qué es el PBI? — BCRP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -248,6 +248,69 @@
   .tbtn,.retry-btn,.seg{border-radius:999px;}
   .tbtn.primary,.retry-btn{background:var(--blue);border-color:var(--blue);}
   .tbtn.primary:hover:not(:disabled),.retry-btn:hover{background:var(--navy);}
+
+  /* ===== Lectura PBI: herramientas propias ===== */
+  .chain-step .price{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:#8a5f00;}
+  .chain-step.first .price{color:#ffcb3d;}
+
+  /* ¿Entra o no entra? */
+  .classify{display:grid;gap:10px;}
+  .cl-item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--border);border-radius:14px;padding:12px 14px;transition:border-color .2s ease,background .2s ease;}
+  .cl-text{font-size:15px;font-weight:600;color:var(--navy-deep);}
+  .cl-fb{display:block;font-weight:500;font-size:13.5px;color:var(--text-muted);margin-top:2px;}
+  .cl-fb:empty{display:none;}
+  .cl-btns{display:flex;gap:6px;flex:0 0 auto;}
+  .cl-btns .tbtn{font-size:13.5px;padding:7px 12px;}
+  .cl-btns .tbtn:disabled{opacity:.4;}
+  .cl-btns .tbtn.picked{opacity:1;}
+  .cl-item.ok{border-left-color:var(--ok);background:rgba(47,143,107,0.06);}
+  .cl-item.ok .tbtn.picked{border-color:var(--ok);background:rgba(47,143,107,0.12);}
+  .cl-item.bad{border-left-color:var(--bad);background:rgba(192,72,62,0.05);}
+  .cl-item.bad .tbtn.picked{border-color:var(--bad);background:rgba(192,72,62,0.1);}
+  @media (max-width:600px){.cl-item{flex-direction:column;align-items:stretch;}.cl-btns .tbtn{flex:1;}}
+
+  /* Velocímetro */
+  .speedo{position:relative;max-width:340px;margin:6px auto 0;}
+  .speedo svg{display:block;width:100%;height:auto;overflow:visible;}
+  .speedo-zone{fill:none;stroke-width:18;}
+  .speedo-zone.rev{stroke:rgba(192,72,62,0.75);}
+  .speedo-zone.slow{stroke:var(--gold);}
+  .speedo-zone.fast{stroke:var(--teal);}
+  .speedo-needle{transform-origin:120px 120px;transition:transform .45s cubic-bezier(.3,1.3,.5,1);}
+  .speedo-needle line{stroke:var(--navy-deep);stroke-width:5;stroke-linecap:round;}
+  .speedo-needle circle{fill:var(--navy-deep);}
+  .speedo-lbl{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;fill:var(--text-muted);}
+  .speedo-read{text-align:center;margin-top:-4px;font-family:'Poppins',sans-serif;font-size:22px;color:var(--navy);}
+
+  /* Barras horizontales (nominal vs real) */
+  .hbars{display:grid;gap:8px;margin:6px 0 4px;}
+  .hbar{display:grid;grid-template-columns:170px 1fr 84px;align-items:center;gap:10px;font-size:14px;}
+  .hbar-l{font-weight:600;color:var(--navy);}
+  .hbar-t{height:22px;border-radius:999px;background:#fff;border:1px solid var(--border);overflow:hidden;}
+  .hbar-t i{display:block;height:100%;border-radius:999px;transition:width .3s ease;}
+  .hbar.base i{background:#a9c2be;}
+  .hbar.nom i{background:var(--gold);}
+  .hbar.real i{background:var(--blue);}
+  .hbar b{text-align:right;color:var(--navy);}
+  @media (max-width:560px){.hbar{grid-template-columns:1fr 74px;}.hbar-l{grid-column:1 / -1;}}
+
+  /* Barra apilada C + I + G + X − M */
+  .stack{display:grid;gap:6px;margin:6px 0 4px;}
+  .stack-row{display:flex;height:30px;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--border);}
+  .stack-row span{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+  .seg-C{background:var(--navy);color:#fff;}
+  .seg-I{background:var(--blue);color:#fff;}
+  .seg-G{background:var(--teal);color:var(--navy-deep);}
+  .seg-X{background:var(--teal-soft);color:var(--navy-deep);}
+  .seg-M{background:rgba(192,72,62,0.75);color:#fff;}
+  .seg-PBI{background:var(--gold);color:var(--navy-deep);}
+
+  /* PBI per cápita */
+  .pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:640px){.pc-grid{grid-template-columns:1fr;}}
+  .pc-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px 16px;}
+  .pc-card h5{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:var(--navy);margin:0 0 8px;}
+  .pc-card .stat{background:var(--paper);}
 </style>
 </head>
 <body>
@@ -255,15 +318,15 @@
 <header class="masthead">
   <div class="masthead-inner">
     <a class="brand" href="../index.html" aria-label="Sala Educativa de Economía — Inicio"><span class="brand-mark" aria-hidden="true">SE</span><span class="brand-text"><strong>Sala Educativa de</strong><em>Economía</em><small>Banco Central de Reserva del Perú</small></span></a>
-    <a class="back-link" href="../politicas.html">← Volver<span class="long"> a Políticas</span></a>
+    <a class="back-link" href="../sector-real.html">← Volver<span class="long"> a Sector Real</span></a>
   </div>
 </header>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="eyebrow">Política monetaria para secundaria</div>
-    <h1 class="title">¿Cómo hace el BCRP para “mover” las tasas de interés?</h1>
-    <p class="hero-sub">Las tres herramientas que usa el Banco Central para cuidar el valor de tu dinero, explicadas paso a paso.</p>
+    <div class="eyebrow">Sector Real para secundaria</div>
+    <h1 class="title">¿Qué es el PBI y por qué todos hablan de él?</h1>
+    <p class="hero-sub">El indicador que resume, en un solo número, el tamaño de la economía de un país, explicado paso a paso.</p>
     <div class="chips"><span class="chip">⏱ Lectura de 10 minutos</span><span class="chip">🎚 Incluye simuladores</span><span class="chip">✅ Mini quiz al final</span></div>
   </div>
 </div>
@@ -271,12 +334,12 @@
 <nav class="secnav" aria-label="Secciones de la lectura">
   <div class="secnav-inner" role="tablist" id="navList">
     <button class="nav-btn star" role="tab" data-target="resumen"><span class="n">⚡</span>Resumen</button>
-    <button class="nav-btn" role="tab" data-target="conceptos"><span class="n">1</span>Conceptos clave</button>
-    <button class="nav-btn" role="tab" data-target="meta"><span class="n">2</span>La meta</button>
-    <button class="nav-btn" role="tab" data-target="problema"><span class="n">3</span>El problema</button>
-    <button class="nav-btn" role="tab" data-target="oma"><span class="n">4</span>Mercado abierto</button>
-    <button class="nav-btn" role="tab" data-target="ventanilla"><span class="n">5</span>Ventanilla</button>
-    <button class="nav-btn" role="tab" data-target="encaje"><span class="n">6</span>Encaje</button>
+    <button class="nav-btn" role="tab" data-target="conceptos"><span class="n">1</span>¿Qué cuenta?</button>
+    <button class="nav-btn" role="tab" data-target="finales"><span class="n">2</span>Bienes finales</button>
+    <button class="nav-btn" role="tab" data-target="auto"><span class="n">3</span>El símil del auto</button>
+    <button class="nav-btn" role="tab" data-target="real"><span class="n">4</span>Nominal y real</button>
+    <button class="nav-btn" role="tab" data-target="medir"><span class="n">5</span>¿Cómo se mide?</button>
+    <button class="nav-btn" role="tab" data-target="percapita"><span class="n">6</span>Per cápita</button>
     <button class="nav-btn star" role="tab" data-target="quiz-sec"><span class="n">✓</span>Quiz</button>
   </div>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
@@ -288,250 +351,232 @@
   <section class="panel" id="resumen" role="tabpanel">
     <div class="card">
       <h2 class="section-title">Empecemos con una pregunta</h2>
-      <p>¿Te has fijado que con el tiempo las cosas suelen costar un poco más? Un menú, un pasaje, una entrada al cine. Cuando los precios suben demasiado rápido, tu propina, el sueldo de tu familia y tus ahorros alcanzan para menos. Eso se llama <strong>inflación</strong>.</p>
-      <p>El <strong>Banco Central de Reserva del Perú (BCRP)</strong> tiene una misión principal: mantener los precios <strong>estables</strong>, es decir, que no suban ni muy rápido ni de forma impredecible. En esta lectura vas a descubrir <strong>cómo lo hace en la práctica</strong>.</p>
+      <p>Seguro has escuchado en las noticias frases como “la economía creció 3 %” o “el país entró en recesión”. ¿Cómo se sabe eso? ¿Quién mide si a un país le va mejor o peor?</p>
+      <p>La respuesta está en un indicador llamado <strong>Producto Bruto Interno (PBI)</strong>. Es uno de los principales indicadores macroeconómicos de un país, y en esta lectura vas a descubrir <strong>qué mide, cómo se calcula y para qué sirve</strong>.</p>
     </div>
     <div class="card summary-card">
       <h2 class="section-title"><span class="num">⚡</span>Resumen en 30 segundos</h2>
-      <p>Para cuidar que los precios se mantengan estables, el <strong>BCRP</strong> fija una meta para la tasa a la que se prestan los bancos entre sí y usa <strong>tres herramientas</strong>:</p>
+      <p>El <strong>PBI</strong> mide el <strong>valor de todos los bienes y servicios finales producidos dentro de un país durante un periodo</strong>, normalmente un año. Por eso se le considera el “tamaño” de la economía.</p>
       <table class="sum">
-        <thead><tr><th>Herramienta</th><th>¿Quién la inicia?</th><th>¿Para qué sirve?</th></tr></thead>
+        <thead><tr><th>Idea</th><th>¿Qué significa?</th></tr></thead>
         <tbody>
-          <tr><td><a data-goto="oma">Operaciones de Mercado Abierto</a></td><td>El BCRP, con subastas</td><td>Poner o sacar dinero para que la tasa interbancaria llegue a la meta.</td></tr>
-          <tr><td><a data-goto="ventanilla">Facilidades de ventanilla</a></td><td>Cada banco, cuando lo necesita</td><td>Plan B al final del día. Crea un techo y un piso para la tasa interbancaria.</td></tr>
-          <tr><td><a data-goto="encaje">Encaje</a></td><td>El BCRP fija el porcentaje</td><td>Regular cuánto pueden prestar los bancos y acumular reservas en dólares.</td></tr>
+          <tr><td><a data-goto="conceptos">Dentro del país</a></td><td>Cuenta lo producido en el Perú, sin importar la nacionalidad de quien lo produce.</td></tr>
+          <tr><td><a data-goto="finales">Solo bienes finales</a></td><td>Los insumos no se suman aparte, para no contarlos dos veces.</td></tr>
+          <tr><td><a data-goto="auto">Crecimiento</a></td><td>Si el PBI aumenta, la economía crece; si disminuye, se contrae.</td></tr>
+          <tr><td><a data-goto="real">PBI real</a></td><td>Mide el valor a precios constantes: quita el efecto de la inflación.</td></tr>
+          <tr><td><a data-goto="medir">Dos formas de medirlo</a></td><td>Por la producción de los sectores o por el gasto en bienes y servicios finales.</td></tr>
+          <tr><td><a data-goto="percapita">PBI per cápita</a></td><td>PBI ÷ población: la producción promedio por habitante.</td></tr>
         </tbody>
       </table>
-      <div class="callout idea"><span class="label">🎯 La idea clave</span><p>Todas estas herramientas tienen el mismo fin: que el dinero no pierda su valor y que los precios en el Perú se mantengan estables.</p></div>
+      <div class="callout idea"><span class="label">🎯 La idea clave</span><p>Si el PBI sube, es porque las empresas del país están produciendo más. Si baja, quiere decir que hay menos producción y ventas.</p></div>
     </div>
   </section>
 
-  <!-- 1. Conceptos -->
+  <!-- 1. ¿Qué cuenta? -->
   <section class="panel" id="conceptos" role="tabpanel">
     <div class="card">
       <h2 class="section-title"><span class="num">1</span>Tres ideas que necesitas antes de empezar</h2>
       <div class="gloss-grid">
         <div class="gloss">
-          <div class="emoji">🏷️</div>
-          <h3>Tasa de interés</h3>
-          <p>Es el <strong>“precio” del dinero</strong>: lo que pagas por usar dinero prestado, o lo que ganas por prestarlo.</p>
-          <span class="eg">Ej.: si te prestan S/100 al 10 % anual, al año devuelves S/110.</span>
+          <div class="emoji">💰</div>
+          <h3>Valor</h3>
+          <p>El PBI no suma kilos ni unidades: suma <strong>cuánto valen</strong> en soles los bienes y servicios.</p>
+          <span class="eg">Así se pueden sumar cosas distintas, como palta, cobre y cortes de pelo.</span>
         </div>
         <div class="gloss">
-          <div class="emoji">💧</div>
-          <h3>Liquidez</h3>
-          <p>Es el <strong>dinero disponible para usar ya</strong>, sin tener que esperar ni vender nada.</p>
-          <span class="eg">Ej.: los billetes en tu billetera son líquidos; una casa, no tanto.</span>
+          <div class="emoji">🇵🇪</div>
+          <h3>Dentro del país</h3>
+          <p>Cuenta lo producido <strong>en el territorio</strong>, sin importar la nacionalidad de la persona o empresa.</p>
+          <span class="eg">Ej.: un estadounidense que trabaja en el Perú suma al PBI peruano.</span>
         </div>
         <div class="gloss">
-          <div class="emoji">🤝</div>
-          <h3>Mercado interbancario</h3>
-          <p>Es donde <strong>los bancos se prestan dinero entre ellos</strong>, casi siempre por un solo día.</p>
-          <span class="eg">A la tasa que cobran se le llama <strong>tasa interbancaria</strong>.</span>
+          <div class="emoji">📅</div>
+          <h3>En un periodo</h3>
+          <p>Mide lo que se <strong>produce</strong> en un tiempo determinado: un mes, un trimestre o un año.</p>
+          <span class="eg">Un auto usado que se revende hoy ya se contó el año en que se fabricó.</span>
         </div>
       </div>
 
       <div class="tool">
         <div class="tool-head">🕹 Pruébalo</div>
-        <h4>Calculadora del “precio” del dinero</h4>
-        <p class="hint">Elige si pides prestado o ahorras y mueve las barras para ver cuánto cuesta (o cuánto rinde) el dinero.</p>
-        <div class="seg" id="intMode"><button type="button" class="on" data-m="prestamo">💳 Pido prestado</button><button type="button" data-m="ahorro">🐷 Ahorro en el banco</button></div>
-        <div class="ctrl"><label for="intMonto"><span>Monto</span><span id="intMontoVal"></span></label><input type="range" id="intMonto" min="100" max="2000" step="50" value="500"></div>
-        <div class="ctrl"><label for="intTasa"><span>Tasa de interés anual</span><span id="intTasaVal"></span></label><input type="range" id="intTasa" min="1" max="40" step="1" value="10"></div>
-        <div class="ctrl"><label for="intAnios"><span>Tiempo</span><span id="intAniosVal"></span></label><input type="range" id="intAnios" min="1" max="5" step="1" value="1"></div>
-        <div class="bar"><div class="kept" id="intBarM"></div><div class="lend" id="intBarI"></div></div>
+        <h4>¿Entra o no entra al PBI del Perú?</h4>
+        <p class="hint">Decide para cada caso si se suma al PBI peruano de este año.</p>
+        <div class="classify" id="classify"></div>
+        <div class="msg" id="clsMsg">Responde los 6 casos.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Bienes finales -->
+  <section class="panel" id="finales" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>Solo se cuentan los bienes finales</h2>
+      <p>Un <strong>bien final</strong> es el que llega a quien lo va a usar o consumir. Un <strong>bien intermedio</strong> (o insumo) es el que se usa para fabricar otro producto.</p>
+      <p>El PBI considera <strong>solo los bienes finales</strong>, porque de lo contrario se contarían dos veces los insumos. Por ejemplo, la harina que se produce para preparar los panes <strong>ya está contenida en el valor del pan</strong>.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>El viaje del pan: del trigo a tu mesa</h4>
+        <p class="hint">Compara dos maneras de sumar la producción. ¿Cuál da el valor real del pan?</p>
+        <div class="btn-row">
+          <button type="button" class="tbtn" id="vaAll">➕ Sumar todas las ventas</button>
+          <button type="button" class="tbtn primary" id="vaAdd">✔ Sumar solo lo que agrega cada uno</button>
+        </div>
+        <div class="chain" id="vaChain">
+          <div class="chain-step first"><span class="e">🌾</span>El agricultor vende trigo<span class="price">S/ 2</span><span class="fx"></span></div>
+          <div class="chain-arrow">→</div>
+          <div class="chain-step"><span class="e">🏭</span>El molino vende harina<span class="price">S/ 5</span><span class="fx"></span></div>
+          <div class="chain-arrow">→</div>
+          <div class="chain-step last"><span class="e">🥖</span>La panadería vende el pan<span class="price">S/ 10</span><span class="fx"></span></div>
+        </div>
         <div class="stats">
-          <div class="stat"><div class="k">Monto inicial</div><div class="v" id="intM"></div></div>
-          <div class="stat"><div class="k" id="intIK"></div><div class="v" id="intI"></div></div>
-          <div class="stat"><div class="k" id="intTK"></div><div class="v" id="intT"></div></div>
+          <div class="stat"><div class="k">Valor del pan (bien final)</div><div class="v">S/ 10</div></div>
+          <div class="stat"><div class="k" id="vaK">Tu suma</div><div class="v" id="vaV">—</div></div>
         </div>
-        <div class="msg" id="intMsg"></div>
-        <p class="tiny">Cálculo con interés compuesto anual. Cifras solo de ejemplo.</p>
+        <div class="msg" id="vaMsg">Elige una forma de sumar.</div>
+        <p class="tiny">Cifras solo de ejemplo.</p>
       </div>
+      <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Lo que cada etapa añade se llama <strong>valor agregado</strong>. Sumar el valor agregado de todos da exactamente el valor del bien final.</p></div>
     </div>
   </section>
 
-  <!-- 2. Meta operativa -->
-  <section class="panel" id="meta" role="tabpanel">
+  <!-- 3. Símil del auto -->
+  <section class="panel" id="auto" role="tabpanel">
     <div class="card">
-      <h2 class="section-title"><span class="num">2</span>El BCRP no controla los precios… pero sí una tasa</h2>
-      <p>El Banco Central no puede decidir cuánto cuesta el pan o la gasolina. Lo que sí puede hacer es influir en una tasa muy importante: la <strong>tasa interbancaria</strong>. Por eso fija una meta para ella, llamada <strong>tasa de interés de referencia</strong>, y trabaja todos los días para que la tasa interbancaria se mantenga lo más cerca posible de esa meta.</p>
-      <p>¿Por qué funciona? Porque esa tasa se va “contagiando” al resto de la economía:</p>
-      <div class="tool">
-        <div class="tool-head">🕹 Pruébalo</div>
-        <h4>¿Qué pasa si el BCRP mueve la tasa?</h4>
-        <p class="hint">Presiona un botón y mira cómo el cambio se contagia paso a paso.</p>
-        <div class="stats" style="margin:0 0 12px;">
-          <div class="stat"><div class="k">Tasa de referencia (ejemplo)</div><div class="v" id="refVal"></div></div>
-        </div>
-        <div class="btn-row">
-          <button type="button" class="tbtn primary" id="refUp">⬆ Subir 0,25</button>
-          <button type="button" class="tbtn teal" id="refDown">⬇ Bajar 0,25</button>
-        </div>
-        <div class="chain" id="metaChain">
-          <div class="chain-step first"><span class="e">🏛️</span>El BCRP fija la tasa de referencia<span class="fx"></span></div>
-          <div class="chain-arrow">→</div>
-          <div class="chain-step"><span class="e">🏦</span>Cambia lo que se cobran los bancos entre sí<span class="fx"></span></div>
-          <div class="chain-arrow">→</div>
-          <div class="chain-step"><span class="e">💳</span>Cambian las tasas de préstamos y ahorros<span class="fx"></span></div>
-          <div class="chain-arrow">→</div>
-          <div class="chain-step"><span class="e">🛒</span>Las personas y empresas gastan más o menos<span class="fx"></span></div>
-          <div class="chain-arrow">→</div>
-          <div class="chain-step last"><span class="e">📊</span>Los precios se mantienen estables<span class="fx"></span></div>
-        </div>
-        <div class="msg" id="refMsg">Elige subir o bajar la tasa para empezar.</div>
-        <p class="tiny">En la vida real este “contagio” no es inmediato: puede tomar varios meses.</p>
-      </div>
-      <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Es como un <strong>termostato</strong>: no puedes controlar el clima de afuera, pero sí regular el aire acondicionado para que tu cuarto esté a la temperatura que quieres.</p></div>
-    </div>
-  </section>
-
-  <!-- 3. El problema -->
-  <section class="panel" id="problema" role="tabpanel">
-    <div class="card">
-      <h2 class="section-title"><span class="num">3</span>El problema: a veces falta dinero y a veces sobra</h2>
-      <p>La tasa interbancaria funciona como cualquier precio: <strong>cuando algo escasea, se encarece; cuando sobra, se abarata</strong>. Pasa lo mismo que con las entradas a un concierto muy esperado.</p>
-      <div class="dual-grid">
-        <div class="dual-card down">
-          <div class="lead">Situación A</div>
-          <h3>Falta dinero entre los bancos</h3>
-          <p>Muchos bancos quieren pedir prestado y pocos tienen para prestar.</p>
-          <span class="result">⬆ La tasa interbancaria sube por encima de la meta</span>
-        </div>
-        <div class="dual-card up">
-          <div class="lead">Situación B</div>
-          <h3>Sobra dinero entre los bancos</h3>
-          <p>Muchos bancos quieren prestar y pocos necesitan pedir.</p>
-          <span class="result">⬇ La tasa interbancaria baja por debajo de la meta</span>
-        </div>
-      </div>
-      <div class="tool">
-        <div class="tool-head">🕹 Pruébalo</div>
-        <h4>La balanza del mercado interbancario</h4>
-        <p class="hint">Cambia cuántos bancos necesitan dinero y cuántos tienen de sobra. Mira hacia dónde se mueve la tasa interbancaria.</p>
-        <div class="ctrl"><label for="balNeed"><span>🙋 Bancos que necesitan dinero</span><span id="balNeedVal"></span></label><input type="range" id="balNeed" min="0" max="10" step="1" value="5"></div>
-        <div class="ctrl"><label for="balHave"><span>💰 Bancos con dinero de sobra</span><span id="balHaveVal"></span></label><input type="range" id="balHave" min="0" max="10" step="1" value="5"></div>
-        <div class="gauge" id="balGauge" data-min="2.5" data-max="6.5" data-marks='[{"v":4.5,"l":"Meta 4,50 %","c":"meta"}]'></div>
-        <div class="msg" id="balMsg"></div>
-      </div>
-      <p style="margin-top:16px;">Ninguna de las dos situaciones le conviene al BCRP. Para corregirlas usa <strong>tres herramientas</strong>. ¡Veámoslas!</p>
-    </div>
-  </section>
-
-  <!-- 4. OMA -->
-  <section class="panel" id="oma" role="tabpanel">
-    <div class="card">
-      <h2 class="section-title"><span class="num">4</span>Herramienta 1: Operaciones de Mercado Abierto</h2>
-      <p>Es la herramienta principal. Con ella, el BCRP <strong>pone o saca dinero</strong> del mercado interbancario según lo que haga falta. Se les llama <strong>OMA</strong>.</p>
-      <div class="dual-grid">
-        <div class="dual-card up">
-          <div class="lead">Si falta dinero</div>
-          <h3>El BCRP inyecta liquidez 💧</h3>
-          <p>El BCRP le presta soles a los bancos por un tiempo corto. A cambio, el banco deja como <strong>garantía</strong> unos <strong>títulos valores</strong> (documentos que valen dinero, como bonos del Estado) y se compromete a “recomprarlos” después, devolviendo el dinero.</p>
-          <p>A esta operación se le llama <strong>repo</strong>, y el BCRP la ofrece mediante <strong>subastas</strong>.</p>
-        </div>
-        <div class="dual-card down">
-          <div class="lead">Si sobra dinero</div>
-          <h3>El BCRP retira liquidez 🧽</h3>
-          <p>El BCRP ofrece a bancos y otras entidades (como AFP o aseguradoras) sus propios títulos, que <strong>pagan intereses</strong>. Las entidades entregan soles hoy y reciben esos títulos.</p>
-          <p>Así, el dinero que sobraba queda “guardado” en el BCRP. A esto se le llama <strong>esterilizar</strong> la liquidez.</p>
-        </div>
-      </div>
-      <div class="tool">
-        <div class="tool-head">🎮 Misión</div>
-        <h4>Lleva la tasa interbancaria a la meta</h4>
-        <p class="hint">Cada día el mercado amanece distinto. Tú eres el BCRP: usa las operaciones correctas para que la tasa llegue a la meta con la menor cantidad de operaciones.</p>
-        <div class="gauge" id="omaGauge" data-min="2.5" data-max="6.5" data-marks='[{"v":4.5,"l":"Meta 4,50 %","c":"meta"}]'></div>
-        <div class="stats" style="margin-bottom:12px;">
-          <div class="stat"><div class="k">Dinero entre los bancos</div><div class="v" id="omaLiq"></div></div>
-          <div class="stat"><div class="k">Operaciones realizadas</div><div class="v" id="omaOps"></div></div>
-        </div>
-        <div class="btn-row">
-          <button type="button" class="tbtn teal" id="omaIn">💧 Inyectar (repo)</button>
-          <button type="button" class="tbtn primary" id="omaOut">🧽 Retirar (títulos del BCRP)</button>
-          <button type="button" class="tbtn" id="omaNew">🎲 Nuevo día</button>
-        </div>
-        <div class="msg" id="omaMsg"></div>
-      </div>
-      <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Una repo se parece a cuando pides prestada una pelota en el colegio y dejas tu carné como garantía: cuando devuelves la pelota, recuperas tu carné.</p></div>
-    </div>
-  </section>
-
-  <!-- 5. Ventanilla -->
-  <section class="panel" id="ventanilla" role="tabpanel">
-    <div class="card">
-      <h2 class="section-title"><span class="num">5</span>Herramienta 2: Facilidades de ventanilla (el “plan B”)</h2>
-      <p>Imagina que se termina el día y un banco <strong>todavía necesita dinero</strong>, o <strong>todavía le sobra</strong>, porque no logró hacer tratos con otros bancos. Para esos casos existe la <strong>ventanilla</strong> del BCRP. Cualquier entidad financiera puede usarla, pero <strong>con una pequeña “penalidad”</strong> para que sea el último recurso.</p>
-      <div class="dual-grid">
-        <div class="dual-card down">
-          <div class="lead">Le falta dinero</div>
-          <h3>Pide prestado al BCRP</h3>
-          <p>Mediante una <strong>repo directa</strong> o un <strong>crédito de regulación monetaria</strong>, dejando una garantía.</p>
-          <span class="result">Paga una tasa MÁS ALTA que la de referencia</span>
-        </div>
-        <div class="dual-card up">
-          <div class="lead">Le sobra dinero</div>
-          <h3>Lo deposita en el BCRP</h3>
-          <p>Mediante un <strong>depósito overnight</strong>, que dura solo una noche (un día útil).</p>
-          <span class="result">Gana una tasa MÁS BAJA que la de referencia</span>
-        </div>
-      </div>
-
-      <div class="subhead">El resultado: un “corredor” de tasas</div>
-      <p>Como la ventanilla es cara para pedir y paga poco por depositar, a los bancos siempre les conviene más hacer tratos entre ellos. Así, la tasa interbancaria queda <strong>encerrada entre un techo y un piso</strong>:</p>
-      <div class="corridor">
-        <div class="corridor-row ceil"><div class="corridor-label">Pedir prestado al BCRP<span class="small">Nadie pagaría más que esto a otro banco</span></div><div class="corridor-tag">Techo</div></div>
-        <div class="corridor-row mid"><div class="corridor-label">Tasa de referencia<span class="small">La meta del BCRP</span></div><div class="corridor-tag">Meta</div></div>
-        <div class="corridor-row floor"><div class="corridor-label">Depositar en el BCRP<span class="small">Nadie prestaría a otro banco por menos que esto</span></div><div class="corridor-tag">Piso</div></div>
-      </div>
-      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>Si el BCRP te presta al “techo”, ¿aceptarías que otro banco te cobre más que eso? ¡Claro que no! Por eso la tasa interbancaria no puede subir por encima del techo, ni bajar por debajo del piso.</p></div>
+      <h2 class="section-title"><span class="num">3</span>El PBI y el símil del auto</h2>
+      <p>Se puede pensar en el PBI como el <strong>tamaño de la economía</strong>. Si el PBI de un país aumenta, hablamos de <strong>crecimiento económico</strong>; y si disminuye, decimos que la economía se ha <strong>contraído</strong>.</p>
+      <p>Para fines prácticos, podríamos comparar un país con un auto: a <strong>90 km/h</strong> la economía crece a buen ritmo; a <strong>30 km/h</strong> crece muy lento y se desacelera; y si va <strong>en reversa</strong>, el PBI se está contrayendo y la economía está en recesión.</p>
 
       <div class="tool">
         <div class="tool-head">🕹 Pruébalo</div>
-        <h4>¿Negocias con otro banco o vas a la ventanilla?</h4>
-        <p class="hint">Eres el gerente de un banco al final del día. Elige tu situación y mueve la tasa que te ofrece otro banco.</p>
-        <div class="seg" id="venMode"><button type="button" class="on" data-m="falta">🙋 A mi banco le falta dinero</button><button type="button" data-m="sobra">💰 A mi banco le sobra dinero</button></div>
-        <div class="ctrl"><label for="venOffer"><span>Tasa que te ofrece otro banco</span><span id="venOfferVal"></span></label><input type="range" id="venOffer" min="2" max="7" step="0.1" value="6"></div>
-        <div class="gauge" id="venGauge" data-min="2" data-max="7" data-band="3.5,5.5" data-marks='[{"v":3.5,"l":"Piso"},{"v":4.5,"l":"Meta","c":"meta"},{"v":5.5,"l":"Techo"}]'></div>
-        <div class="msg" id="venMsg"></div>
-        <p class="tiny">Tasas de ejemplo: piso 3,50 %, meta 4,50 %, techo 5,50 %.</p>
+        <h4>El velocímetro de la economía</h4>
+        <p class="hint">Mueve la barra para cambiar cuánto crece el PBI en el año y mira a qué “velocidad” va el país.</p>
+        <div class="ctrl"><label for="spdRange"><span>Variación del PBI en el año</span><span id="spdVal"></span></label><input type="range" id="spdRange" min="-6" max="8" step="0.5" value="3"></div>
+        <div class="speedo">
+          <svg viewBox="0 0 240 140" aria-hidden="true">
+            <path class="speedo-zone rev" d="" id="zRev"/>
+            <path class="speedo-zone slow" d="" id="zSlow"/>
+            <path class="speedo-zone fast" d="" id="zFast"/>
+            <g id="spdNeedle" class="speedo-needle"><line x1="120" y1="120" x2="120" y2="38"/><circle cx="120" cy="120" r="9"/></g>
+            <text x="22" y="136" class="speedo-lbl">Reversa</text>
+            <text x="218" y="136" class="speedo-lbl" text-anchor="end">Rápido</text>
+          </svg>
+          <div class="speedo-read" id="spdRead"></div>
+        </div>
+        <div class="msg" id="spdMsg"></div>
+        <p class="tiny">Velocidades de ejemplo: solo ilustran la idea.</p>
       </div>
+      <div class="callout fact"><span class="label">📌 Un poco de historia</span><p>El creador del PBI fue el premio Nobel de Economía <strong>Simon Kuznets</strong>, quien incluyó el término en un informe de los años 30 para la creación de las cuentas nacionales de los Estados Unidos, y así poder medir el tamaño de su economía.</p></div>
     </div>
   </section>
 
-  <!-- 6. Encaje -->
-  <section class="panel" id="encaje" role="tabpanel">
+  <!-- 4. Nominal vs real -->
+  <section class="panel" id="real" role="tabpanel">
     <div class="card">
-      <h2 class="section-title"><span class="num">6</span>Herramienta 3: El encaje</h2>
-      <p>Cuando alguien deposita dinero en un banco, el banco no puede prestarlo todo. Una parte debe <strong>guardarla</strong>: en su bóveda o en una cuenta en el BCRP. A ese porcentaje que no se puede prestar se le llama <strong>tasa de encaje</strong>, y lo fija el BCRP, tanto para depósitos en soles como en dólares.</p>
-
-      <div class="sim" aria-label="Simulador de encaje">
-        <label for="encajeRange"><span>🎚 Mueve la barra: tasa de encaje</span><span id="encajeVal">6 %</span></label>
-        <input type="range" id="encajeRange" min="0" max="50" step="1" value="6">
-        <p style="font-size:15px;margin-bottom:10px;">Si una persona deposita <strong>S/ 1 000</strong> en el banco:</p>
-        <div class="bar"><div class="kept" id="barKept"></div><div class="lend" id="barLend"></div></div>
-        <div class="sim-legend">
-          <span>🔒 El banco guarda: <b id="kept"></b></span>
-          <span>💸 Puede prestar: <b id="lend"></b></span>
+      <h2 class="section-title"><span class="num">4</span>PBI nominal vs. PBI real</h2>
+      <p>El <strong>PBI nominal</strong> es el valor de los bienes y servicios a <strong>precios de mercado</strong> (los de cada año). El <strong>PBI real</strong> mide el valor a <strong>precios constantes</strong> (los de un año base). En otras palabras, el PBI nominal suma el efecto de la inflación, mientras que el PBI real lo elimina.</p>
+      <div class="dual-grid">
+        <div class="dual-card down">
+          <div class="lead">Precios de cada año</div>
+          <h3>PBI nominal</h3>
+          <p>Puede subir solo porque los precios subieron, aunque se produzca lo mismo.</p>
         </div>
-        <p class="tiny">Porcentajes solo de ejemplo, para practicar.</p>
+        <div class="dual-card up">
+          <div class="lead">Precios constantes</div>
+          <h3>PBI real</h3>
+          <p>Solo cambia si cambian las <strong>cantidades</strong> producidas.</p>
+        </div>
       </div>
 
-      <div class="subhead">¿Para qué sirve?</div>
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Un país que solo produce pan</h4>
+        <p class="hint">El año pasado se produjeron 1 000 panes a S/ 0,50 cada uno. Cambia lo que pasa este año.</p>
+        <div class="ctrl"><label for="nrQ"><span>🥖 Panes producidos este año</span><span id="nrQVal"></span></label><input type="range" id="nrQ" min="800" max="1300" step="50" value="1000"></div>
+        <div class="ctrl"><label for="nrP"><span>🏷 Precio del pan este año</span><span id="nrPVal"></span></label><input type="range" id="nrP" min="0.4" max="0.8" step="0.05" value="0.6"></div>
+        <div class="hbars" id="nrBars"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Crecimiento nominal</div><div class="v" id="nrGN"></div></div>
+          <div class="stat"><div class="k">Crecimiento real</div><div class="v" id="nrGR"></div></div>
+        </div>
+        <div class="msg" id="nrMsg"></div>
+      </div>
+      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>Para evaluar la actividad de un país y tomar decisiones de política económica, ¿cuál conviene mirar? El <strong>PBI real</strong>: así solo observamos cambios en las cantidades producidas, no en los precios.</p></div>
+    </div>
+  </section>
+
+  <!-- 5. ¿Cómo se mide? -->
+  <section class="panel" id="medir" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>Dos formas de medir el mismo PBI</h2>
       <div class="dual-grid">
         <div class="dual-card up">
-          <div class="lead">La economía está frenada</div>
-          <h3>Bajar el encaje ⬇</h3>
-          <p>Los bancos pueden prestar más dinero, lo que ayuda a que las familias y empresas compren e inviertan.</p>
+          <div class="lead">Lado de la oferta</div>
+          <h3>Por la producción</h3>
+          <p>Se suma el <strong>valor agregado</strong> de cada sector: agropecuario, pesca, minería e hidrocarburos, manufactura, electricidad y agua, construcción, comercio y servicios.</p>
         </div>
         <div class="dual-card down">
-          <div class="lead">La economía va muy acelerada y los precios suben</div>
-          <h3>Subir el encaje ⬆</h3>
-          <p>Los bancos pueden prestar menos, lo que enfría el gasto y reduce la presión sobre los precios.</p>
+          <div class="lead">Lado de la demanda</div>
+          <h3>Por el gasto</h3>
+          <p>Se suma lo que se <strong>gasta</strong> en bienes y servicios finales producidos en el país: <strong>C + I + G + X − M</strong>.</p>
         </div>
       </div>
 
-      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>En el Perú mucha gente ahorra y se presta en <strong>dólares</strong> (decimos que la economía está <strong>parcialmente dolarizada</strong>). El encaje en dólares ayuda al BCRP a acumular <strong>reservas internacionales</strong>: un “colchón” de dólares para responder si mucha gente retira sus depósitos a la vez o si sale mucho dinero del país. Además, el BCRP puede cobrar un encaje más alto al dinero que llega del extranjero solo por poco tiempo, para evitar entradas y salidas bruscas.</p></div>
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Arma el PBI por el lado del gasto</h4>
+        <p class="hint">Mueve cada componente (en miles de millones de soles, cifras de ejemplo) y mira cómo cambia el PBI.</p>
+        <div class="ctrl"><label for="gC"><span>🛒 C · Consumo de las familias</span><span id="gCVal"></span></label><input type="range" id="gC" min="0" max="120" step="5" value="65"></div>
+        <div class="ctrl"><label for="gI"><span>🏗 I · Inversión de las empresas</span><span id="gIVal"></span></label><input type="range" id="gI" min="0" max="50" step="5" value="20"></div>
+        <div class="ctrl"><label for="gG"><span>🏛 G · Gasto del gobierno</span><span id="gGVal"></span></label><input type="range" id="gG" min="0" max="40" step="5" value="15"></div>
+        <div class="ctrl"><label for="gX"><span>🚢 X · Exportaciones</span><span id="gXVal"></span></label><input type="range" id="gX" min="0" max="50" step="5" value="25"></div>
+        <div class="ctrl"><label for="gM"><span>📦 M · Importaciones (se restan)</span><span id="gMVal"></span></label><input type="range" id="gM" min="0" max="50" step="5" value="25"></div>
+        <div class="stack" id="gStack" aria-hidden="true"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">PBI = C + I + G + X − M</div><div class="v" id="gPBI"></div></div>
+          <div class="stat"><div class="k">Componente más grande</div><div class="v" id="gBig"></div></div>
+        </div>
+        <div class="msg" id="gMsg"></div>
+      </div>
+      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>¿Por qué se restan las importaciones? Porque parte de lo que consumimos e invertimos se produjo en <strong>otros países</strong>, y el PBI solo cuenta lo producido dentro del Perú.</p></div>
+    </div>
+  </section>
+
+  <!-- 6. Per cápita -->
+  <section class="panel" id="percapita" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">6</span>El PBI per cápita: comparar países</h2>
+      <p>Un país grande puede tener un PBI enorme solo porque tiene mucha gente. Para comparar mejor se usa el <strong>PBI per cápita</strong>: el PBI dividido entre la población, es decir, la <strong>producción promedio por habitante</strong>.</p>
+      <div class="chain">
+        <div class="chain-step first"><span class="e">🏭</span>PBI del país</div>
+        <div class="chain-arrow">÷</div>
+        <div class="chain-step"><span class="e">👥</span>Número de habitantes</div>
+        <div class="chain-arrow">=</div>
+        <div class="chain-step last"><span class="e">🧍</span>PBI per cápita</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Qué país produce más por habitante?</h4>
+        <p class="hint">Cambia el PBI y la población de dos países imaginarios.</p>
+        <div class="pc-grid">
+          <div class="pc-card">
+            <h5>🟢 País Verde</h5>
+            <div class="ctrl"><label for="aP"><span>PBI</span><span id="aPVal"></span></label><input type="range" id="aP" min="50" max="500" step="10" value="300"></div>
+            <div class="ctrl"><label for="aN"><span>Población</span><span id="aNVal"></span></label><input type="range" id="aN" min="5" max="60" step="1" value="30"></div>
+            <div class="stat"><div class="k">PBI per cápita</div><div class="v" id="aPC"></div></div>
+          </div>
+          <div class="pc-card">
+            <h5>🟡 País Dorado</h5>
+            <div class="ctrl"><label for="bP"><span>PBI</span><span id="bPVal"></span></label><input type="range" id="bP" min="50" max="500" step="10" value="200"></div>
+            <div class="ctrl"><label for="bN"><span>Población</span><span id="bNVal"></span></label><input type="range" id="bN" min="5" max="60" step="1" value="10"></div>
+            <div class="stat"><div class="k">PBI per cápita</div><div class="v" id="bPC"></div></div>
+          </div>
+        </div>
+        <div class="msg" id="pcMsg"></div>
+        <p class="tiny">PBI en miles de millones de soles y población en millones de personas. Cifras solo de ejemplo.</p>
+      </div>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>Con el PBI se puede comparar la evolución de la economía peruana con la de los otros países de la región. En la Sala de Sector Real encontrarás el aplicativo <strong>PBI per Cápita: Proyecciones</strong> para explorarlo con datos reales.</p></div>
     </div>
   </section>
 
@@ -613,166 +658,143 @@
   let start = ''; try { start = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
   safe(() => show(panels.some(p => p.id === start) ? start : 'resumen', false, true));
 
-  /* ===== Simulador de encaje ===== */
-  const r = document.getElementById('encajeRange');
-  const fmt = n => 'S/ ' + n.toLocaleString('en-US').replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
-  function updateSim(){
-    const p = +r.value, kept = 1000 * p / 100, lend = 1000 - kept;
-    document.getElementById('encajeVal').textContent = p + ' %';
-    document.getElementById('kept').textContent = fmt(kept);
-    document.getElementById('lend').textContent = fmt(lend);
-    const bk = document.getElementById('barKept'), bl = document.getElementById('barLend');
-    bk.style.width = p + '%'; bl.style.width = (100 - p) + '%';
-    bk.textContent = p >= 8 ? p + ' %' : '';
-    bl.textContent = (100 - p) + ' %';
-  }
-  r.addEventListener('input', updateSim); safe(updateSim);
 
-  /* ===== Utilidades de los simuladores ===== */
+  /* ===== Utilidades ===== */
   const $ = id => document.getElementById(id);
-  const pctFmt = v => v.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',') + ' %';
-  const solFmt = v => 'S/ ' + v.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
-  const META = 4.5;
+  const num = (v, d = 0) => v.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
+  const pct = v => (v > 0 ? '+' : '') + num(v, 1) + ' %';
   function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
-  function makeGauge(id){
-    const g = $(id), min = +g.dataset.min, max = +g.dataset.max;
-    const pos = v => (Math.min(max, Math.max(min, v)) - min) / (max - min) * 100;
-    let h = '<div class="gauge-track"></div>';
-    if (g.dataset.band) { const [a, b] = g.dataset.band.split(',').map(Number); h += `<div class="gauge-band" style="left:${pos(a)}%;width:${pos(b) - pos(a)}%"></div>`; }
-    JSON.parse(g.dataset.marks || '[]').forEach(m => h += `<div class="gauge-mark ${m.c || ''}" style="left:${pos(m.v)}%"><span>${m.l}</span></div>`);
-    h += '<div class="gauge-needle"><i></i><b></b></div>';
-    g.innerHTML = h;
-    const nd = g.querySelector('.gauge-needle');
-    return (v, state) => { nd.style.left = pos(v) + '%'; nd.querySelector('b').textContent = pctFmt(v); nd.className = 'gauge-needle ' + (state || ''); };
-  }
-  function segControl(id, onChange){
-    const s = $(id);
-    s.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
-      s.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
-      onChange(b.dataset.m);
-    }));
-  }
 
-  /* ===== 1. Calculadora de interés ===== */
-  let intMode = 'prestamo';
-  function updInt(){
-    const m = +$('intMonto').value, t = +$('intTasa').value, n = +$('intAnios').value;
-    const total = m * Math.pow(1 + t / 100, n), it = total - m, pres = intMode === 'prestamo';
-    $('intMontoVal').textContent = 'S/ ' + m.toLocaleString('en-US').replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
-    $('intTasaVal').textContent = t + ' %';
-    $('intAniosVal').textContent = n + (n === 1 ? ' año' : ' años');
-    $('intM').textContent = solFmt(m);
-    $('intIK').textContent = pres ? 'Intereses que pagas' : 'Intereses que ganas';
-    $('intI').textContent = solFmt(it);
-    $('intTK').textContent = pres ? 'Total que devuelves' : 'Total que recibes';
-    $('intT').textContent = solFmt(total);
-    const wm = m / total * 100;
-    $('intBarM').style.width = wm + '%'; $('intBarI').style.width = (100 - wm) + '%';
-    $('intBarM').textContent = 'Monto'; $('intBarI').textContent = (100 - wm) >= 14 ? 'Intereses' : '';
-    setMsg('intMsg', pres
-      ? `Por usar S/ ${m.toLocaleString('en-US').replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',')} prestados durante ${n === 1 ? '1 año' : n + ' años'}, pagas ${solFmt(it)} extra. Si la tasa sube, pedir prestado se vuelve más caro.`
-      : `Por dejar tu dinero en el banco durante ${n === 1 ? '1 año' : n + ' años'}, ganas ${solFmt(it)}. Si la tasa sube, ahorrar se vuelve más atractivo.`,
-      pres ? 'warn' : 'ok');
+  /* ===== 1. ¿Entra o no entra? ===== */
+  const CASES = [
+    {t: '🥖 El pan que compras en la panadería de tu barrio', a: true, e: 'Es un bien final producido en el Perú.'},
+    {t: '🌾 La harina que compra el panadero para hacer ese pan', a: false, e: 'Es un insumo: su valor ya está dentro del precio del pan.'},
+    {t: '💇 Un corte de pelo en una peluquería de Arequipa', a: true, e: 'Los servicios también se cuentan, no solo los objetos.'},
+    {t: '👷 El trabajo de un ingeniero estadounidense en una mina de Áncash', a: true, e: 'Se produce dentro del Perú, sin importar la nacionalidad.'},
+    {t: '🇨🇱 El sueldo de una peruana que trabaja en una empresa en Chile', a: false, e: 'Esa producción ocurre en Chile, así que suma al PBI chileno.'},
+    {t: '🚗 Un auto usado que tu vecino vende este año', a: false, e: 'Ese auto ya se contó el año en que se produjo.'}
+  ];
+  let clsDone = 0, clsOk = 0;
+  function buildClassify(){
+    const box = $('classify'); box.innerHTML = ''; clsDone = 0; clsOk = 0;
+    setMsg('clsMsg', 'Responde los 6 casos.');
+    CASES.forEach(c => {
+      const row = document.createElement('div'); row.className = 'cl-item';
+      row.innerHTML = `<div class="cl-text"><span></span><small class="cl-fb"></small></div><div class="cl-btns"><button type="button" class="tbtn">✔ Entra</button><button type="button" class="tbtn">✖ No entra</button></div>`;
+      row.querySelector('.cl-text span').textContent = c.t;
+      const [yes, no] = row.querySelectorAll('button');
+      const answer = v => {
+        yes.disabled = no.disabled = true;
+        const ok = v === c.a;
+        row.classList.add(ok ? 'ok' : 'bad');
+        (v ? yes : no).classList.add('picked');
+        row.querySelector('.cl-fb').textContent = (ok ? '¡Correcto! ' : (c.a ? 'Sí entra. ' : 'No entra. ')) + c.e;
+        clsDone++; if (ok) clsOk++;
+        if (clsDone === CASES.length) setMsg('clsMsg', `Acertaste ${clsOk} de ${CASES.length}. ` + (clsOk === CASES.length ? '¡Ya sabes qué cuenta el PBI! 🏆' : 'Lee las explicaciones de los casos en rojo.'), clsOk === CASES.length ? 'gold' : 'ok');
+      };
+      yes.addEventListener('click', () => answer(true));
+      no.addEventListener('click', () => answer(false));
+      box.appendChild(row);
+    });
   }
-  ['intMonto', 'intTasa', 'intAnios'].forEach(id => $(id).addEventListener('input', updInt));
-  segControl('intMode', m => { intMode = m; updInt(); });
-  safe(updInt);
+  safe(buildClassify);
 
-  /* ===== 2. Contagio de la tasa de referencia ===== */
-  let ref = 4.5, busy = false;
-  const chainSteps = [...document.querySelectorAll('#metaChain .chain-step')];
-  const FX_UP = ['La tasa de referencia sube', 'Préstamos entre bancos más caros', 'Préstamos más caros; ahorrar paga más', 'Se gasta menos y se ahorra más', 'Baja la presión sobre los precios'];
-  const FX_DOWN = ['La tasa de referencia baja', 'Préstamos entre bancos más baratos', 'Préstamos más baratos; ahorrar paga menos', 'Se gasta e invierte más', 'Se reactiva la economía'];
-  $('refVal').textContent = pctFmt(ref);
-  function moveRef(dir){
-    const nv = ref + dir * 0.25;
-    if (busy || nv < 0.25 || nv > 8) return;
-    busy = true; ref = nv; $('refVal').textContent = pctFmt(ref);
-    $('refUp').disabled = $('refDown').disabled = true;
-    setMsg('refMsg', 'Mira cómo se contagia el cambio…');
-    const txt = dir > 0 ? FX_UP : FX_DOWN;
-    chainSteps.forEach(s => { s.classList.remove('lit'); s.querySelector('.fx').classList.remove('show'); });
-    chainSteps.forEach((s, i) => setTimeout(() => {
-      chainSteps.forEach(x => x.classList.remove('lit'));
-      s.classList.add('lit');
-      const fx = s.querySelector('.fx'); fx.textContent = txt[i]; fx.classList.add('show');
-      if (i === chainSteps.length - 1) setTimeout(() => {
-        s.classList.remove('lit'); busy = false;
-        $('refUp').disabled = $('refDown').disabled = false;
-        setMsg('refMsg', dir > 0
-          ? 'Subir la tasa se usa cuando los precios suben demasiado rápido: “enfría” el gasto.'
-          : 'Bajar la tasa se usa cuando la economía está frenada y la inflación está baja: “calienta” el gasto.', 'gold');
-      }, 500);
-    }, i * 550));
+  /* ===== 2. Valor agregado ===== */
+  const vaSteps = [...document.querySelectorAll('#vaChain .chain-step')];
+  function showVA(mode){
+    const all = mode === 'all';
+    vaSteps.forEach((s, i) => {
+      const fx = s.querySelector('.fx');
+      fx.textContent = all ? ['Se suma S/ 2', 'Se suma S/ 5', 'Se suma S/ 10'][i] : ['Agrega S/ 2', 'Agrega S/ 3 (5 − 2)', 'Agrega S/ 5 (10 − 5)'][i];
+      fx.classList.add('show');
+    });
+    $('vaK').textContent = all ? 'Suma de todas las ventas' : 'Suma del valor agregado';
+    $('vaV').textContent = all ? 'S/ 17' : 'S/ 10';
+    if (all) setMsg('vaMsg', '❌ S/ 17 es más que el valor del pan: el trigo se contó tres veces y la harina dos. Eso es el “doble conteo”.', 'warn');
+    else setMsg('vaMsg', '✅ 2 + 3 + 5 = S/ 10, justo el valor del pan. Contar solo el bien final (o el valor agregado) evita el doble conteo.', 'ok');
   }
-  $('refUp').addEventListener('click', () => moveRef(1));
-  $('refDown').addEventListener('click', () => moveRef(-1));
+  $('vaAll').addEventListener('click', () => showVA('all'));
+  $('vaAdd').addEventListener('click', () => showVA('add'));
 
-  /* ===== 3. Balanza del mercado interbancario ===== */
-  const setBal = makeGauge('balGauge');
-  function updBal(){
-    const need = +$('balNeed').value, have = +$('balHave').value, diff = need - have;
-    const rate = META + 0.2 * diff;
-    $('balNeedVal').textContent = need; $('balHaveVal').textContent = have;
-    setBal(rate, diff > 0 ? 'hi' : diff < 0 ? 'lo' : 'ok');
-    if (diff > 0) setMsg('balMsg', '⬆ Falta dinero: la tasa interbancaria sube por encima de la meta. El BCRP tendría que inyectar liquidez.', 'warn');
-    else if (diff < 0) setMsg('balMsg', '⬇ Sobra dinero: la tasa interbancaria baja por debajo de la meta. El BCRP tendría que retirar liquidez.', 'warn');
-    else setMsg('balMsg', '⚖ Equilibrio: la tasa interbancaria está justo en la meta.', 'ok');
+  /* ===== 3. Velocímetro ===== */
+  const G_MIN = -6, G_MAX = 8;
+  const ang = g => -90 + (g - G_MIN) / (G_MAX - G_MIN) * 180;
+  function arc(g1, g2){
+    const r = 90, cx = 120, cy = 120;
+    const p = g => { const a = (ang(g) - 90) * Math.PI / 180; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+    const [x1, y1] = p(g1), [x2, y2] = p(g2);
+    return `M${x1.toFixed(1)} ${y1.toFixed(1)} A${r} ${r} 0 0 1 ${x2.toFixed(1)} ${y2.toFixed(1)}`;
   }
-  ['balNeed', 'balHave'].forEach(id => $(id).addEventListener('input', updBal));
-  safe(updBal);
-
-  /* ===== 4. Misión OMA ===== */
-  const setOma = makeGauge('omaGauge');
-  let L = 0, ops = 0, minOps = 0;
-  function omaRender(ev){
-    const rate = META - 0.25 * L;
-    setOma(rate, L === 0 ? 'ok' : rate > META ? 'hi' : 'lo');
-    $('omaOps').textContent = ops;
-    $('omaLiq').textContent = L === 0 ? 'Justa ✅' : L < 0 ? 'Falta 🔻' : 'Sobra 🔺';
-    $('omaIn').disabled = $('omaOut').disabled = L === 0;
-    const falta = L < 0;
-    if (L === 0) setMsg('omaMsg', `🎯 ¡Lo lograste en ${ops} ${ops === 1 ? 'operación' : 'operaciones'}!` + (ops === minOps ? ' ¡Con la menor cantidad posible! 🏆' : ` El mínimo posible era ${minOps}. Prueba otro día.`), 'gold');
-    else if (ev === 'start') setMsg('omaMsg', `Hoy ${falta ? 'falta' : 'sobra'} dinero entre los bancos, así que la tasa interbancaria está ${falta ? 'por encima' : 'por debajo'} de la meta. ¿Qué operación usarías?`);
-    else if (ev === 'closer') setMsg('omaMsg', '✅ ¡Bien! La tasa se acerca a la meta. Sigue así.', 'ok');
-    else setMsg('omaMsg', `❌ Uy, eso alejó la tasa de la meta. Si ${falta ? 'falta' : 'sobra'} dinero, hay que ${falta ? 'inyectar' : 'retirar'} liquidez.`, 'warn');
-  }
-  function omaNewDay(){
-    do { L = Math.floor(Math.random() * 11) - 5; } while (Math.abs(L) < 2);
-    ops = 0; minOps = Math.abs(L); omaRender('start');
-  }
-  function omaAct(d){
-    if (L === 0) return;
-    const before = Math.abs(L);
-    L = Math.max(-8, Math.min(8, L + d)); ops++;
-    omaRender(Math.abs(L) < before ? 'closer' : 'farther');
-  }
-  $('omaIn').addEventListener('click', () => omaAct(1));
-  $('omaOut').addEventListener('click', () => omaAct(-1));
-  $('omaNew').addEventListener('click', omaNewDay);
-  safe(omaNewDay);
-
-  /* ===== 5. Ventanilla ===== */
-  const PISO = 3.5, TECHO = 5.5;
-  const setVen = makeGauge('venGauge');
-  let venMode = 'falta';
-  function updVen(){
-    const x = +$('venOffer').value;
-    $('venOfferVal').textContent = pctFmt(x);
-    setVen(x, x > TECHO ? 'hi' : x < PISO ? 'lo' : 'ok');
-    if (venMode === 'falta') {
-      if (x > TECHO) setMsg('venMsg', `❌ ¡Ni lo pienses! Te conviene pedir prestado en la ventanilla del BCRP a ${pctFmt(TECHO)}. Por eso ningún banco puede cobrar más que el techo.`, 'warn');
-      else if (x < PISO) setMsg('venMsg', `✅ ¡Una ganga! Aunque en la realidad ningún banco te prestaría a menos de ${pctFmt(PISO)}: le conviene más depositar en el BCRP.`, 'ok');
-      else setMsg('venMsg', `✅ Acepta: pagar ${pctFmt(x)} a otro banco es más barato que ir a la ventanilla (${pctFmt(TECHO)}).`, 'ok');
+  safe(() => { $('zRev').setAttribute('d', arc(G_MIN, 0)); $('zSlow').setAttribute('d', arc(0, 3)); $('zFast').setAttribute('d', arc(3, G_MAX)); });
+  function updSpd(){
+    const g = +$('spdRange').value;
+    $('spdVal').textContent = pct(g);
+    $('spdNeedle').style.transform = `rotate(${ang(g)}deg)`;
+    if (g < 0) {
+      $('spdRead').innerHTML = '<b>En reversa</b>';
+      setMsg('spdMsg', '⏪ El PBI se está contrayendo: se produce y se vende menos que el año anterior. La economía está en recesión.', 'warn');
+    } else if (g < 3) {
+      $('spdRead').innerHTML = `<b>${Math.round(g * 10 + 20)} km/h</b>`;
+      setMsg('spdMsg', '🐢 El PBI crece muy lento y el país se desacelera.', '');
     } else {
-      if (x < PISO) setMsg('venMsg', `❌ Mejor no. Si depositas en el BCRP (overnight) ganas ${pctFmt(PISO)}. Por eso ningún banco presta por debajo del piso.`, 'warn');
-      else if (x > TECHO) setMsg('venMsg', `✅ ¡Excelente trato! Aunque en la realidad ningún banco te pagaría más de ${pctFmt(TECHO)}: le sale más barato pedirle al BCRP.`, 'ok');
-      else setMsg('venMsg', `✅ Acepta: prestarle a otro banco a ${pctFmt(x)} te da más que depositar en el BCRP (${pctFmt(PISO)}).`, 'ok');
+      $('spdRead').innerHTML = `<b>${Math.round(g * 10 + 20)} km/h</b>`;
+      setMsg('spdMsg', '🚀 El PBI crece a buen ritmo y la economía se acelera: las empresas producen más.', 'ok');
     }
   }
-  $('venOffer').addEventListener('input', updVen);
-  segControl('venMode', m => { venMode = m; updVen(); });
-  safe(updVen);
+  $('spdRange').addEventListener('input', updSpd); safe(updSpd);
+
+  /* ===== 4. Nominal vs real ===== */
+  const Q0 = 1000, P0 = 0.5;
+  function updNR(){
+    const q = +$('nrQ').value, p = +$('nrP').value;
+    const base = Q0 * P0, nom = q * p, real = q * P0;
+    const gN = (nom / base - 1) * 100, gR = (real / base - 1) * 100;
+    $('nrQVal').textContent = num(q);
+    $('nrPVal').textContent = 'S/ ' + num(p, 2);
+    const max = 1300 * 0.8;
+    const rows = [['Año pasado', base, 'base'], ['Este año · PBI nominal', nom, 'nom'], ['Este año · PBI real', real, 'real']];
+    $('nrBars').innerHTML = rows.map(([l, v, c]) => `<div class="hbar ${c}"><span class="hbar-l">${l}</span><span class="hbar-t"><i style="width:${(v / max * 100).toFixed(1)}%"></i></span><b>S/ ${num(v)}</b></div>`).join('');
+    $('nrGN').textContent = pct(gN); $('nrGR').textContent = pct(gR);
+    if (Math.abs(gR) < 0.05 && Math.abs(gN) >= 0.05) setMsg('nrMsg', '👀 Se produjo lo mismo, pero el PBI nominal cambió solo por los precios. El PBI real muestra que en verdad no hubo crecimiento.', 'gold');
+    else if (gR > 0) setMsg('nrMsg', `✅ Se produjeron más panes: la economía creció ${pct(gR)} en términos reales.` + (Math.abs(gN - gR) >= 0.05 ? ' La diferencia con el nominal se debe al cambio de precios.' : ''), 'ok');
+    else if (gR < 0) setMsg('nrMsg', `⬇ Se produjeron menos panes: la economía se contrajo ${pct(gR)} en términos reales.` + (gN >= 0 ? ' ¡Aunque el PBI nominal no bajó, por la subida de precios!' : ''), 'warn');
+    else setMsg('nrMsg', 'Ni las cantidades ni los precios cambiaron: el PBI es el mismo.', '');
+  }
+  ['nrQ', 'nrP'].forEach(id => $(id).addEventListener('input', updNR)); safe(updNR);
+
+  /* ===== 5. PBI por el gasto ===== */
+  const GC = [['gC', 'C', 'Consumo'], ['gI', 'I', 'Inversión'], ['gG', 'G', 'Gasto público'], ['gX', 'X', 'Exportaciones']];
+  function updG(){
+    const v = {}; GC.concat([['gM', 'M', 'Importaciones']]).forEach(([id]) => { v[id] = +$(id).value; $(id + 'Val').textContent = num(v[id]); });
+    const pos = v.gC + v.gI + v.gG + v.gX, pbi = pos - v.gM, scale = 260;
+    $('gStack').innerHTML =
+      '<div class="stack-row">' + GC.map(([id, k]) => `<span class="seg-${k}" style="width:${(v[id] / scale * 100).toFixed(1)}%">${v[id] >= 12 ? k : ''}</span>`).join('') + '</div>' +
+      `<div class="stack-row"><span class="seg-M" style="width:${(v.gM / scale * 100).toFixed(1)}%">${v.gM >= 12 ? '− M' : ''}</span></div>` +
+      `<div class="stack-row"><span class="seg-PBI" style="width:${(Math.max(pbi, 0) / scale * 100).toFixed(1)}%">${pbi >= 20 ? 'PBI' : ''}</span></div>`;
+    $('gPBI').textContent = 'S/ ' + num(pbi) + ' mil mill.';
+    const big = GC.reduce((a, b) => (v[b[0]] > v[a[0]] ? b : a));
+    $('gBig').textContent = big[2];
+    if (pbi <= 0) setMsg('gMsg', 'Con estas cifras las importaciones superan a todo lo demás: en un país real eso no ocurre. Sube algún componente.', 'warn');
+    else if (big[1] === 'C') setMsg('gMsg', '🛒 Como en la mayoría de países, el consumo de las familias es el componente más grande del gasto.', 'ok');
+    else setMsg('gMsg', `Ahora el componente más grande es ${big[2].toLowerCase()}. En la realidad, en el Perú suele serlo el consumo de las familias.`, '');
+  }
+  ['gC', 'gI', 'gG', 'gX', 'gM'].forEach(id => $(id).addEventListener('input', updG)); safe(updG);
+
+  /* ===== 6. PBI per cápita ===== */
+  function updPC(){
+    const aP = +$('aP').value, aN = +$('aN').value, bP = +$('bP').value, bN = +$('bN').value;
+    $('aPVal').textContent = 'S/ ' + aP + ' mil mill.'; $('aNVal').textContent = aN + ' millones';
+    $('bPVal').textContent = 'S/ ' + bP + ' mil mill.'; $('bNVal').textContent = bN + ' millones';
+    const a = aP / aN * 1000, b = bP / bN * 1000;
+    $('aPC').textContent = 'S/ ' + num(a); $('bPC').textContent = 'S/ ' + num(b);
+    const bigger = aP === bP ? null : aP > bP ? 'Verde' : 'Dorado';
+    if (Math.abs(a - b) < 0.5) setMsg('pcMsg', '⚖ Ambos países producen lo mismo por habitante.', '');
+    else {
+      const win = a > b ? 'Verde' : 'Dorado';
+      setMsg('pcMsg', `🏅 El País ${win} produce más por habitante.` + (bigger && bigger !== win ? ` ¡Aunque el País ${bigger} tiene un PBI total más grande! Por eso se usa el PBI per cápita para comparar.` : ''), bigger && bigger !== win ? 'gold' : 'ok');
+    }
+  }
+  ['aP', 'aN', 'bP', 'bN'].forEach(id => $(id).addEventListener('input', updPC)); safe(updPC);
 
   /* ===== Confeti ===== */
   const cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
@@ -809,20 +831,24 @@
     else { rafId = null; ctx.clearRect(0, 0, innerWidth, innerHeight); }
   }
 
+
   /* ===== Quiz ===== */
   const Q = [
-    {q:'1. Si entre los bancos falta dinero, ¿qué pasa con la tasa interbancaria?',
-     o:['Baja por debajo de la meta','Sube por encima de la meta','No cambia'], a:1,
-     e:'Cuando algo escasea, su precio sube. Y la tasa de interés es el precio del dinero.'},
-    {q:'2. ¿Qué hace el BCRP para inyectar liquidez con una repo?',
-     o:['Presta soles a los bancos a cambio de una garantía','Sube el encaje','Vende sus propios títulos a los bancos'], a:0,
-     e:'En una repo el BCRP entrega soles y recibe títulos valores como garantía, que el banco recompra después.'},
-    {q:'3. ¿Dónde está la tasa de los depósitos overnight en el corredor?',
-     o:['En el techo','En la meta','En el piso'], a:2,
-     e:'Depositar en el BCRP paga menos que la tasa de referencia, así que marca el piso del corredor.'},
-    {q:'4. La economía crece muy rápido y los precios suben. ¿Qué podría hacer el BCRP con el encaje?',
-     o:['Bajarlo para que haya más préstamos','Subirlo para que los bancos presten menos','Eliminarlo'], a:1,
-     e:'Un encaje más alto reduce el dinero disponible para préstamos y ayuda a calmar los precios.'}
+    {q:'1. ¿Qué mide el PBI?',
+     o:['El dinero que tiene guardado el Banco Central','El valor de los bienes y servicios finales producidos dentro de un país en un periodo','Lo que las personas ahorran en los bancos'], a:1,
+     e:'El PBI es el valor de todos los bienes y servicios finales producidos en el país durante un periodo.'},
+    {q:'2. Una empresa chilena produce galletas en una fábrica en Lima. ¿A qué PBI suma esa producción?',
+     o:['Al de Chile','Al del Perú','A ninguno'], a:1,
+     e:'El PBI cuenta lo producido dentro del país, sin importar la nacionalidad de la empresa.'},
+    {q:'3. ¿Por qué no se suma por separado la harina que se usa para hacer pan?',
+     o:['Porque su valor ya está contenido en el precio del pan','Porque la harina no es importante','Porque la harina se importa'], a:0,
+     e:'Sumarla aparte sería contar dos veces lo mismo (doble conteo).'},
+    {q:'4. Este año se produjo lo mismo que el anterior, pero todos los precios subieron. ¿Qué pasa?',
+     o:['El PBI real sube','El PBI nominal sube y el PBI real no cambia','Ambos bajan'], a:1,
+     e:'El PBI nominal incluye el efecto de los precios; el PBI real solo cambia con las cantidades.'},
+    {q:'5. ¿Para qué sirve el PBI per cápita?',
+     o:['Para saber cuántos habitantes tiene un país','Para comparar la producción promedio por habitante entre países','Para medir la inflación'], a:1,
+     e:'Dividir el PBI entre la población permite comparar países de distinto tamaño.'}
   ];
   let answered = 0, correct = 0;
   const quiz = document.getElementById('quiz');
@@ -857,13 +883,13 @@
     let cls, emo, title, detail;
     if (correct === total) {
       cls = 'perfect'; emo = '🎉'; title = '¡Perfecto!';
-      detail = `Respondiste bien las ${total} preguntas. ¡Ya sabes cómo el BCRP mueve las tasas de interés!`;
+      detail = `Respondiste bien las ${total} preguntas. ¡Ya sabes qué es el PBI y para qué sirve!`;
     } else if (correct >= total - 2) {
       cls = 'good'; emo = '👏'; title = '¡Muy bien!';
       detail = `Obtuviste ${correct} de ${total}. Revisa las explicaciones de las que fallaste.`;
     } else {
       cls = 'retry'; emo = '💪'; title = 'Sigue intentando';
-      detail = `Obtuviste ${correct} de ${total}. Repasa las secciones 3 a 6 y vuelve a intentarlo.`;
+      detail = `Obtuviste ${correct} de ${total}. Repasa las secciones 1 a 6 y vuelve a intentarlo.`;
     }
     document.getElementById('resultEmo').textContent = emo;
     document.getElementById('resultTitle').textContent = title;

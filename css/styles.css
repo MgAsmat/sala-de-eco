@@ -3414,3 +3414,21 @@ body.ed-no-scroll { overflow: hidden; }
   width: 18px;
   height: 18px;
 }
+
+/* =========================================================
+   Sector Financiero — infografía "Del ahorro a la inversión"
+   (ahorristas → sistema financiero → prestatarios)
+   ========================================================= */
+.pbi-map--financiero {
+  --primary: #2f6fb5;
+  --primary-dark: #1f4f86;
+  --primary-soft: #e4eefa;
+  --nonprimary: #7a52b3;
+  --nonprimary-dark: #583887;
+  --nonprimary-soft: #efe8f8;
+}
+
+.pbi-map--financiero .pbi-measure__equals {
+  font-size: 1.35rem;
+  padding-bottom: 4px;
+}

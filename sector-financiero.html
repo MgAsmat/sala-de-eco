@@ -48,45 +48,136 @@
 <main id="main">
 
   <!-- INTRODUCCIÓN -->
-  <section class="section alt" id="sector-financiero">
+  <section class="section section--compact-top alt" id="sector-financiero">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Cómo circula el dinero</span>
+        <span class="eyebrow gold">Cómo circula el dinero</span>
         <h2>Sector Financiero</h2>
         <p>El sistema financiero comprende el conjunto de intermediarios financieros y mercados donde se canaliza el ahorro hacia las inversiones. El financiamiento indirecto requiere la existencia de un intermediario financiero, por ejemplo un banco, una financiera, una Caja Municipal o Rural, entre los principales. El financiamiento directo se realiza en los mercados financieros de bonos o acciones. Esta sala promueve el acercamiento del alumno al mundo de las finanzas en el país.</p>
-        <div class="tag-row">
-          <span>Bancos</span><span>Ahorro</span><span>Crédito</span>
-        </div>
       </div>
 
-      <!-- DATO CURIOSO: carrusel interactivo -->
-      <div class="tip-carousel reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre el sistema financiero peruano">
-        <div class="tip-carousel__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
+      <!-- INFOGRAFÍA: Del ahorro a la inversión -->
+      <figure class="pbi-map pbi-map--financiero reveal" aria-labelledby="sfMapTitle">
+        <figcaption class="pbi-map__head">
+          <h3 id="sfMapTitle">El sistema financiero: del ahorro a la inversión</h3>
+          <p>El <strong>sistema financiero</strong> es el puente entre quienes tienen dinero que no van a usar por ahora, los <strong class="t-primary">ahorristas</strong>, y quienes lo necesitan para consumir, emprender o invertir, los <strong class="t-nonprimary">prestatarios</strong>. Por usar ese dinero se paga un precio: la <strong>tasa de interés</strong>.</p>
+        </figcaption>
+
+        <div class="pbi-map__stage">
+          <div class="pbi-map__group pbi-map__group--primary">
+            <h4 class="pbi-map__label">Ahorristas</h4>
+            <p class="pbi-map__hint">Tienen fondos que hoy no necesitan</p>
+            <ul class="pbi-map__sectors">
+              <li class="pbi-sector" style="--d:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></i>Familias<small>guardan parte de sus ingresos para el futuro</small></li>
+              <li class="pbi-sector" style="--d:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3v-3l5 3V6h7v15z"/><path d="M2 21h20"/><path d="M16 10h1M16 14h1"/></svg></i>Empresas<small>con utilidades o caja que aún no invierten</small></li>
+              <li class="pbi-sector" style="--d:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/></svg></i>Trabajadores<small>sus aportes a las AFP se invierten a largo plazo</small></li>
+              <li class="pbi-sector" style="--d:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M4 10h16"/><path d="M12 3l8 5H4z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg></i>Gobierno<small>cuando recauda más de lo que gasta</small></li>
+            </ul>
+          </div>
+
+          <span class="pbi-map__flow pbi-map__flow--primary" aria-hidden="true">
+            <svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M2 12H70"/><path d="M62 4l10 8-10 8"/></svg>
+          </span>
+
+          <div class="pbi-map__core">
+            <div class="pbi-map__coin">
+              <span class="pbi-map__globe" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 9.5L12 4l9 5.5"/><path d="M4 10h16"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/><path d="M4 18h16"/></svg></span>
+              <strong>Sistema Financiero</strong>
+              <span class="pbi-map__coin-note">Intermediarios y mercados que canalizan el ahorro</span>
+            </div>
+          </div>
+
+          <span class="pbi-map__flow pbi-map__flow--nonprimary" aria-hidden="true">
+            <svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M2 12H70"/><path d="M62 4l10 8-10 8"/></svg>
+          </span>
+
+          <div class="pbi-map__group pbi-map__group--nonprimary">
+            <h4 class="pbi-map__label">Prestatarios</h4>
+            <p class="pbi-map__hint">Necesitan fondos para gastar o invertir</p>
+            <ul class="pbi-map__sectors">
+              <li class="pbi-sector" style="--d:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 14h6"/></svg></i>Familias<small>créditos de consumo e hipotecarios</small></li>
+              <li class="pbi-sector" style="--d:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></i>Empresas<small>maquinaria, plantas y capital de trabajo</small></li>
+              <li class="pbi-sector" style="--d:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16l-1 13H5z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg></i>Emprendedores<small>microcréditos para su negocio</small></li>
+              <li class="pbi-sector" style="--d:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M5 18v-2a7 7 0 0114 0v2"/><path d="M10 9V5h4v4"/></svg></i>Gobierno<small>financia obras públicas emitiendo bonos</small></li>
+            </ul>
+          </div>
         </div>
-        <div class="tip-carousel__body">
-          <span class="tip-carousel__label">¿Sabías que…?</span>
-          <p class="tip-carousel__text" aria-live="polite">En 2023, cada persona llevó a cabo alrededor de 266 pagos digitales por año, cifra que es 7 veces lo observado en 2018.</p>
+
+        <!-- Dos caminos para el ahorro -->
+        <div class="pbi-measure">
+          <h4 class="pbi-measure__title">Dos caminos para que el ahorro llegue a la inversión</h4>
+          <div class="pbi-measure__row">
+            <article class="pbi-measure__card">
+              <span class="pbi-measure__side">A través de un intermediario</span>
+              <h5>Financiamiento indirecto</h5>
+              <p>Los ahorristas depositan su dinero en un <strong>banco, financiera, Caja Municipal o Rural</strong>, que lo presta a quienes lo necesitan. Al depositante le paga una <strong>tasa pasiva</strong> y al prestatario le cobra una <strong>tasa activa</strong>, más alta.</p>
+              <p class="pbi-measure__formula" aria-label="Depósitos, luego intermediario, luego créditos">Depósitos → Intermediario → Créditos</p>
+            </article>
+
+            <span class="pbi-measure__equals" aria-hidden="true">o</span>
+            <span class="sr-only">o bien</span>
+
+            <article class="pbi-measure__card pbi-measure__card--demand">
+              <span class="pbi-measure__side">En el mercado de valores</span>
+              <h5>Financiamiento directo</h5>
+              <p>Las empresas y el Gobierno emiten <strong>bonos</strong> (se comprometen a devolver el dinero con intereses) o <strong>acciones</strong> (venden una parte de la propiedad de la empresa), que compran directamente los inversionistas en la <strong>Bolsa de Valores de Lima</strong>.</p>
+              <p class="pbi-measure__formula" aria-label="Bonos y acciones">Bonos + Acciones</p>
+            </article>
+          </div>
+          <p class="pbi-measure__note">El BCRP regula la cantidad de dinero y la tasa de interés de referencia; la SBS supervisa a bancos, financieras, cajas y AFP; y la SMV, al mercado de valores.</p>
         </div>
-        <div class="tip-carousel__controls">
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <div class="tip-carousel__dots"></div>
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
+
+        <!-- Conceptos clave -->
+        <ul class="pbi-uses" aria-label="Conceptos clave del Sector Financiero">
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7C9 6.5 6 10 6 14a6 6 0 0012 0c0-4-3-7.5-6-11.3z"/><path d="M9.5 14.5a2.5 2.5 0 002.5 2.5"/></svg></i>
+            <div><strong>Liquidez</strong><span>Billetes y monedas en poder del público más sus depósitos en el sistema financiero. Junto con el crédito, muestra cuánto dinero circula en la economía.</span></div>
+          </li>
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4 4 4"/><path d="M17 8l4 4-4 4"/><path d="M3 12h18"/></svg></i>
+            <div><strong>Tipo de cambio</strong><span>Cuántos soles cuesta un dólar. Lo determinan la oferta y la demanda; el BCRP interviene para reducir su volatilidad.</span></div>
+          </li>
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg></i>
+            <div><strong>Dolarización</strong><span>Parte de los créditos y depósitos que está en dólares. Mientras menor sea, menos expuestos estamos a una subida brusca del tipo de cambio.</span></div>
+          </li>
+        </ul>
+      </figure>
+
+      <!-- DATO CURIOSO: carrusel interactivo destacado -->
+      <div class="tip-carousel tip-carousel--featured reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre el sistema financiero peruano">
+        <div class="tip-carousel__visual" aria-hidden="true"></div>
+        <div class="tip-carousel__main">
+          <div class="tip-carousel__top">
+            <span class="tip-carousel__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+              ¿Sabías que…?
+            </span>
+            <span class="tip-carousel__tag"></span>
+            <span class="tip-carousel__count"></span>
+          </div>
+          <p class="tip-carousel__text" aria-live="polite">En 2023, cada persona realizó alrededor de 266 pagos digitales al año, unas 7 veces lo observado en 2018.</p>
+          <div class="tip-carousel__controls">
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="tip-carousel__dots"></div>
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
+        <span class="tip-carousel__progress" aria-hidden="true"></span>
         <script type="application/json" class="tip-carousel__data">[
-          "En 2023, cada persona llevó a cabo alrededor de 266 pagos digitales por año, cifra que es 7 veces lo observado en 2018.",
-          "En 2023, el valor de pagos digitales representa 6 veces el PBI, superior al 1,7 de 2018.",
-          "El número de puntos de atención del sistema financiero por cada 100 mil adultos aumentó de 900 a 1 574 en los últimos 5 años al 2023.",
-          "En 2023, el 91% de los distritos del país cuenta con presencia del sistema financiero.",
-          "En 2023, el 99% de la población vive en distritos con presencia del sistema financiero.",
-          "En 2023, existen 275 canales de atención por cada mil km2, 96% más que hace 5 años.",
-          "Las operaciones a través de la banca virtual se multiplicaron respecto del periodo previo a la pandemia, pasando de 24,1 millones en 2018 a 410,9 millones en 2023.",
-          "En 2023, el porcentaje del total de adultos con créditos en el sistema financiero se ubicó en 32,3%, registrándose un total de 7,8 millones de deudores.",
-          "El porcentaje de adultos con alguna cuenta de depósito en el sistema financiero pasó de 39% a 56% entre 2018 y 2023."
+          {"text": "En 2023, cada persona realizó alrededor de 266 pagos digitales al año, unas 7 veces lo observado en 2018.", "tag": "Pagos digitales", "stat": "266", "unit": "pagos digitales por persona al año · 2023"},
+          {"text": "En 2023, el valor de los pagos digitales equivalió a 6 veces el PBI, frente a 1,7 veces en 2018.", "tag": "Pagos digitales", "unit": "Valor de los pagos digitales (veces el PBI)", "suffix": "", "bars": [{"label": "2018", "value": 1.7}, {"label": "2023", "value": 6}]},
+          {"text": "Las operaciones a través de la banca virtual se multiplicaron: pasaron de 24,1 millones en 2018 a 410,9 millones en 2023.", "tag": "Banca digital", "unit": "Operaciones por banca virtual (millones)", "suffix": "", "bars": [{"label": "2018", "value": 24.1}, {"label": "2023", "value": 410.9}]},
+          {"text": "El porcentaje de adultos con alguna cuenta de depósito en el sistema financiero pasó de 39% a 56% entre 2018 y 2023.", "tag": "Inclusión financiera", "unit": "Adultos con cuenta de depósito", "bars": [{"label": "2018", "value": 39}, {"label": "2023", "value": 56}]},
+          {"text": "En 2023, el 32,3% de los adultos tenía créditos en el sistema financiero: un total de 7,8 millones de deudores.", "tag": "Crédito", "stat": "7,8", "unit": "millones de deudores en el sistema financiero · 2023"},
+          {"text": "Los puntos de atención del sistema financiero por cada 100 mil adultos aumentaron de 900 a 1 574 en los cinco años previos a 2023.", "tag": "Inclusión financiera", "unit": "Puntos de atención por cada 100 mil adultos", "suffix": "", "bars": [{"label": "2018", "value": 900}, {"label": "2023", "value": 1574}]},
+          {"text": "En 2023, el 91% de los distritos del país contaba con presencia del sistema financiero.", "tag": "Inclusión financiera", "stat": "91%", "unit": "de los distritos con presencia del sistema financiero · 2023"},
+          {"text": "En 2023, el 99% de la población vivía en distritos con presencia del sistema financiero.", "tag": "Inclusión financiera", "stat": "99%", "unit": "de la población vive en distritos con presencia del sistema financiero"},
+          {"text": "En 2023 había 275 canales de atención por cada mil km², 96% más que cinco años antes.", "tag": "Inclusión financiera", "stat": "275", "unit": "canales de atención por cada mil km² · 2023"}
         ]</script>
       </div>
     </div>
@@ -134,7 +225,7 @@
         <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/012-financiamiento.pdf" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Infografía</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-infografia-financiamiento.jpg" alt="Primera página de la infografía Financiamiento indirecto y directo" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Financiamiento</h3>
@@ -145,7 +236,7 @@
         <a class="resource-card resource-card--infografia reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/011-tipo-cambio.pdf" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Infografía</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 8l-4 4 4 4"/><path d="M17 8l4 4-4 4"/><path d="M3 12h18"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-infografia-tipo-cambio.jpg" alt="Primera página de la infografía Tipo de Cambio y Dolarización" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Tipo de Cambio y Dolarización</h3>
@@ -153,10 +244,10 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--lectura reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/lecturas/sector-financiero/lectura-sf-sector-monetario-financiero.pdf" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--lectura reveal" href="lecturas/sector-monetario-financiero-escolares.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Lectura</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V4.8c0-.7.5-1.3 1.2-1.4C7 3 9.5 3.3 11 5v14c-1.5-1.7-4-2-6-1.6-.6.1-1 .6-1 1.2z"/><path d="M20 19V4.8c0-.7-.5-1.3-1.2-1.4C17 3 14.5 3.3 13 5v14c1.5-1.7 4-2 6-1.6.6.1 1 .6 1 1.2z"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-lectura-sector-monetario-financiero.jpg" alt="Primera página de la lectura ¿Cómo llega tu ahorro a convertirse en una nueva empresa?" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Lectura: Sector Monetario y Financiero</h3>
@@ -164,10 +255,10 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--lectura reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/lecturas/sector-financiero/lectura-sf-dinero-ingresos-riqueza.pdf" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--lectura reveal" href="lecturas/dinero-ingresos-riqueza-escolares.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Lectura</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V4.8c0-.7.5-1.3 1.2-1.4C7 3 9.5 3.3 11 5v14c-1.5-1.7-4-2-6-1.6-.6.1-1 .6-1 1.2z"/><path d="M20 19V4.8c0-.7-.5-1.3-1.2-1.4C17 3 14.5 3.3 13 5v14c1.5-1.7 4-2 6-1.6.6.1 1 .6 1 1.2z"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-lectura-dinero-ingresos-riqueza.jpg" alt="Primera página de la lectura ¿Tener dinero es lo mismo que ser rico?" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Lectura: Dinero, Ingresos y la Riqueza</h3>
@@ -175,10 +266,10 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--lectura reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/lecturas/sector-financiero/lectura-sf-dinero-y-bcrp.pdf" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--lectura reveal" href="lecturas/dinero-y-bcrp-escolares.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Lectura</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V4.8c0-.7.5-1.3 1.2-1.4C7 3 9.5 3.3 11 5v14c-1.5-1.7-4-2-6-1.6-.6.1-1 .6-1 1.2z"/><path d="M20 19V4.8c0-.7-.5-1.3-1.2-1.4C17 3 14.5 3.3 13 5v14c1.5-1.7 4-2 6-1.6.6.1 1 .6 1 1.2z"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-lectura-dinero-bcrp.jpg" alt="Primera página de la lectura ¿Quién cuida el valor de nuestro dinero?" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Lectura: Dinero y el BCRP</h3>
@@ -189,7 +280,7 @@
         <a class="resource-card resource-card--comic reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/historieta/historieta-sector-financiero-1.pdf" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Historieta</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21l2-4h4l2 4"/><path d="M7 9h4M7 12h7"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-historieta-ahorro-credito.jpg" alt="Primera página de la historieta Ahorro y Crédito" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Historieta: Ahorro y Crédito</h3>
@@ -200,7 +291,7 @@
         <a class="resource-card resource-card--comic reveal" href="https://www.bcrp.gob.pe/docs/Proyeccion-Institucional/sala-economia/historieta/historieta-sector-financiero-2.pdf" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Historieta</span>
-            <svg class="resource-card__art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21l2-4h4l2 4"/><path d="M7 9h4M7 12h7"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-historieta-intermediarios.jpg" alt="Primera página de la historieta ¿Qué son los intermediarios financieros?" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Historieta: Intermediarios Financieros</h3>
@@ -208,25 +299,25 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/otras-cuentas-monetarias" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/liquidez-y-credito.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><polyline points="4,34 20,34 20,26 38,26 38,18 56,18 56,24 74,24 74,12 96,12" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-estadistica-liquidez-credito.jpg" alt="Captura del gráfico interactivo de Liquidez y Crédito" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Liquidez y Crédito</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/tipo-de-cambio-nominal" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/tipo-de-cambio.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="26" x2="100" y2="26" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-dasharray="3 3"/><polyline points="4,20 16,30 28,14 40,32 52,22 64,10 76,28 88,16 96,24" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-financiero/cover-estadistica-tipo-cambio.jpg" alt="Captura del gráfico interactivo de Tipo de Cambio" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Tipo de Cambio</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 

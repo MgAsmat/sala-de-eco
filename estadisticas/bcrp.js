@@ -26,7 +26,16 @@
     // Balanza de pagos (millones de US$): cuenta corriente, bienes, servicios, ingreso secundario, cuenta financiera,
     // financiamiento excepcional, errores y omisiones netos, resultado de la balanza de pagos y cuenta corriente (% del PBI).
     // El ingreso primario se obtiene como cuenta corriente − bienes − servicios − ingreso secundario.
-    bpagos:    { codigos: ["PN38975BQ", "PN38976BQ", "PN38979BQ", "PN38985BQ", "PN38987BQ", "PN38997BQ", "PN38998BQ", "PN38999BQ", "PN39002BQ"], freq: "Q", inicio: [2012, 1] }
+    bpagos:    { codigos: ["PN38975BQ", "PN38976BQ", "PN38979BQ", "PN38985BQ", "PN38987BQ", "PN38997BQ", "PN38998BQ", "PN38999BQ", "PN39002BQ"], freq: "Q", inicio: [2012, 1] },
+    // Sociedades creadoras de depósito, fin de periodo: coeficiente de dolarización de la liquidez (%), circulante, dinero,
+    // liquidez en soles y liquidez total (millones S/), liquidez total a tipo de cambio constante (var. % 12 meses),
+    // crédito al sector privado en soles (millones S/), en dólares (millones US$) y total (millones S/),
+    // crédito total a tipo de cambio constante (var. % 12 meses) y coeficiente de dolarización del crédito (%).
+    liquidez:  { codigos: ["PN00025MM", "PN00178MM", "PN00181MM", "PN00187MM", "PN00193MM", "PN00198MM", "PN00496MM", "PN00499MM", "PN00502MM", "PN00507MM", "PN00511MM"], freq: "M", inicio: [2000, 1] },
+    // Tipo de cambio promedio del periodo: interbancario (S/ por US$) y euro (S/ por euro).
+    tcambio:   { codigos: ["PN01207PM", "PN01235PM"], freq: "M", inicio: [2000, 1] },
+    // Índice del tipo de cambio real (2009 = 100): bilateral y multilateral. Va aparte porque se publica con más rezago.
+    tcreal:    { codigos: ["PN01251PM", "PN01259PM"], freq: "M", inicio: [2000, 1] }
   };
 
   const MESES = { ene: 1, jan: 1, feb: 2, mar: 3, abr: 4, apr: 4, may: 5, jun: 6, jul: 7, ago: 8, aug: 8,

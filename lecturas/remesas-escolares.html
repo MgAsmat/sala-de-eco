@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué son las remesas? — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b4f4a; --navy-deep:#08403c; --gold:#f4b400; --blue:#106f67; --teal:#3fc2b2; --teal-soft:#e8f8f6;
+    --paper:#f6faf9; --card:#ffffff; --border:#e0ece9; --text-muted:#4d6b67;
+    --ok:#24785a; --bad:#c0483e;
+    --shadow-md:0 8px 24px rgba(9,41,38,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h,90px);}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Inter',-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:880px;margin:0 auto;padding:24px 20px 64px;}
+
+  /* Encabezado y portada con el estilo de la Sala Educativa */
+  header.masthead{background:rgba(255,255,255,0.95);color:var(--navy-deep);border-bottom:1px solid var(--border);padding:14px 0;}
+  .masthead-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0;}
+  .brand-mark{display:grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#106f67,var(--navy-deep));color:#ffcb3d;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;font-family:'Poppins',sans-serif;}
+  .brand-text strong{font-size:15px;color:var(--navy-deep);}
+  .brand-text em{font-style:normal;font-weight:700;font-size:17px;color:#d99a00;}
+  .brand-text small{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);}
+  .back-link{flex:0 0 auto;font-weight:600;font-size:14px;color:#106f67;text-decoration:none;border:2px solid var(--blue);border-radius:999px;padding:8px 16px;white-space:nowrap;transition:background .15s ease;}
+  .back-link:hover{background:#e2f4f1;}
+  .back-link:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  @media (max-width:560px){.brand-text small{display:none;}.back-link{font-size:13px;padding:7px 12px;}.back-link .long{display:none;}}
+
+  .hero{background:radial-gradient(700px 320px at 50% -10%,rgba(63,194,178,0.20),transparent 70%),radial-gradient(500px 260px at 95% 20%,rgba(244,180,0,0.12),transparent 70%),var(--paper);color:var(--navy-deep);text-align:center;padding:44px 0 36px;}
+  .hero-inner{max-width:880px;margin:0 auto;padding:0 20px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:11.5px;color:#8a5f00;background:#fff3d6;padding:7px 16px;border-radius:999px;margin-bottom:14px;}
+  h1.title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,5vw,38px);line-height:1.1;margin:0 auto 12px;max-width:680px;color:var(--navy-deep);}
+  .hero-sub{color:#345350;font-size:17px;max-width:620px;margin:0 auto 20px;}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .chip{font-size:13px;font-weight:600;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--navy);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+
+  /* Navegación por secciones */
+  nav.secnav{position:sticky;top:0;z-index:50;background:rgba(246,250,249,0.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 4px 14px rgba(9,41,38,0.06);}
+  .secnav-inner{max-width:880px;margin:0 auto;padding:8px 20px;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;}
+  .nav-btn{min-width:0;font:inherit;font-size:13px;line-height:1.15;font-weight:600;color:var(--navy);background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:6px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;transition:background .15s ease,border-color .15s ease,color .15s ease;}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);padding:8px 12px;gap:5px;}.nav-btn{font-size:12px;padding:5px 2px;}}
+  .nav-btn .n{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--gold);color:#8a5f00;}
+  .nav-btn:hover{border-color:var(--blue);}
+  .nav-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .nav-btn[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .nav-btn[aria-selected="true"] .n{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
+  .nav-btn.star{border-color:var(--gold);}
+  .progress{height:3px;background:var(--border);}
+  .progress span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s ease;}
+
+  .panel{display:none;animation:fadeIn .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .pager{display:flex;justify-content:space-between;gap:12px;margin:4px 0 8px;}
+  .pager button{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .pager button.next{background:var(--navy);border-color:var(--navy);color:#fff;margin-left:auto;}
+  .pager button:hover{border-color:var(--blue);}
+  .pager button.next:hover{background:var(--navy-deep);}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:30px 32px;margin:0 0 24px;position:relative;z-index:1;}
+  @media (max-width:560px){.card{padding:24px 20px;}}
+  h2.section-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;line-height:1.2;color:var(--navy);margin:0 0 14px;display:flex;align-items:flex-start;gap:10px;}
+  h2.section-title .num{font-weight:700;color:var(--gold);font-size:15px;border:1.5px solid var(--gold);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  p{margin:0 0 14px;color:#345350;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--navy);font-weight:700;}
+  .subhead{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:0.015em;margin:24px 0 10px;}
+
+  /* Callouts */
+  .callout{margin:18px 0 4px;border-radius:10px;padding:14px 18px;border:1px solid var(--border);background:var(--paper);}
+  .callout p{font-size:15.5px;margin:0;}
+  .callout .label{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px;}
+  .callout.idea{border-left:4px solid var(--gold);} .callout.idea .label{color:#8a5f00;}
+  .callout.fact{border-left:4px solid var(--teal);} .callout.fact .label{color:#106f67;}
+  .callout.think{border-left:4px solid var(--blue);} .callout.think .label{color:var(--blue);}
+
+  /* Glossary */
+  .gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;}
+  @media (max-width:700px){.gloss-grid{grid-template-columns:1fr;}}
+  .gloss{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--paper);}
+  .gloss .emoji{font-size:26px;line-height:1;}
+  .gloss h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);margin:8px 0 4px;}
+  .gloss p{font-size:15px;margin:0;}
+  .gloss .eg{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
+
+  /* Chain */
+  .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:16px 0 4px;}
+  .chain-step{flex:1 1 130px;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:600;color:var(--navy);display:flex;flex-direction:column;justify-content:center;gap:4px;}
+  .chain-step .e{font-size:22px;}
+  .chain-step.first{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .chain-step.last{background:rgba(244,180,0,0.15);border-color:var(--gold);}
+  .chain-arrow{display:flex;align-items:center;color:var(--gold);font-weight:700;font-size:20px;}
+  @media (max-width:640px){.chain{flex-direction:column;}.chain-arrow{justify-content:center;transform:rotate(90deg);}}
+
+  /* Dual cards */
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;}
+  @media (max-width:640px){.dual-grid{grid-template-columns:1fr;}}
+  .dual-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);background:var(--paper);}
+  .dual-card.up{border-top:4px solid var(--teal);}
+  .dual-card.down{border-top:4px solid var(--navy);}
+  .dual-card .lead{font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+  .dual-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin:2px 0 8px;}
+  .dual-card p{font-size:15.5px;margin:0 0 8px;}
+  .dual-card p:last-child{margin-bottom:0;}
+  .result{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:700;border-radius:999px;padding:3px 12px;background:#fff;border:1px solid var(--border);color:var(--navy);}
+
+  /* Corridor */
+  .corridor{margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .corridor-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;}
+  .corridor-row.ceil{background:rgba(11,79,74,0.07);}
+  .corridor-row.mid{background:rgba(244,180,0,0.14);border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);}
+  .corridor-row.floor{background:rgba(63,194,178,0.12);}
+  .corridor-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);}
+  .corridor-label .small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:13.5px;color:var(--text-muted);}
+  .corridor-tag{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.025em;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap;}
+  .corridor-row.ceil .corridor-tag{background:var(--navy);color:#fff;}
+  .corridor-row.mid .corridor-tag{background:var(--gold);color:var(--navy-deep);}
+  .corridor-row.floor .corridor-tag{background:var(--teal-soft);color:var(--navy-deep);}
+  .tiny{font-size:13px;color:var(--text-muted);margin-top:8px;}
+
+  /* Simulator */
+  .sim{margin-top:14px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .sim label{font-weight:600;color:var(--navy);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .sim input[type=range]{width:100%;margin:12px 0 16px;accent-color:var(--gold);}
+  .bar{display:flex;height:40px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+  .bar .kept{background:var(--navy);color:#fff;}
+  .bar .lend{background:var(--teal-soft);color:var(--navy-deep);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+  .sim-legend{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:14.5px;flex-wrap:wrap;}
+  .sim-legend b{color:var(--navy);}
+
+  /* Summary table */
+  .summary-card{border-top:4px solid var(--gold);}
+  table.sum{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px;}
+  table.sum th{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
+  table.sum td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  table.sum tr:nth-child(even) td{background:var(--paper);}
+  table.sum a{color:var(--blue);font-weight:600;text-decoration:none;border-bottom:1px dashed var(--blue);cursor:pointer;}
+  @media (max-width:600px){
+    table.sum thead{display:none;}
+    table.sum tr{display:block;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+    table.sum td{display:block;border:none;}
+    table.sum td:first-child{background:#e2f4f1!important;color:var(--navy);font-weight:700;}
+    table.sum td:first-child a{color:#106f67;}
+  }
+
+  /* Quiz */
+  .q{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:14px;background:var(--paper);}
+  .q-title{font-weight:700;color:var(--navy);margin-bottom:10px;}
+  .opts{display:grid;gap:8px;}
+  .opts button{font:inherit;font-size:15.5px;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;cursor:pointer;color:var(--navy-deep);transition:border-color .15s ease;}
+  .opts button:hover:not(:disabled){border-color:var(--blue);}
+  .opts button:disabled{cursor:default;}
+  .opts button.right{border-color:var(--ok);background:rgba(47,143,107,0.08);}
+  .opts button.wrong{border-color:var(--bad);background:rgba(192,72,62,0.07);}
+  .fb{display:none;margin-top:10px;font-size:15px;}
+  .fb.show{display:block;}
+
+  .result-box{display:none;margin-top:20px;text-align:center;border-radius:14px;padding:22px 20px;border:2px solid var(--border);background:#fff;}
+  .result-box.show{display:block;animation:pop .45s cubic-bezier(.2,1.4,.4,1);}
+  @keyframes pop{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:none;}}
+  .result-box .emo{font-size:40px;line-height:1;}
+  .result-box .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:32.5px;line-height:1.1;margin:8px 0 4px;}
+  .result-box .detail{font-size:15.5px;color:#345350;margin:0 0 14px;}
+  .result-box.perfect{border-color:var(--gold);background:rgba(244,180,0,0.1);} .result-box.perfect .big{color:#8a5f00;}
+  .result-box.good{border-color:var(--ok);background:rgba(47,143,107,0.07);} .result-box.good .big{color:var(--ok);}
+  .result-box.retry{border-color:var(--blue);background:rgba(20,138,127,0.07);} .result-box.retry .big{color:var(--blue);}
+  .retry-btn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 18px;cursor:pointer;border:none;background:var(--navy);color:#fff;}
+  .retry-btn:hover{background:var(--navy-deep);}
+
+  /* Herramientas interactivas */
+  .tool{margin-top:20px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .tool-head{display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
+  .tool h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;line-height:1.2;margin:0 0 6px;color:var(--navy);}
+  .tool .hint{font-size:14.5px;color:var(--text-muted);margin:0 0 14px;}
+  .ctrl{margin-bottom:12px;}
+  .ctrl label{display:flex;justify-content:space-between;gap:8px;font-weight:600;color:var(--navy);font-size:15px;}
+  .ctrl input[type=range]{width:100%;accent-color:var(--gold);margin:6px 0 0;}
+  .seg{display:inline-flex;flex-wrap:wrap;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;background:#fff;}
+  .seg button{font:inherit;font-size:14.5px;font-weight:600;padding:8px 14px;border:none;background:transparent;color:var(--navy);cursor:pointer;}
+  .seg button.on{background:var(--navy);color:#fff;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px;}
+  .tbtn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .tbtn:hover:not(:disabled){border-color:var(--blue);}
+  .tbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .tbtn.teal{background:var(--teal-soft);border-color:var(--teal);color:var(--navy-deep);}
+  .tbtn:disabled{opacity:.45;cursor:default;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px;}
+  .stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+  .stat .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .stat .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;color:var(--navy);line-height:1.2;}
+  .msg{margin-top:12px;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600;background:#fff;border:1px solid var(--border);border-left:4px solid var(--blue);color:var(--navy-deep);}
+  .msg.ok{border-left-color:var(--ok);} .msg.warn{border-left-color:var(--bad);} .msg.gold{border-left-color:var(--gold);background:rgba(244,180,0,0.1);}
+
+  /* Medidor de tasas */
+  .gauge{position:relative;height:76px;margin:10px 12px 0;}
+  .gauge-track{position:absolute;left:0;right:0;top:30px;height:8px;border-radius:999px;background:#d6e8e4;}
+  .gauge-band{position:absolute;top:25px;height:18px;border-radius:6px;background:rgba(244,180,0,0.18);border:1px dashed var(--gold);}
+  .gauge-mark{position:absolute;top:20px;width:2px;height:28px;background:var(--navy);transform:translateX(-1px);}
+  .gauge-mark span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11.5px;font-weight:700;white-space:nowrap;color:var(--navy);}
+  .gauge-mark.meta{background:var(--gold);} .gauge-mark.meta span{color:#8a5f00;}
+  .gauge-needle{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:2;transition:left .45s cubic-bezier(.3,1.3,.5,1);}
+  .gauge-needle i{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--blue);box-shadow:0 2px 6px rgba(0,0,0,.2);}
+  .gauge-needle b{margin-top:4px;font-size:12.5px;background:var(--blue);color:#fff;border-radius:999px;padding:1px 8px;white-space:nowrap;}
+  .gauge-needle.hi i{border-color:var(--navy);} .gauge-needle.hi b{background:var(--navy);}
+  .gauge-needle.lo i{border-color:var(--teal);} .gauge-needle.lo b{background:var(--teal-soft);color:var(--navy-deep);}
+  .gauge-needle.ok i{border-color:var(--gold);} .gauge-needle.ok b{background:var(--gold);color:var(--navy-deep);}
+
+  /* Cadena animada */
+  .chain-step .fx{display:block;font-size:12.5px;font-weight:700;color:#8a5f00;opacity:0;max-height:0;transition:opacity .3s ease;}
+  .chain-step .fx.show{opacity:1;max-height:80px;margin-top:4px;}
+  .chain-step.first .fx{color:var(--gold);}
+  .chain-step{transition:box-shadow .2s ease;}
+  .chain-step.lit{box-shadow:0 0 0 3px var(--gold);}
+
+
+  #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100;}
+
+  footer.page-footer{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;}
+
+  /* Componentes con el estilo de la Sala Educativa */
+  nav.secnav{background:rgba(255,255,255,0.95);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .nav-btn{border-radius:14px;}
+  .nav-btn[aria-selected="true"]{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .progress span{background:linear-gradient(90deg,var(--gold),#1aa295);}
+  .card{border-radius:24px;box-shadow:0 10px 28px rgba(9,41,38,0.07);}
+  .summary-card{border-top:none;box-shadow:inset 0 4px 0 var(--gold),0 10px 28px rgba(9,41,38,0.07);}
+  h2.section-title .num{background:#fff3d6;color:#8a5f00;}
+  table.sum th,table.cmp th,table.cmp th:first-child{background:#e2f4f1;color:var(--navy);}
+  table.sum th:first-child,table.cmp th:first-child{border-radius:12px 0 0 12px;}
+  table.sum th:last-child,table.cmp th:last-child{border-radius:0 12px 12px 0;}
+  .pager button{border-radius:999px;padding:11px 22px;font-weight:700;border:2px solid var(--blue);color:#106f67;}
+  .pager button:hover{background:#e2f4f1;}
+  .pager button.next{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);box-shadow:0 10px 24px rgba(244,180,0,0.35);}
+  .pager button.next:hover{background:#ffcb3d;}
+  .chain-step.first{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .chain-step.first .fx{color:#fff3d6;}
+  .callout,.gloss,.dual-card,.sim,.tool,.q,.chain-step{border-radius:16px;}
+  .tbtn,.retry-btn,.seg{border-radius:999px;}
+  .tbtn.primary,.retry-btn{background:var(--blue);border-color:var(--blue);}
+  .tbtn.primary:hover:not(:disabled),.retry-btn:hover{background:var(--navy);}
+
+
+  /* ¿Entra o no entra? */
+  .classify{display:grid;gap:10px;}
+  .cl-item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--border);border-radius:14px;padding:12px 14px;transition:border-color .2s ease,background .2s ease;}
+  .cl-text{font-size:15px;font-weight:600;color:var(--navy-deep);}
+  .cl-fb{display:block;font-weight:500;font-size:13.5px;color:var(--text-muted);margin-top:2px;}
+  .cl-fb:empty{display:none;}
+  .cl-btns{display:flex;gap:6px;flex:0 0 auto;}
+  .cl-btns .tbtn{font-size:13.5px;padding:7px 12px;}
+  .cl-btns .tbtn:disabled{opacity:.4;}
+  .cl-btns .tbtn.picked{opacity:1;}
+  .cl-item.ok{border-left-color:var(--ok);background:rgba(47,143,107,0.06);}
+  .cl-item.ok .tbtn.picked{border-color:var(--ok);background:rgba(47,143,107,0.12);}
+  .cl-item.bad{border-left-color:var(--bad);background:rgba(192,72,62,0.05);}
+  .cl-item.bad .tbtn.picked{border-color:var(--bad);background:rgba(192,72,62,0.1);}
+  @media (max-width:600px){.cl-item{flex-direction:column;align-items:stretch;}.cl-btns .tbtn{flex:1;}}
+
+  /* Barras horizontales */
+  /* Barras horizontales (nominal vs real) */
+  .hbars{display:grid;gap:8px;margin:6px 0 4px;}
+  .hbar{display:grid;grid-template-columns:170px 1fr 84px;align-items:center;gap:10px;font-size:14px;}
+  .hbar-l{font-weight:600;color:var(--navy);}
+  .hbar-t{height:22px;border-radius:999px;background:#fff;border:1px solid var(--border);overflow:hidden;}
+  .hbar-t i{display:block;height:100%;border-radius:999px;transition:width .3s ease;}
+  .hbar.base i{background:#a9c2be;}
+  .hbar.nom i{background:var(--gold);}
+  .hbar.real i{background:var(--blue);}
+  .hbar b{text-align:right;color:var(--navy);}
+  @media (max-width:560px){.hbar{grid-template-columns:1fr 74px;}.hbar-l{grid-column:1 / -1;}}
+
+  /* Barra apilada */
+  /* Barra apilada C + I + G + X − M */
+  .stack{display:grid;gap:6px;margin:6px 0 4px;}
+  .stack-row{display:flex;height:30px;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--border);}
+  .stack-row span{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+
+  /* ===== Componentes comunes de las lecturas de Sector Externo ===== */
+  .hbar.c1 i{background:var(--navy);} .hbar.c2 i{background:var(--blue);} .hbar.c3 i{background:var(--teal);}
+  .hbar.c4 i{background:var(--gold);} .hbar.c5 i{background:rgba(192,72,62,0.75);} .hbar.c6 i{background:#a9c2be;}
+  .cl-item.three .cl-btns{flex-wrap:wrap;justify-content:flex-end;}
+  .scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:12px;}
+  .scen .tbtn{text-align:left;font-size:14.5px;line-height:1.3;}
+  .scen .tbtn.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .arrows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:4px;}
+  .arrow-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px 12px;text-align:center;}
+  .arrow-card .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .arrow-card .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;line-height:1.2;color:var(--text-muted);}
+  .arrow-card.up .v{color:var(--ok);} .arrow-card.down .v{color:var(--bad);} .arrow-card.eq .v{color:var(--text-muted);}
+  .arrow-card .s{font-size:12.5px;color:var(--text-muted);}
+
+  /* Navegación: 7 pestañas */
+  .secnav-inner{grid-template-columns:repeat(7,1fr);}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);}}
+
+  /* ===== Lectura Remesas: herramientas propias ===== */
+
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="../index.html" aria-label="Sala Educativa de Economía — Inicio"><span class="brand-mark" aria-hidden="true">SE</span><span class="brand-text"><strong>Sala Educativa de</strong><em>Economía</em><small>Banco Central de Reserva del Perú</small></span></a>
+    <a class="back-link" href="../sector-externo.html">← Volver<span class="long"> a Sector Externo</span></a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Sector Externo para secundaria</div>
+    <h1 class="title">Remesas: el dinero que llega desde lejos</h1>
+    <p class="hero-sub">Millones de peruanos viven en otros países y envían dinero a sus familias. Descubre qué son las remesas y cómo influyen en la economía.</p>
+    <div class="chips"><span class="chip">⏱ Lectura de 8 minutos</span><span class="chip">🎚 Incluye simuladores</span><span class="chip">✅ Mini quiz al final</span></div>
+  </div>
+</div>
+
+<nav class="secnav" aria-label="Secciones de la lectura">
+  <div class="secnav-inner" role="tablist" id="navList">
+    <button class="nav-btn star" role="tab" data-target="resumen"><span class="n">⚡</span>Resumen</button>
+    <button class="nav-btn" role="tab" data-target="conceptos"><span class="n">1</span>¿Qué son?</button>
+    <button class="nav-btn" role="tab" data-target="envio"><span class="n">2</span>¿Cómo llegan?</button>
+    <button class="nav-btn" role="tab" data-target="usos"><span class="n">3</span>¿En qué se usan?</button>
+    <button class="nav-btn" role="tab" data-target="economia"><span class="n">4</span>Remesas y economía</button>
+    <button class="nav-btn" role="tab" data-target="afuera"><span class="n">5</span>Lo que pasa afuera</button>
+    <button class="nav-btn star" role="tab" data-target="quiz-sec"><span class="n">✓</span>Quiz</button>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+</nav>
+
+<div class="page">
+
+  <!-- RESUMEN -->
+  <section class="panel" id="resumen" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title">Empecemos con una pregunta</h2>
+      <p>¿Tienes algún familiar o conocido que vive en Estados Unidos, Chile, España o Italia? Muchos peruanos que trabajan en el extranjero envían parte de lo que ganan a sus familias en el Perú para ayudarlas con la comida, los estudios o la salud.</p>
+      <p>Ese dinero se llama <strong>remesas</strong>. En esta lectura vas a descubrir <strong>qué son, cómo llegan, en qué se usan y por qué son importantes para la economía</strong>.</p>
+    </div>
+    <div class="card summary-card">
+      <h2 class="section-title"><span class="num">⚡</span>Resumen en 30 segundos</h2>
+      <p>Las <strong>remesas</strong> son el dinero que las personas que viven y trabajan en otro país envían a sus familiares en su país de origen. Son una <strong>transferencia</strong>: quien las recibe no entrega nada a cambio.</p>
+      <table class="sum">
+        <thead><tr><th>Idea</th><th>¿Qué significa?</th></tr></thead>
+        <tbody>
+          <tr><td><a data-goto="conceptos">Remesa</a></td><td>Dinero que un migrante envía a su familia en su país.</td></tr>
+          <tr><td><a data-goto="envio">¿Cómo llegan?</a></td><td>Por bancos, empresas de transferencias o aplicaciones, que cobran una comisión.</td></tr>
+          <tr><td><a data-goto="usos">¿En qué se usan?</a></td><td>Alimentación, vivienda, educación, salud y pequeños negocios.</td></tr>
+          <tr><td><a data-goto="economia">Remesas y economía</a></td><td>Traen divisas al país y se registran en la balanza de pagos.</td></tr>
+          <tr><td><a data-goto="afuera">Lo que pasa afuera</a></td><td>Dependen del empleo y los salarios en los países donde viven los migrantes.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout idea"><span class="label">🎯 La idea clave</span><p>En 2025, el ingreso secundario de la balanza de pagos (principalmente remesas) sumó <strong>US$ 7 906 millones</strong>.</p></div>
+    </div>
+  </section>
+
+  <!-- 1. ¿Qué son? -->
+  <section class="panel" id="conceptos" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">1</span>¿Qué es (y qué no es) una remesa?</h2>
+      <div class="gloss-grid">
+        <div class="gloss">
+          <div class="emoji">🧳</div>
+          <h3>Un migrante</h3>
+          <p>Una persona que se fue a <strong>vivir y trabajar</strong> en otro país.</p>
+        </div>
+        <div class="gloss">
+          <div class="emoji">💸</div>
+          <h3>Envía dinero</h3>
+          <p>Manda parte de su sueldo a su <strong>familia</strong> en su país de origen.</p>
+        </div>
+        <div class="gloss">
+          <div class="emoji">🎁</div>
+          <h3>Sin nada a cambio</h3>
+          <p>No es un pago por un producto ni un préstamo: es una <strong>transferencia</strong>.</p>
+        </div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Es una remesa?</h4>
+        <p class="hint">Decide si cada caso es una remesa que llega al Perú.</p>
+        <div class="classify" id="clsRe"></div>
+        <div class="msg" id="clsReMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ¿Cómo llegan? -->
+  <section class="panel" id="envio" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>¿Cómo llegan las remesas?</h2>
+      <p>Las remesas se envían por <strong>bancos</strong>, <strong>empresas de transferencias</strong> o <strong>aplicaciones digitales</strong>. Cada canal cobra una <strong>comisión</strong>, y además el dinero suele enviarse en dólares y la familia lo cambia a soles al <strong>tipo de cambio</strong> del día.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Envía una remesa</h4>
+        <p class="hint">Elige cuánto enviar y por qué canal. El tipo de cambio es S/ 3,70 por dólar (cifras de ejemplo).</p>
+        <div class="ctrl"><label for="rAmt"><span>💵 Monto que envía el migrante</span><span id="rAmtVal"></span></label><input type="range" id="rAmt" min="50" max="600" step="10" value="200"></div>
+        <div class="seg" id="rSeg"><button type="button" class="on">🏦 Banco (7 %)</button><button type="button">🏪 Agencia (5 %)</button><button type="button">📲 Aplicación (2 %)</button></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Comisión</div><div class="v" id="rFee"></div></div>
+          <div class="stat"><div class="k">Llega a la familia</div><div class="v" id="rNet"></div></div>
+          <div class="stat"><div class="k">En soles</div><div class="v" id="rSol"></div></div>
+        </div>
+        <div class="msg" id="rMsg"></div>
+      </div>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>La mayor parte de las remesas que llegan al Perú vienen de <strong>Estados Unidos</strong>. También llegan muchas desde <strong>Chile, España, Italia, Japón y Argentina</strong>, países donde viven grandes comunidades de peruanos.</p></div>
+    </div>
+  </section>
+
+  <!-- 3. ¿En qué se usan? -->
+  <section class="panel" id="usos" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">3</span>¿En qué se usan las remesas?</h2>
+      <p>Para muchas familias, las remesas son una parte importante de sus ingresos. Se usan sobre todo para <strong>consumo</strong> (alimentos, servicios, vivienda), pero también para invertir en <strong>educación</strong>, <strong>salud</strong> o en <strong>pequeños negocios</strong>, que mejoran sus ingresos en el futuro.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>La familia Quispe recibe una remesa</h4>
+        <p class="hint">Elige en qué usarla y mira su efecto hoy y en el futuro.</p>
+        <div class="scen" id="useScen"></div>
+        <div class="arrows" id="useOut"></div>
+        <div class="msg" id="useMsg">Elige un uso.</div>
+      </div>
+      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>¿Por qué invertir parte de una remesa en educación puede beneficiar a toda la familia? Porque una persona con más estudios suele conseguir <strong>mejores empleos e ingresos</strong> durante toda su vida.</p></div>
+    </div>
+  </section>
+
+  <!-- 4. Remesas y economía -->
+  <section class="panel" id="economia" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">4</span>Las remesas en la economía del país</h2>
+      <p>Cada remesa es pequeña, pero sumadas son una cifra enorme. Se registran en la <strong>balanza de pagos</strong>, dentro del <strong>ingreso secundario</strong> de la cuenta corriente, y son una importante <strong>entrada de divisas</strong> para el país.</p>
+      <div class="chain">
+        <div class="chain-step first"><span class="e">🧳</span>Migrantes trabajan afuera</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><span class="e">💵</span>Entran dólares al Perú</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><span class="e">🛒</span>Las familias gastan e invierten</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step last"><span class="e">🏪</span>Se mueve el comercio local</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>De gota en gota se llena el balde</h4>
+        <p class="hint">Calcula cuánto suman las remesas de un año (cifras de ejemplo).</p>
+        <div class="ctrl"><label for="eN"><span>🧳 Migrantes que envían dinero</span><span id="eNVal"></span></label><input type="range" id="eN" min="0.5" max="3" step="0.1" value="1.8"></div>
+        <div class="ctrl"><label for="eA"><span>💵 Remesa promedio al mes</span><span id="eAVal"></span></label><input type="range" id="eA" min="100" max="600" step="10" value="370"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Remesas en un año</div><div class="v" id="eT"></div></div>
+          <div class="stat"><div class="k">Ingreso secundario del Perú · 2025</div><div class="v">US$ 7 906 mill.</div></div>
+        </div>
+        <div class="msg" id="eMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Lo que pasa afuera -->
+  <section class="panel" id="afuera" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>Cuando la economía de afuera cambia</h2>
+      <p>Las remesas dependen de que los migrantes tengan <strong>trabajo y buenos sueldos</strong> en los países donde viven. Por eso, lo que pasa en la economía de Estados Unidos, Chile o España se siente en muchos hogares peruanos.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Qué pasa si…?</h4>
+        <p class="hint">Elige una noticia y mira cómo afecta, con lo demás constante, a las remesas y a las familias que las reciben.</p>
+        <div class="scen" id="afScen"></div>
+        <div class="arrows" id="afOut"></div>
+        <div class="msg" id="afMsg">Elige una noticia.</div>
+      </div>
+      <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Las remesas conectan a las familias peruanas con economías de todo el mundo: cuando a esas economías les va bien, a muchos hogares peruanos también.</p></div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="panel" id="quiz-sec" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">✓</span>Pon a prueba lo que aprendiste</h2>
+      <p>Elige una respuesta en cada pregunta.</p>
+      <div id="quiz"></div>
+      <div class="result-box" id="resultBox" role="status" aria-live="polite">
+        <div class="emo" id="resultEmo"></div>
+        <div class="big" id="resultTitle"></div>
+        <p class="detail" id="resultDetail"></p>
+        <button type="button" class="retry-btn" id="retryBtn">↻ Intentar de nuevo</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">Banco Central de Reserva del Perú · Serie Lecturas · Educación económica</footer>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+  // Ejecuta una inicialización sin que un error detenga al resto de la página
+  function safe(fn){ try { fn(); } catch (e) { console.warn('Error al iniciar herramienta:', e); } }
+
+  /* ===== Navegación por secciones ===== */
+  const panels = [...document.querySelectorAll('.panel')];
+  const navBtns = [...document.querySelectorAll('.nav-btn')];
+  const nav = document.querySelector('nav.secnav');
+  const setNavH = () => document.documentElement.style.setProperty('--nav-h', (nav.offsetHeight + 12) + 'px');
+  safe(setNavH); addEventListener('resize', setNavH);
+  const labels = navBtns.map(b => b.lastChild.textContent.trim());
+
+  // Botones Anterior / Siguiente al final de cada sección
+  panels.forEach((p, i) => {
+    const pager = document.createElement('div'); pager.className = 'pager';
+    if (i > 0) {
+      const prev = document.createElement('button'); prev.type = 'button';
+      prev.textContent = '← ' + labels[i - 1];
+      prev.onclick = () => show(panels[i - 1].id, true);
+      pager.appendChild(prev);
+    }
+    if (i < panels.length - 1) {
+      const next = document.createElement('button'); next.type = 'button'; next.className = 'next';
+      next.textContent = labels[i + 1] + ' →';
+      next.onclick = () => show(panels[i + 1].id, true);
+      pager.appendChild(next);
+    }
+    p.appendChild(pager);
+  });
+
+  function show(id, scroll, init) {
+    const idx = panels.findIndex(p => p.id === id);
+    if (idx < 0) return;
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    navBtns.forEach((b, i) => {
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      b.tabIndex = i === idx ? 0 : -1;
+    });
+    document.getElementById('progressBar').style.width = ((idx + 1) / panels.length * 100) + '%';
+    // Al cargar no se reescribe el #: el navegador saltaría a esa sección y ocultaría la portada.
+    if (!init) try { if (history.replaceState && location.protocol !== 'about:') history.replaceState(null, '', '#' + id); } catch (e) {}
+    if (scroll) window.scrollTo({top: nav.offsetTop, behavior: 'smooth'});
+  }
+
+  navBtns.forEach((b, i) => {
+    b.addEventListener('click', () => show(b.dataset.target, true));
+    b.addEventListener('keydown', e => {
+      let j = null;
+      if (e.key === 'ArrowRight') j = Math.min(i + 1, navBtns.length - 1);
+      if (e.key === 'ArrowLeft') j = Math.max(i - 1, 0);
+      if (j !== null) { e.preventDefault(); navBtns[j].focus(); show(navBtns[j].dataset.target, false); }
+    });
+  });
+  document.querySelectorAll('[data-goto]').forEach(a => a.addEventListener('click', () => show(a.dataset.goto, true)));
+
+  let start = ''; try { start = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+  safe(() => show(panels.some(p => p.id === start) ? start : 'resumen', false, true));
+
+
+  /* ===== Utilidades ===== */
+  const $ = id => document.getElementById(id);
+  const num = (v, d = 0) => v.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
+  const pct = v => (v > 0 ? '+' : '') + num(v, 1) + ' %';
+  function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
+
+  /* ===== Herramientas comunes ===== */
+  const usd = (v, d = 0) => (v < 0 ? '− ' : '') + 'US$ ' + num(Math.abs(v), d);
+  const sol = (v, d = 0) => (v < 0 ? '− ' : '') + 'S/ ' + num(Math.abs(v), d);
+  // Clasificador: cada caso tiene el texto (t), la opción correcta (a) y la explicación (e)
+  function classify(boxId, msgId, cases, opts, winText){
+    const box = $(boxId); box.innerHTML = '';
+    let done = 0, ok = 0;
+    setMsg(msgId, `Responde los ${cases.length} casos.`);
+    cases.forEach(c => {
+      const row = document.createElement('div'); row.className = 'cl-item' + (opts.length > 2 ? ' three' : '');
+      row.innerHTML = '<div class="cl-text"><span></span><small class="cl-fb"></small></div><div class="cl-btns"></div>';
+      row.querySelector('.cl-text span').textContent = c.t;
+      const btns = opts.map((o, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'tbtn'; b.textContent = o;
+        b.addEventListener('click', () => {
+          btns.forEach(x => x.disabled = true);
+          const good = i === c.a;
+          row.classList.add(good ? 'ok' : 'bad'); b.classList.add('picked');
+          row.querySelector('.cl-fb').textContent = (good ? '¡Correcto! ' : 'Respuesta: ' + opts[c.a].replace(/^\W+\s*/, '') + '. ') + c.e;
+          done++; if (good) ok++;
+          if (done === cases.length) setMsg(msgId, `Acertaste ${ok} de ${cases.length}. ` + (ok === cases.length ? winText : 'Lee las explicaciones de los casos en rojo.'), ok === cases.length ? 'gold' : 'ok');
+        });
+        row.querySelector('.cl-btns').appendChild(b);
+        return b;
+      });
+      box.appendChild(row);
+    });
+  }
+  // Barras horizontales: filas [etiqueta, valor, clase de color, texto]
+  function drawBars(id, rows, max){
+    $(id).innerHTML = rows.map(([l, v, c, t]) => `<div class="hbar ${c}"><span class="hbar-l">${l}</span><span class="hbar-t"><i style="width:${Math.max(0, Math.min(100, v / max * 100)).toFixed(1)}%"></i></span><b>${t}</b></div>`).join('');
+  }
+  // Tarjeta con flecha: dir = 1 sube, -1 baja, 0 sin cambio
+  function arrowCard(k, dir, s){
+    const cls = dir > 0 ? 'up' : dir < 0 ? 'down' : 'eq', v = dir > 0 ? '▲' : dir < 0 ? '▼' : '＝';
+    return `<div class="arrow-card ${cls}"><div class="k">${k}</div><div class="v">${v}</div>${s ? `<div class="s">${s}</div>` : ''}</div>`;
+  }
+  // Cadena animada: ilumina los pasos uno a uno
+  function chainPlay(btnId, chainId, msgId, endText){
+    const steps = [...document.querySelectorAll('#' + chainId + ' .chain-step')];
+    let timer = null;
+    $(btnId).addEventListener('click', () => {
+      clearInterval(timer);
+      steps.forEach(s => { s.classList.remove('lit'); s.querySelector('.fx') && s.querySelector('.fx').classList.remove('show'); });
+      setMsg(msgId, 'Mira cómo avanza el efecto…');
+      let k = 0;
+      const step = () => {
+        if (k > 0) steps[k - 1].classList.remove('lit');
+        if (k === steps.length) { clearInterval(timer); setMsg(msgId, endText, 'ok'); return; }
+        steps[k].classList.add('lit');
+        const fx = steps[k].querySelector('.fx'); if (fx) fx.classList.add('show');
+        k++;
+      };
+      step(); timer = setInterval(step, 900);
+    });
+  }
+
+  /* ===== 1. ¿Es una remesa? ===== */
+  safe(() => classify('clsRe', 'clsReMsg', [
+    {t: '💌 Una hija que trabaja en Italia envía dinero a su mamá en Huancayo', a: 0, e: 'Una migrante envía parte de su sueldo a su familia.'},
+    {t: '🏠 Un peruano que vive en Estados Unidos paga su alquiler allá', a: 1, e: 'Es un gasto en el país donde vive: el dinero no llega al Perú.'},
+    {t: '🏗 Una empresa extranjera invierte en una mina peruana', a: 1, e: 'Es inversión extranjera, no una transferencia familiar.'},
+    {t: '🎓 Un abuelo que trabaja en Chile envía dinero para los estudios de su nieto en Tacna', a: 0, e: 'Es una transferencia a un familiar en el Perú.'},
+    {t: '🏨 Una turista española paga su hotel en Arequipa', a: 1, e: 'Es el pago de un servicio: una exportación de servicios.'},
+    {t: '🎂 Un tío en Japón envía dinero a su sobrina en Lima por su cumpleaños', a: 0, e: 'Es dinero enviado a la familia, sin nada a cambio.'}
+  ], ['✔ Es remesa', '✖ No lo es'], '¡Reconoces una remesa al instante! 🏆'));
+
+  /* ===== 2. Envía una remesa ===== */
+  const FEES = [0.07, 0.05, 0.02];
+  let feeK = 0;
+  function updR(){
+    const a = +$('rAmt').value, f = a * FEES[feeK], net = a - f;
+    $('rAmtVal').textContent = usd(a);
+    $('rFee').textContent = usd(f, 2); $('rNet').textContent = usd(net, 2); $('rSol').textContent = sol(net * 3.7, 2);
+    const best = a * (1 - FEES[2]) * 3.7, diff = best - net * 3.7;
+    if (feeK === 2) setMsg('rMsg', `✅ Con el canal más barato, la familia recibe ${sol(net * 3.7, 2)}. Comparar comisiones ayuda a que llegue más dinero.`, 'ok');
+    else setMsg('rMsg', `💡 Con una aplicación de 2 % la familia recibiría ${sol(diff, 2)} más. ¡Vale la pena comparar comisiones!`, 'gold');
+  }
+  safe(() => $('rSeg').querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => { feeK = i; $('rSeg').querySelectorAll('button').forEach((x, j) => x.classList.toggle('on', j === i)); updR(); })));
+  $('rAmt').addEventListener('input', updR); safe(updR);
+
+  /* ===== Escenarios con flechas ===== */
+  function scenarios(boxId, outId, msgId, items, keys){
+    const box = $(boxId);
+    items.forEach(s => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'tbtn'; b.textContent = s.t;
+      b.addEventListener('click', () => {
+        box.querySelectorAll('.tbtn').forEach(x => x.classList.toggle('on', x === b));
+        $(outId).innerHTML = keys.map((k, i) => arrowCard(k, s.d[i], s.s && s.s[i])).join('');
+        setMsg(msgId, s.e, s.c);
+      });
+      box.appendChild(b);
+    });
+    $(outId).innerHTML = keys.map(k => arrowCard(k, 0)).join('');
+  }
+
+  /* ===== 3. Usos ===== */
+  safe(() => scenarios('useScen', 'useOut', 'useMsg', [
+    {t: '🍲 Alimentos y servicios del mes', d: [1, 0], e: 'Mejora el bienestar de la familia hoy, aunque no cambia sus ingresos futuros.', c: 'ok'},
+    {t: '🎓 Pagar un instituto para el hijo mayor', d: [0, 1], e: 'Hoy no se nota tanto, pero con más estudios el hijo podrá ganar más en el futuro.', c: 'gold'},
+    {t: '🩺 Una operación de la abuela', d: [1, 1], e: 'Cuidar la salud mejora la vida hoy y permite seguir activos en el futuro.', c: 'ok'},
+    {t: '🧵 Una máquina de coser para un taller', d: [0, 1], e: 'Es una inversión: el pequeño negocio generará ingresos durante años.', c: 'gold'}
+  ], ['Bienestar hoy', 'Ingresos futuros']));
+
+  /* ===== 4. Remesas en un año ===== */
+  function updE(){
+    const n = +$('eN').value, a = +$('eA').value, t = n * a * 12; // millones de US$
+    $('eNVal').textContent = num(n, 1) + ' millones'; $('eAVal').textContent = usd(a);
+    $('eT').textContent = usd(t) + ' mill.';
+    const r = t / 7906;
+    if (Math.abs(r - 1) < 0.05) setMsg('eMsg', '🎯 ¡Muy cerca del ingreso secundario que recibió el Perú en 2025!', 'gold');
+    else setMsg('eMsg', `Con estas cifras, las remesas equivaldrían a ${num(r * 100)} % del ingreso secundario del Perú en 2025. Pequeños envíos, sumados, mueven miles de millones.`, 'ok');
+  }
+  ['eN', 'eA'].forEach(id => $(id).addEventListener('input', updE)); safe(updE);
+
+  /* ===== 5. Lo que pasa afuera ===== */
+  safe(() => scenarios('afScen', 'afOut', 'afMsg', [
+    {t: '🇺🇸 En Estados Unidos hay mucho empleo y suben los sueldos', d: [1, 1], e: 'Los migrantes ganan más y pueden enviar más dinero a sus familias.', c: 'ok'},
+    {t: '🇪🇸 España entra en crisis y aumenta el desempleo', d: [-1, -1], e: 'Muchos migrantes pierden su trabajo y envían menos o dejan de enviar.', c: 'warn'},
+    {t: '🇨🇱 La economía de Chile se desacelera', d: [-1, -1], e: 'Hay menos trabajo para los migrantes: las remesas tienden a bajar.', c: 'warn'},
+    {t: '💱 Sube el tipo de cambio en el Perú', d: [0, 1], s: ['', 'más soles por dólar'], e: 'Se envían los mismos dólares, pero cada dólar se cambia por más soles: la familia recibe más soles.', c: 'gold'}
+  ], ['Remesas en dólares', 'Soles que recibe la familia']));
+
+  /* ===== Confeti ===== */
+  const cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
+  let pieces = [], rafId = null;
+  function resizeCanvas(){ const d = window.devicePixelRatio || 1; cv.width = innerWidth * d; cv.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+  addEventListener('resize', resizeCanvas); safe(resizeCanvas);
+  function launchConfetti(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const colors = ['#f4b400', '#3fc2b2', '#148a7f', '#0b4f4a', '#c0483e', '#ffffff'];
+    const W = innerWidth, H = innerHeight;
+    for (let k = 0; k < 180; k++) {
+      const fromLeft = k % 2 === 0;
+      pieces.push({
+        x: fromLeft ? -10 : W + 10, y: H * (0.35 + Math.random() * 0.3),
+        vx: (fromLeft ? 1 : -1) * (4 + Math.random() * 8), vy: -(7 + Math.random() * 9),
+        w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+        rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.3,
+        c: colors[Math.floor(Math.random() * colors.length)], life: 0
+      });
+    }
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+  function tick(){
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    pieces.forEach(p => {
+      p.vy += 0.25; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - p.life / 220);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life / 8)));
+      ctx.restore();
+    });
+    pieces = pieces.filter(p => p.y < innerHeight + 40 && p.life < 220);
+    if (pieces.length) rafId = requestAnimationFrame(tick);
+    else { rafId = null; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+  }
+
+
+  /* ===== Quiz ===== */
+  const Q = [
+    {q:'1. ¿Qué es una remesa?',
+     o:['Un préstamo de un banco extranjero','Dinero que un migrante envía a su familia en su país de origen','El pago por una exportación'], a:1,
+     e:'Es una transferencia: la familia la recibe sin entregar nada a cambio.'},
+    {q:'2. ¿En qué parte de la balanza de pagos se registran las remesas?',
+     o:['En el ingreso secundario de la cuenta corriente','En la balanza comercial','En la cuenta financiera'], a:0,
+     e:'Son transferencias corrientes: van en el ingreso secundario.'},
+    {q:'3. ¿De qué país llega la mayor parte de las remesas al Perú?',
+     o:['Brasil','Estados Unidos','China'], a:1,
+     e:'Estados Unidos es el principal origen; le siguen países como Chile, España, Italia, Japón y Argentina.'},
+    {q:'4. Si aumenta el desempleo en los países donde viven los migrantes peruanos, las remesas…',
+     o:['Suben','Tienden a bajar','No cambian'], a:1,
+     e:'Con menos trabajo, los migrantes tienen menos dinero para enviar.'},
+    {q:'5. ¿Qué uso de una remesa ayuda más a aumentar los ingresos futuros de la familia?',
+     o:['Comprar golosinas','Pagar los estudios de un hijo o iniciar un pequeño negocio','Guardarla debajo del colchón'], a:1,
+     e:'La educación y los negocios son inversiones que generan ingresos en el futuro.'}
+  ];
+  let answered = 0, correct = 0;
+  const quiz = document.getElementById('quiz');
+  const box = document.getElementById('resultBox');
+
+  function buildQuiz(){
+    answered = 0; correct = 0; quiz.innerHTML = '';
+    box.className = 'result-box';
+    Q.forEach(item => {
+      const qb = document.createElement('div'); qb.className = 'q';
+      qb.innerHTML = `<div class="q-title">${item.q}</div><div class="opts"></div><div class="fb"></div>`;
+      const opts = qb.querySelector('.opts'), fb = qb.querySelector('.fb');
+      item.o.forEach((txt, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
+        b.addEventListener('click', () => {
+          opts.querySelectorAll('button').forEach((x, j) => { x.disabled = true; if (j === item.a) x.classList.add('right'); });
+          const ok = i === item.a;
+          if (!ok) b.classList.add('wrong');
+          fb.innerHTML = (ok ? '<strong style="color:var(--ok)">¡Correcto!</strong> ' : '<strong style="color:var(--bad)">Casi.</strong> ') + item.e;
+          fb.classList.add('show');
+          answered++; if (ok) correct++;
+          if (answered === Q.length) showResult();
+        });
+        opts.appendChild(b);
+      });
+      quiz.appendChild(qb);
+    });
+  }
+
+  function showResult(){
+    const total = Q.length;
+    let cls, emo, title, detail;
+    if (correct === total) {
+      cls = 'perfect'; emo = '🎉'; title = '¡Perfecto!';
+      detail = `Respondiste bien las ${total} preguntas. ¡Ya sabes qué son las remesas y por qué importan!`;
+    } else if (correct >= total - 2) {
+      cls = 'good'; emo = '👏'; title = '¡Muy bien!';
+      detail = `Obtuviste ${correct} de ${total}. Revisa las explicaciones de las que fallaste.`;
+    } else {
+      cls = 'retry'; emo = '💪'; title = 'Sigue intentando';
+      detail = `Obtuviste ${correct} de ${total}. Repasa las secciones 1 a 5 y vuelve a intentarlo.`;
+    }
+    document.getElementById('resultEmo').textContent = emo;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultDetail').textContent = detail;
+    box.className = 'result-box show ' + cls;
+    box.scrollIntoView({behavior: 'smooth', block: 'center'});
+    if (cls === 'perfect') setTimeout(launchConfetti, 250);
+  }
+
+  document.getElementById('retryBtn').addEventListener('click', () => {
+    buildQuiz();
+    document.getElementById('quiz-sec').scrollIntoView({behavior: 'smooth'});
+  });
+  safe(buildQuiz);
+</script>
+</body>
+</html>

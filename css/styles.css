@@ -1340,7 +1340,7 @@ body.ed-no-scroll { overflow: hidden; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(170px, 230px) minmax(60px, 1fr) minmax(170px, 230px) minmax(0, 1fr);
   grid-template-areas:
-    "btn  pyr  pyr  pyr  ."
+    ".    pyr  pyr  pyr  btn"
     ".    lin  lin  lin  ."
     "nm   colm .    colf nf";
   column-gap: 20px;
@@ -1554,10 +1554,8 @@ body.ed-no-scroll { overflow: hidden; }
 .pilares__trigger {
   grid-area: btn;
   align-self: center;
-  justify-self: start;
-  flex-direction: column;
+  justify-self: end;
   justify-content: center;
-  gap: 6px;
   width: 150px;
   height: 150px;
   padding: 18px;
@@ -1570,8 +1568,11 @@ body.ed-no-scroll { overflow: hidden; }
   box-shadow: 0 0 0 3px var(--lintel), 0 12px 26px rgba(154, 34, 32, 0.32);
 }
 
-.pilares__trigger span {
-  display: block;
+.pilares__trigger-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   transform: rotate(-8deg);
 }
 

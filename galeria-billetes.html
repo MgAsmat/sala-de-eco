@@ -29,7 +29,7 @@
   }
 
   .wrap{
-    max-width:980px;
+    max-width:1200px;
     margin:0 auto;
     padding:48px 24px 64px;
   }
@@ -215,7 +215,7 @@
   .paper-face{
     position:absolute;
     top:0; bottom:0;
-    left:-.5px; right:-.5px; /* overlap neighbours to hide seams */
+    left:-1px; right:-1px; /* overlap neighbours to hide seams */
     backface-visibility:hidden;
     -webkit-backface-visibility:hidden;
     background-repeat:no-repeat;
@@ -385,16 +385,34 @@
     transition:opacity .15s ease;
   }
 
+  /* ---------- layout: note on the left, legend boxes stacked beside it ---------- */
+  .viewer{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 290px;
+    gap:28px;
+    align-items:start;
+  }
+  .viewer-main{ min-width:0; }
+  .viewer-main .stage-row{ gap:10px; }
+  .viewer-main .caption{ margin-top:26px; }
+
   .legend-groups{
-    max-width:700px;
-    margin:28px auto 0;
     display:flex;
     flex-direction:column;
-    gap:16px;
+    gap:18px;
+  }
+  .legend-group{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 18px 20px;
+    box-shadow:0 10px 30px -18px rgba(8,64,60,.25);
   }
   .legend-group h4{
-    margin:0 0 9px;
-    text-align:center;
+    margin:0 0 12px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
     font-family:var(--sans);
     font-size:11.5px;
     font-weight:600;
@@ -405,8 +423,8 @@
   .legend{
     display:flex;
     flex-wrap:wrap;
-    gap:8px 10px;
-    justify-content:center;
+    gap:8px;
+    justify-content:flex-start;
   }
   .legend button{
     font-family:var(--sans);
@@ -426,6 +444,17 @@
     background:rgba(20,138,127,.14);
   }
 
+  @media (max-width:900px){
+    .viewer{ grid-template-columns:1fr; }
+    .legend-groups{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+  }
+  @media (max-width:600px){
+    .legend-groups{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -439,6 +468,9 @@
     <button type="button" id="btn-anverso" class="is-active">Anverso</button>
     <button type="button" id="btn-reverso">Reverso</button>
   </div>
+
+  <div class="viewer">
+  <div class="viewer-main">
 
   <div class="stage-row">
     <button type="button" class="nav-arrow" id="btn-prev" aria-label="Billete anterior">
@@ -479,7 +511,9 @@
     <p id="cap-desc">Pasa el cursor sobre cualquiera de los puntos resaltados para ver su descripción aquí.</p>
   </div>
 
-  <div class="legend-groups" id="legend-groups">
+  </div>
+
+  <aside class="legend-groups" id="legend-groups">
     <div class="legend-group">
       <h4>Personajes y diseño</h4>
       <div class="legend" id="legend-diseno"></div>
@@ -488,6 +522,7 @@
       <h4>Medidas de seguridad</h4>
       <div class="legend" id="legend-seguridad"></div>
     </div>
+  </aside>
   </div>
 </div>
 
@@ -672,6 +707,11 @@
     card.classList.remove('is-turning');
   }
 
+  function setPaperImages(front, back){
+    paper.style.setProperty('--paper-front', 'url("' + front + '")');
+    paper.style.setProperty('--paper-back', 'url("' + back + '")');
+  }
+
   function animateFlip(flipped){
     turn.target = flipped ? 1 : 0;
     if (reduceMotion.matches){
@@ -681,8 +721,6 @@
     }
     // a click mid-turn just sends the same sheet back from where it is
     if (turn.raf) return;
-    paper.style.setProperty('--paper-front', 'url("' + imgFront.src + '")');
-    paper.style.setProperty('--paper-back', 'url("' + imgBack.src + '")');
     sizePaper();
     turn.u = 1 - turn.target;
     turn.bend = turn.bendVel = 0;
@@ -809,6 +847,7 @@
     imgBack.src = d.reversoSrc;
     imgBack.alt = d.backAlt;
     spotlightBack.src = d.reversoSrc;
+    setPaperImages(d.anversoSrc, d.reversoSrc);
 
     buildHotspotMarkup(layerFront, d.frontHotspots);
     buildHotspotMarkup(layerBack, d.backHotspots);

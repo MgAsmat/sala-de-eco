@@ -2150,7 +2150,7 @@ body.ed-no-scroll { overflow: hidden; }
   .pbi-map.is-visible .pbi-map__group--nonprimary .pbi-sector:hover { transform: translateX(-3px); }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 948px) {
   .pbi-map {
     padding: 28px 18px 22px;
   }
@@ -2228,7 +2228,7 @@ body.ed-no-scroll { overflow: hidden; }
   color: var(--ink-500);
 }
 
-@media (max-width: 960px) {
+@media (max-width: 948px) {
   .pbi-measure__row--three {
     grid-template-columns: 1fr;
     justify-items: stretch;
@@ -2838,20 +2838,26 @@ body.ed-no-scroll { overflow: hidden; }
    Galería interactiva de billetes (app embebida sin marco)
    ========================================================= */
 .app-embed {
-  max-width: 980px;
+  max-width: none;
   margin: 8px auto 0;
 }
 
 .app-embed iframe {
   display: block;
   width: 100%;
-  height: 1180px;
+  height: 900px;
   border: 0;
+}
+
+@media (max-width: 948px) {
+  .app-embed iframe {
+    height: 1120px;
+  }
 }
 
 @media (max-width: 640px) {
   .app-embed iframe {
-    height: 1320px;
+    height: 1180px;
   }
 }
 

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué es el sistema financiero? — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b4f4a; --navy-deep:#08403c; --gold:#f4b400; --blue:#106f67; --teal:#3fc2b2; --teal-soft:#e8f8f6;
+    --paper:#f6faf9; --card:#ffffff; --border:#e0ece9; --text-muted:#4d6b67;
+    --ok:#24785a; --bad:#c0483e;
+    --shadow-md:0 8px 24px rgba(9,41,38,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h,90px);}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Inter',-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:880px;margin:0 auto;padding:24px 20px 64px;}
+
+  /* Encabezado y portada con el estilo de la Sala Educativa */
+  header.masthead{background:rgba(255,255,255,0.95);color:var(--navy-deep);border-bottom:1px solid var(--border);padding:14px 0;}
+  .masthead-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0;}
+  .brand-mark{display:grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#106f67,var(--navy-deep));color:#ffcb3d;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;font-family:'Poppins',sans-serif;}
+  .brand-text strong{font-size:15px;color:var(--navy-deep);}
+  .brand-text em{font-style:normal;font-weight:700;font-size:17px;color:#d99a00;}
+  .brand-text small{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);}
+  .back-link{flex:0 0 auto;font-weight:600;font-size:14px;color:#106f67;text-decoration:none;border:2px solid var(--blue);border-radius:999px;padding:8px 16px;white-space:nowrap;transition:background .15s ease;}
+  .back-link:hover{background:#e2f4f1;}
+  .back-link:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  @media (max-width:560px){.brand-text small{display:none;}.back-link{font-size:13px;padding:7px 12px;}.back-link .long{display:none;}}
+
+  .hero{background:radial-gradient(700px 320px at 50% -10%,rgba(63,194,178,0.20),transparent 70%),radial-gradient(500px 260px at 95% 20%,rgba(244,180,0,0.12),transparent 70%),var(--paper);color:var(--navy-deep);text-align:center;padding:44px 0 36px;}
+  .hero-inner{max-width:880px;margin:0 auto;padding:0 20px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:11.5px;color:#8a5f00;background:#fff3d6;padding:7px 16px;border-radius:999px;margin-bottom:14px;}
+  h1.title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,5vw,38px);line-height:1.1;margin:0 auto 12px;max-width:680px;color:var(--navy-deep);}
+  .hero-sub{color:#345350;font-size:17px;max-width:620px;margin:0 auto 20px;}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .chip{font-size:13px;font-weight:600;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--navy);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+
+  /* Navegación por secciones */
+  nav.secnav{position:sticky;top:0;z-index:50;background:rgba(246,250,249,0.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 4px 14px rgba(9,41,38,0.06);}
+  .secnav-inner{max-width:880px;margin:0 auto;padding:8px 20px;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;}
+  .nav-btn{min-width:0;font:inherit;font-size:13px;line-height:1.15;font-weight:600;color:var(--navy);background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:6px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;transition:background .15s ease,border-color .15s ease,color .15s ease;}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);padding:8px 12px;gap:5px;}.nav-btn{font-size:12px;padding:5px 2px;}}
+  .nav-btn .n{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--gold);color:#8a5f00;}
+  .nav-btn:hover{border-color:var(--blue);}
+  .nav-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .nav-btn[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .nav-btn[aria-selected="true"] .n{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
+  .nav-btn.star{border-color:var(--gold);}
+  .progress{height:3px;background:var(--border);}
+  .progress span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s ease;}
+
+  .panel{display:none;animation:fadeIn .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .pager{display:flex;justify-content:space-between;gap:12px;margin:4px 0 8px;}
+  .pager button{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .pager button.next{background:var(--navy);border-color:var(--navy);color:#fff;margin-left:auto;}
+  .pager button:hover{border-color:var(--blue);}
+  .pager button.next:hover{background:var(--navy-deep);}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:30px 32px;margin:0 0 24px;position:relative;z-index:1;}
+  @media (max-width:560px){.card{padding:24px 20px;}}
+  h2.section-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;line-height:1.2;color:var(--navy);margin:0 0 14px;display:flex;align-items:flex-start;gap:10px;}
+  h2.section-title .num{font-weight:700;color:var(--gold);font-size:15px;border:1.5px solid var(--gold);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  p{margin:0 0 14px;color:#345350;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--navy);font-weight:700;}
+  .subhead{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:0.015em;margin:24px 0 10px;}
+
+  /* Callouts */
+  .callout{margin:18px 0 4px;border-radius:10px;padding:14px 18px;border:1px solid var(--border);background:var(--paper);}
+  .callout p{font-size:15.5px;margin:0;}
+  .callout .label{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px;}
+  .callout.idea{border-left:4px solid var(--gold);} .callout.idea .label{color:#8a5f00;}
+  .callout.fact{border-left:4px solid var(--teal);} .callout.fact .label{color:#106f67;}
+  .callout.think{border-left:4px solid var(--blue);} .callout.think .label{color:var(--blue);}
+
+  /* Glossary */
+  .gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;}
+  @media (max-width:700px){.gloss-grid{grid-template-columns:1fr;}}
+  .gloss{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--paper);}
+  .gloss .emoji{font-size:26px;line-height:1;}
+  .gloss h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);margin:8px 0 4px;}
+  .gloss p{font-size:15px;margin:0;}
+  .gloss .eg{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
+
+  /* Chain */
+  .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:16px 0 4px;}
+  .chain-step{flex:1 1 130px;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:600;color:var(--navy);display:flex;flex-direction:column;justify-content:center;gap:4px;}
+  .chain-step .e{font-size:22px;}
+  .chain-step.first{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .chain-step.last{background:rgba(244,180,0,0.15);border-color:var(--gold);}
+  .chain-arrow{display:flex;align-items:center;color:var(--gold);font-weight:700;font-size:20px;}
+  @media (max-width:640px){.chain{flex-direction:column;}.chain-arrow{justify-content:center;transform:rotate(90deg);}}
+
+  /* Dual cards */
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;}
+  @media (max-width:640px){.dual-grid{grid-template-columns:1fr;}}
+  .dual-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);background:var(--paper);}
+  .dual-card.up{border-top:4px solid var(--teal);}
+  .dual-card.down{border-top:4px solid var(--navy);}
+  .dual-card .lead{font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+  .dual-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin:2px 0 8px;}
+  .dual-card p{font-size:15.5px;margin:0 0 8px;}
+  .dual-card p:last-child{margin-bottom:0;}
+  .result{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:700;border-radius:999px;padding:3px 12px;background:#fff;border:1px solid var(--border);color:var(--navy);}
+
+  /* Corridor */
+  .corridor{margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .corridor-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;}
+  .corridor-row.ceil{background:rgba(11,79,74,0.07);}
+  .corridor-row.mid{background:rgba(244,180,0,0.14);border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);}
+  .corridor-row.floor{background:rgba(63,194,178,0.12);}
+  .corridor-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);}
+  .corridor-label .small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:13.5px;color:var(--text-muted);}
+  .corridor-tag{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.025em;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap;}
+  .corridor-row.ceil .corridor-tag{background:var(--navy);color:#fff;}
+  .corridor-row.mid .corridor-tag{background:var(--gold);color:var(--navy-deep);}
+  .corridor-row.floor .corridor-tag{background:var(--teal-soft);color:var(--navy-deep);}
+  .tiny{font-size:13px;color:var(--text-muted);margin-top:8px;}
+
+  /* Simulator */
+  .sim{margin-top:14px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .sim label{font-weight:600;color:var(--navy);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .sim input[type=range]{width:100%;margin:12px 0 16px;accent-color:var(--gold);}
+  .bar{display:flex;height:40px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+  .bar .kept{background:var(--navy);color:#fff;}
+  .bar .lend{background:var(--teal-soft);color:var(--navy-deep);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+  .sim-legend{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:14.5px;flex-wrap:wrap;}
+  .sim-legend b{color:var(--navy);}
+
+  /* Summary table */
+  .summary-card{border-top:4px solid var(--gold);}
+  table.sum{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px;}
+  table.sum th{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
+  table.sum td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  table.sum tr:nth-child(even) td{background:var(--paper);}
+  table.sum a{color:var(--blue);font-weight:600;text-decoration:none;border-bottom:1px dashed var(--blue);cursor:pointer;}
+  @media (max-width:600px){
+    table.sum thead{display:none;}
+    table.sum tr{display:block;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+    table.sum td{display:block;border:none;}
+    table.sum td:first-child{background:#e2f4f1!important;color:var(--navy);font-weight:700;}
+    table.sum td:first-child a{color:#106f67;}
+  }
+
+  /* Quiz */
+  .q{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:14px;background:var(--paper);}
+  .q-title{font-weight:700;color:var(--navy);margin-bottom:10px;}
+  .opts{display:grid;gap:8px;}
+  .opts button{font:inherit;font-size:15.5px;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;cursor:pointer;color:var(--navy-deep);transition:border-color .15s ease;}
+  .opts button:hover:not(:disabled){border-color:var(--blue);}
+  .opts button:disabled{cursor:default;}
+  .opts button.right{border-color:var(--ok);background:rgba(47,143,107,0.08);}
+  .opts button.wrong{border-color:var(--bad);background:rgba(192,72,62,0.07);}
+  .fb{display:none;margin-top:10px;font-size:15px;}
+  .fb.show{display:block;}
+
+  .result-box{display:none;margin-top:20px;text-align:center;border-radius:14px;padding:22px 20px;border:2px solid var(--border);background:#fff;}
+  .result-box.show{display:block;animation:pop .45s cubic-bezier(.2,1.4,.4,1);}
+  @keyframes pop{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:none;}}
+  .result-box .emo{font-size:40px;line-height:1;}
+  .result-box .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:32.5px;line-height:1.1;margin:8px 0 4px;}
+  .result-box .detail{font-size:15.5px;color:#345350;margin:0 0 14px;}
+  .result-box.perfect{border-color:var(--gold);background:rgba(244,180,0,0.1);} .result-box.perfect .big{color:#8a5f00;}
+  .result-box.good{border-color:var(--ok);background:rgba(47,143,107,0.07);} .result-box.good .big{color:var(--ok);}
+  .result-box.retry{border-color:var(--blue);background:rgba(20,138,127,0.07);} .result-box.retry .big{color:var(--blue);}
+  .retry-btn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 18px;cursor:pointer;border:none;background:var(--navy);color:#fff;}
+  .retry-btn:hover{background:var(--navy-deep);}
+
+  /* Herramientas interactivas */
+  .tool{margin-top:20px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .tool-head{display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
+  .tool h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;line-height:1.2;margin:0 0 6px;color:var(--navy);}
+  .tool .hint{font-size:14.5px;color:var(--text-muted);margin:0 0 14px;}
+  .ctrl{margin-bottom:12px;}
+  .ctrl label{display:flex;justify-content:space-between;gap:8px;font-weight:600;color:var(--navy);font-size:15px;}
+  .ctrl input[type=range]{width:100%;accent-color:var(--gold);margin:6px 0 0;}
+  .seg{display:inline-flex;flex-wrap:wrap;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;background:#fff;}
+  .seg button{font:inherit;font-size:14.5px;font-weight:600;padding:8px 14px;border:none;background:transparent;color:var(--navy);cursor:pointer;}
+  .seg button.on{background:var(--navy);color:#fff;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px;}
+  .tbtn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .tbtn:hover:not(:disabled){border-color:var(--blue);}
+  .tbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .tbtn.teal{background:var(--teal-soft);border-color:var(--teal);color:var(--navy-deep);}
+  .tbtn:disabled{opacity:.45;cursor:default;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px;}
+  .stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+  .stat .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .stat .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;color:var(--navy);line-height:1.2;}
+  .msg{margin-top:12px;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600;background:#fff;border:1px solid var(--border);border-left:4px solid var(--blue);color:var(--navy-deep);}
+  .msg.ok{border-left-color:var(--ok);} .msg.warn{border-left-color:var(--bad);} .msg.gold{border-left-color:var(--gold);background:rgba(244,180,0,0.1);}
+
+  /* Medidor de tasas */
+  .gauge{position:relative;height:76px;margin:10px 12px 0;}
+  .gauge-track{position:absolute;left:0;right:0;top:30px;height:8px;border-radius:999px;background:#d6e8e4;}
+  .gauge-band{position:absolute;top:25px;height:18px;border-radius:6px;background:rgba(244,180,0,0.18);border:1px dashed var(--gold);}
+  .gauge-mark{position:absolute;top:20px;width:2px;height:28px;background:var(--navy);transform:translateX(-1px);}
+  .gauge-mark span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11.5px;font-weight:700;white-space:nowrap;color:var(--navy);}
+  .gauge-mark.meta{background:var(--gold);} .gauge-mark.meta span{color:#8a5f00;}
+  .gauge-needle{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:2;transition:left .45s cubic-bezier(.3,1.3,.5,1);}
+  .gauge-needle i{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--blue);box-shadow:0 2px 6px rgba(0,0,0,.2);}
+  .gauge-needle b{margin-top:4px;font-size:12.5px;background:var(--blue);color:#fff;border-radius:999px;padding:1px 8px;white-space:nowrap;}
+  .gauge-needle.hi i{border-color:var(--navy);} .gauge-needle.hi b{background:var(--navy);}
+  .gauge-needle.lo i{border-color:var(--teal);} .gauge-needle.lo b{background:var(--teal-soft);color:var(--navy-deep);}
+  .gauge-needle.ok i{border-color:var(--gold);} .gauge-needle.ok b{background:var(--gold);color:var(--navy-deep);}
+
+  /* Cadena animada */
+  .chain-step .fx{display:block;font-size:12.5px;font-weight:700;color:#8a5f00;opacity:0;max-height:0;transition:opacity .3s ease;}
+  .chain-step .fx.show{opacity:1;max-height:80px;margin-top:4px;}
+  .chain-step.first .fx{color:var(--gold);}
+  .chain-step{transition:box-shadow .2s ease;}
+  .chain-step.lit{box-shadow:0 0 0 3px var(--gold);}
+
+
+  #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100;}
+
+  footer.page-footer{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;}
+
+  /* Componentes con el estilo de la Sala Educativa */
+  nav.secnav{background:rgba(255,255,255,0.95);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .nav-btn{border-radius:14px;}
+  .nav-btn[aria-selected="true"]{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .progress span{background:linear-gradient(90deg,var(--gold),#1aa295);}
+  .card{border-radius:24px;box-shadow:0 10px 28px rgba(9,41,38,0.07);}
+  .summary-card{border-top:none;box-shadow:inset 0 4px 0 var(--gold),0 10px 28px rgba(9,41,38,0.07);}
+  h2.section-title .num{background:#fff3d6;color:#8a5f00;}
+  table.sum th,table.cmp th,table.cmp th:first-child{background:#e2f4f1;color:var(--navy);}
+  table.sum th:first-child,table.cmp th:first-child{border-radius:12px 0 0 12px;}
+  table.sum th:last-child,table.cmp th:last-child{border-radius:0 12px 12px 0;}
+  .pager button{border-radius:999px;padding:11px 22px;font-weight:700;border:2px solid var(--blue);color:#106f67;}
+  .pager button:hover{background:#e2f4f1;}
+  .pager button.next{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);box-shadow:0 10px 24px rgba(244,180,0,0.35);}
+  .pager button.next:hover{background:#ffcb3d;}
+  .chain-step.first{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .chain-step.first .fx{color:#fff3d6;}
+  .callout,.gloss,.dual-card,.sim,.tool,.q,.chain-step{border-radius:16px;}
+  .tbtn,.retry-btn,.seg{border-radius:999px;}
+  .tbtn.primary,.retry-btn{background:var(--blue);border-color:var(--blue);}
+  .tbtn.primary:hover:not(:disabled),.retry-btn:hover{background:var(--navy);}
+
+
+  /* ¿Entra o no entra? */
+  .classify{display:grid;gap:10px;}
+  .cl-item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--border);border-radius:14px;padding:12px 14px;transition:border-color .2s ease,background .2s ease;}
+  .cl-text{font-size:15px;font-weight:600;color:var(--navy-deep);}
+  .cl-fb{display:block;font-weight:500;font-size:13.5px;color:var(--text-muted);margin-top:2px;}
+  .cl-fb:empty{display:none;}
+  .cl-btns{display:flex;gap:6px;flex:0 0 auto;}
+  .cl-btns .tbtn{font-size:13.5px;padding:7px 12px;}
+  .cl-btns .tbtn:disabled{opacity:.4;}
+  .cl-btns .tbtn.picked{opacity:1;}
+  .cl-item.ok{border-left-color:var(--ok);background:rgba(47,143,107,0.06);}
+  .cl-item.ok .tbtn.picked{border-color:var(--ok);background:rgba(47,143,107,0.12);}
+  .cl-item.bad{border-left-color:var(--bad);background:rgba(192,72,62,0.05);}
+  .cl-item.bad .tbtn.picked{border-color:var(--bad);background:rgba(192,72,62,0.1);}
+  @media (max-width:600px){.cl-item{flex-direction:column;align-items:stretch;}.cl-btns .tbtn{flex:1;}}
+
+  /* Barras horizontales */
+  /* Barras horizontales (nominal vs real) */
+  .hbars{display:grid;gap:8px;margin:6px 0 4px;}
+  .hbar{display:grid;grid-template-columns:170px 1fr 84px;align-items:center;gap:10px;font-size:14px;}
+  .hbar-l{font-weight:600;color:var(--navy);}
+  .hbar-t{height:22px;border-radius:999px;background:#fff;border:1px solid var(--border);overflow:hidden;}
+  .hbar-t i{display:block;height:100%;border-radius:999px;transition:width .3s ease;}
+  .hbar.base i{background:#a9c2be;}
+  .hbar.nom i{background:var(--gold);}
+  .hbar.real i{background:var(--blue);}
+  .hbar b{text-align:right;color:var(--navy);}
+  @media (max-width:560px){.hbar{grid-template-columns:1fr 74px;}.hbar-l{grid-column:1 / -1;}}
+
+  /* Barra apilada */
+  /* Barra apilada C + I + G + X − M */
+  .stack{display:grid;gap:6px;margin:6px 0 4px;}
+  .stack-row{display:flex;height:30px;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--border);}
+  .stack-row span{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+
+  /* ===== Componentes comunes de las lecturas de Sector Externo ===== */
+  .hbar.c1 i{background:var(--navy);} .hbar.c2 i{background:var(--blue);} .hbar.c3 i{background:var(--teal);}
+  .hbar.c4 i{background:var(--gold);} .hbar.c5 i{background:rgba(192,72,62,0.75);} .hbar.c6 i{background:#a9c2be;}
+  .cl-item.three .cl-btns{flex-wrap:wrap;justify-content:flex-end;}
+  .scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:12px;}
+  .scen .tbtn{text-align:left;font-size:14.5px;line-height:1.3;}
+  .scen .tbtn.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .arrows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:4px;}
+  .arrow-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px 12px;text-align:center;}
+  .arrow-card .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .arrow-card .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;line-height:1.2;color:var(--text-muted);}
+  .arrow-card.up .v{color:var(--ok);} .arrow-card.down .v{color:var(--bad);} .arrow-card.eq .v{color:var(--text-muted);}
+  .arrow-card .s{font-size:12.5px;color:var(--text-muted);}
+
+  /* Navegación: 7 pestañas */
+  .secnav-inner{grid-template-columns:repeat(7,1fr);}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);}}
+
+  /* ===== Componentes de las lecturas de Sector Financiero ===== */
+  .stack-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--text-muted);margin-top:8px;}
+  .stack-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+  .s1{background:var(--navy);color:#fff;} .s2{background:var(--blue);color:#fff;} .s3{background:var(--teal);color:var(--navy-deep);} .s4{background:var(--gold);color:var(--navy-deep);}
+  .big-num{font-family:'Poppins',sans-serif;font-weight:700;font-size:30px;color:var(--navy);line-height:1.1;}
+
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="../index.html" aria-label="Sala Educativa de Economía — Inicio"><span class="brand-mark" aria-hidden="true">SE</span><span class="brand-text"><strong>Sala Educativa de</strong><em>Economía</em><small>Banco Central de Reserva del Perú</small></span></a>
+    <a class="back-link" href="../sector-financiero.html">← Volver<span class="long"> a Sector Financiero</span></a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Sector Financiero para secundaria</div>
+    <h1 class="title">¿Cómo llega tu ahorro a convertirse en una nueva empresa?</h1>
+    <p class="hero-sub">El sistema financiero conecta a quienes ahorran con quienes necesitan dinero para invertir. Descubre cómo funciona y quién lo cuida.</p>
+    <div class="chips"><span class="chip">⏱ Lectura de 8 minutos</span><span class="chip">🎚 Incluye simuladores</span><span class="chip">✅ Mini quiz al final</span></div>
+  </div>
+</div>
+
+<nav class="secnav" aria-label="Secciones de la lectura">
+  <div class="secnav-inner" role="tablist" id="navList">
+    <button class="nav-btn star" role="tab" data-target="resumen"><span class="n">⚡</span>Resumen</button>
+    <button class="nav-btn" role="tab" data-target="agentes"><span class="n">1</span>Ahorristas y prestatarios</button>
+    <button class="nav-btn" role="tab" data-target="indirecto"><span class="n">2</span>Los intermediarios</button>
+    <button class="nav-btn" role="tab" data-target="directo"><span class="n">3</span>Bonos y acciones</button>
+    <button class="nav-btn" role="tab" data-target="quien"><span class="n">4</span>¿Quién lo cuida?</button>
+    <button class="nav-btn" role="tab" data-target="peru"><span class="n">5</span>El caso peruano</button>
+    <button class="nav-btn star" role="tab" data-target="quiz-sec"><span class="n">✓</span>Quiz</button>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+</nav>
+
+<div class="page">
+
+  <!-- RESUMEN -->
+  <section class="panel" id="resumen" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title">Empecemos con una pregunta</h2>
+      <p>Imagina que tu familia guarda sus ahorros en una cuenta del banco. Al mismo tiempo, una panadería del barrio quiere comprar un horno nuevo, pero no tiene todo el dinero. ¿Qué tienen que ver una cosa con la otra?</p>
+      <p>Mucho más de lo que parece: el banco usa parte de esos ahorros para prestarle a la panadería. Ese puente entre quienes ahorran y quienes necesitan dinero es el <strong>sistema financiero</strong>. En esta lectura vas a descubrir <strong>cómo funciona, qué caminos sigue el ahorro y quién lo supervisa</strong>.</p>
+    </div>
+    <div class="card summary-card">
+      <h2 class="section-title"><span class="num">⚡</span>Resumen en 30 segundos</h2>
+      <p>El <strong>sistema financiero</strong> es el conjunto de <strong>intermediarios</strong> (bancos, financieras, cajas) y <strong>mercados</strong> (bonos y acciones) que canalizan el ahorro hacia la inversión.</p>
+      <table class="sum">
+        <thead><tr><th>Idea</th><th>¿Qué significa?</th></tr></thead>
+        <tbody>
+          <tr><td><a data-goto="agentes">Ahorristas y prestatarios</a></td><td>Unos ganan más de lo que gastan (superávit); otros necesitan fondos (déficit).</td></tr>
+          <tr><td><a data-goto="indirecto">Financiamiento indirecto</a></td><td>Un intermediario recibe depósitos y los presta. Paga una tasa pasiva y cobra una tasa activa.</td></tr>
+          <tr><td><a data-goto="directo">Financiamiento directo</a></td><td>Empresas y Gobierno emiten bonos o acciones que compran los inversionistas.</td></tr>
+          <tr><td><a data-goto="quien">¿Quién lo cuida?</a></td><td>El BCRP regula el dinero y el crédito; la SBS supervisa a bancos y AFP; la SMV, al mercado de valores.</td></tr>
+          <tr><td><a data-goto="peru">El caso peruano</a></td><td>A agosto de 2026, el crédito al sector privado sumaba S/ 468 704 millones.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout idea"><span class="label">🎯 La idea clave</span><p>El sistema financiero es como una tubería: lleva el ahorro de quienes no lo necesitan hoy hacia quienes pueden usarlo para producir más.</p></div>
+    </div>
+  </section>
+
+  <!-- 1. Ahorristas y prestatarios -->
+  <section class="panel" id="agentes" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">1</span>Dos tipos de agentes</h2>
+      <p>En la economía hay personas, empresas e incluso gobiernos que, en un momento dado, <strong>ganan más de lo que gastan</strong>, y otros que <strong>necesitan más de lo que tienen</strong>. Los economistas les ponen nombre:</p>
+      <div class="dual-grid">
+        <div class="dual-card up">
+          <div class="lead">Les sobra dinero</div>
+          <h3>🐷 Agentes superavitarios</h3>
+          <p>Sus ingresos superan sus gastos y buscan dónde <strong>ahorrar o invertir</strong> lo que les sobra.</p>
+          <p class="tiny">Ej.: familias que ahorran, empresas con utilidades, fondos de las AFP.</p>
+        </div>
+        <div class="dual-card down">
+          <div class="lead">Les falta dinero</div>
+          <h3>🏗 Agentes deficitarios</h3>
+          <p>Quieren gastar o invertir más de lo que tienen y necesitan <strong>financiamiento</strong>.</p>
+          <p class="tiny">Ej.: una familia que compra su casa, una empresa que abre una planta, el Gobierno que construye una carretera.</p>
+        </div>
+      </div>
+      <p style="margin-top:16px">Sin un sistema financiero, cada ahorrista tendría que encontrar por su cuenta a alguien de confianza a quien prestarle. El sistema financiero hace ese encuentro <strong>más fácil, más seguro y más barato</strong>.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Superavitario o deficitario?</h4>
+        <p class="hint">Lee cada caso y decide si el agente tiene dinero de sobra o necesita financiamiento.</p>
+        <div class="classify" id="clsAg"></div>
+        <div class="msg" id="clsAgMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Los intermediarios -->
+  <section class="panel" id="indirecto" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>Financiamiento indirecto: los intermediarios</h2>
+      <p>El camino más común pasa por un <strong>intermediario financiero</strong>: un banco, una financiera, una Caja Municipal o Rural. El intermediario <strong>recibe depósitos</strong> de los ahorristas y <strong>presta</strong> ese dinero a quienes lo necesitan.</p>
+      <div class="chain">
+        <div class="chain-step first"><span class="e">🐷</span>Ahorristas</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><span class="e">🏦</span>Intermediario<span class="tiny">banco, financiera, caja</span></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step last"><span class="e">🏭</span>Prestatarios</div>
+      </div>
+      <p style="margin-top:16px">Por el dinero que recibe, el intermediario paga a los ahorristas una <strong>tasa de interés pasiva</strong>. Por el dinero que presta, cobra a los prestatarios una <strong>tasa de interés activa</strong>, que es más alta. La diferencia entre ambas, el <strong>margen</strong>, cubre sus costos, el riesgo de que algunos no paguen y su ganancia.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>El negocio del banco</h4>
+        <p class="hint">Elige cuánto se deposita en un año y las tasas de interés (cifras de ejemplo). El banco presta todo lo depositado.</p>
+        <div class="ctrl"><label for="iDep"><span>🐷 Depósitos</span><span id="iDepVal"></span></label><input type="range" id="iDep" min="1000" max="20000" step="500" value="10000"></div>
+        <div class="ctrl"><label for="iPas"><span>📉 Tasa pasiva (paga a los ahorristas)</span><span id="iPasVal"></span></label><input type="range" id="iPas" min="0" max="8" step="0.5" value="3"></div>
+        <div class="ctrl"><label for="iAct"><span>📈 Tasa activa (cobra por los préstamos)</span><span id="iActVal"></span></label><input type="range" id="iAct" min="0" max="30" step="0.5" value="12"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Intereses que gana el ahorrista</div><div class="v" id="iGana"></div></div>
+          <div class="stat"><div class="k">Intereses que paga el prestatario</div><div class="v" id="iPaga"></div></div>
+          <div class="stat"><div class="k">Margen del banco</div><div class="v" id="iMar"></div></div>
+        </div>
+        <div class="msg" id="iMsg"></div>
+      </div>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>Los depósitos de las personas en los bancos, financieras y cajas están protegidos por el <strong>Fondo de Seguro de Depósitos</strong> hasta un monto máximo, por si una entidad quiebra.</p></div>
+    </div>
+  </section>
+
+  <!-- 3. Bonos y acciones -->
+  <section class="panel" id="directo" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">3</span>Financiamiento directo: bonos y acciones</h2>
+      <p>Las empresas grandes y el Gobierno también pueden conseguir dinero <strong>sin intermediario</strong>, vendiendo valores directamente a los inversionistas en el <strong>mercado de valores</strong>. En el Perú, la principal plaza es la <strong>Bolsa de Valores de Lima</strong>.</p>
+      <div class="dual-grid">
+        <div class="dual-card up">
+          <div class="lead">Un préstamo en papel</div>
+          <h3>📜 Bono</h3>
+          <p>Quien lo compra le <strong>presta</strong> dinero a la empresa o al Gobierno, que se compromete a devolverlo en una fecha, con intereses.</p>
+          <span class="result">El inversionista es acreedor</span>
+        </div>
+        <div class="dual-card down">
+          <div class="lead">Un pedacito de la empresa</div>
+          <h3>📈 Acción</h3>
+          <p>Quien la compra se vuelve <strong>dueño de una parte</strong> de la empresa. Si a la empresa le va bien, recibe dividendos y la acción puede valer más; si le va mal, puede perder.</p>
+          <span class="result">El inversionista es socio</span>
+        </div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Bono o acción?</h4>
+        <p class="hint">Decide qué tipo de valor describe cada caso.</p>
+        <div class="classify" id="clsBA"></div>
+        <div class="msg" id="clsBAMsg"></div>
+      </div>
+      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>¿Por qué una acción es más riesgosa que un bono? Porque el bono promete devolver el dinero con intereses, mientras que la ganancia de la acción depende de cómo le vaya a la empresa.</p></div>
+    </div>
+  </section>
+
+  <!-- 4. ¿Quién lo cuida? -->
+  <section class="panel" id="quien" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">4</span>¿Quién cuida el sistema financiero?</h2>
+      <p>Como el sistema financiero maneja el ahorro de millones de personas, hay instituciones públicas que lo regulan y supervisan:</p>
+      <div class="gloss-grid">
+        <div class="gloss"><span class="emoji">🏛</span><h3>BCRP</h3><p>Preserva la estabilidad monetaria: regula la cantidad de dinero y el crédito, y fija la tasa de interés de referencia.</p></div>
+        <div class="gloss"><span class="emoji">🔍</span><h3>SBS</h3><p>La Superintendencia de Banca, Seguros y AFP supervisa a bancos, financieras, cajas, aseguradoras y AFP.</p></div>
+        <div class="gloss"><span class="emoji">📊</span><h3>SMV</h3><p>La Superintendencia del Mercado de Valores supervisa la Bolsa y a las empresas que emiten bonos y acciones.</p></div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Quién se encarga?</h4>
+        <p class="hint">Elige la institución responsable de cada tarea.</p>
+        <div class="classify" id="clsInst"></div>
+        <div class="msg" id="clsInstMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. El caso peruano -->
+  <section class="panel" id="peru" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>El sistema financiero peruano en cifras</h2>
+      <p>A agosto de 2026, los bancos, financieras, cajas y demás sociedades de depósito le habían prestado al sector privado <strong>S/ 468 704 millones</strong>, <strong>10,3% más</strong> que un año antes. El <strong>77,5%</strong> de esos créditos estaba en soles.</p>
+
+      <div class="tool">
+        <div class="tool-head">📊 Explóralo</div>
+        <h4>El crédito al sector privado, año por año</h4>
+        <p class="hint">Saldo a diciembre de cada año, en miles de millones de soles. Toca un año.</p>
+        <div class="seg" id="yrSeg"></div>
+        <div class="hbars" id="yrBars"></div>
+        <div class="msg" id="yrMsg"></div>
+        <p class="tiny">Fuente: BCRP, crédito de las sociedades de depósito al sector privado (2026: agosto).</p>
+      </div>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>Entre 2018 y 2023, el porcentaje de adultos con una cuenta de depósito en el sistema financiero pasó de <strong>39% a 56%</strong>. Cada vez más peruanos usan el sistema financiero.</p></div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="panel" id="quiz-sec" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">✓</span>Pon a prueba lo que aprendiste</h2>
+      <p>Elige una respuesta en cada pregunta.</p>
+      <div id="quiz"></div>
+      <div class="result-box" id="resultBox" role="status" aria-live="polite">
+        <div class="emo" id="resultEmo"></div>
+        <div class="big" id="resultTitle"></div>
+        <p class="detail" id="resultDetail"></p>
+        <button type="button" class="retry-btn" id="retryBtn">↻ Intentar de nuevo</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">Banco Central de Reserva del Perú · Serie Lecturas · Educación económica</footer>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+  // Ejecuta una inicialización sin que un error detenga al resto de la página
+  function safe(fn){ try { fn(); } catch (e) { console.warn('Error al iniciar herramienta:', e); } }
+
+  /* ===== Navegación por secciones ===== */
+  const panels = [...document.querySelectorAll('.panel')];
+  const navBtns = [...document.querySelectorAll('.nav-btn')];
+  const nav = document.querySelector('nav.secnav');
+  const setNavH = () => document.documentElement.style.setProperty('--nav-h', (nav.offsetHeight + 12) + 'px');
+  safe(setNavH); addEventListener('resize', setNavH);
+  const labels = navBtns.map(b => b.lastChild.textContent.trim());
+
+  // Botones Anterior / Siguiente al final de cada sección
+  panels.forEach((p, i) => {
+    const pager = document.createElement('div'); pager.className = 'pager';
+    if (i > 0) {
+      const prev = document.createElement('button'); prev.type = 'button';
+      prev.textContent = '← ' + labels[i - 1];
+      prev.onclick = () => show(panels[i - 1].id, true);
+      pager.appendChild(prev);
+    }
+    if (i < panels.length - 1) {
+      const next = document.createElement('button'); next.type = 'button'; next.className = 'next';
+      next.textContent = labels[i + 1] + ' →';
+      next.onclick = () => show(panels[i + 1].id, true);
+      pager.appendChild(next);
+    }
+    p.appendChild(pager);
+  });
+
+  function show(id, scroll, init) {
+    const idx = panels.findIndex(p => p.id === id);
+    if (idx < 0) return;
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    navBtns.forEach((b, i) => {
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      b.tabIndex = i === idx ? 0 : -1;
+    });
+    document.getElementById('progressBar').style.width = ((idx + 1) / panels.length * 100) + '%';
+    // Al cargar no se reescribe el #: el navegador saltaría a esa sección y ocultaría la portada.
+    if (!init) try { if (history.replaceState && location.protocol !== 'about:') history.replaceState(null, '', '#' + id); } catch (e) {}
+    if (scroll) window.scrollTo({top: nav.offsetTop, behavior: 'smooth'});
+  }
+
+  navBtns.forEach((b, i) => {
+    b.addEventListener('click', () => show(b.dataset.target, true));
+    b.addEventListener('keydown', e => {
+      let j = null;
+      if (e.key === 'ArrowRight') j = Math.min(i + 1, navBtns.length - 1);
+      if (e.key === 'ArrowLeft') j = Math.max(i - 1, 0);
+      if (j !== null) { e.preventDefault(); navBtns[j].focus(); show(navBtns[j].dataset.target, false); }
+    });
+  });
+  document.querySelectorAll('[data-goto]').forEach(a => a.addEventListener('click', () => show(a.dataset.goto, true)));
+
+  let start = ''; try { start = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+  safe(() => show(panels.some(p => p.id === start) ? start : 'resumen', false, true));
+
+
+  /* ===== Utilidades ===== */
+  const $ = id => document.getElementById(id);
+  const num = (v, d = 0) => v.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
+  const pct = v => (v > 0 ? '+' : '') + num(v, 1) + ' %';
+  function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
+
+  /* ===== Herramientas comunes ===== */
+  const usd = (v, d = 0) => (v < 0 ? '− ' : '') + 'US$ ' + num(Math.abs(v), d);
+  const sol = (v, d = 0) => (v < 0 ? '− ' : '') + 'S/ ' + num(Math.abs(v), d);
+  // Clasificador: cada caso tiene el texto (t), la opción correcta (a) y la explicación (e)
+  function classify(boxId, msgId, cases, opts, winText){
+    const box = $(boxId); box.innerHTML = '';
+    let done = 0, ok = 0;
+    setMsg(msgId, `Responde los ${cases.length} casos.`);
+    cases.forEach(c => {
+      const row = document.createElement('div'); row.className = 'cl-item' + (opts.length > 2 ? ' three' : '');
+      row.innerHTML = '<div class="cl-text"><span></span><small class="cl-fb"></small></div><div class="cl-btns"></div>';
+      row.querySelector('.cl-text span').textContent = c.t;
+      const btns = opts.map((o, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'tbtn'; b.textContent = o;
+        b.addEventListener('click', () => {
+          btns.forEach(x => x.disabled = true);
+          const good = i === c.a;
+          row.classList.add(good ? 'ok' : 'bad'); b.classList.add('picked');
+          row.querySelector('.cl-fb').textContent = (good ? '¡Correcto! ' : 'Respuesta: ' + opts[c.a].replace(/^\W+\s*/, '') + '. ') + c.e;
+          done++; if (good) ok++;
+          if (done === cases.length) setMsg(msgId, `Acertaste ${ok} de ${cases.length}. ` + (ok === cases.length ? winText : 'Lee las explicaciones de los casos en rojo.'), ok === cases.length ? 'gold' : 'ok');
+        });
+        row.querySelector('.cl-btns').appendChild(b);
+        return b;
+      });
+      box.appendChild(row);
+    });
+  }
+  // Barras horizontales: filas [etiqueta, valor, clase de color, texto]
+  function drawBars(id, rows, max){
+    $(id).innerHTML = rows.map(([l, v, c, t]) => `<div class="hbar ${c}"><span class="hbar-l">${l}</span><span class="hbar-t"><i style="width:${Math.max(0, Math.min(100, v / max * 100)).toFixed(1)}%"></i></span><b>${t}</b></div>`).join('');
+  }
+  // Tarjeta con flecha: dir = 1 sube, -1 baja, 0 sin cambio
+  function arrowCard(k, dir, s){
+    const cls = dir > 0 ? 'up' : dir < 0 ? 'down' : 'eq', v = dir > 0 ? '▲' : dir < 0 ? '▼' : '＝';
+    return `<div class="arrow-card ${cls}"><div class="k">${k}</div><div class="v">${v}</div>${s ? `<div class="s">${s}</div>` : ''}</div>`;
+  }
+  // Cadena animada: ilumina los pasos uno a uno
+  function chainPlay(btnId, chainId, msgId, endText){
+    const steps = [...document.querySelectorAll('#' + chainId + ' .chain-step')];
+    let timer = null;
+    $(btnId).addEventListener('click', () => {
+      clearInterval(timer);
+      steps.forEach(s => { s.classList.remove('lit'); s.querySelector('.fx') && s.querySelector('.fx').classList.remove('show'); });
+      setMsg(msgId, 'Mira cómo avanza el efecto…');
+      let k = 0;
+      const step = () => {
+        if (k > 0) steps[k - 1].classList.remove('lit');
+        if (k === steps.length) { clearInterval(timer); setMsg(msgId, endText, 'ok'); return; }
+        steps[k].classList.add('lit');
+        const fx = steps[k].querySelector('.fx'); if (fx) fx.classList.add('show');
+        k++;
+      };
+      step(); timer = setInterval(step, 900);
+    });
+  }
+
+  /* ===== 1. ¿Superavitario o deficitario? ===== */
+  safe(() => classify('clsAg', 'clsAgMsg', [
+    {t: '👩‍🏫 Una profesora gana S/ 3 000 al mes, gasta S/ 2 500 y deposita el resto', a: 0, e: 'Le sobran S/ 500 al mes que puede ahorrar.'},
+    {t: '🏠 Una familia quiere comprar un departamento de S/ 300 000 y tiene S/ 60 000', a: 1, e: 'Necesita un crédito hipotecario por la diferencia.'},
+    {t: '🏭 Una empresa quiere construir una planta y no tiene todo el dinero', a: 1, e: 'Necesita financiamiento para invertir.'},
+    {t: '💼 Una AFP recibe cada mes los aportes de millones de trabajadores', a: 0, e: 'Tiene fondos que invierte a largo plazo.'},
+    {t: '🛣 El Gobierno quiere construir una carretera y gasta más de lo que recauda', a: 1, e: 'Tiene déficit y se financia, por ejemplo, emitiendo bonos.'},
+    {t: '🏪 Una bodega tuvo un buen año y guarda sus utilidades', a: 0, e: 'Sus ingresos superaron sus gastos.'}
+  ], ['🐷 Superavitario', '🏗 Deficitario'], '¡Sabes distinguir a los agentes! 🏆'));
+
+  /* ===== 2. El negocio del banco ===== */
+  function updBank(){
+    const d = +$('iDep').value, p = +$('iPas').value, a = +$('iAct').value;
+    const gana = d * p / 100, paga = d * a / 100, mar = paga - gana;
+    $('iDepVal').textContent = sol(d); $('iPasVal').textContent = num(p, 1) + ' %'; $('iActVal').textContent = num(a, 1) + ' %';
+    $('iGana').textContent = sol(gana); $('iPaga').textContent = sol(paga); $('iMar').textContent = sol(mar);
+    if (a < p) setMsg('iMsg', '⚠ Si el banco cobra menos de lo que paga, pierde dinero con cada préstamo: no podría seguir funcionando.', 'warn');
+    else if (a === p) setMsg('iMsg', '⚖ Sin margen, el banco no cubre sus costos (personal, agencias) ni el riesgo de que algunos préstamos no se paguen.', 'warn');
+    else setMsg('iMsg', `✅ El ahorrista gana ${sol(gana)} sin hacer nada más que depositar; el prestatario consigue ${sol(d)} para su proyecto. Con el margen de ${sol(mar)} el banco paga sus costos y el riesgo de que algunos no paguen.`, 'ok');
+  }
+  ['iDep', 'iPas', 'iAct'].forEach(id => $(id).addEventListener('input', updBank)); safe(updBank);
+
+  /* ===== 3. ¿Bono o acción? ===== */
+  safe(() => classify('clsBA', 'clsBAMsg', [
+    {t: '📜 El Gobierno promete devolver el dinero en 10 años, con 6% de interés al año', a: 0, e: 'Es un préstamo con plazo e interés fijados: un bono.'},
+    {t: '🤝 Compras una parte de una empresa minera y recibes dividendos si gana', a: 1, e: 'Te vuelves socio: es una acción.'},
+    {t: '🏗 Una constructora vende títulos y se compromete a pagar intereses cada año', a: 0, e: 'Es deuda de la empresa con los inversionistas.'},
+    {t: '📉 Tu inversión pierde valor porque a la empresa le fue mal ese año', a: 1, e: 'El valor de una acción depende de los resultados de la empresa.'}
+  ], ['📜 Bono', '📈 Acción'], '¡Ya diferencias bonos y acciones! 🏆'));
+
+  /* ===== 4. ¿Quién se encarga? ===== */
+  safe(() => classify('clsInst', 'clsInstMsg', [
+    {t: '🎯 Fijar la tasa de interés de referencia', a: 0, e: 'Es el principal instrumento de política monetaria del BCRP.'},
+    {t: '🔍 Revisar que un banco no preste más de lo prudente', a: 1, e: 'La SBS supervisa a bancos, financieras, cajas y AFP.'},
+    {t: '📊 Vigilar que una empresa que vende acciones informe la verdad', a: 2, e: 'La SMV protege a los inversionistas del mercado de valores.'},
+    {t: '💵 Emitir los billetes y monedas', a: 0, e: 'El BCRP es el único que puede emitirlos.'},
+    {t: '🧓 Supervisar a las AFP que administran las pensiones', a: 1, e: 'La SBS también supervisa a las AFP y aseguradoras.'}
+  ], ['🏛 BCRP', '🔍 SBS', '📊 SMV'], '¡Conoces a quienes cuidan el sistema! 🏆'));
+
+  /* ===== 5. Crédito por año ===== */
+  const YRS = [['2021', 400.3], ['2022', 414.1], ['2023', 417.5], ['2024', 418.3], ['2025', 434.9], ['2026*', 468.7]];
+  function pickYr(k){
+    $('yrSeg').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', i === k));
+    drawBars('yrBars', YRS.map(([y, v], i) => [y, v, i === k ? 'c4' : 'c6', sol(v, 1)]), 480);
+    const [y, v] = YRS[k];
+    let t = y === '2026*' ? `En agosto de 2026 el saldo de créditos llegó a S/ ${num(v, 1)} mil millones.` : `Al cierre de ${y}, el saldo de créditos al sector privado fue de S/ ${num(v, 1)} mil millones.`;
+    if (k > 0) { const p = YRS[k - 1][1], c = (v / p - 1) * 100; t += ` Eso es ${num(Math.abs(c), 1)} % ${c >= 0 ? 'más' : 'menos'} que en ${YRS[k - 1][0]}.`; }
+    setMsg('yrMsg', t, y === '2026*' ? 'gold' : 'ok');
+  }
+  safe(() => { YRS.forEach(([y], i) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = y; b.onclick = () => pickYr(i); $('yrSeg').appendChild(b); }); pickYr(YRS.length - 1); });
+
+  /* ===== Confeti ===== */
+  const cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
+  let pieces = [], rafId = null;
+  function resizeCanvas(){ const d = window.devicePixelRatio || 1; cv.width = innerWidth * d; cv.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+  addEventListener('resize', resizeCanvas); safe(resizeCanvas);
+  function launchConfetti(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const colors = ['#f4b400', '#3fc2b2', '#148a7f', '#0b4f4a', '#c0483e', '#ffffff'];
+    const W = innerWidth, H = innerHeight;
+    for (let k = 0; k < 180; k++) {
+      const fromLeft = k % 2 === 0;
+      pieces.push({
+        x: fromLeft ? -10 : W + 10, y: H * (0.35 + Math.random() * 0.3),
+        vx: (fromLeft ? 1 : -1) * (4 + Math.random() * 8), vy: -(7 + Math.random() * 9),
+        w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+        rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.3,
+        c: colors[Math.floor(Math.random() * colors.length)], life: 0
+      });
+    }
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+  function tick(){
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    pieces.forEach(p => {
+      p.vy += 0.25; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - p.life / 220);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life / 8)));
+      ctx.restore();
+    });
+    pieces = pieces.filter(p => p.y < innerHeight + 40 && p.life < 220);
+    if (pieces.length) rafId = requestAnimationFrame(tick);
+    else { rafId = null; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+  }
+
+
+
+  /* ===== Quiz ===== */
+  const Q = [
+    {q:'1. ¿Qué hace el sistema financiero?',
+     o:['Cobra impuestos a las empresas','Canaliza el ahorro de unos hacia la inversión de otros','Fabrica los bienes que consumimos'], a:1,
+     e:'Conecta a los agentes superavitarios con los deficitarios.'},
+    {q:'2. Una empresa necesita dinero para abrir una planta. Es un agente…',
+     o:['Superavitario','Deficitario','Intermediario'], a:1,
+     e:'Necesita más dinero del que tiene: busca financiamiento.'},
+    {q:'3. ¿Qué es la tasa de interés pasiva?',
+     o:['La que el banco paga a los ahorristas por sus depósitos','La que el banco cobra por los préstamos','La que fija la SMV'], a:0,
+     e:'La tasa activa es la que se cobra por los préstamos, y es más alta.'},
+    {q:'4. Si compras una acción de una empresa, te vuelves…',
+     o:['Su acreedor','Su socio, dueño de una parte','Su cliente'], a:1,
+     e:'Con un bono serías acreedor; con una acción, socio.'},
+    {q:'5. ¿Qué institución supervisa a los bancos, las financieras y las AFP?',
+     o:['La SBS','La SMV','El Congreso'], a:0,
+     e:'La SBS supervisa a bancos, financieras, cajas, aseguradoras y AFP; la SMV, al mercado de valores.'}
+  ];
+  let answered = 0, correct = 0;
+  const quiz = document.getElementById('quiz');
+  const box = document.getElementById('resultBox');
+
+  function buildQuiz(){
+    answered = 0; correct = 0; quiz.innerHTML = '';
+    box.className = 'result-box';
+    Q.forEach(item => {
+      const qb = document.createElement('div'); qb.className = 'q';
+      qb.innerHTML = `<div class="q-title">${item.q}</div><div class="opts"></div><div class="fb"></div>`;
+      const opts = qb.querySelector('.opts'), fb = qb.querySelector('.fb');
+      item.o.forEach((txt, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
+        b.addEventListener('click', () => {
+          opts.querySelectorAll('button').forEach((x, j) => { x.disabled = true; if (j === item.a) x.classList.add('right'); });
+          const ok = i === item.a;
+          if (!ok) b.classList.add('wrong');
+          fb.innerHTML = (ok ? '<strong style="color:var(--ok)">¡Correcto!</strong> ' : '<strong style="color:var(--bad)">Casi.</strong> ') + item.e;
+          fb.classList.add('show');
+          answered++; if (ok) correct++;
+          if (answered === Q.length) showResult();
+        });
+        opts.appendChild(b);
+      });
+      quiz.appendChild(qb);
+    });
+  }
+
+  function showResult(){
+    const total = Q.length;
+    let cls, emo, title, detail;
+    if (correct === total) {
+      cls = 'perfect'; emo = '🎉'; title = '¡Perfecto!';
+      detail = `Respondiste bien las ${total} preguntas. ¡Ya sabes cómo funciona el sistema financiero!`;
+    } else if (correct >= total - 2) {
+      cls = 'good'; emo = '👏'; title = '¡Muy bien!';
+      detail = `Obtuviste ${correct} de ${total}. Revisa las explicaciones de las que fallaste.`;
+    } else {
+      cls = 'retry'; emo = '💪'; title = 'Sigue intentando';
+      detail = `Obtuviste ${correct} de ${total}. Repasa las secciones 1 a 5 y vuelve a intentarlo.`;
+    }
+    document.getElementById('resultEmo').textContent = emo;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultDetail').textContent = detail;
+    box.className = 'result-box show ' + cls;
+    box.scrollIntoView({behavior: 'smooth', block: 'center'});
+    if (cls === 'perfect') setTimeout(launchConfetti, 250);
+  }
+
+  document.getElementById('retryBtn').addEventListener('click', () => {
+    buildQuiz();
+    document.getElementById('quiz-sec').scrollIntoView({behavior: 'smooth'});
+  });
+  safe(buildQuiz);
+</script>
+</body>
+</html>

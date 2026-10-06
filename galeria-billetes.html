@@ -159,8 +159,9 @@
     width:100%;
     aspect-ratio:1100/512;
     transform-style:preserve-3d;
-    transition:transform .85s cubic-bezier(.4,.15,.2,1);
+    transform-origin:50% 50%;
     cursor:pointer;
+    will-change:transform;
   }
   .card.is-flipped{
     transform:rotateY(180deg);
@@ -179,6 +180,24 @@
   }
   .face-back{
     transform:rotateY(180deg);
+  }
+
+  /* shading + sheen laid over each face while the note turns, so it
+     catches and loses the light like a sheet of paper */
+  .face-shade{
+    position:absolute;
+    inset:0;
+    z-index:5;
+    pointer-events:none;
+    opacity:0;
+    background:
+      linear-gradient(105deg,
+        rgba(255,255,255,0) 30%,
+        rgba(255,255,255,.35) 48%,
+        rgba(255,255,255,0) 62%),
+      linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.45));
+    background-size:250% 100%, 100% 100%;
+    background-position:100% 0, 0 0;
   }
 
   .note-img{
@@ -285,7 +304,7 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .card{transition:none;}
+    .face-shade{display:none;}
     .hotspot-dot{animation:none;}
   }
 
@@ -492,7 +511,68 @@
     [...frontHotspots, ...backHotspots].forEach(hs => hs.classList.remove('is-active'));
   }
 
+  // Paper-like turn: instead of a rigid rotateY, the note lifts off the
+  // surface, tilts slightly and flexes (skew) through the turn, while a
+  // shading/sheen layer on each face follows the angle to the light.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const FLIP_DURATION = 1100;
+  const FLIP_EASING = 'cubic-bezier(.45,.05,.25,1)';
+  const shadeFront = document.createElement('div');
+  const shadeBack = document.createElement('div');
+  shadeFront.className = shadeBack.className = 'face-shade';
+  faceFront.appendChild(shadeFront);
+  faceBack.appendChild(shadeBack);
+  let flipAnims = [];
+
+  function paperFrames(from, to){
+    const d = to > from ? 1 : -1;
+    const at = (t) => from + (to - from) * t;
+    return [
+      { offset:0,   transform:'translateZ(0) rotateY(' + at(0) + 'deg) rotateX(0deg) rotateZ(0deg) skewY(0deg) scale(1)' },
+      { offset:.18, transform:'translateZ(30px) rotateY(' + at(.12) + 'deg) rotateX(3deg) rotateZ(' + (-1.2 * d) + 'deg) skewY(' + (-2.5 * d) + 'deg) scale(1.02)' },
+      { offset:.5,  transform:'translateZ(70px) rotateY(' + at(.5) + 'deg) rotateX(5deg) rotateZ(' + (-2 * d) + 'deg) skewY(' + (-4 * d) + 'deg) scale(1.04)' },
+      { offset:.82, transform:'translateZ(30px) rotateY(' + at(.9) + 'deg) rotateX(2deg) rotateZ(' + (.6 * d) + 'deg) skewY(' + (1.5 * d) + 'deg) scale(1.015)' },
+      { offset:.93, transform:'translateZ(4px) rotateY(' + at(1.015) + 'deg) rotateX(0deg) rotateZ(0deg) skewY(-.4deg) scale(1)' },
+      { offset:1,   transform:'translateZ(0) rotateY(' + at(1) + 'deg) rotateX(0deg) rotateZ(0deg) skewY(0deg) scale(1)' }
+    ];
+  }
+
+  // the face turning away darkens as it goes edge-on; the face arriving
+  // starts dark and brightens, with a sheen sweeping across both
+  const SHADE_OUT = [
+    { offset:0,   opacity:0,   backgroundPosition:'100% 0, 0 0' },
+    { offset:.5,  opacity:1,   backgroundPosition:'40% 0, 0 0' }
+  ];
+  const SHADE_IN = [
+    { offset:.5,  opacity:1,   backgroundPosition:'60% 0, 0 0' },
+    { offset:.85, opacity:.25, backgroundPosition:'10% 0, 0 0' },
+    { offset:1,   opacity:0,   backgroundPosition:'0% 0, 0 0' }
+  ];
+
+  function animateFlip(flipped){
+    if (flipAnims.length){
+      // turning back mid-flip: reverse the running turn from where it is
+      flipAnims.forEach(a => a.reverse());
+      return;
+    }
+    if (reduceMotion.matches || !card.animate) return;
+    const from = flipped ? 0 : 180;
+    const to = flipped ? 180 : 0;
+    const opts = { duration:FLIP_DURATION, easing:FLIP_EASING };
+    const leaving = flipped ? shadeFront : shadeBack;
+    const arriving = flipped ? shadeBack : shadeFront;
+    flipAnims = [
+      card.animate(paperFrames(from, to), opts),
+      leaving.animate([...SHADE_OUT, { offset:1, opacity:1 }], opts),
+      arriving.animate([{ offset:0, opacity:1 }, ...SHADE_IN], opts)
+    ];
+    const done = () => { flipAnims = []; };
+    flipAnims[0].onfinish = done;
+    flipAnims[0].oncancel = done;
+  }
+
   function setFlipped(flipped){
+    if (card.classList.contains('is-flipped') !== flipped) animateFlip(flipped);
     card.classList.toggle('is-flipped', flipped);
     faceFront.classList.toggle('is-current', !flipped);
     faceBack.classList.toggle('is-current', flipped);

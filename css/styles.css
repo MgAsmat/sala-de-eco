@@ -2845,19 +2845,19 @@ body.ed-no-scroll { overflow: hidden; }
 .app-embed iframe {
   display: block;
   width: 100%;
-  height: 900px;
+  height: 1080px;
   border: 0;
 }
 
 @media (max-width: 948px) {
   .app-embed iframe {
-    height: 1120px;
+    height: 1260px;
   }
 }
 
 @media (max-width: 640px) {
   .app-embed iframe {
-    height: 1180px;
+    height: 1380px;
   }
 }
 

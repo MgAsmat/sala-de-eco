@@ -354,47 +354,15 @@
     letter-spacing:.2px;
   }
 
-  /* ---------- caption panel ---------- */
-  .caption{
-    max-width:640px;
-    margin:34px auto 0;
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:22px 26px;
-    min-height:104px;
-    box-shadow:0 10px 30px -18px rgba(8,64,60,.25);
-    transition:border-color .25s ease;
-  }
-  .caption.is-active{
-    border-color:rgba(255,203,61,.6);
-  }
-  .caption h3{
-    font-family:var(--serif);
-    margin:0 0 8px;
-    font-size:19px;
-    color:var(--bronze-strong);
-    font-weight:600;
-    transition:opacity .15s ease;
-  }
-  .caption p{
-    margin:0;
-    font-size:14.5px;
-    line-height:1.65;
-    color:var(--ink);
-    transition:opacity .15s ease;
-  }
-
   /* ---------- layout: note on the left, legend boxes stacked beside it ---------- */
   .viewer{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 290px;
+    grid-template-columns:minmax(0,1fr) 330px;
     gap:28px;
     align-items:start;
   }
   .viewer-main{ min-width:0; }
   .viewer-main .stage-row{ gap:10px; }
-  .viewer-main .caption{ margin-top:26px; }
 
   .legend-groups{
     display:flex;
@@ -422,27 +390,42 @@
   }
   .legend{
     display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    justify-content:flex-start;
+    flex-direction:column;
+    gap:4px;
   }
-  .legend button{
+  .legend-item{
+    display:block;
+    width:100%;
+    text-align:left;
     font-family:var(--sans);
-    font-size:12.5px;
-    color:var(--ink-dim);
-    background:rgba(8,64,60,.035);
-    border:1px solid var(--line);
-    padding:6px 13px;
-    border-radius:999px;
+    background:transparent;
+    border:1px solid transparent;
+    border-radius:8px;
+    padding:9px 11px;
     cursor:pointer;
-    transition:color .2s ease, border-color .2s ease, background .2s ease;
+    transition:border-color .2s ease, background .2s ease;
   }
-  .legend button:hover,
-  .legend button.is-active{
-    color:var(--bronze-strong);
-    border-color:var(--bronze);
-    background:rgba(20,138,127,.14);
+  .legend-name{
+    display:block;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--paper);
   }
+  .legend-desc{
+    display:block;
+    margin-top:3px;
+    font-size:12.5px;
+    line-height:1.5;
+    color:var(--ink-dim);
+  }
+  .legend-item:hover,
+  .legend-item:focus-visible,
+  .legend-item.is-active{
+    border-color:rgba(255,203,61,.75);
+    background:rgba(255,203,61,.10);
+    outline:none;
+  }
+  .legend-item.is-active .legend-name{ color:var(--bronze-strong); }
 
   @media (max-width:900px){
     .viewer{ grid-template-columns:1fr; }
@@ -504,12 +487,7 @@
 
   <div class="pager" id="pager"></div>
 
-  <p class="flip-hint">Haz clic sobre el billete para voltearlo</p>
-
-  <div class="caption" id="caption">
-    <h3 id="cap-title">Explora el billete</h3>
-    <p id="cap-desc">Pasa el cursor sobre cualquiera de los puntos resaltados para ver su descripción aquí.</p>
-  </div>
+  <p class="flip-hint">Haz clic sobre el billete para voltearlo. Pasa el cursor sobre un punto o un elemento de la lista para resaltarlo.</p>
 
   </div>
 
@@ -547,24 +525,12 @@
   const btnNext = document.getElementById('btn-next');
   const pager = document.getElementById('pager');
   const pageTitle = document.getElementById('page-title');
-  const capTitle = document.getElementById('cap-title');
-  const capDesc = document.getElementById('cap-desc');
-  const caption = document.getElementById('caption');
   const legendDiseno = document.getElementById('legend-diseno');
   const legendSeguridad = document.getElementById('legend-seguridad');
-
-  const DEFAULT_TITLE = 'Explora el billete';
-  const DEFAULT_DESC = 'Pasa el cursor sobre cualquiera de los puntos resaltados para ver su descripción aquí.';
 
   let currentIndex = 0;
   let frontHotspots = [];
   let backHotspots = [];
-
-  function resetCaption(){
-    capTitle.textContent = DEFAULT_TITLE;
-    capDesc.textContent = DEFAULT_DESC;
-    caption.classList.remove('is-active');
-  }
 
   function clipFor(hotspot){
     const l = parseFloat(hotspot.style.left);
@@ -581,7 +547,10 @@
   function clearAllHighlights(){
     [overlayFront, overlayBack].forEach(o => o.classList.remove('is-active'));
     [spotlightFront, spotlightBack].forEach(s => { s.style.opacity = '0'; });
-    [...frontHotspots, ...backHotspots].forEach(hs => hs.classList.remove('is-active'));
+    [...frontHotspots, ...backHotspots].forEach(hs => {
+      hs.classList.remove('is-active');
+      if (hs.legendItem) hs.legendItem.classList.remove('is-active');
+    });
   }
 
   // Paper-like turn. A flexible stand-in for the note is built from thin
@@ -738,7 +707,6 @@
     faceBack.classList.toggle('is-current', flipped);
     btnAnverso.classList.toggle('is-active', !flipped);
     btnReverso.classList.toggle('is-active', flipped);
-    resetCaption();
     clearAllHighlights();
     buildLegend(flipped ? 'back' : 'front');
   }
@@ -759,16 +727,16 @@
         spotlight.style.webkitClipPath = clip;
         spotlight.style.opacity = '1';
         overlay.classList.add('is-active');
-        capTitle.textContent = hs.dataset.title;
-        capDesc.textContent = hs.dataset.desc;
-        caption.classList.add('is-active');
-        hotspots.forEach(o => o.classList.toggle('is-active', o === hs));
+        hotspots.forEach(o => {
+          o.classList.toggle('is-active', o === hs);
+          if (o.legendItem) o.legendItem.classList.toggle('is-active', o === hs);
+        });
       };
       const deactivate = () => {
         overlay.classList.remove('is-active');
         spotlight.style.opacity = '0';
         hs.classList.remove('is-active');
-        resetCaption();
+        if (hs.legendItem) hs.legendItem.classList.remove('is-active');
       };
       hs.addEventListener('mouseenter', activate);
       hs.addEventListener('mouseleave', deactivate);
@@ -810,13 +778,21 @@
     list.forEach(hs => {
       const b = document.createElement('button');
       b.type = 'button';
-      b.textContent = hs.dataset.title;
-      b.addEventListener('click', (e) => {
-        e.stopPropagation();
-        hs.dispatchEvent(new Event('mouseenter'));
-        hs.focus({preventScroll:true});
-        setTimeout(() => hs.dispatchEvent(new Event('mouseleave')), 3200);
-      });
+      b.className = 'legend-item';
+      const name = document.createElement('span');
+      name.className = 'legend-name';
+      name.textContent = hs.dataset.title;
+      const desc = document.createElement('span');
+      desc.className = 'legend-desc';
+      desc.textContent = hs.dataset.desc;
+      b.append(name, desc);
+      hs.legendItem = b;
+      // pointing at an item lights up its spot on the note
+      b.addEventListener('mouseenter', () => hs.dispatchEvent(new Event('mouseenter')));
+      b.addEventListener('mouseleave', () => hs.dispatchEvent(new Event('mouseleave')));
+      b.addEventListener('focus', () => hs.dispatchEvent(new Event('mouseenter')));
+      b.addEventListener('blur', () => hs.dispatchEvent(new Event('mouseleave')));
+      b.addEventListener('click', (e) => e.stopPropagation());
       const target = hs.dataset.category === 'seguridad' ? legendSeguridad : legendDiseno;
       target.appendChild(b);
     });

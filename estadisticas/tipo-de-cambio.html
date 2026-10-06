@@ -207,8 +207,8 @@ function iniciar(D,R){
   const v12=(d,c)=>{const p=byK[d.k-12];return p&&d[c]!=null&&p[c]!=null?(d[c]/p[c]-1)*100:null;};
   data.forEach(d=>{d.Uv=v12(d,"U");d.Ev=v12(d,"E");d.Rv=v12(d,"R");});
   const IND={
-    U:{nombre:"Tipo de cambio interbancario",corto:"Sol por dólar",main:"U",sec:null,pre:"S/ ",dec:3,unidad:"soles por dólar, promedio del mes"},
-    E:{nombre:"Tipo de cambio del euro",corto:"Sol por euro",main:"E",sec:null,pre:"S/ ",dec:3,unidad:"soles por euro, promedio del mes"},
+    U:{nombre:"Tipo de cambio interbancario",corto:"Sol por dólar",main:"U",sec:null,pre:"S/ ",dec:2,unidad:"soles por dólar, promedio del mes"},
+    E:{nombre:"Tipo de cambio del euro",corto:"Sol por euro",main:"E",sec:null,pre:"S/ ",dec:2,unidad:"soles por euro, promedio del mes"},
     R:{nombre:"Tipo de cambio real",corto:"Real multilateral",main:"R",sec:"RB",secLbl:"Real bilateral (EE. UU.)",pre:"",dec:1,unidad:"índice 2009 = 100"}
   };
 
@@ -226,7 +226,7 @@ function iniciar(D,R){
 
   // Encabezado: sol por dólar
   const last=data[N-1],prev=data[N-2];
-  $("nowVal").innerHTML="<small>S/</small> "+nf(last.U,3);
+  $("nowVal").innerHTML="<small>S/</small> "+nf(last.U,2);
   $("nowMeta").innerHTML=`Precio promedio de un dólar<br>en <b>${last.long}</b> (interbancario)<br>Mes anterior: <b>${lvl("U",prev.U)}</b><br>`+
     (last.Uv==null?"":`<span class="pill ${sube(last.Uv)}">${sg(last.Uv)}% en 12 meses</span>`);
 
@@ -322,7 +322,7 @@ function iniciar(D,R){
       if(p&&own.length){const lastM=own[own.length-1].m,pm=sinNull(p.ms.filter(d=>d.m<=lastM),c);
         if(pm.length===own.length)chg=pv((avg(own,c)/avg(pm,c)-1)*100);}
       return `<tr class="row" data-y="${Y.y}" tabindex="0"><td>${Y.y}${partial?` <span class="side">(${MES[ms[0].m].toLowerCase()}–${MES[ms[ms.length-1].m].toLowerCase()})</span>`:""}</td>`+
-        `<td class="r num">${cell(avg(ms,"U"),3)}</td><td class="r num">${cell(avg(ms,"E"),3)}</td><td class="r num">${cell(avg(ms,"R"),1)}</td><td class="r num">${cell(avg(ms,"RB"),1)}</td><td class="r num">${chg}</td></tr>`;}).join("");
+        `<td class="r num">${cell(avg(ms,"U"),2)}</td><td class="r num">${cell(avg(ms,"E"),2)}</td><td class="r num">${cell(avg(ms,"R"),1)}</td><td class="r num">${cell(avg(ms,"RB"),1)}</td><td class="r num">${chg}</td></tr>`;}).join("");
   }
 
   function setInd(k){ind=k;$("pick").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.k===k?"true":"false"));render();}

@@ -48,48 +48,151 @@
 <main id="main">
 
   <!-- INTRODUCCIÓN -->
-  <section class="section alt" id="sector-externo">
+  <section class="section section--compact-top alt" id="sector-externo">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Relación con el resto del mundo</span>
+        <span class="eyebrow gold">Relación con el resto del mundo</span>
         <h2>Sector Externo</h2>
-        <p>Esta sala resume las transacciones económicas que un país realiza con el resto del mundo. El alumno podrá identificar los distintos conceptos de la balanza de pagos, tales como la cuenta corriente, la cuenta de capitales, las reservas internacionales, la balanza comercial, las exportaciones e importaciones, los términos de intercambio, entre otros. Visita esta sala y viajarás por el fascinante mundo del comercio y finanzas internacionales.</p>
-        <div class="tag-row">
-          <span>Exportaciones</span><span>Comercio</span><span>Divisas</span>
-        </div>
+        <p>Esta sala resume las transacciones económicas que un país realiza con el resto del mundo. El alumno podrá identificar los distintos conceptos de la balanza de pagos, tales como la cuenta corriente, la cuenta financiera, las reservas internacionales, la balanza comercial, las exportaciones e importaciones, los términos de intercambio, entre otros. Visita esta sala y viajarás por el fascinante mundo del comercio y finanzas internacionales.</p>
       </div>
 
-      <!-- DATO CURIOSO: carrusel interactivo -->
-      <div class="tip-carousel reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre el comercio exterior peruano">
-        <div class="tip-carousel__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9a3 3 0 116 0c0 2-3 3-3 5"/><path d="M12 17h.01"/></svg>
+      <!-- INFOGRAFÍA: La balanza de pagos -->
+      <figure class="pbi-map pbi-map--externo reveal" aria-labelledby="bpMapTitle">
+        <figcaption class="pbi-map__head">
+          <h3 id="bpMapTitle">La balanza de pagos: el Perú y el resto del mundo</h3>
+          <p>La <strong>balanza de pagos</strong> registra todas las transacciones económicas entre los residentes del Perú y los del resto del mundo durante un periodo: lo que vendemos y compramos, las rentas que pagamos o recibimos y los capitales que entran o salen. Cada operación genera <strong class="t-primary">entradas de divisas</strong> o <strong class="t-nonprimary">salidas de divisas</strong>.</p>
+        </figcaption>
+
+        <div class="pbi-map__stage">
+          <div class="pbi-map__group pbi-map__group--primary">
+            <h4 class="pbi-map__label">Entradas de divisas</h4>
+            <p class="pbi-map__hint">Lo que el Perú recibe del mundo</p>
+            <ul class="pbi-map__sectors">
+              <li class="pbi-sector" style="--d:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17h14l4-5h2"/><path d="M4 17l-2 4h16l2-4"/><rect x="5" y="9" width="4" height="5"/><rect x="10" y="7" width="4" height="7"/></svg></i>Exportaciones de bienes<small>cobre, oro, arándanos, uvas, café…</small></li>
+              <li class="pbi-sector" style="--d:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></i>Exportaciones de servicios<small>turistas que nos visitan, transporte</small></li>
+              <li class="pbi-sector" style="--d:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/></svg></i>Remesas<small>dinero que envían los peruanos que viven afuera</small></li>
+              <li class="pbi-sector" style="--d:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V10l5 3V10l5 3V6h6v14"/></svg></i>Entrada de capitales<small>inversión extranjera y préstamos del exterior</small></li>
+            </ul>
+          </div>
+
+          <span class="pbi-map__flow pbi-map__flow--primary" aria-hidden="true">
+            <svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M2 12H70"/><path d="M62 4l10 8-10 8"/></svg>
+          </span>
+
+          <div class="pbi-map__core">
+            <div class="pbi-map__coin">
+              <span class="pbi-map__globe" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></span>
+              <strong>Balanza de Pagos</strong>
+              <span class="pbi-map__coin-note">Perú ⇄ resto del mundo</span>
+            </div>
+          </div>
+
+          <span class="pbi-map__flow pbi-map__flow--nonprimary" aria-hidden="true">
+            <svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M2 12H70"/><path d="M62 4l10 8-10 8"/></svg>
+          </span>
+
+          <div class="pbi-map__group pbi-map__group--nonprimary">
+            <h4 class="pbi-map__label">Salidas de divisas</h4>
+            <p class="pbi-map__hint">Lo que el Perú paga al mundo</p>
+            <ul class="pbi-map__sectors">
+              <li class="pbi-sector" style="--d:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></i>Importaciones de bienes<small>combustibles, maquinaria, insumos, alimentos…</small></li>
+              <li class="pbi-sector" style="--d:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20l-2-6h18l-2 6"/><path d="M12 14V4l6 6h-6"/></svg></i>Importaciones de servicios<small>fletes, seguros, viajes al exterior</small></li>
+              <li class="pbi-sector" style="--d:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5"/><path d="M12 6v2M12 16v2"/></svg></i>Utilidades e intereses<small>rentas que ganan los inversionistas y acreedores del exterior</small></li>
+              <li class="pbi-sector" style="--d:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><path d="M12 7v6M9.5 10.5L12 13l2.5-2.5"/></svg></i>Salida de capitales<small>inversiones en el exterior y pago de deudas</small></li>
+            </ul>
+          </div>
         </div>
-        <div class="tip-carousel__body">
-          <span class="tip-carousel__label">¿Sabías que…?</span>
-          <p class="tip-carousel__text" aria-live="polite">A 2023, Perú cuenta con 22 acuerdos comerciales (TLCs) vigentes que nos conectan con 58 mercados que cubren más del 91% del total de envíos del mundo.</p>
+
+        <!-- Las cuentas de la balanza de pagos -->
+        <div class="pbi-measure">
+          <h4 class="pbi-measure__title">¿Cómo se ordenan estas transacciones?</h4>
+          <div class="pbi-measure__row pbi-measure__row--three">
+            <article class="pbi-measure__card">
+              <span class="pbi-measure__side">Bienes, servicios y rentas</span>
+              <h5>Cuenta corriente</h5>
+              <p>Suma la <strong>balanza comercial</strong> (exportaciones menos importaciones de bienes), los <strong>servicios</strong>, el <strong>ingreso primario</strong> (utilidades e intereses) y el <strong>ingreso secundario</strong> (sobre todo remesas).</p>
+              <p class="pbi-measure__formula" aria-label="Exportaciones menos importaciones, más servicios, más ingresos primario y secundario">(X − M) + Servicios + Ingresos</p>
+            </article>
+
+            <span class="pbi-measure__equals" aria-hidden="true">+</span>
+            <span class="sr-only">más</span>
+
+            <article class="pbi-measure__card pbi-measure__card--demand">
+              <span class="pbi-measure__side">Flujos de capital</span>
+              <h5>Cuenta financiera</h5>
+              <p>Registra la <strong>inversión directa</strong>, la <strong>inversión de cartera</strong> (acciones y bonos) y los <strong>préstamos</strong> del sector privado y del sector público.</p>
+              <p class="pbi-measure__formula" aria-label="Sector privado más sector público más capitales de corto plazo">Privado + Público + Corto plazo</p>
+            </article>
+
+            <span class="pbi-measure__equals" aria-hidden="true">=</span>
+            <span class="sr-only">es igual a</span>
+
+            <article class="pbi-measure__card pbi-measure__card--result">
+              <span class="pbi-measure__side">Resultado</span>
+              <h5>Variación de las reservas</h5>
+              <p>Si entran más divisas de las que salen, aumentan las <strong>Reservas Internacionales Netas (RIN)</strong> del BCRP; si salen más, disminuyen.</p>
+              <p class="pbi-measure__formula" aria-label="Resultado de la balanza de pagos igual a variación de las reservas internacionales netas">Resultado de BP ≈ Δ RIN</p>
+            </article>
+          </div>
+          <p class="pbi-measure__note">El resultado también incluye el financiamiento excepcional y los errores y omisiones netos.</p>
         </div>
-        <div class="tip-carousel__controls">
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <div class="tip-carousel__dots"></div>
-          <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
+
+        <!-- Conceptos clave -->
+        <ul class="pbi-uses" aria-label="Conceptos clave del Sector Externo">
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 7a3 3 0 006 0z"/><path d="M19 7l-3 7a3 3 0 006 0z"/></svg></i>
+            <div><strong>Balanza comercial</strong><span>Exportaciones − importaciones de bienes. Hay superávit cuando vendemos al mundo más de lo que le compramos.</span></div>
+          </li>
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4 4 4"/><path d="M17 8l4 4-4 4"/><path d="M3 12h18"/></svg></i>
+            <div><strong>Términos de intercambio</strong><span>Precio de nuestras exportaciones ÷ precio de nuestras importaciones: si suben, con lo que vendemos compramos más.</span></div>
+          </li>
+          <li>
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></i>
+            <div><strong>Reservas internacionales</strong><span>Divisas que administra el BCRP: un respaldo para enfrentar choques externos y reducir la volatilidad del tipo de cambio.</span></div>
+          </li>
+        </ul>
+      </figure>
+
+      <!-- DATO CURIOSO: carrusel interactivo destacado -->
+      <div class="tip-carousel tip-carousel--featured reveal" aria-roledescription="carrusel" aria-label="Datos curiosos sobre el comercio exterior peruano">
+        <div class="tip-carousel__visual" aria-hidden="true"></div>
+        <div class="tip-carousel__main">
+          <div class="tip-carousel__top">
+            <span class="tip-carousel__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+              ¿Sabías que…?
+            </span>
+            <span class="tip-carousel__tag"></span>
+            <span class="tip-carousel__count"></span>
+          </div>
+          <p class="tip-carousel__text" aria-live="polite">En 2025, las exportaciones peruanas sumaron US$ 93 993 millones, un nuevo máximo histórico y 23,1% más que en 2024.</p>
+          <div class="tip-carousel__controls">
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--prev" aria-label="Dato anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="tip-carousel__dots"></div>
+            <button type="button" class="tip-carousel__btn tip-carousel__btn--next" aria-label="Siguiente dato">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
+        <span class="tip-carousel__progress" aria-hidden="true"></span>
         <script type="application/json" class="tip-carousel__data">[
-          "A 2023, Perú cuenta con 22 acuerdos comerciales (TLCs) vigentes que nos conectan con 58 mercados que cubren más del 91% del total de envíos del mundo.",
-          "El superávit de la balanza comercial registró USD 17 678 millones en 2023, octavo año consecutivo de superávit.",
-          "En 2023, las exportaciones totalizaron USD 67 518 millones, lo que significó un nuevo máximo histórico.",
-          "Las exportaciones en 2023 crecieron 2% frente al año 2022.",
-          "El sector minero representó en 2023 casi el 63% del total de nuestras exportaciones.",
-          "En 2023 las exportaciones tradicionales y no tradicionales alcanzaron máximos históricos de USD 48 853 millones y USD 18 448 millones, respectivamente.",
-          "Perú fue el primer exportador de arándanos en 2023.",
-          "Perú fue el líder mundial de exportación de uvas frescas en 2023.",
-          "Perú fue el principal exportador mundial de quinua en 2023.",
-          "En 2023, Perú ocupó el primer lugar en el mundo en exportación de espárragos frescos.",
-          "Perú fue el segundo exportador mundial de paltas frescas en 2023.",
-          "Perú ocupó el cuarto lugar como el principal exportador mundial de mangos frescos en 2023."
+          {"text": "En 2025, las exportaciones peruanas sumaron US$ 93 993 millones, un nuevo máximo histórico y 23,1% más que en 2024.", "tag": "Exportaciones", "unit": "Exportaciones (miles de millones de US$)", "suffix": "", "bars": [{"label": "2015", "value": 34.4}, {"label": "2020", "value": 42.8}, {"label": "2025", "value": 94.0}]},
+          {"text": "La balanza comercial registró un superávit de US$ 35 433 millones en 2025, el décimo año consecutivo con superávit.", "tag": "Balanza comercial", "unit": "Superávit comercial (miles de millones de US$)", "suffix": "", "bars": [{"label": "2021", "value": 14.9}, {"label": "2022", "value": 10.1}, {"label": "2023", "value": 17.0}, {"label": "2024", "value": 24.1}, {"label": "2025", "value": 35.4}]},
+          {"text": "En 2025, las exportaciones tradicionales (US$ 70 332 millones) y no tradicionales (US$ 23 415 millones) alcanzaron máximos históricos.", "tag": "Exportaciones", "stat": "75%", "unit": "de las exportaciones de 2025 fueron tradicionales"},
+          {"text": "Las importaciones sumaron US$ 58 560 millones en 2025, 12,2% más que en 2024; casi la mitad fueron insumos para la producción.", "tag": "Importaciones", "stat": "46%", "unit": "de las importaciones de 2025 fueron insumos"},
+          {"text": "En 2025, la cuenta corriente de la balanza de pagos tuvo un superávit de US$ 12 005 millones, frente a un déficit de US$ 10 060 millones en 2022.", "tag": "Balanza de pagos", "stat": "12 005", "unit": "millones de US$ de superávit en cuenta corriente · 2025"},
+          {"text": "En 2025, el ingreso secundario de la balanza de pagos —principalmente las remesas que envían los peruanos que viven en el exterior— sumó US$ 7 906 millones.", "tag": "Remesas", "stat": "7 906", "unit": "millones de US$ · 2025"},
+          {"text": "A 2023, Perú cuenta con 22 acuerdos comerciales (TLCs) vigentes que nos conectan con 58 mercados que cubren más del 91% del total de envíos del mundo.", "tag": "Acuerdos comerciales", "stat": "22", "unit": "acuerdos comerciales vigentes · 2023"},
+          {"text": "El sector minero representó en 2023 casi el 63% del total de nuestras exportaciones.", "tag": "Minería", "stat": "63%", "unit": "de las exportaciones fueron mineras · 2023"},
+          {"text": "Perú fue el primer exportador mundial de arándanos en 2023.", "tag": "Agroexportación", "stat": "1.º", "unit": "exportador mundial de arándanos · 2023"},
+          {"text": "Perú fue el líder mundial de exportación de uvas frescas en 2023.", "tag": "Agroexportación", "stat": "1.º", "unit": "exportador mundial de uvas frescas · 2023"},
+          {"text": "Perú fue el principal exportador mundial de quinua en 2023.", "tag": "Agroexportación", "stat": "1.º", "unit": "exportador mundial de quinua · 2023"},
+          {"text": "En 2023, Perú ocupó el primer lugar en el mundo en exportación de espárragos frescos.", "tag": "Agroexportación", "stat": "1.º", "unit": "exportador mundial de espárragos frescos · 2023"},
+          {"text": "Perú fue el segundo exportador mundial de paltas frescas en 2023.", "tag": "Agroexportación", "stat": "2.º", "unit": "exportador mundial de paltas frescas · 2023"},
+          {"text": "Perú ocupó el cuarto lugar como exportador mundial de mangos frescos en 2023.", "tag": "Agroexportación", "stat": "4.º", "unit": "exportador mundial de mangos frescos · 2023"}
         ]</script>
       </div>
     </div>
@@ -271,47 +374,47 @@
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/balanza-comercial" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/balanza-comercial.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><polyline points="4,34 20,34 20,26 38,26 38,18 56,18 56,24 74,24 74,12 96,12" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-externo/cover-estadistica-balanza-comercial.jpg" alt="Captura del gráfico interactivo de Balanza Comercial" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Balanza Comercial</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/exportaciones" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/exportaciones.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><rect x="6" y="17" width="10" height="8" fill="var(--gold-400)"/><rect x="22" y="25" width="10" height="9" fill="rgba(255,255,255,0.4)"/><rect x="38" y="10" width="10" height="15" fill="var(--gold-400)"/><rect x="54" y="25" width="10" height="6" fill="rgba(255,255,255,0.4)"/><rect x="70" y="13" width="10" height="12" fill="var(--gold-400)"/><rect x="86" y="25" width="10" height="11" fill="rgba(255,255,255,0.4)"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-externo/cover-estadistica-exportaciones.jpg" alt="Captura del gráfico interactivo de Exportaciones" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Exportaciones (millones US$)</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/importaciones" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/importaciones.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><line x1="0" y1="26" x2="100" y2="26" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 3"/><polyline points="4,20 16,30 28,14 40,32 52,22 64,10 76,28 88,16 96,24" fill="none" stroke="var(--gold-400)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-externo/cover-estadistica-importaciones.jpg" alt="Captura del gráfico interactivo de Importaciones" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Importaciones (millones US$)</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 
-        <a class="resource-card resource-card--stat reveal" href="https://estadisticas.bcrp.gob.pe/estadisticas/series/trimestrales/balanza-de-pagos" target="_blank" rel="noopener">
+        <a class="resource-card resource-card--stat reveal" href="estadisticas/balanza-de-pagos.html" target="_blank" rel="noopener">
           <div class="resource-card__preview">
             <span class="resource-card__badge">Estadística</span>
-            <svg class="resource-card__chart" viewBox="0 0 100 50" fill="none" preserveAspectRatio="none"><rect x="6" y="34" width="10" height="8" fill="var(--gold-400)"/><rect x="22" y="28" width="10" height="14" fill="var(--gold-400)"/><rect x="38" y="24" width="10" height="18" fill="var(--gold-400)"/><rect x="54" y="18" width="10" height="24" fill="var(--gold-400)"/><rect x="70" y="12" width="10" height="30" fill="var(--gold-400)"/><rect x="86" y="8" width="10" height="34" fill="var(--gold-400)"/></svg>
+            <img class="resource-card__preview-img" src="assets/recursos-sector-externo/cover-estadistica-balanza-pagos.jpg" alt="Captura del gráfico interactivo de Balanza de Pagos" loading="lazy" />
           </div>
           <div class="resource-card__body">
             <h3>Balanza de Pagos</h3>
-            <span class="resource-card__link">Ver series (BCRPData) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+            <span class="resource-card__link">Ver gráfico interactivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </div>
         </a>
 

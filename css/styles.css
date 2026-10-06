@@ -2046,6 +2046,59 @@ body.ed-no-scroll { overflow: hidden; }
 }
 
 /* =========================================================
+   Sector Externo — infografía "La balanza de pagos"
+   (misma estructura que la del PBI: entradas → BP → salidas)
+   ========================================================= */
+.pbi-map--externo {
+  --primary: #1f8a5b;
+  --primary-dark: #156643;
+  --primary-soft: #e3f4ec;
+  --nonprimary: #c4573a;
+  --nonprimary-dark: #9a3f27;
+  --nonprimary-soft: #fbe9e3;
+}
+
+.pbi-map__globe {
+  display: grid;
+  place-items: center;
+  color: var(--gold-400);
+}
+
+.pbi-map__globe svg {
+  width: clamp(54px, 6vw, 68px);
+  height: clamp(54px, 6vw, 68px);
+}
+
+.pbi-measure__row--three {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.pbi-measure__card--result {
+  --c: var(--teal-800);
+  --c-soft: var(--teal-100);
+}
+
+.pbi-measure__note {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--ink-500);
+}
+
+@media (max-width: 960px) {
+  .pbi-measure__row--three {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+  .pbi-measure__row--three .pbi-measure__equals {
+    justify-self: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+}
+
+/* =========================================================
    Políticas — ¿Cómo funcionan?
    ========================================================= */
 .how-grid {

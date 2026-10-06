@@ -19,7 +19,14 @@
     gasto:     { codigos: ["PN02517AQ", "PN02518AQ", "PN02519AQ", "PN02522AQ", "PN02523AQ", "PN02524AQ", "PN02525AQ", "PN02526AQ"], freq: "Q", inicio: [1980, 1] },
     // Remuneración mínima vital (S/) y sector formal: puestos de trabajo (miles y var. %),
     // ingreso promedio (S/ y var. %) y masa salarial (millones de S/ y var. %).
-    empleo:    { codigos: ["PN02124PM", "PN31879GM", "PN31880GM", "PN31883GM", "PN31884GM", "PN31885GM", "PN31886GM"], freq: "M", inicio: [2016, 1] }
+    empleo:    { codigos: ["PN02124PM", "PN31879GM", "PN31880GM", "PN31883GM", "PN31884GM", "PN31885GM", "PN31886GM"], freq: "M", inicio: [2016, 1] },
+    // Balanza comercial, valores FOB (millones de US$): exportaciones (total, tradicionales, no tradicionales, otras)
+    // e importaciones (total, bienes de consumo, insumos, bienes de capital, otras). La balanza es X − M.
+    comercio:  { codigos: ["PN38714BM", "PN38715BM", "PN38716BM", "PN38717BM", "PN38718BM", "PN38719BM", "PN38720BM", "PN38721BM", "PN38722BM"], freq: "M", inicio: [2000, 1] },
+    // Balanza de pagos (millones de US$): cuenta corriente, bienes, servicios, ingreso secundario, cuenta financiera,
+    // financiamiento excepcional, errores y omisiones netos, resultado de la balanza de pagos y cuenta corriente (% del PBI).
+    // El ingreso primario se obtiene como cuenta corriente − bienes − servicios − ingreso secundario.
+    bpagos:    { codigos: ["PN38975BQ", "PN38976BQ", "PN38979BQ", "PN38985BQ", "PN38987BQ", "PN38997BQ", "PN38998BQ", "PN38999BQ", "PN39002BQ"], freq: "Q", inicio: [2012, 1] }
   };
 
   const MESES = { ene: 1, jan: 1, feb: 2, mar: 3, abr: 4, apr: 4, may: 5, jun: 6, jul: 7, ago: 8, aug: 8,

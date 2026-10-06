@@ -1,0 +1,218 @@
+<!doctype html><html lang="es"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.unit{margin:0 0 10px;font-size:13px;color:var(--muted)}
+.seg+.seg{margin-left:4px}
+td.yr{white-space:nowrap}
+td.yr .side{display:block}
+</style><title>Importaciones</title></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0B2A4A; --gold:#C9A227; --teal:#1F8A8A; --up:#B5473A;
+  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#12263A; --muted:#5B6B7C;
+  --line:#DCE2E9; --grid:#E9EDF2; --chip:#EEF1F5; --fill:rgba(31,138,138,.12);
+  --accent-ink:#0B2A4A; --s1:#0B2A4A; --s2:#1F8A8A;
+  --c4:#7A5C9E; --c5:#97A3AF; --c6:#D9822B;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0A1522; --surface:#10202F; --ink:#E6ECF2; --muted:#94A6B8;
+    --line:#223649; --grid:#1A2C3D; --chip:#172A3C; --fill:rgba(56,178,172,.16);
+    --teal:#3BB2AC; --gold:#D9B545; --up:#E07565; --accent-ink:#E6ECF2; --s1:#8FB3DC; --s2:#3BB2AC; --c4:#B79BD8; --c5:#6E7F90; --c6:#F0A257;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A1522; --surface:#10202F; --ink:#E6ECF2; --muted:#94A6B8;
+  --line:#223649; --grid:#1A2C3D; --chip:#172A3C; --fill:rgba(56,178,172,.16);
+  --teal:#3BB2AC; --gold:#D9B545; --up:#E07565; --accent-ink:#E6ECF2; --s1:#8FB3DC; --s2:#3BB2AC; --c4:#B79BD8; --c5:#6E7F90; --c6:#F0A257;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;padding-inline:16px;padding-block:28px 40px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:20px}
+.cond{font-family:"Barlow Condensed","Arial Narrow",Barlow,sans-serif}
+.num{font-variant-numeric:tabular-nums}
+
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;border-bottom:3px solid var(--gold);padding-bottom:18px}
+.eyebrow{font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+h1{font:700 clamp(28px,5vw,40px)/1.05 "Barlow Condensed",sans-serif;margin:0;color:var(--accent-ink);text-wrap:balance}
+.sub{margin:8px 0 0;color:var(--muted);max-width:60ch}
+.now{display:flex;align-items:flex-end;gap:14px}
+.now .val{font:700 clamp(48px,9vw,68px)/.9 "Barlow Condensed",sans-serif;color:var(--accent-ink)}
+.now .val small{font-size:.45em;font-weight:600;margin-left:2px;color:var(--gold)}
+.now .meta{font-size:13px;color:var(--muted);line-height:1.35;padding-bottom:4px}
+.now .meta b{color:var(--ink);font-weight:600}
+.pill{display:inline-block;font:600 12px/1 Barlow,sans-serif;padding:4px 8px;border-radius:999px;margin-top:4px}
+.pill.down{background:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--teal)}
+.pill.up{background:color-mix(in srgb,var(--up) 16%,transparent);color:var(--up)}
+.pill.flat{background:var(--chip);color:var(--muted)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:space-between;align-items:center;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:600 13px/1 Barlow,sans-serif;border:1px solid var(--line);background:var(--chip);color:var(--ink);padding:8px 12px;border-radius:4px;cursor:pointer}
+.chips button:hover{border-color:var(--teal)}
+.chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+:root[data-theme="dark"] .chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#0A1522}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#0A1522}}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.range{font:600 15px/1.2 "Barlow Condensed",sans-serif;color:var(--ink);letter-spacing:.02em}
+.range span{color:var(--muted);font-weight:500}
+.brush{position:relative;height:58px;margin-top:4px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:pointer}
+.brush .track{position:absolute;left:0;right:0;top:40px;height:4px;margin-top:-2px;border-radius:2px;background:var(--line)}
+.brush .win{position:absolute;top:40px;height:6px;margin-top:-3px;border-radius:3px;background:var(--gold);cursor:grab}
+.brush .win:active{cursor:grabbing}
+.brush .h{position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;background:var(--surface);border:3px solid var(--gold);border-radius:50%;cursor:ew-resize;box-shadow:0 1px 3px rgba(0,0,0,.2);touch-action:none}
+.brush .h.l{left:-9px}.brush .h.r{right:-9px}
+.brush .h:hover,.brush .h:focus-visible{transform:scale(1.15)}
+.brush .h:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.brush .tag{position:absolute;top:6px;font:600 13px/1 "Barlow Condensed",sans-serif;letter-spacing:.02em;color:var(--ink);background:var(--chip);border:1px solid var(--line);padding:4px 7px;border-radius:4px;white-space:nowrap;pointer-events:none;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.chartbox{position:relative;height:clamp(280px,48vw,420px)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px}
+.stat .k{font:600 11px/1.2 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font:700 30px/1.1 "Barlow Condensed",sans-serif;margin-top:6px}
+.stat .d{font-size:12px;color:var(--muted)}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+h2{font:700 20px/1.2 "Barlow Condensed",sans-serif;margin:0 0 4px;color:var(--accent-ink)}
+.hint{margin:0 0 12px;font-size:13px;color:var(--muted)}
+.tablewrap{max-height:340px;overflow:auto;border-top:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{position:sticky;top:0;background:var(--surface);text-align:left;font:600 11px/1 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:10px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--grid)}
+td.r,th.r{text-align:right}
+tr.row{cursor:pointer}
+tr.row:hover td{background:var(--chip)}
+footer{font-size:12px;color:var(--muted)}
+.topbar{display:flex;justify-content:flex-end}
+.back-link{font:600 14px/1 Barlow,sans-serif;color:var(--teal);text-decoration:none;border:2px solid var(--teal);border-radius:999px;padding:8px 16px;white-space:nowrap;transition:background .15s ease}
+.back-link:hover{background:color-mix(in srgb,var(--teal) 12%,transparent)}
+@media (max-width:560px){.back-link{font-size:13px;padding:7px 12px}.back-link .long{display:none}}
+footer a{color:var(--teal)}
+.band-sw{width:18px;height:10px;border-radius:2px;display:inline-block;background:color-mix(in srgb,var(--gold) 22%,transparent);border-top:1.5px dashed var(--gold)}
+.line-sw{width:18px;height:3px;border-radius:2px;display:inline-block}
+.pill.in{background:color-mix(in srgb,var(--navy) 12%,transparent);color:var(--accent-ink)}
+.side{font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{font:600 13px/1 Barlow,sans-serif;border:0;background:var(--surface);color:var(--muted);padding:8px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--chip);color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.tools-r{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.dash-sw{width:18px;height:0;border-top:2.5px dashed var(--s2);display:inline-block}
+[hidden]{display:none!important}
+.area-sw{width:14px;height:10px;border-radius:2px;display:inline-block}
+
+.pill.pos{background:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--teal)}
+.pill.neg{background:color-mix(in srgb,var(--up) 16%,transparent);color:var(--up)}
+.picker{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:12px 0 0;border-top:1px solid var(--grid)}
+.picker .lbl{font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.picker .chips button[aria-pressed="true"]{background:var(--s2);border-color:var(--s2);color:#fff}
+:root[data-theme="dark"] .picker .chips button[aria-pressed="true"]{color:#0A1522}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .picker .chips button[aria-pressed="true"]{color:#0A1522}}
+.barsbox{position:relative;height:var(--bars-h,340px)}
+td.sel,th.sel{background:color-mix(in srgb,var(--s2) 9%,transparent)}
+td .neg{color:var(--up)}
+tr.row.on td{box-shadow:inset 0 -2px 0 var(--gold)}
+.tablewrap{overflow:auto}
+.wrap>*{min-width:0}
+th{white-space:nowrap}
+.unit{margin:0 0 10px;font-size:13px;color:var(--muted)}
+.seg+.seg{margin-left:4px}
+td.yr{white-space:nowrap}
+td.yr .side{display:block}
+</style>
+
+<div class="wrap">
+  <nav class="topbar" aria-label="Navegación">
+    <a class="back-link" href="../sector-externo.html">← Volver<span class="long"> a Sector Externo</span></a>
+  </nav>
+  <header>
+    <div>
+      <p class="eyebrow">Sector externo · Serie mensual</p>
+      <h1>Importaciones (millones US$)</h1>
+      <p class="sub">Valor FOB de los bienes que el Perú compra al resto del mundo, según su uso: <b>bienes de consumo</b> para las familias, <b>insumos</b> como combustibles y materias primas para las empresas, y <b>bienes de capital</b> como maquinaria y equipos para invertir.</p>
+    </div>
+    <div class="now">
+      <div class="val num" id="nowVal">–</div>
+      <div class="meta" id="nowMeta"></div>
+    </div>
+  </header>
+
+  <section class="panel" aria-label="Gráfico">
+    <div class="toolbar">
+      <div class="chips" id="periodos" role="group" aria-label="Periodo">
+        <button type="button" id="r1" data-y="1">1 año</button>
+        <button type="button" id="r3" data-y="3">3 años</button>
+        <button type="button" id="r5" data-y="5">5 años</button>
+        <button type="button" id="r10" data-y="10">10 años</button>
+        <button type="button" id="rAll" data-y="all">Toda la serie</button>
+      </div>
+      <div class="tools-r">
+        <div class="seg" id="vistas" role="group" aria-label="Vista"></div>
+        <div class="seg" id="modos" role="group" aria-label="Periodicidad">
+          <button type="button" data-m="base" aria-pressed="true">Mensual</button>
+          <button type="button" data-m="acum" aria-pressed="false">Últimos 12 meses</button>
+        </div>
+        <div class="range" id="rangeLbl" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="unit" id="unidad"></p>
+    <div class="chartbox"><canvas id="chart" aria-label="Gráfico de las importaciones por uso o destino económico" role="img"></canvas></div>
+    <div class="brush" id="brush" aria-label="Selector de periodo: arrastra las manijas o la franja dorada">
+      <div class="track"></div>
+      <span class="tag" id="tagL"></span><span class="tag" id="tagR"></span>
+      <div class="win" id="win"><div class="h l" id="hL" tabindex="0" role="slider" aria-label="Inicio del periodo"></div><div class="h r" id="hR" tabindex="0" role="slider" aria-label="Fin del periodo"></div></div>
+    </div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="stats" id="stats" aria-label="Resumen del periodo"></section>
+
+  <section class="panel">
+    <h2>Totales por año</h2>
+    <p class="hint">Suma de cada año en millones de US$, del más reciente al más antiguo; el año en curso se compara con los mismos meses del año anterior. Clic en un año para enfocarlo en el gráfico.</p>
+    <div class="tablewrap">
+      <table>
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Fuente: BCRP, Estadísticas – “Balanza comercial – valores FOB (millones US$)”: series PN38718BM (importaciones), PN38719BM (bienes de consumo), PN38720BM (insumos), PN38721BM (bienes de capital) y PN38722BM (otros bienes). <a href="https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN38718BM-PN38719BM-PN38720BM-PN38721BM-PN38722BM/html" target="_blank" rel="noopener">Ver series en BCRPData</a> <span id="estadoDatos"></span>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script src="datos.js"></script>
+<script src="bcrp.js"></script>
+<script src="externo.js"></script>
+<script>
+const CFG={
+  freq:"M", periodoInicial:3, tablaCambio:"pct",
+  campos:{tot:{nombre:"Importaciones totales",corto:"Total",color:"--s1",f:r=>r[4]},cons:{nombre:"Bienes de consumo",corto:"Consumo",color:"--s2",f:r=>r[5]},ins:{nombre:"Insumos",corto:"Insumos",color:"--gold",f:r=>r[6]},capi:{nombre:"Bienes de capital",corto:"Capital",color:"--c4",f:r=>r[7]},otr:{nombre:"Otros bienes",corto:"Otros",color:"--c5",f:r=>r[8]}},
+  vistas:[{nombre:"Millones de US$",barras:["cons","ins","capi","otr"],lineas:[],total:"tot"},{nombre:"Participación %",barras:["cons","ins","capi","otr"],lineas:[],pct:true}],
+  tabla:["tot","cons","ins","capi","otr"],
+  encabezado:c=>{const u=c.ult,v=c.var_(u.tot,c.hace1.tot);
+    return {val:c.fmt(u.tot)+"<small>mill. US$</small>",
+      meta:`Importaciones de <b>${u.long}</b><br>`+["cons","ins","capi","otr"].filter(k=>u[k]/u.tot>=0.01).map(k=>c.F[k].corto+": <b>"+c.nf(u[k]/u.tot*100,0)+"%</b>").join(" · ")+"<br>"+
+        `<span class="pill ${c.sube(v)}">${c.pc(v)} vs. ${c.hace1.lab}</span> <span class="pill flat">Últimos 12 meses: ${c.fmt(c.ultA.tot)}</span>`};},
+  resumen:(sl,c)=>{const S=c.modo==="acum"?c.acum:c.base,e=S[c.b],p=S[c.b-12],v=k=>p?" · "+c.pc(c.var_(e[k],p[k]))+" en un año":"";
+    let hi=sl[0];sl.forEach(d=>{if(d.tot>hi.tot)hi=d;});
+    const pre=c.modo==="acum"?"12 meses a ":"";
+    return [["Total al cierre",c.fmt(e.tot),pre+e.lab+v("tot")],
+      [c.F["cons"].nombre,c.fmt(e["cons"]),c.nf(e["cons"]/e.tot*100,1)+"% del total"+v("cons")],
+      [c.F["ins"].nombre,c.fmt(e["ins"]),c.nf(e["ins"]/e.tot*100,1)+"% del total"+v("ins")],
+      ["Máximo del periodo",c.fmt(hi.tot),pre+hi.lab]];}
+};
+BCRP.cargar("comercio").then(D=>{if(D)iniciarExterno(D,CFG);});
+</script>
+
+</body></html>

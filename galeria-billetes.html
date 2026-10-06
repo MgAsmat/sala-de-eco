@@ -182,22 +182,59 @@
     transform:rotateY(180deg);
   }
 
-  /* shading + sheen laid over each face while the note turns, so it
-     catches and loses the light like a sheet of paper */
-  .face-shade{
+  /* While the note turns, the rigid card is hidden and a flexible copy
+     made of thin vertical strips takes its place: each strip hinges on
+     its neighbour, so the sheet can bend and ripple like real paper. */
+  .stage{ position:relative; }
+  .card.is-turning{ opacity:0; }
+  .paper{
+    position:absolute;
+    left:0; right:0; top:0;
+    aspect-ratio:1100/512;
+    transform-style:preserve-3d;
+    pointer-events:none;
+    display:none;
+  }
+  .paper.is-active{ display:block; }
+  .paper-half{
+    position:absolute;
+    top:0; left:50%;
+    width:0; height:100%;
+    transform-style:preserve-3d;
+  }
+  .paper-strip{
+    position:absolute;
+    top:0;
+    height:100%;
+    transform-style:preserve-3d;
+  }
+  .paper-half.is-right .paper-strip{ left:0; transform-origin:0 50%; }
+  .paper-half.is-right .paper-strip .paper-strip{ left:100%; }
+  .paper-half.is-left .paper-strip{ right:0; transform-origin:100% 50%; }
+  .paper-half.is-left .paper-strip .paper-strip{ right:100%; }
+  .paper-face{
+    position:absolute;
+    top:0; bottom:0;
+    left:-.5px; right:-.5px; /* overlap neighbours to hide seams */
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    background-repeat:no-repeat;
+  }
+  .paper-face.is-back{ transform:rotateY(180deg); }
+  .paper-shade{
     position:absolute;
     inset:0;
-    z-index:5;
+    background:#0b1a14;
+    opacity:0;
+  }
+  .paper-shadow{
+    position:absolute;
+    left:8%; right:8%; bottom:-6%;
+    height:14%;
+    border-radius:50%;
+    background:radial-gradient(closest-side, rgba(8,40,30,.35), rgba(8,40,30,0));
     pointer-events:none;
     opacity:0;
-    background:
-      linear-gradient(105deg,
-        rgba(255,255,255,0) 30%,
-        rgba(255,255,255,.35) 48%,
-        rgba(255,255,255,0) 62%),
-      linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.45));
-    background-size:250% 100%, 100% 100%;
-    background-position:100% 0, 0 0;
   }
 
   .note-img{
@@ -304,7 +341,8 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .face-shade{display:none;}
+    .card.is-turning{ opacity:1; }
+    .paper{ display:none !important; }
     .hotspot-dot{animation:none;}
   }
 
@@ -511,64 +549,148 @@
     [...frontHotspots, ...backHotspots].forEach(hs => hs.classList.remove('is-active'));
   }
 
-  // Paper-like turn: instead of a rigid rotateY, the note lifts off the
-  // surface, tilts slightly and flexes (skew) through the turn, while a
-  // shading/sheen layer on each face follows the angle to the light.
+  // Paper-like turn. A flexible stand-in for the note is built from thin
+  // vertical strips, two hinged chains running out from the centre. The
+  // sheet's turn follows an eased curve, while its bend is driven by a
+  // damped spring pulled by the turn's speed: the edges lag behind like
+  // paper dragging through air, then ripple and settle when it lands.
+  // Each strip is shaded by its own angle to the light.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const FLIP_DURATION = 1100;
-  const FLIP_EASING = 'cubic-bezier(.45,.05,.25,1)';
-  const shadeFront = document.createElement('div');
-  const shadeBack = document.createElement('div');
-  shadeFront.className = shadeBack.className = 'face-shade';
-  faceFront.appendChild(shadeFront);
-  faceBack.appendChild(shadeBack);
-  let flipAnims = [];
+  const STRIPS_PER_HALF = 16;
+  const TURN_MS = 1050;
+  const BEND_PER_SPEED = 150;   // degrees of tip bend per deg/ms of turn speed
+  const SPRING_K = 170;         // bend spring stiffness (1/s^2)
+  const SPRING_C = 9;           // bend spring damping (1/s)
 
-  function paperFrames(from, to){
-    const d = to > from ? 1 : -1;
-    const at = (t) => from + (to - from) * t;
-    return [
-      { offset:0,   transform:'translateZ(0) rotateY(' + at(0) + 'deg) rotateX(0deg) rotateZ(0deg) skewY(0deg) scale(1)' },
-      { offset:.18, transform:'translateZ(30px) rotateY(' + at(.12) + 'deg) rotateX(3deg) rotateZ(' + (-1.2 * d) + 'deg) skewY(' + (-2.5 * d) + 'deg) scale(1.02)' },
-      { offset:.5,  transform:'translateZ(70px) rotateY(' + at(.5) + 'deg) rotateX(5deg) rotateZ(' + (-2 * d) + 'deg) skewY(' + (-4 * d) + 'deg) scale(1.04)' },
-      { offset:.82, transform:'translateZ(30px) rotateY(' + at(.9) + 'deg) rotateX(2deg) rotateZ(' + (.6 * d) + 'deg) skewY(' + (1.5 * d) + 'deg) scale(1.015)' },
-      { offset:.93, transform:'translateZ(4px) rotateY(' + at(1.015) + 'deg) rotateX(0deg) rotateZ(0deg) skewY(-.4deg) scale(1)' },
-      { offset:1,   transform:'translateZ(0) rotateY(' + at(1) + 'deg) rotateX(0deg) rotateZ(0deg) skewY(0deg) scale(1)' }
-    ];
+  const stage = card.parentElement;
+  const paper = document.createElement('div');
+  paper.className = 'paper';
+  paper.setAttribute('aria-hidden', 'true');
+  const paperShadow = document.createElement('div');
+  paperShadow.className = 'paper-shadow';
+  stage.appendChild(paperShadow);
+  stage.appendChild(paper);
+
+  const total = STRIPS_PER_HALF * 2;
+  const halves = ['left', 'right'].map(side => {
+    const half = document.createElement('div');
+    half.className = 'paper-half is-' + side;
+    paper.appendChild(half);
+    const strips = [];
+    let parent = half;
+    for (let i = 0; i < STRIPS_PER_HALF; i++){
+      // column index across the whole note, left to right
+      const col = side === 'right' ? STRIPS_PER_HALF + i : STRIPS_PER_HALF - 1 - i;
+      const strip = document.createElement('div');
+      strip.className = 'paper-strip';
+      const faces = ['front', 'back'].map(which => {
+        const face = document.createElement('div');
+        face.className = 'paper-face' + (which === 'back' ? ' is-back' : '');
+        // seen from behind, the reverse's columns run right to left
+        const c = which === 'front' ? col : total - 1 - col;
+        face.style.backgroundImage = 'var(--paper-' + which + ')';
+        face.style.backgroundSize = (total * 100) + '% 100%';
+        face.style.backgroundPosition = (c / (total - 1) * 100) + '% 0';
+        const shade = document.createElement('div');
+        shade.className = 'paper-shade';
+        face.appendChild(shade);
+        strip.appendChild(face);
+        return shade;
+      });
+      parent.appendChild(strip);
+      strips.push({ el:strip, shadeFront:faces[0], shadeBack:faces[1] });
+      parent = strip;
+    }
+    return strips;
+  });
+
+  function sizePaper(){
+    const w = card.offsetWidth / total;
+    halves.forEach(strips => strips.forEach(s => { s.el.style.width = w + 'px'; }));
+    paper.style.top = card.offsetTop + 'px';
+    paper.style.left = card.offsetLeft + 'px';
+    paper.style.width = card.offsetWidth + 'px';
+    paper.style.right = 'auto';
   }
 
-  // the face turning away darkens as it goes edge-on; the face arriving
-  // starts dark and brightens, with a sheen sweeping across both
-  const SHADE_OUT = [
-    { offset:0,   opacity:0,   backgroundPosition:'100% 0, 0 0' },
-    { offset:.5,  opacity:1,   backgroundPosition:'40% 0, 0 0' }
-  ];
-  const SHADE_IN = [
-    { offset:.5,  opacity:1,   backgroundPosition:'60% 0, 0 0' },
-    { offset:.85, opacity:.25, backgroundPosition:'10% 0, 0 0' },
-    { offset:1,   opacity:0,   backgroundPosition:'0% 0, 0 0' }
-  ];
+  const ease = (u) => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+  const rad = (d) => d * Math.PI / 180;
+  const turn = { u:0, target:0, bend:0, bendVel:0, last:0, raf:0 };
+
+  function drawPaper(theta){
+    const lift = Math.sin(Math.PI * turn.u);
+    paper.style.transform =
+      'translateZ(' + (lift * 70) + 'px) rotateX(' + (lift * 4) + 'deg) rotateY(' + theta + 'deg)';
+    paperShadow.style.opacity = String(.25 + lift * .75);
+    paperShadow.style.transform = 'scaleX(' + (Math.abs(Math.cos(rad(theta))) * .8 + .2) + ') scale(' + (1 - lift * .15) + ')';
+
+    halves.forEach(strips => {
+      let angle = theta;
+      strips.forEach((s, i) => {
+        // the bend grows toward the free edges, so the sheet curls
+        const step = turn.bend * (i + 1.5) / (STRIPS_PER_HALF * STRIPS_PER_HALF * .58);
+        s.el.style.transform = 'rotateY(' + step + 'deg)';
+        angle += step;
+        const light = Math.cos(rad(angle - 18));
+        s.shadeFront.style.opacity = String(Math.max(0, .42 * (1 - light)).toFixed(3));
+        s.shadeBack.style.opacity = String(Math.max(0, .42 * (1 + light)).toFixed(3));
+      });
+    });
+  }
+
+  function stepTurn(now){
+    const dt = Math.min(40, now - turn.last);
+    turn.last = now;
+    const prevTheta = 180 * ease(turn.u);
+    const dir = Math.sign(turn.target - turn.u);
+    turn.u = Math.min(1, Math.max(0, turn.u + dir * dt / TURN_MS));
+    const theta = 180 * ease(turn.u);
+    const speed = dt > 0 ? (theta - prevTheta) / dt : 0;
+
+    // spring the bend toward the drag the current speed would cause
+    const sdt = dt / 1000;
+    const pull = -BEND_PER_SPEED * speed;
+    turn.bendVel += (SPRING_K * (pull - turn.bend) - SPRING_C * turn.bendVel) * sdt;
+    turn.bend += turn.bendVel * sdt;
+
+    drawPaper(theta);
+
+    const settled = turn.u === turn.target && Math.abs(turn.bend) < .08 && Math.abs(turn.bendVel) < .4;
+    if (settled){
+      endTurn();
+    } else {
+      turn.raf = requestAnimationFrame(stepTurn);
+    }
+  }
+
+  function endTurn(){
+    cancelAnimationFrame(turn.raf);
+    turn.raf = 0;
+    turn.bend = turn.bendVel = 0;
+    paper.classList.remove('is-active');
+    paperShadow.style.opacity = '0';
+    card.classList.remove('is-turning');
+  }
 
   function animateFlip(flipped){
-    if (flipAnims.length){
-      // turning back mid-flip: reverse the running turn from where it is
-      flipAnims.forEach(a => a.reverse());
+    turn.target = flipped ? 1 : 0;
+    if (reduceMotion.matches){
+      turn.u = turn.target;
+      endTurn();
       return;
     }
-    if (reduceMotion.matches || !card.animate) return;
-    const from = flipped ? 0 : 180;
-    const to = flipped ? 180 : 0;
-    const opts = { duration:FLIP_DURATION, easing:FLIP_EASING };
-    const leaving = flipped ? shadeFront : shadeBack;
-    const arriving = flipped ? shadeBack : shadeFront;
-    flipAnims = [
-      card.animate(paperFrames(from, to), opts),
-      leaving.animate([...SHADE_OUT, { offset:1, opacity:1 }], opts),
-      arriving.animate([{ offset:0, opacity:1 }, ...SHADE_IN], opts)
-    ];
-    const done = () => { flipAnims = []; };
-    flipAnims[0].onfinish = done;
-    flipAnims[0].oncancel = done;
+    // a click mid-turn just sends the same sheet back from where it is
+    if (turn.raf) return;
+    paper.style.setProperty('--paper-front', 'url("' + imgFront.src + '")');
+    paper.style.setProperty('--paper-back', 'url("' + imgBack.src + '")');
+    sizePaper();
+    turn.u = 1 - turn.target;
+    turn.bend = turn.bendVel = 0;
+    drawPaper(180 * ease(turn.u));
+    paper.classList.add('is-active');
+    card.classList.add('is-turning');
+    turn.last = performance.now();
+    turn.raf = requestAnimationFrame(stepTurn);
   }
 
   function setFlipped(flipped){

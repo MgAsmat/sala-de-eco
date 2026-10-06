@@ -1558,6 +1558,121 @@ body.ed-no-scroll { overflow: hidden; }
 .pilares__note--monetary .pilares__building { color: var(--monetary-dark); }
 .pilares__note--fiscal .pilares__building { color: var(--fiscal-dark); }
 
+/* "¿Qué pasa si un pilar falla?" — collapse simulation (driven by js/main.js) */
+.pilares__trigger {
+  margin-top: 18px;
+  background: var(--lintel);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(154, 34, 32, 0.28);
+}
+
+.pilares__trigger:hover {
+  background: var(--lintel-dark);
+}
+
+.pilares__trigger svg,
+.pilares__rebuild svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.pilares__trigger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pilares__column { position: relative; }
+
+.pilares__crack {
+  position: absolute;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.pilares__crack polyline {
+  fill: none;
+  stroke: #10263a;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: pilares-crack 0.5s ease-out forwards;
+}
+
+@keyframes pilares-crack {
+  to { stroke-dashoffset: 0; }
+}
+
+.pilares__shaft--fragment {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  pointer-events: none;
+}
+
+.pilares__capital { position: relative; z-index: 3; }
+
+.pilares.is-failing .p-block { position: relative; z-index: 4; pointer-events: none; }
+.pilares.is-failing .pilares__lintel { z-index: 3; }
+
+.pilares__note { transition: opacity 0.4s ease; }
+.pilares.is-collapsed .pilares__note { opacity: 0.3; }
+
+.pilares__alert {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 6;
+  width: min(460px, calc(100% - 8px));
+  padding: 20px 22px;
+  border-radius: var(--radius-lg);
+  border-top: 6px solid var(--lintel);
+  background: #fff;
+  box-shadow: var(--shadow-md), 0 18px 40px rgba(16, 38, 58, 0.18);
+  text-align: center;
+  transform: translateX(-50%);
+  animation: pilares-alert-in 0.45s cubic-bezier(0.2, 0.8, 0.3, 1.2);
+}
+
+.pilares__alert[hidden] { display: none; }
+
+@keyframes pilares-alert-in {
+  from { opacity: 0; transform: translate(-50%, -14px) scale(0.96); }
+}
+
+.pilares__alert-title {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  color: var(--lintel-dark);
+}
+
+.pilares__alert p {
+  margin: 0 0 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-700);
+}
+
+.pilares__alert .pilares__alert-moral {
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.pilares__rebuild {
+  margin-top: 4px;
+  background: var(--teal-700);
+  color: #fff;
+}
+
+.pilares__rebuild:hover {
+  background: var(--teal-900);
+}
+
 /* Build-up animation when the figure scrolls into view */
 @media (prefers-reduced-motion: no-preference) {
   .pilares .p-block,
@@ -1610,6 +1725,8 @@ body.ed-no-scroll { overflow: hidden; }
 }
 
 @media (max-width: 480px) {
+  .pilares__alert { padding: 16px 14px; }
+  .pilares__alert p { font-size: 0.84rem; }
   .pilares__shaft { padding: 16px 8px 18px; }
   .pilares__shaft h4 { font-size: 0.9rem; }
   .pilares__eq { font-size: 0.74rem; }

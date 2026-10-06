@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué es la balanza de pagos? — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b4f4a; --navy-deep:#08403c; --gold:#f4b400; --blue:#106f67; --teal:#3fc2b2; --teal-soft:#e8f8f6;
+    --paper:#f6faf9; --card:#ffffff; --border:#e0ece9; --text-muted:#4d6b67;
+    --ok:#24785a; --bad:#c0483e;
+    --shadow-md:0 8px 24px rgba(9,41,38,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h,90px);}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Inter',-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:880px;margin:0 auto;padding:24px 20px 64px;}
+
+  /* Encabezado y portada con el estilo de la Sala Educativa */
+  header.masthead{background:rgba(255,255,255,0.95);color:var(--navy-deep);border-bottom:1px solid var(--border);padding:14px 0;}
+  .masthead-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0;}
+  .brand-mark{display:grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#106f67,var(--navy-deep));color:#ffcb3d;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;font-family:'Poppins',sans-serif;}
+  .brand-text strong{font-size:15px;color:var(--navy-deep);}
+  .brand-text em{font-style:normal;font-weight:700;font-size:17px;color:#d99a00;}
+  .brand-text small{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);}
+  .back-link{flex:0 0 auto;font-weight:600;font-size:14px;color:#106f67;text-decoration:none;border:2px solid var(--blue);border-radius:999px;padding:8px 16px;white-space:nowrap;transition:background .15s ease;}
+  .back-link:hover{background:#e2f4f1;}
+  .back-link:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  @media (max-width:560px){.brand-text small{display:none;}.back-link{font-size:13px;padding:7px 12px;}.back-link .long{display:none;}}
+
+  .hero{background:radial-gradient(700px 320px at 50% -10%,rgba(63,194,178,0.20),transparent 70%),radial-gradient(500px 260px at 95% 20%,rgba(244,180,0,0.12),transparent 70%),var(--paper);color:var(--navy-deep);text-align:center;padding:44px 0 36px;}
+  .hero-inner{max-width:880px;margin:0 auto;padding:0 20px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:11.5px;color:#8a5f00;background:#fff3d6;padding:7px 16px;border-radius:999px;margin-bottom:14px;}
+  h1.title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,5vw,38px);line-height:1.1;margin:0 auto 12px;max-width:680px;color:var(--navy-deep);}
+  .hero-sub{color:#345350;font-size:17px;max-width:620px;margin:0 auto 20px;}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .chip{font-size:13px;font-weight:600;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--navy);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+
+  /* Navegación por secciones */
+  nav.secnav{position:sticky;top:0;z-index:50;background:rgba(246,250,249,0.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 4px 14px rgba(9,41,38,0.06);}
+  .secnav-inner{max-width:880px;margin:0 auto;padding:8px 20px;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;}
+  .nav-btn{min-width:0;font:inherit;font-size:13px;line-height:1.15;font-weight:600;color:var(--navy);background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:6px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;transition:background .15s ease,border-color .15s ease,color .15s ease;}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);padding:8px 12px;gap:5px;}.nav-btn{font-size:12px;padding:5px 2px;}}
+  .nav-btn .n{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--gold);color:#8a5f00;}
+  .nav-btn:hover{border-color:var(--blue);}
+  .nav-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .nav-btn[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .nav-btn[aria-selected="true"] .n{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
+  .nav-btn.star{border-color:var(--gold);}
+  .progress{height:3px;background:var(--border);}
+  .progress span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s ease;}
+
+  .panel{display:none;animation:fadeIn .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .pager{display:flex;justify-content:space-between;gap:12px;margin:4px 0 8px;}
+  .pager button{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .pager button.next{background:var(--navy);border-color:var(--navy);color:#fff;margin-left:auto;}
+  .pager button:hover{border-color:var(--blue);}
+  .pager button.next:hover{background:var(--navy-deep);}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:30px 32px;margin:0 0 24px;position:relative;z-index:1;}
+  @media (max-width:560px){.card{padding:24px 20px;}}
+  h2.section-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;line-height:1.2;color:var(--navy);margin:0 0 14px;display:flex;align-items:flex-start;gap:10px;}
+  h2.section-title .num{font-weight:700;color:var(--gold);font-size:15px;border:1.5px solid var(--gold);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  p{margin:0 0 14px;color:#345350;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--navy);font-weight:700;}
+  .subhead{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:0.015em;margin:24px 0 10px;}
+
+  /* Callouts */
+  .callout{margin:18px 0 4px;border-radius:10px;padding:14px 18px;border:1px solid var(--border);background:var(--paper);}
+  .callout p{font-size:15.5px;margin:0;}
+  .callout .label{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px;}
+  .callout.idea{border-left:4px solid var(--gold);} .callout.idea .label{color:#8a5f00;}
+  .callout.fact{border-left:4px solid var(--teal);} .callout.fact .label{color:#106f67;}
+  .callout.think{border-left:4px solid var(--blue);} .callout.think .label{color:var(--blue);}
+
+  /* Glossary */
+  .gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;}
+  @media (max-width:700px){.gloss-grid{grid-template-columns:1fr;}}
+  .gloss{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--paper);}
+  .gloss .emoji{font-size:26px;line-height:1;}
+  .gloss h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);margin:8px 0 4px;}
+  .gloss p{font-size:15px;margin:0;}
+  .gloss .eg{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
+
+  /* Chain */
+  .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:16px 0 4px;}
+  .chain-step{flex:1 1 130px;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:600;color:var(--navy);display:flex;flex-direction:column;justify-content:center;gap:4px;}
+  .chain-step .e{font-size:22px;}
+  .chain-step.first{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .chain-step.last{background:rgba(244,180,0,0.15);border-color:var(--gold);}
+  .chain-arrow{display:flex;align-items:center;color:var(--gold);font-weight:700;font-size:20px;}
+  @media (max-width:640px){.chain{flex-direction:column;}.chain-arrow{justify-content:center;transform:rotate(90deg);}}
+
+  /* Dual cards */
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;}
+  @media (max-width:640px){.dual-grid{grid-template-columns:1fr;}}
+  .dual-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);background:var(--paper);}
+  .dual-card.up{border-top:4px solid var(--teal);}
+  .dual-card.down{border-top:4px solid var(--navy);}
+  .dual-card .lead{font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+  .dual-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin:2px 0 8px;}
+  .dual-card p{font-size:15.5px;margin:0 0 8px;}
+  .dual-card p:last-child{margin-bottom:0;}
+  .result{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:700;border-radius:999px;padding:3px 12px;background:#fff;border:1px solid var(--border);color:var(--navy);}
+
+  /* Corridor */
+  .corridor{margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .corridor-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;}
+  .corridor-row.ceil{background:rgba(11,79,74,0.07);}
+  .corridor-row.mid{background:rgba(244,180,0,0.14);border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);}
+  .corridor-row.floor{background:rgba(63,194,178,0.12);}
+  .corridor-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);}
+  .corridor-label .small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:13.5px;color:var(--text-muted);}
+  .corridor-tag{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.025em;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap;}
+  .corridor-row.ceil .corridor-tag{background:var(--navy);color:#fff;}
+  .corridor-row.mid .corridor-tag{background:var(--gold);color:var(--navy-deep);}
+  .corridor-row.floor .corridor-tag{background:var(--teal-soft);color:var(--navy-deep);}
+  .tiny{font-size:13px;color:var(--text-muted);margin-top:8px;}
+
+  /* Simulator */
+  .sim{margin-top:14px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .sim label{font-weight:600;color:var(--navy);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .sim input[type=range]{width:100%;margin:12px 0 16px;accent-color:var(--gold);}
+  .bar{display:flex;height:40px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+  .bar .kept{background:var(--navy);color:#fff;}
+  .bar .lend{background:var(--teal-soft);color:var(--navy-deep);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+  .sim-legend{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:14.5px;flex-wrap:wrap;}
+  .sim-legend b{color:var(--navy);}
+
+  /* Summary table */
+  .summary-card{border-top:4px solid var(--gold);}
+  table.sum{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px;}
+  table.sum th{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
+  table.sum td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  table.sum tr:nth-child(even) td{background:var(--paper);}
+  table.sum a{color:var(--blue);font-weight:600;text-decoration:none;border-bottom:1px dashed var(--blue);cursor:pointer;}
+  @media (max-width:600px){
+    table.sum thead{display:none;}
+    table.sum tr{display:block;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+    table.sum td{display:block;border:none;}
+    table.sum td:first-child{background:#e2f4f1!important;color:var(--navy);font-weight:700;}
+    table.sum td:first-child a{color:#106f67;}
+  }
+
+  /* Quiz */
+  .q{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:14px;background:var(--paper);}
+  .q-title{font-weight:700;color:var(--navy);margin-bottom:10px;}
+  .opts{display:grid;gap:8px;}
+  .opts button{font:inherit;font-size:15.5px;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;cursor:pointer;color:var(--navy-deep);transition:border-color .15s ease;}
+  .opts button:hover:not(:disabled){border-color:var(--blue);}
+  .opts button:disabled{cursor:default;}
+  .opts button.right{border-color:var(--ok);background:rgba(47,143,107,0.08);}
+  .opts button.wrong{border-color:var(--bad);background:rgba(192,72,62,0.07);}
+  .fb{display:none;margin-top:10px;font-size:15px;}
+  .fb.show{display:block;}
+
+  .result-box{display:none;margin-top:20px;text-align:center;border-radius:14px;padding:22px 20px;border:2px solid var(--border);background:#fff;}
+  .result-box.show{display:block;animation:pop .45s cubic-bezier(.2,1.4,.4,1);}
+  @keyframes pop{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:none;}}
+  .result-box .emo{font-size:40px;line-height:1;}
+  .result-box .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:32.5px;line-height:1.1;margin:8px 0 4px;}
+  .result-box .detail{font-size:15.5px;color:#345350;margin:0 0 14px;}
+  .result-box.perfect{border-color:var(--gold);background:rgba(244,180,0,0.1);} .result-box.perfect .big{color:#8a5f00;}
+  .result-box.good{border-color:var(--ok);background:rgba(47,143,107,0.07);} .result-box.good .big{color:var(--ok);}
+  .result-box.retry{border-color:var(--blue);background:rgba(20,138,127,0.07);} .result-box.retry .big{color:var(--blue);}
+  .retry-btn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 18px;cursor:pointer;border:none;background:var(--navy);color:#fff;}
+  .retry-btn:hover{background:var(--navy-deep);}
+
+  /* Herramientas interactivas */
+  .tool{margin-top:20px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .tool-head{display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
+  .tool h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;line-height:1.2;margin:0 0 6px;color:var(--navy);}
+  .tool .hint{font-size:14.5px;color:var(--text-muted);margin:0 0 14px;}
+  .ctrl{margin-bottom:12px;}
+  .ctrl label{display:flex;justify-content:space-between;gap:8px;font-weight:600;color:var(--navy);font-size:15px;}
+  .ctrl input[type=range]{width:100%;accent-color:var(--gold);margin:6px 0 0;}
+  .seg{display:inline-flex;flex-wrap:wrap;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;background:#fff;}
+  .seg button{font:inherit;font-size:14.5px;font-weight:600;padding:8px 14px;border:none;background:transparent;color:var(--navy);cursor:pointer;}
+  .seg button.on{background:var(--navy);color:#fff;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px;}
+  .tbtn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .tbtn:hover:not(:disabled){border-color:var(--blue);}
+  .tbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .tbtn.teal{background:var(--teal-soft);border-color:var(--teal);color:var(--navy-deep);}
+  .tbtn:disabled{opacity:.45;cursor:default;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px;}
+  .stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+  .stat .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .stat .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;color:var(--navy);line-height:1.2;}
+  .msg{margin-top:12px;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600;background:#fff;border:1px solid var(--border);border-left:4px solid var(--blue);color:var(--navy-deep);}
+  .msg.ok{border-left-color:var(--ok);} .msg.warn{border-left-color:var(--bad);} .msg.gold{border-left-color:var(--gold);background:rgba(244,180,0,0.1);}
+
+  /* Medidor de tasas */
+  .gauge{position:relative;height:76px;margin:10px 12px 0;}
+  .gauge-track{position:absolute;left:0;right:0;top:30px;height:8px;border-radius:999px;background:#d6e8e4;}
+  .gauge-band{position:absolute;top:25px;height:18px;border-radius:6px;background:rgba(244,180,0,0.18);border:1px dashed var(--gold);}
+  .gauge-mark{position:absolute;top:20px;width:2px;height:28px;background:var(--navy);transform:translateX(-1px);}
+  .gauge-mark span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11.5px;font-weight:700;white-space:nowrap;color:var(--navy);}
+  .gauge-mark.meta{background:var(--gold);} .gauge-mark.meta span{color:#8a5f00;}
+  .gauge-needle{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:2;transition:left .45s cubic-bezier(.3,1.3,.5,1);}
+  .gauge-needle i{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--blue);box-shadow:0 2px 6px rgba(0,0,0,.2);}
+  .gauge-needle b{margin-top:4px;font-size:12.5px;background:var(--blue);color:#fff;border-radius:999px;padding:1px 8px;white-space:nowrap;}
+  .gauge-needle.hi i{border-color:var(--navy);} .gauge-needle.hi b{background:var(--navy);}
+  .gauge-needle.lo i{border-color:var(--teal);} .gauge-needle.lo b{background:var(--teal-soft);color:var(--navy-deep);}
+  .gauge-needle.ok i{border-color:var(--gold);} .gauge-needle.ok b{background:var(--gold);color:var(--navy-deep);}
+
+  /* Cadena animada */
+  .chain-step .fx{display:block;font-size:12.5px;font-weight:700;color:#8a5f00;opacity:0;max-height:0;transition:opacity .3s ease;}
+  .chain-step .fx.show{opacity:1;max-height:80px;margin-top:4px;}
+  .chain-step.first .fx{color:var(--gold);}
+  .chain-step{transition:box-shadow .2s ease;}
+  .chain-step.lit{box-shadow:0 0 0 3px var(--gold);}
+
+
+  #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100;}
+
+  footer.page-footer{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;}
+
+  /* Componentes con el estilo de la Sala Educativa */
+  nav.secnav{background:rgba(255,255,255,0.95);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .nav-btn{border-radius:14px;}
+  .nav-btn[aria-selected="true"]{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .progress span{background:linear-gradient(90deg,var(--gold),#1aa295);}
+  .card{border-radius:24px;box-shadow:0 10px 28px rgba(9,41,38,0.07);}
+  .summary-card{border-top:none;box-shadow:inset 0 4px 0 var(--gold),0 10px 28px rgba(9,41,38,0.07);}
+  h2.section-title .num{background:#fff3d6;color:#8a5f00;}
+  table.sum th,table.cmp th,table.cmp th:first-child{background:#e2f4f1;color:var(--navy);}
+  table.sum th:first-child,table.cmp th:first-child{border-radius:12px 0 0 12px;}
+  table.sum th:last-child,table.cmp th:last-child{border-radius:0 12px 12px 0;}
+  .pager button{border-radius:999px;padding:11px 22px;font-weight:700;border:2px solid var(--blue);color:#106f67;}
+  .pager button:hover{background:#e2f4f1;}
+  .pager button.next{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);box-shadow:0 10px 24px rgba(244,180,0,0.35);}
+  .pager button.next:hover{background:#ffcb3d;}
+  .chain-step.first{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .chain-step.first .fx{color:#fff3d6;}
+  .callout,.gloss,.dual-card,.sim,.tool,.q,.chain-step{border-radius:16px;}
+  .tbtn,.retry-btn,.seg{border-radius:999px;}
+  .tbtn.primary,.retry-btn{background:var(--blue);border-color:var(--blue);}
+  .tbtn.primary:hover:not(:disabled),.retry-btn:hover{background:var(--navy);}
+
+
+  /* ¿Entra o no entra? */
+  .classify{display:grid;gap:10px;}
+  .cl-item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--border);border-radius:14px;padding:12px 14px;transition:border-color .2s ease,background .2s ease;}
+  .cl-text{font-size:15px;font-weight:600;color:var(--navy-deep);}
+  .cl-fb{display:block;font-weight:500;font-size:13.5px;color:var(--text-muted);margin-top:2px;}
+  .cl-fb:empty{display:none;}
+  .cl-btns{display:flex;gap:6px;flex:0 0 auto;}
+  .cl-btns .tbtn{font-size:13.5px;padding:7px 12px;}
+  .cl-btns .tbtn:disabled{opacity:.4;}
+  .cl-btns .tbtn.picked{opacity:1;}
+  .cl-item.ok{border-left-color:var(--ok);background:rgba(47,143,107,0.06);}
+  .cl-item.ok .tbtn.picked{border-color:var(--ok);background:rgba(47,143,107,0.12);}
+  .cl-item.bad{border-left-color:var(--bad);background:rgba(192,72,62,0.05);}
+  .cl-item.bad .tbtn.picked{border-color:var(--bad);background:rgba(192,72,62,0.1);}
+  @media (max-width:600px){.cl-item{flex-direction:column;align-items:stretch;}.cl-btns .tbtn{flex:1;}}
+
+  /* Barras horizontales */
+  /* Barras horizontales (nominal vs real) */
+  .hbars{display:grid;gap:8px;margin:6px 0 4px;}
+  .hbar{display:grid;grid-template-columns:170px 1fr 84px;align-items:center;gap:10px;font-size:14px;}
+  .hbar-l{font-weight:600;color:var(--navy);}
+  .hbar-t{height:22px;border-radius:999px;background:#fff;border:1px solid var(--border);overflow:hidden;}
+  .hbar-t i{display:block;height:100%;border-radius:999px;transition:width .3s ease;}
+  .hbar.base i{background:#a9c2be;}
+  .hbar.nom i{background:var(--gold);}
+  .hbar.real i{background:var(--blue);}
+  .hbar b{text-align:right;color:var(--navy);}
+  @media (max-width:560px){.hbar{grid-template-columns:1fr 74px;}.hbar-l{grid-column:1 / -1;}}
+
+  /* Barra apilada */
+  /* Barra apilada C + I + G + X − M */
+  .stack{display:grid;gap:6px;margin:6px 0 4px;}
+  .stack-row{display:flex;height:30px;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--border);}
+  .stack-row span{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+
+  /* ===== Componentes comunes de las lecturas de Sector Externo ===== */
+  .hbar.c1 i{background:var(--navy);} .hbar.c2 i{background:var(--blue);} .hbar.c3 i{background:var(--teal);}
+  .hbar.c4 i{background:var(--gold);} .hbar.c5 i{background:rgba(192,72,62,0.75);} .hbar.c6 i{background:#a9c2be;}
+  .cl-item.three .cl-btns{flex-wrap:wrap;justify-content:flex-end;}
+  .scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:12px;}
+  .scen .tbtn{text-align:left;font-size:14.5px;line-height:1.3;}
+  .scen .tbtn.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .arrows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:4px;}
+  .arrow-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px 12px;text-align:center;}
+  .arrow-card .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .arrow-card .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;line-height:1.2;color:var(--text-muted);}
+  .arrow-card.up .v{color:var(--ok);} .arrow-card.down .v{color:var(--bad);} .arrow-card.eq .v{color:var(--text-muted);}
+  .arrow-card .s{font-size:12.5px;color:var(--text-muted);}
+
+  /* Navegación: 7 pestañas */
+  .secnav-inner{grid-template-columns:repeat(7,1fr);}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);}}
+
+  /* ===== Lectura Balanza de Pagos: herramientas propias ===== */
+  .gloss-grid.four{grid-template-columns:repeat(4,1fr);}
+  @media (max-width:860px){.gloss-grid.four{grid-template-columns:1fr 1fr;}}
+  @media (max-width:520px){.gloss-grid.four{grid-template-columns:1fr;}}
+  .tank-wrap{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center;margin-top:6px;}
+  @media (max-width:520px){.tank-wrap{grid-template-columns:80px 1fr;gap:12px;}}
+  .tank-wrap .stats{grid-template-columns:1fr;margin-top:0;}
+  .tank{position:relative;height:170px;border:3px solid var(--navy);border-top:none;border-radius:0 0 18px 18px;background:#fff;overflow:hidden;}
+  .tank-fill{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,var(--teal),var(--blue));transition:height .35s ease,background .35s ease;}
+  .tank-fill.down{background:linear-gradient(180deg,#e7a39c,var(--bad));}
+  .tank-line{position:absolute;left:0;right:0;border-top:2px dashed var(--gold);bottom:66.7%;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="../index.html" aria-label="Sala Educativa de Economía — Inicio"><span class="brand-mark" aria-hidden="true">SE</span><span class="brand-text"><strong>Sala Educativa de</strong><em>Economía</em><small>Banco Central de Reserva del Perú</small></span></a>
+    <a class="back-link" href="../sector-externo.html">← Volver<span class="long"> a Sector Externo</span></a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Sector Externo para secundaria</div>
+    <h1 class="title">La balanza de pagos: las cuentas del Perú con el mundo</h1>
+    <p class="hero-sub">Todo lo que el Perú vende, compra, recibe y paga al exterior queda anotado en una gran libreta. Aprende a leerla paso a paso.</p>
+    <div class="chips"><span class="chip">⏱ Lectura de 10 minutos</span><span class="chip">🎚 Incluye simuladores</span><span class="chip">✅ Mini quiz al final</span></div>
+  </div>
+</div>
+
+<nav class="secnav" aria-label="Secciones de la lectura">
+  <div class="secnav-inner" role="tablist" id="navList">
+    <button class="nav-btn star" role="tab" data-target="resumen"><span class="n">⚡</span>Resumen</button>
+    <button class="nav-btn" role="tab" data-target="conceptos"><span class="n">1</span>¿Qué registra?</button>
+    <button class="nav-btn" role="tab" data-target="corriente"><span class="n">2</span>Cuenta corriente</button>
+    <button class="nav-btn" role="tab" data-target="financiera"><span class="n">3</span>Cuenta financiera</button>
+    <button class="nav-btn" role="tab" data-target="resultado"><span class="n">4</span>Resultado y reservas</button>
+    <button class="nav-btn" role="tab" data-target="reservas"><span class="n">5</span>¿Para qué las reservas?</button>
+    <button class="nav-btn star" role="tab" data-target="quiz-sec"><span class="n">✓</span>Quiz</button>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+</nav>
+
+<div class="page">
+
+  <!-- RESUMEN -->
+  <section class="panel" id="resumen" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title">Empecemos con una pregunta</h2>
+      <p>Imagina que tu familia anotara en una libreta todo el dinero que entra (sueldos, ventas, regalos) y todo el que sale (compras, deudas, ahorros). Al final del año sabrías si les fue bien y de dónde vino cada sol.</p>
+      <p>Un país hace lo mismo con el resto del mundo, y esa libreta se llama <strong>balanza de pagos</strong>. En esta lectura vas a descubrir <strong>cómo se organiza, qué cuentas tiene y por qué importa para el BCRP</strong>.</p>
+    </div>
+    <div class="card summary-card">
+      <h2 class="section-title"><span class="num">⚡</span>Resumen en 30 segundos</h2>
+      <p>La <strong>balanza de pagos</strong> registra todas las transacciones económicas entre los <strong>residentes del Perú</strong> y los del <strong>resto del mundo</strong> durante un periodo.</p>
+      <table class="sum">
+        <thead><tr><th>Idea</th><th>¿Qué significa?</th></tr></thead>
+        <tbody>
+          <tr><td><a data-goto="conceptos">Residentes y no residentes</a></td><td>Importa dónde vive y opera cada quien, no su nacionalidad.</td></tr>
+          <tr><td><a data-goto="corriente">Cuenta corriente</a></td><td>Bienes, servicios, rentas y transferencias como las remesas.</td></tr>
+          <tr><td><a data-goto="financiera">Cuenta financiera</a></td><td>Inversiones y préstamos que entran o salen del país.</td></tr>
+          <tr><td><a data-goto="resultado">Resultado</a></td><td>Si entran más divisas de las que salen, suben las reservas internacionales del BCRP.</td></tr>
+          <tr><td><a data-goto="reservas">Reservas internacionales</a></td><td>Un colchón para enfrentar choques externos y evitar saltos bruscos del tipo de cambio.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout idea"><span class="label">🎯 La idea clave</span><p>Cada operación con el exterior genera una <strong>entrada</strong> o una <strong>salida de divisas</strong>. La balanza de pagos las ordena para saber de dónde vienen y a dónde van.</p></div>
+    </div>
+  </section>
+
+  <!-- 1. ¿Qué registra? -->
+  <section class="panel" id="conceptos" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">1</span>Una libreta con dos grandes cuentas</h2>
+      <p>Un <strong>residente</strong> es una persona o empresa que vive y desarrolla su actividad principal en el país, sin importar su nacionalidad. Las transacciones entre residentes y no residentes se agrupan en dos grandes cuentas:</p>
+      <div class="dual-grid">
+        <div class="dual-card up">
+          <div class="lead">Lo que producimos, ganamos y recibimos</div>
+          <h3>🧾 Cuenta corriente</h3>
+          <p>Comercio de <strong>bienes y servicios</strong>, <strong>rentas</strong> (utilidades e intereses) y <strong>transferencias</strong> como las remesas.</p>
+        </div>
+        <div class="dual-card down">
+          <div class="lead">Lo que invertimos y nos prestamos</div>
+          <h3>🏦 Cuenta financiera</h3>
+          <p><strong>Inversiones</strong> y <strong>préstamos</strong>: capitales que entran al país o que salen de él.</p>
+        </div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿En qué cuenta se anota?</h4>
+        <p class="hint">Decide en qué cuenta de la balanza de pagos se registra cada operación.</p>
+        <div class="classify" id="clsCta"></div>
+        <div class="msg" id="clsCtaMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Cuenta corriente -->
+  <section class="panel" id="corriente" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>La cuenta corriente, pieza por pieza</h2>
+      <div class="gloss-grid four">
+        <div class="gloss"><div class="emoji">🚢</div><h3>Balanza comercial</h3><p>Exportaciones menos importaciones de <strong>bienes</strong>.</p></div>
+        <div class="gloss"><div class="emoji">✈</div><h3>Servicios</h3><p>Turismo, transporte, fletes, seguros y otros servicios.</p></div>
+        <div class="gloss"><div class="emoji">💼</div><h3>Ingreso primario</h3><p><strong>Utilidades e intereses</strong> que se pagan o reciben del exterior.</p></div>
+        <div class="gloss"><div class="emoji">💌</div><h3>Ingreso secundario</h3><p>Transferencias sin contraparte, sobre todo las <strong>remesas</strong>.</p></div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Arma la cuenta corriente</h4>
+        <p class="hint">Mueve cada componente (en miles de millones de US$, cifras de ejemplo) y mira el saldo de la cuenta corriente.</p>
+        <div class="ctrl"><label for="cBC"><span>🚢 Balanza comercial</span><span id="cBCVal"></span></label><input type="range" id="cBC" min="-10" max="40" step="1" value="35"></div>
+        <div class="ctrl"><label for="cSV"><span>✈ Servicios</span><span id="cSVVal"></span></label><input type="range" id="cSV" min="-15" max="5" step="1" value="-8"></div>
+        <div class="ctrl"><label for="cIP"><span>💼 Ingreso primario</span><span id="cIPVal"></span></label><input type="range" id="cIP" min="-30" max="0" step="1" value="-23"></div>
+        <div class="ctrl"><label for="cIS"><span>💌 Ingreso secundario</span><span id="cISVal"></span></label><input type="range" id="cIS" min="0" max="12" step="1" value="8"></div>
+        <div class="hbars" id="ccBars"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Saldo de la cuenta corriente</div><div class="v" id="ccV"></div></div>
+          <div class="stat"><div class="k">Resultado</div><div class="v" id="ccR"></div></div>
+        </div>
+        <div class="msg" id="ccMsg"></div>
+      </div>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>En 2025, la cuenta corriente del Perú tuvo un superávit de <strong>US$ 12 005 millones</strong>, frente a un déficit de US$ 10 060 millones en 2022. El ingreso primario suele ser negativo porque las empresas con dueños extranjeros (por ejemplo, las mineras) envían sus <strong>utilidades</strong> al exterior.</p></div>
+    </div>
+  </section>
+
+  <!-- 3. Cuenta financiera -->
+  <section class="panel" id="financiera" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">3</span>La cuenta financiera: capitales que van y vienen</h2>
+      <p>La cuenta financiera registra cómo se <strong>financia</strong> el país con el exterior. Incluye las operaciones del <strong>sector privado</strong> y del <strong>sector público</strong>:</p>
+      <div class="gloss-grid">
+        <div class="gloss"><div class="emoji">🏭</div><h3>Inversión directa</h3><p>Una empresa extranjera construye o compra una empresa en el Perú para operarla a largo plazo.</p></div>
+        <div class="gloss"><div class="emoji">📈</div><h3>Inversión de cartera</h3><p>Compra y venta de <strong>acciones y bonos</strong>, sin buscar dirigir la empresa.</p></div>
+        <div class="gloss"><div class="emoji">🤝</div><h3>Préstamos</h3><p>Créditos que bancos u organismos del exterior otorgan a empresas o al Estado, y su pago.</p></div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Entran o salen capitales?</h4>
+        <p class="hint">Para cada operación, decide si trae capitales al Perú o los lleva al exterior.</p>
+        <div class="classify" id="clsCF"></div>
+        <div class="msg" id="clsCFMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Resultado y reservas -->
+  <section class="panel" id="resultado" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">4</span>El resultado: ¿suben o bajan las reservas?</h2>
+      <p>Si se suman la cuenta corriente y la cuenta financiera, se obtiene el <strong>resultado de la balanza de pagos</strong>. Ese resultado se refleja en las <strong>Reservas Internacionales Netas (RIN)</strong> que administra el BCRP: si entran más divisas de las que salen, las reservas <strong>aumentan</strong>; si salen más, <strong>disminuyen</strong>.</p>
+      <div class="chain">
+        <div class="chain-step first"><span class="e">🧾</span>Cuenta corriente</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-step"><span class="e">🏦</span>Cuenta financiera</div>
+        <div class="chain-arrow">=</div>
+        <div class="chain-step last"><span class="e">🛡</span>Variación de las RIN</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Llena (o vacía) el tanque de reservas</h4>
+        <p class="hint">Las reservas empiezan el año en US$ 80 mil millones. Mueve las cuentas (cifras de ejemplo) y mira cómo terminan.</p>
+        <div class="ctrl"><label for="rCC"><span>🧾 Cuenta corriente</span><span id="rCCVal"></span></label><input type="range" id="rCC" min="-15" max="15" step="1" value="-4"></div>
+        <div class="ctrl"><label for="rCF"><span>🏦 Cuenta financiera (entrada neta de capitales)</span><span id="rCFVal"></span></label><input type="range" id="rCF" min="-15" max="15" step="1" value="7"></div>
+        <div class="tank-wrap">
+          <div class="tank" aria-hidden="true"><div class="tank-fill" id="tankFill"></div><div class="tank-line"></div></div>
+          <div class="stats">
+            <div class="stat"><div class="k">Resultado de la balanza de pagos</div><div class="v" id="rRes"></div></div>
+            <div class="stat"><div class="k">Reservas al final del año</div><div class="v" id="rFin"></div></div>
+          </div>
+        </div>
+        <div class="msg" id="rMsg"></div>
+        <p class="tiny">Para simplificar, se omiten los errores y omisiones netos y el financiamiento excepcional.</p>
+      </div>
+      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>¿Puede un país tener déficit en cuenta corriente y aun así aumentar sus reservas? ¡Sí! Si le entran suficientes capitales por la cuenta financiera, como inversión extranjera, el resultado puede ser positivo.</p></div>
+    </div>
+  </section>
+
+  <!-- 5. ¿Para qué las reservas? -->
+  <section class="panel" id="reservas" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>¿Para qué sirven las reservas internacionales?</h2>
+      <p>Las reservas internacionales son activos en moneda extranjera (dólares, oro y otros) que administra el BCRP. Funcionan como un <strong>colchón de seguridad</strong>: si de pronto salen muchos dólares del país, el BCRP puede vender parte de sus reservas para evitar que el tipo de cambio <strong>salte bruscamente</strong>.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>Llega un choque externo</h4>
+        <p class="hint">Una crisis en el mundo hace que muchos inversionistas saquen sus dólares del Perú. El tipo de cambio estaba en S/ 3,70. ¿Qué pasa si el país tiene o no tiene reservas?</p>
+        <div class="seg" id="shSeg"><button type="button" data-m="0">🚫 Sin reservas</button><button type="button" data-m="1">🛡 Con reservas</button></div>
+        <div class="hbars" id="shBars"></div>
+        <div class="msg" id="shMsg">Elige una opción.</div>
+        <p class="tiny">Cifras solo de ejemplo.</p>
+      </div>
+      <div class="callout idea"><span class="label">💡 Piénsalo así</span><p>Es como el fondo de emergencia de una familia: si un mes los ingresos caen de golpe, ese ahorro permite seguir pagando las cuentas sin entrar en pánico.</p></div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="panel" id="quiz-sec" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">✓</span>Pon a prueba lo que aprendiste</h2>
+      <p>Elige una respuesta en cada pregunta.</p>
+      <div id="quiz"></div>
+      <div class="result-box" id="resultBox" role="status" aria-live="polite">
+        <div class="emo" id="resultEmo"></div>
+        <div class="big" id="resultTitle"></div>
+        <p class="detail" id="resultDetail"></p>
+        <button type="button" class="retry-btn" id="retryBtn">↻ Intentar de nuevo</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">Banco Central de Reserva del Perú · Serie Lecturas · Educación económica</footer>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+  // Ejecuta una inicialización sin que un error detenga al resto de la página
+  function safe(fn){ try { fn(); } catch (e) { console.warn('Error al iniciar herramienta:', e); } }
+
+  /* ===== Navegación por secciones ===== */
+  const panels = [...document.querySelectorAll('.panel')];
+  const navBtns = [...document.querySelectorAll('.nav-btn')];
+  const nav = document.querySelector('nav.secnav');
+  const setNavH = () => document.documentElement.style.setProperty('--nav-h', (nav.offsetHeight + 12) + 'px');
+  safe(setNavH); addEventListener('resize', setNavH);
+  const labels = navBtns.map(b => b.lastChild.textContent.trim());
+
+  // Botones Anterior / Siguiente al final de cada sección
+  panels.forEach((p, i) => {
+    const pager = document.createElement('div'); pager.className = 'pager';
+    if (i > 0) {
+      const prev = document.createElement('button'); prev.type = 'button';
+      prev.textContent = '← ' + labels[i - 1];
+      prev.onclick = () => show(panels[i - 1].id, true);
+      pager.appendChild(prev);
+    }
+    if (i < panels.length - 1) {
+      const next = document.createElement('button'); next.type = 'button'; next.className = 'next';
+      next.textContent = labels[i + 1] + ' →';
+      next.onclick = () => show(panels[i + 1].id, true);
+      pager.appendChild(next);
+    }
+    p.appendChild(pager);
+  });
+
+  function show(id, scroll, init) {
+    const idx = panels.findIndex(p => p.id === id);
+    if (idx < 0) return;
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    navBtns.forEach((b, i) => {
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      b.tabIndex = i === idx ? 0 : -1;
+    });
+    document.getElementById('progressBar').style.width = ((idx + 1) / panels.length * 100) + '%';
+    // Al cargar no se reescribe el #: el navegador saltaría a esa sección y ocultaría la portada.
+    if (!init) try { if (history.replaceState && location.protocol !== 'about:') history.replaceState(null, '', '#' + id); } catch (e) {}
+    if (scroll) window.scrollTo({top: nav.offsetTop, behavior: 'smooth'});
+  }
+
+  navBtns.forEach((b, i) => {
+    b.addEventListener('click', () => show(b.dataset.target, true));
+    b.addEventListener('keydown', e => {
+      let j = null;
+      if (e.key === 'ArrowRight') j = Math.min(i + 1, navBtns.length - 1);
+      if (e.key === 'ArrowLeft') j = Math.max(i - 1, 0);
+      if (j !== null) { e.preventDefault(); navBtns[j].focus(); show(navBtns[j].dataset.target, false); }
+    });
+  });
+  document.querySelectorAll('[data-goto]').forEach(a => a.addEventListener('click', () => show(a.dataset.goto, true)));
+
+  let start = ''; try { start = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+  safe(() => show(panels.some(p => p.id === start) ? start : 'resumen', false, true));
+
+
+  /* ===== Utilidades ===== */
+  const $ = id => document.getElementById(id);
+  const num = (v, d = 0) => v.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
+  const pct = v => (v > 0 ? '+' : '') + num(v, 1) + ' %';
+  function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
+
+  /* ===== Herramientas comunes ===== */
+  const usd = (v, d = 0) => (v < 0 ? '− ' : '') + 'US$ ' + num(Math.abs(v), d);
+  const sol = (v, d = 0) => (v < 0 ? '− ' : '') + 'S/ ' + num(Math.abs(v), d);
+  // Clasificador: cada caso tiene el texto (t), la opción correcta (a) y la explicación (e)
+  function classify(boxId, msgId, cases, opts, winText){
+    const box = $(boxId); box.innerHTML = '';
+    let done = 0, ok = 0;
+    setMsg(msgId, `Responde los ${cases.length} casos.`);
+    cases.forEach(c => {
+      const row = document.createElement('div'); row.className = 'cl-item' + (opts.length > 2 ? ' three' : '');
+      row.innerHTML = '<div class="cl-text"><span></span><small class="cl-fb"></small></div><div class="cl-btns"></div>';
+      row.querySelector('.cl-text span').textContent = c.t;
+      const btns = opts.map((o, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'tbtn'; b.textContent = o;
+        b.addEventListener('click', () => {
+          btns.forEach(x => x.disabled = true);
+          const good = i === c.a;
+          row.classList.add(good ? 'ok' : 'bad'); b.classList.add('picked');
+          row.querySelector('.cl-fb').textContent = (good ? '¡Correcto! ' : 'Respuesta: ' + opts[c.a].replace(/^\W+\s*/, '') + '. ') + c.e;
+          done++; if (good) ok++;
+          if (done === cases.length) setMsg(msgId, `Acertaste ${ok} de ${cases.length}. ` + (ok === cases.length ? winText : 'Lee las explicaciones de los casos en rojo.'), ok === cases.length ? 'gold' : 'ok');
+        });
+        row.querySelector('.cl-btns').appendChild(b);
+        return b;
+      });
+      box.appendChild(row);
+    });
+  }
+  // Barras horizontales: filas [etiqueta, valor, clase de color, texto]
+  function drawBars(id, rows, max){
+    $(id).innerHTML = rows.map(([l, v, c, t]) => `<div class="hbar ${c}"><span class="hbar-l">${l}</span><span class="hbar-t"><i style="width:${Math.max(0, Math.min(100, v / max * 100)).toFixed(1)}%"></i></span><b>${t}</b></div>`).join('');
+  }
+  // Tarjeta con flecha: dir = 1 sube, -1 baja, 0 sin cambio
+  function arrowCard(k, dir, s){
+    const cls = dir > 0 ? 'up' : dir < 0 ? 'down' : 'eq', v = dir > 0 ? '▲' : dir < 0 ? '▼' : '＝';
+    return `<div class="arrow-card ${cls}"><div class="k">${k}</div><div class="v">${v}</div>${s ? `<div class="s">${s}</div>` : ''}</div>`;
+  }
+  // Cadena animada: ilumina los pasos uno a uno
+  function chainPlay(btnId, chainId, msgId, endText){
+    const steps = [...document.querySelectorAll('#' + chainId + ' .chain-step')];
+    let timer = null;
+    $(btnId).addEventListener('click', () => {
+      clearInterval(timer);
+      steps.forEach(s => { s.classList.remove('lit'); s.querySelector('.fx') && s.querySelector('.fx').classList.remove('show'); });
+      setMsg(msgId, 'Mira cómo avanza el efecto…');
+      let k = 0;
+      const step = () => {
+        if (k > 0) steps[k - 1].classList.remove('lit');
+        if (k === steps.length) { clearInterval(timer); setMsg(msgId, endText, 'ok'); return; }
+        steps[k].classList.add('lit');
+        const fx = steps[k].querySelector('.fx'); if (fx) fx.classList.add('show');
+        k++;
+      };
+      step(); timer = setInterval(step, 900);
+    });
+  }
+
+  /* ===== 1. ¿En qué cuenta? ===== */
+  safe(() => classify('clsCta', 'clsCtaMsg', [
+    {t: '⛏ Una minera exporta cobre a China', a: 0, e: 'Es comercio de bienes: parte de la balanza comercial.'},
+    {t: '💌 Una peruana en Italia envía dinero a su madre en Huancayo', a: 0, e: 'Es una remesa: ingreso secundario de la cuenta corriente.'},
+    {t: '🏭 Una empresa extranjera construye una planta en el Perú', a: 1, e: 'Es inversión directa: entran capitales.'},
+    {t: '📈 Un fondo extranjero compra bonos del gobierno peruano', a: 1, e: 'Es inversión de cartera.'},
+    {t: '🏨 Un turista japonés paga su hotel en Cusco', a: 0, e: 'Es una exportación de servicios.'},
+    {t: '💼 Una empresa en el Perú envía utilidades a sus dueños extranjeros', a: 0, e: 'Es una renta: ingreso primario de la cuenta corriente.'}
+  ], ['🧾 Corriente', '🏦 Financiera'], '¡Sabes ordenar la libreta del país! 🏆'));
+
+  /* ===== 2. Cuenta corriente ===== */
+  const CC = [['cBC', '🚢 Comercial'], ['cSV', '✈ Servicios'], ['cIP', '💼 Ingreso primario'], ['cIS', '💌 Ingreso secundario']];
+  function updCC(){
+    let s = 0;
+    const rows = CC.map(([id, l]) => { const v = +$(id).value; s += v; $(id + 'Val').textContent = usd(v) + ' mil mill.'; return [l, Math.abs(v), v >= 0 ? 'c3' : 'c5', usd(v)]; });
+    drawBars('ccBars', rows, 40);
+    $('ccV').textContent = usd(s) + ' mil mill.';
+    $('ccR').textContent = s > 0 ? 'Superávit' : s < 0 ? 'Déficit' : 'Equilibrio';
+    if (s > 0) setMsg('ccMsg', '✅ Por bienes, servicios, rentas y transferencias entran más divisas de las que salen.', 'ok');
+    else if (s < 0) setMsg('ccMsg', '⚠ Salen más divisas de las que entran por la cuenta corriente: el país necesita financiarse con capitales del exterior o con sus reservas.', 'warn');
+    else setMsg('ccMsg', '⚖ Entradas y salidas de la cuenta corriente se compensan.', 'gold');
+  }
+  CC.forEach(([id]) => $(id).addEventListener('input', updCC)); safe(updCC);
+
+  /* ===== 3. ¿Entran o salen capitales? ===== */
+  safe(() => classify('clsCF', 'clsCFMsg', [
+    {t: '🏗 Una empresa canadiense invierte en una nueva mina en el Perú', a: 0, e: 'Es inversión directa extranjera: entran capitales.'},
+    {t: '📊 Un peruano compra acciones de una empresa en Estados Unidos', a: 1, e: 'Un residente invierte afuera: salen capitales.'},
+    {t: '🏛 El gobierno peruano vende bonos a inversionistas del exterior', a: 0, e: 'El Estado recibe financiamiento externo: entran capitales.'},
+    {t: '💸 Una empresa peruana paga un préstamo a un banco del exterior', a: 1, e: 'Pagar una deuda externa es una salida de capitales.'},
+    {t: '🏦 Un banco alemán presta dinero a una empresa peruana', a: 0, e: 'Es un préstamo del exterior: entran capitales.'},
+    {t: '🧓 Un fondo de pensiones peruano invierte en bonos de otros países', a: 1, e: 'Los fondos salen del Perú hacia el exterior.'}
+  ], ['⬇ Entran', '⬆ Salen'], '¡Sigues el rastro del capital! 🏆'));
+
+  /* ===== 4. Resultado y RIN ===== */
+  const RIN0 = 80;
+  function updRIN(){
+    const cc = +$('rCC').value, cf = +$('rCF').value, r = cc + cf, fin = RIN0 + r;
+    $('rCCVal').textContent = usd(cc) + ' mil mill.'; $('rCFVal').textContent = usd(cf) + ' mil mill.';
+    $('rRes').textContent = usd(r) + ' mil mill.';
+    $('rFin').textContent = usd(fin) + ' mil mill.';
+    const f = $('tankFill'); f.style.height = (fin / 120 * 100).toFixed(1) + '%'; f.classList.toggle('down', r < 0);
+    if (r > 0) setMsg('rMsg', `⬆ Entraron más divisas de las que salieron: las reservas suben US$ ${num(r)} mil millones.` + (cc < 0 ? ' ¡Aunque la cuenta corriente tuvo déficit!' : ''), cc < 0 ? 'gold' : 'ok');
+    else if (r < 0) setMsg('rMsg', `⬇ Salieron más divisas de las que entraron: las reservas bajan US$ ${num(-r)} mil millones.`, 'warn');
+    else setMsg('rMsg', '⚖ Las entradas y salidas se compensan: las reservas no cambian.', '');
+  }
+  ['rCC', 'rCF'].forEach(id => $(id).addEventListener('input', updRIN)); safe(updRIN);
+
+  /* ===== 5. Choque externo ===== */
+  const SH = [
+    {tc: 4.30, m: '😟 Sin reservas, nadie puede ofrecer los dólares que todos quieren: el tipo de cambio salta a S/ 4,30. Quienes tienen deudas en dólares o compran productos importados sufren mucho.', c: 'warn'},
+    {tc: 3.82, m: '🛡 El BCRP vende parte de sus reservas: el tipo de cambio sube solo a S/ 3,82 y lo hace de forma ordenada. Las familias y empresas tienen tiempo para adaptarse.', c: 'ok'}
+  ];
+  function updSh(k){
+    $('shSeg').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', i === k));
+    const s = SH[k];
+    drawBars('shBars', [['Antes del choque', 3.70, 'c6', 'S/ 3,70'], ['Después del choque', s.tc, k ? 'c3' : 'c5', 'S/ ' + num(s.tc, 2)]], 4.5);
+    setMsg('shMsg', s.m, s.c);
+  }
+  safe(() => $('shSeg').querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => updSh(i))));
+
+  /* ===== Confeti ===== */
+  const cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
+  let pieces = [], rafId = null;
+  function resizeCanvas(){ const d = window.devicePixelRatio || 1; cv.width = innerWidth * d; cv.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+  addEventListener('resize', resizeCanvas); safe(resizeCanvas);
+  function launchConfetti(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const colors = ['#f4b400', '#3fc2b2', '#148a7f', '#0b4f4a', '#c0483e', '#ffffff'];
+    const W = innerWidth, H = innerHeight;
+    for (let k = 0; k < 180; k++) {
+      const fromLeft = k % 2 === 0;
+      pieces.push({
+        x: fromLeft ? -10 : W + 10, y: H * (0.35 + Math.random() * 0.3),
+        vx: (fromLeft ? 1 : -1) * (4 + Math.random() * 8), vy: -(7 + Math.random() * 9),
+        w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+        rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.3,
+        c: colors[Math.floor(Math.random() * colors.length)], life: 0
+      });
+    }
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+  function tick(){
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    pieces.forEach(p => {
+      p.vy += 0.25; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - p.life / 220);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life / 8)));
+      ctx.restore();
+    });
+    pieces = pieces.filter(p => p.y < innerHeight + 40 && p.life < 220);
+    if (pieces.length) rafId = requestAnimationFrame(tick);
+    else { rafId = null; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+  }
+
+
+  /* ===== Quiz ===== */
+  const Q = [
+    {q:'1. ¿Qué registra la balanza de pagos?',
+     o:['Solo las exportaciones del país','Todas las transacciones económicas entre residentes del país y el resto del mundo','El presupuesto del gobierno'], a:1,
+     e:'Incluye bienes, servicios, rentas, transferencias, inversiones y préstamos con el exterior.'},
+    {q:'2. Las remesas que envían los peruanos que viven en el exterior se registran en…',
+     o:['La cuenta financiera','El ingreso secundario de la cuenta corriente','La balanza comercial'], a:1,
+     e:'Son transferencias sin contraparte: van en el ingreso secundario.'},
+    {q:'3. Una empresa extranjera compra una fábrica en Arequipa para operarla. ¿Qué es?',
+     o:['Inversión directa extranjera','Una exportación','Una remesa'], a:0,
+     e:'Es inversión directa: forma parte de la cuenta financiera.'},
+    {q:'4. Si la cuenta corriente tiene un déficit de 5 y la cuenta financiera una entrada neta de 8, ¿qué pasa con las reservas?',
+     o:['Bajan 13','Suben 3','No cambian'], a:1,
+     e:'−5 + 8 = +3: entran más divisas de las que salen y las reservas suben.'},
+    {q:'5. ¿Para qué sirven las reservas internacionales del BCRP?',
+     o:['Para pagar los sueldos de los trabajadores públicos','Para enfrentar choques externos y evitar saltos bruscos del tipo de cambio','Para comprar acciones de empresas peruanas'], a:1,
+     e:'Son un colchón de seguridad frente a salidas repentinas de dólares.'}
+  ];
+  let answered = 0, correct = 0;
+  const quiz = document.getElementById('quiz');
+  const box = document.getElementById('resultBox');
+
+  function buildQuiz(){
+    answered = 0; correct = 0; quiz.innerHTML = '';
+    box.className = 'result-box';
+    Q.forEach(item => {
+      const qb = document.createElement('div'); qb.className = 'q';
+      qb.innerHTML = `<div class="q-title">${item.q}</div><div class="opts"></div><div class="fb"></div>`;
+      const opts = qb.querySelector('.opts'), fb = qb.querySelector('.fb');
+      item.o.forEach((txt, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
+        b.addEventListener('click', () => {
+          opts.querySelectorAll('button').forEach((x, j) => { x.disabled = true; if (j === item.a) x.classList.add('right'); });
+          const ok = i === item.a;
+          if (!ok) b.classList.add('wrong');
+          fb.innerHTML = (ok ? '<strong style="color:var(--ok)">¡Correcto!</strong> ' : '<strong style="color:var(--bad)">Casi.</strong> ') + item.e;
+          fb.classList.add('show');
+          answered++; if (ok) correct++;
+          if (answered === Q.length) showResult();
+        });
+        opts.appendChild(b);
+      });
+      quiz.appendChild(qb);
+    });
+  }
+
+  function showResult(){
+    const total = Q.length;
+    let cls, emo, title, detail;
+    if (correct === total) {
+      cls = 'perfect'; emo = '🎉'; title = '¡Perfecto!';
+      detail = `Respondiste bien las ${total} preguntas. ¡Ya sabes leer la balanza de pagos!`;
+    } else if (correct >= total - 2) {
+      cls = 'good'; emo = '👏'; title = '¡Muy bien!';
+      detail = `Obtuviste ${correct} de ${total}. Revisa las explicaciones de las que fallaste.`;
+    } else {
+      cls = 'retry'; emo = '💪'; title = 'Sigue intentando';
+      detail = `Obtuviste ${correct} de ${total}. Repasa las secciones 1 a 5 y vuelve a intentarlo.`;
+    }
+    document.getElementById('resultEmo').textContent = emo;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultDetail').textContent = detail;
+    box.className = 'result-box show ' + cls;
+    box.scrollIntoView({behavior: 'smooth', block: 'center'});
+    if (cls === 'perfect') setTimeout(launchConfetti, 250);
+  }
+
+  document.getElementById('retryBtn').addEventListener('click', () => {
+    buildQuiz();
+    document.getElementById('quiz-sec').scrollIntoView({behavior: 'smooth'});
+  });
+  safe(buildQuiz);
+</script>
+</body>
+</html>

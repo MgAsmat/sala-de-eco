@@ -3579,3 +3579,69 @@ body.ed-no-scroll { overflow: hidden; }
   font-size: 1.35rem;
   padding-bottom: 4px;
 }
+
+/* Cono Monetario: enlaces con imagen a la ficha de cada moneda */
+.coin-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.coin-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--teal-50);
+  text-align: center;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.coin-link:hover,
+.coin-link:focus-visible {
+  border-color: var(--teal-600);
+  background: var(--surface);
+  transform: translateY(-2px);
+}
+
+.coin-link__img {
+  width: 74px;
+  height: 74px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--teal-100) 75%);
+  box-shadow: 0 6px 14px rgba(9, 41, 38, 0.12);
+}
+
+.coin-link__img img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+}
+
+.coin-link:hover .coin-link__img img {
+  transform: rotate(-12deg) scale(1.05);
+}
+
+.coin-link strong {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  color: var(--teal-900);
+}
+
+.coin-link span:last-child {
+  font-size: 0.78rem;
+  color: var(--ink-500);
+}
+
+@media (max-width: 420px) {
+  .coin-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,341 @@
+/* =========================================================
+   Fichas del Cono Monetario — estilo de la Sala Educativa
+   ========================================================= */
+:root {
+  --teal-900: #08403c;
+  --teal-800: #0b4f4a;
+  --teal-700: #106f67;
+  --teal-400: #3fc2b2;
+  --teal-100: #e2f4f1;
+  --teal-50: #f2faf8;
+  --gold-500: #f4b400;
+  --gold-400: #ffcb3d;
+  --gold-100: #fff3d6;
+  --gold-ink: #8a5f00;
+  --gold: var(--gold-500);
+  --ink-900: #0e2422;
+  --ink-700: #345350;
+  --ink-500: #4d6b67;
+  --bg: #f6faf9;
+  --surface: #ffffff;
+  --border: #e0ece9;
+  --shadow-sm: 0 2px 10px rgba(9, 41, 38, 0.06);
+  --shadow-md: 0 10px 28px rgba(9, 41, 38, 0.07);
+  --font-head: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink-900);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page { max-width: 920px; margin: 0 auto; padding: 8px 20px 64px; }
+
+/* ---------- encabezado ---------- */
+header.masthead {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.masthead-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--teal-700), var(--teal-900));
+  color: var(--gold-400);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 17px;
+  box-shadow: var(--shadow-sm);
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; font-family: var(--font-head); }
+.brand-text strong { font-size: 15px; color: var(--teal-900); }
+.brand-text em { font-style: normal; font-weight: 700; font-size: 17px; color: #d99a00; }
+.brand-text small { font-family: var(--font-body); font-size: 11px; color: var(--ink-500); }
+.back-link {
+  flex: 0 0 auto;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--teal-700);
+  text-decoration: none;
+  border: 2px solid var(--teal-700);
+  border-radius: 999px;
+  padding: 8px 16px;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.back-link:hover { background: var(--teal-100); }
+.back-link:focus-visible { outline: 3px solid var(--teal-700); outline-offset: 2px; }
+@media (max-width: 560px) {
+  .brand-text small { display: none; }
+  .back-link { font-size: 13px; padding: 7px 12px; }
+  .back-link .long { display: none; }
+}
+
+/* ---------- portada ---------- */
+.hero {
+  background:
+    radial-gradient(700px 320px at 50% -10%, rgba(63, 194, 178, 0.2), transparent 70%),
+    radial-gradient(500px 260px at 95% 20%, rgba(244, 180, 0, 0.12), transparent 70%),
+    var(--bg);
+  text-align: center;
+  padding: 44px 0 32px;
+}
+.hero-inner { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  color: var(--gold-ink);
+  background: var(--gold-100);
+  padding: 7px 16px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+h1.title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1.1;
+  margin: 0 0 12px;
+  color: var(--teal-900);
+}
+.hero-sub { color: var(--ink-700); font-size: 17px; max-width: 620px; margin: 0 auto; }
+
+.timeline { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.timeline a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--teal-800);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 15px 6px 7px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease;
+}
+.timeline a:hover { border-color: var(--teal-700); }
+.timeline a .n {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold-400);
+  color: var(--teal-900);
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- tarjetas ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  padding: 32px 34px;
+  margin: 0 0 24px;
+}
+@media (max-width: 600px) { .card { padding: 24px 20px; border-radius: 18px; } }
+section.block { margin-top: 28px; scroll-margin-top: 20px; }
+section.block:first-of-type { margin-top: 0; }
+
+.era-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  background: var(--gold-100);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 12px;
+}
+h2.section-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--teal-900);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+h2.section-title .num {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-ink);
+  background: var(--gold-100);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+p { margin: 0 0 14px; color: var(--ink-700); }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--teal-900); font-weight: 700; }
+
+/* ---------- monedas ---------- */
+.coin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 600px) { .coin-grid { grid-template-columns: 1fr; } }
+.coin-face { text-align: center; }
+.coin-tag {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-800);
+  background: var(--teal-100);
+  border-radius: 999px;
+  padding: 5px 16px;
+  margin-bottom: 12px;
+}
+.coin-frame {
+  width: 210px;
+  height: 210px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--teal-50) 70%);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 6px rgba(9, 41, 38, 0.05), 0 12px 26px rgba(9, 41, 38, 0.1);
+}
+.coin-frame img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(9, 41, 38, 0.18));
+}
+.coin-caption { font-size: 13.5px; color: var(--ink-500); max-width: 240px; margin: 4px auto 0; }
+
+/* ---------- características técnicas ---------- */
+.specs-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.specs-table th {
+  background: var(--teal-100);
+  color: var(--teal-900);
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 13px;
+  text-align: left;
+  padding: 12px 16px;
+}
+.specs-table td {
+  padding: 14px 16px;
+  font-size: 15px;
+  color: var(--ink-900);
+  border-top: 1px solid var(--border);
+}
+.specs-table td.num { font-family: var(--font-head); font-weight: 600; color: var(--teal-800); }
+@media (max-width: 600px) {
+  .specs-table thead { display: none; }
+  .specs-table tr { display: grid; grid-template-columns: 1fr 1fr; }
+  .specs-table td { border-top: 1px solid var(--border); }
+  .specs-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-head);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-500);
+  }
+}
+
+/* ---------- recursos ---------- */
+.res-subhead {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin: 24px 0 12px;
+}
+.res-subhead:first-child { margin-top: 0; }
+.res-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 600px) { .res-list { grid-template-columns: 1fr; } }
+.res-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-decoration: none;
+  background: var(--surface);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+.res-item:hover { border-color: var(--teal-700); background: var(--teal-50); transform: translateY(-1px); }
+.res-item .icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  flex: 0 0 auto;
+  background: var(--teal-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.res-item .icon svg { width: 17px; height: 17px; stroke: var(--teal-700); }
+.res-item .label { font-size: 13.5px; font-weight: 600; color: var(--teal-900); line-height: 1.3; }
+
+footer.page-footer {
+  text-align: center;
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  color: var(--ink-500);
+  font-size: 13px;
+}
+footer.page-footer a { color: var(--teal-700); font-weight: 600; text-decoration: none; }

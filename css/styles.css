@@ -155,6 +155,10 @@ button {
   padding-top: 40px;
 }
 
+.section--compact-bottom {
+  padding-bottom: 32px;
+}
+
 .section.alt {
   background: linear-gradient(180deg, var(--teal-50), #fff 60%);
 }

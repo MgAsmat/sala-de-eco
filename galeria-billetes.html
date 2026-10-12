@@ -31,7 +31,7 @@
   .wrap{
     max-width:1200px;
     margin:0 auto;
-    padding:48px 24px 64px;
+    padding:48px 24px 28px;
   }
 
   header{
@@ -851,6 +851,20 @@
 
   buildPager();
   renderDenomination(0);
+
+  // tell the embedding page how tall the gallery is, so its iframe can
+  // hug the content instead of leaving a fixed block of empty space
+  const wrap = document.querySelector('.wrap');
+  let lastHeight = 0;
+  function reportHeight(){
+    const h = Math.ceil(wrap.getBoundingClientRect().height);
+    if (h === lastHeight || window.parent === window) return;
+    lastHeight = h;
+    window.parent.postMessage({ type:'galeria-billetes:height', height:h }, '*');
+  }
+  if (window.ResizeObserver) new ResizeObserver(reportHeight).observe(wrap);
+  window.addEventListener('load', reportHeight);
+  reportHeight();
 })();
 </script>
 </body>

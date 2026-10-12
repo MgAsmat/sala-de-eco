@@ -354,18 +354,22 @@
     letter-spacing:.2px;
   }
 
-  /* ---------- layout: design box | note | security box ---------- */
+  /* ---------- layout: note on top, design (left) and security (right) boxes below ---------- */
   .viewer{
     display:grid;
-    grid-template-columns:250px minmax(0,1fr) 250px;
-    grid-template-areas:"diseno main seguridad";
-    gap:22px;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:"main main" "diseno seguridad";
+    gap:18px;
     align-items:start;
   }
-  .viewer-main{ grid-area:main; min-width:0; }
-  .viewer-main .stage-row{ gap:8px; }
+  .viewer-main{ grid-area:main; min-width:0; margin-bottom:6px; }
   .legend-group.is-diseno{ grid-area:diseno; }
   .legend-group.is-seguridad{ grid-area:seguridad; }
+  /* the security list is the longer one: lay it out in two columns */
+  .legend-group.is-seguridad .legend{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
   .legend-group{
     background:var(--bg-panel);
     border:1px solid var(--line);
@@ -424,17 +428,14 @@
   }
   .legend-item.is-active .legend-name{ color:var(--bronze-strong); }
 
-  @media (max-width:1099px){
-    .viewer{
-      grid-template-columns:1fr 1fr;
-      grid-template-areas:"main main" "diseno seguridad";
-      gap:16px;
-    }
+  @media (max-width:899px){
+    .legend-group.is-seguridad .legend{ display:flex; }
   }
   @media (max-width:600px){
     .viewer{
       grid-template-columns:1fr;
       grid-template-areas:"main" "diseno" "seguridad";
+      gap:16px;
     }
   }
 </style>

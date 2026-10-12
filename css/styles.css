@@ -2845,11 +2845,11 @@ body.ed-no-scroll { overflow: hidden; }
 .app-embed iframe {
   display: block;
   width: 100%;
-  height: 1080px;
+  height: 980px;
   border: 0;
 }
 
-@media (max-width: 948px) {
+@media (max-width: 1148px) {
   .app-embed iframe {
     height: 1260px;
   }

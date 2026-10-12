@@ -354,21 +354,18 @@
     letter-spacing:.2px;
   }
 
-  /* ---------- layout: note on the left, legend boxes stacked beside it ---------- */
+  /* ---------- layout: design box | note | security box ---------- */
   .viewer{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 330px;
-    gap:28px;
+    grid-template-columns:250px minmax(0,1fr) 250px;
+    grid-template-areas:"diseno main seguridad";
+    gap:22px;
     align-items:start;
   }
-  .viewer-main{ min-width:0; }
-  .viewer-main .stage-row{ gap:10px; }
-
-  .legend-groups{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-  }
+  .viewer-main{ grid-area:main; min-width:0; }
+  .viewer-main .stage-row{ gap:8px; }
+  .legend-group.is-diseno{ grid-area:diseno; }
+  .legend-group.is-seguridad{ grid-area:seguridad; }
   .legend-group{
     background:var(--bg-panel);
     border:1px solid var(--line);
@@ -427,16 +424,18 @@
   }
   .legend-item.is-active .legend-name{ color:var(--bronze-strong); }
 
-  @media (max-width:900px){
-    .viewer{ grid-template-columns:1fr; }
-    .legend-groups{
-      display:grid;
+  @media (max-width:1099px){
+    .viewer{
       grid-template-columns:1fr 1fr;
+      grid-template-areas:"main main" "diseno seguridad";
       gap:16px;
     }
   }
   @media (max-width:600px){
-    .legend-groups{ grid-template-columns:1fr; }
+    .viewer{
+      grid-template-columns:1fr;
+      grid-template-areas:"main" "diseno" "seguridad";
+    }
   }
 </style>
 </head>
@@ -453,6 +452,11 @@
   </div>
 
   <div class="viewer">
+  <aside class="legend-group is-diseno">
+    <h4>Personajes y diseño</h4>
+    <div class="legend" id="legend-diseno"></div>
+  </aside>
+
   <div class="viewer-main">
 
   <div class="stage-row">
@@ -491,15 +495,9 @@
 
   </div>
 
-  <aside class="legend-groups" id="legend-groups">
-    <div class="legend-group">
-      <h4>Personajes y diseño</h4>
-      <div class="legend" id="legend-diseno"></div>
-    </div>
-    <div class="legend-group">
-      <h4>Medidas de seguridad</h4>
-      <div class="legend" id="legend-seguridad"></div>
-    </div>
+  <aside class="legend-group is-seguridad">
+    <h4>Medidas de seguridad</h4>
+    <div class="legend" id="legend-seguridad"></div>
   </aside>
   </div>
 </div>

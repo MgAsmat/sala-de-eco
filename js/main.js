@@ -492,4 +492,16 @@
       videoCard.style.transform = "rotate(0.4deg)";
     });
   }
+
+  // Embedded apps report their content height so the iframe fits them
+  // without leaving empty space below
+  window.addEventListener("message", (event) => {
+    const data = event.data;
+    if (!data || data.type !== "galeria-billetes:height" || typeof data.height !== "number") return;
+    document.querySelectorAll(".app-embed iframe").forEach((frame) => {
+      if (frame.contentWindow === event.source) {
+        frame.style.height = `${Math.max(300, Math.ceil(data.height))}px`;
+      }
+    });
+  });
 })();

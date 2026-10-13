@@ -3115,12 +3115,6 @@ body.ed-no-scroll { overflow: hidden; }
   transform: scale(1.05);
 }
 
-.sector-card--cover::before {
-  z-index: 1;
-  opacity: 1;
-  background: linear-gradient(180deg, rgba(10, 15, 26, 0.05) 0%, rgba(10, 15, 26, 0.55) 55%, rgba(10, 15, 26, 0.92) 100%);
-}
-
 .sector-card__content {
   position: relative;
   z-index: 2;
@@ -3186,6 +3180,55 @@ body.ed-no-scroll { overflow: hidden; }
 
 .sector-card:hover .card-link svg {
   transform: translateX(3px);
+}
+
+/* Tarjeta con vista previa arriba y texto abajo, como las de los aplicativos */
+.sector-card--cover {
+  padding: 0;
+  min-height: 0;
+  justify-content: flex-start;
+  background: #073835;
+}
+
+.sector-card--cover::before {
+  display: none;
+}
+
+.sector-card--cover .sector-card__cover {
+  position: relative;
+  display: block;
+  inset: auto;
+  height: auto;
+  aspect-ratio: 16 / 10;
+}
+
+.sector-card--cover .sector-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  padding: 18px 24px 24px;
+  background: #073835;
+}
+
+.sector-card--cover .icon-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  margin: -39px 0 12px;
+  background: var(--teal-800);
+  border-color: rgba(255, 203, 61, 0.55);
+  color: var(--gold-400);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.sector-card--cover .icon-badge svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sector-card--cover p {
+  flex-grow: 1;
 }
 
 @media (max-width: 980px) {

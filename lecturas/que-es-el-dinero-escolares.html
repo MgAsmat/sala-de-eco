@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué es el dinero? — BCRP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b4f4a; --navy-deep:#08403c; --gold:#f4b400; --blue:#106f67; --teal:#3fc2b2; --teal-soft:#e8f8f6;
+    --paper:#f6faf9; --card:#ffffff; --border:#e0ece9; --text-muted:#4d6b67;
+    --ok:#24785a; --bad:#c0483e;
+    --shadow-md:0 8px 24px rgba(9,41,38,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h,90px);}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  body{margin:0;background:var(--paper);color:var(--navy-deep);font-family:'Inter',-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:880px;margin:0 auto;padding:24px 20px 64px;}
+
+  /* Encabezado y portada con el estilo de la Sala Educativa */
+  header.masthead{background:rgba(255,255,255,0.95);color:var(--navy-deep);border-bottom:1px solid var(--border);padding:14px 0;}
+  .masthead-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0;}
+  .brand-mark{display:grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#106f67,var(--navy-deep));color:#ffcb3d;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;font-family:'Poppins',sans-serif;}
+  .brand-text strong{font-size:15px;color:var(--navy-deep);}
+  .brand-text em{font-style:normal;font-weight:700;font-size:17px;color:#d99a00;}
+  .brand-text small{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);}
+  .back-link{flex:0 0 auto;font-weight:600;font-size:14px;color:#106f67;text-decoration:none;border:2px solid var(--blue);border-radius:999px;padding:8px 16px;white-space:nowrap;transition:background .15s ease;}
+  .back-link:hover{background:#e2f4f1;}
+  .back-link:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  @media (max-width:560px){.brand-text small{display:none;}.back-link{font-size:13px;padding:7px 12px;}.back-link .long{display:none;}}
+
+  .hero{background:radial-gradient(700px 320px at 50% -10%,rgba(63,194,178,0.20),transparent 70%),radial-gradient(500px 260px at 95% 20%,rgba(244,180,0,0.12),transparent 70%),var(--paper);color:var(--navy-deep);text-align:center;padding:44px 0 36px;}
+  .hero-inner{max-width:880px;margin:0 auto;padding:0 20px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:11.5px;color:#8a5f00;background:#fff3d6;padding:7px 16px;border-radius:999px;margin-bottom:14px;}
+  h1.title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,5vw,38px);line-height:1.1;margin:0 auto 12px;max-width:680px;color:var(--navy-deep);}
+  .hero-sub{color:#345350;font-size:17px;max-width:620px;margin:0 auto 20px;}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .chip{font-size:13px;font-weight:600;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--navy);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+
+  /* Navegación por secciones */
+  nav.secnav{position:sticky;top:0;z-index:50;background:rgba(246,250,249,0.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 4px 14px rgba(9,41,38,0.06);}
+  .secnav-inner{max-width:880px;margin:0 auto;padding:8px 20px;display:grid;grid-template-columns:repeat(8,1fr);gap:6px;}
+  .nav-btn{min-width:0;font:inherit;font-size:13px;line-height:1.15;font-weight:600;color:var(--navy);background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:6px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;transition:background .15s ease,border-color .15s ease,color .15s ease;}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);padding:8px 12px;gap:5px;}.nav-btn{font-size:12px;padding:5px 2px;}}
+  .nav-btn .n{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--gold);color:#8a5f00;}
+  .nav-btn:hover{border-color:var(--blue);}
+  .nav-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .nav-btn[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .nav-btn[aria-selected="true"] .n{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
+  .nav-btn.star{border-color:var(--gold);}
+  .progress{height:3px;background:var(--border);}
+  .progress span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s ease;}
+
+  .panel{display:none;animation:fadeIn .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .pager{display:flex;justify-content:space-between;gap:12px;margin:4px 0 8px;}
+  .pager button{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .pager button.next{background:var(--navy);border-color:var(--navy);color:#fff;margin-left:auto;}
+  .pager button:hover{border-color:var(--blue);}
+  .pager button.next:hover{background:var(--navy-deep);}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:30px 32px;margin:0 0 24px;position:relative;z-index:1;}
+  @media (max-width:560px){.card{padding:24px 20px;}}
+  h2.section-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;line-height:1.2;color:var(--navy);margin:0 0 14px;display:flex;align-items:flex-start;gap:10px;}
+  h2.section-title .num{font-weight:700;color:var(--gold);font-size:15px;border:1.5px solid var(--gold);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:2px;}
+  p{margin:0 0 14px;color:#345350;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--navy);font-weight:700;}
+  .subhead{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:0.015em;margin:24px 0 10px;}
+
+  /* Callouts */
+  .callout{margin:18px 0 4px;border-radius:10px;padding:14px 18px;border:1px solid var(--border);background:var(--paper);}
+  .callout p{font-size:15.5px;margin:0;}
+  .callout .label{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px;}
+  .callout.idea{border-left:4px solid var(--gold);} .callout.idea .label{color:#8a5f00;}
+  .callout.fact{border-left:4px solid var(--teal);} .callout.fact .label{color:#106f67;}
+  .callout.think{border-left:4px solid var(--blue);} .callout.think .label{color:var(--blue);}
+
+  /* Glossary */
+  .gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;}
+  @media (max-width:700px){.gloss-grid{grid-template-columns:1fr;}}
+  .gloss{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--paper);}
+  .gloss .emoji{font-size:26px;line-height:1;}
+  .gloss h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);margin:8px 0 4px;}
+  .gloss p{font-size:15px;margin:0;}
+  .gloss .eg{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
+
+  /* Chain */
+  .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:16px 0 4px;}
+  .chain-step{flex:1 1 130px;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;font-size:14px;font-weight:600;color:var(--navy);display:flex;flex-direction:column;justify-content:center;gap:4px;}
+  .chain-step .e{font-size:22px;}
+  .chain-step.first{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .chain-step.last{background:rgba(244,180,0,0.15);border-color:var(--gold);}
+  .chain-arrow{display:flex;align-items:center;color:var(--gold);font-weight:700;font-size:20px;}
+  @media (max-width:640px){.chain{flex-direction:column;}.chain-arrow{justify-content:center;transform:rotate(90deg);}}
+
+  /* Dual cards */
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;}
+  @media (max-width:640px){.dual-grid{grid-template-columns:1fr;}}
+  .dual-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);background:var(--paper);}
+  .dual-card.up{border-top:4px solid var(--teal);}
+  .dual-card.down{border-top:4px solid var(--navy);}
+  .dual-card .lead{font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+  .dual-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin:2px 0 8px;}
+  .dual-card p{font-size:15.5px;margin:0 0 8px;}
+  .dual-card p:last-child{margin-bottom:0;}
+  .result{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:700;border-radius:999px;padding:3px 12px;background:#fff;border:1px solid var(--border);color:var(--navy);}
+
+  /* Corridor */
+  .corridor{margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .corridor-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;}
+  .corridor-row.ceil{background:rgba(11,79,74,0.07);}
+  .corridor-row.mid{background:rgba(244,180,0,0.14);border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);}
+  .corridor-row.floor{background:rgba(63,194,178,0.12);}
+  .corridor-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);}
+  .corridor-label .small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:13.5px;color:var(--text-muted);}
+  .corridor-tag{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.025em;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap;}
+  .corridor-row.ceil .corridor-tag{background:var(--navy);color:#fff;}
+  .corridor-row.mid .corridor-tag{background:var(--gold);color:var(--navy-deep);}
+  .corridor-row.floor .corridor-tag{background:var(--teal-soft);color:var(--navy-deep);}
+  .tiny{font-size:13px;color:var(--text-muted);margin-top:8px;}
+
+  /* Simulator */
+  .sim{margin-top:14px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .sim label{font-weight:600;color:var(--navy);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .sim input[type=range]{width:100%;margin:12px 0 16px;accent-color:var(--gold);}
+  .bar{display:flex;height:40px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+  .bar .kept{background:var(--navy);color:#fff;}
+  .bar .lend{background:var(--teal-soft);color:var(--navy-deep);}
+  .bar div{display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+  .sim-legend{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:14.5px;flex-wrap:wrap;}
+  .sim-legend b{color:var(--navy);}
+
+  /* Summary table */
+  .summary-card{border-top:4px solid var(--gold);}
+  table.sum{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px;}
+  table.sum th{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;text-align:left;color:#fff;background:var(--navy);padding:10px 12px;}
+  table.sum td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  table.sum tr:nth-child(even) td{background:var(--paper);}
+  table.sum a{color:var(--blue);font-weight:600;text-decoration:none;border-bottom:1px dashed var(--blue);cursor:pointer;}
+  @media (max-width:600px){
+    table.sum thead{display:none;}
+    table.sum tr{display:block;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+    table.sum td{display:block;border:none;}
+    table.sum td:first-child{background:#e2f4f1!important;color:var(--navy);font-weight:700;}
+    table.sum td:first-child a{color:#106f67;}
+  }
+
+  /* Quiz */
+  .q{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:14px;background:var(--paper);}
+  .q-title{font-weight:700;color:var(--navy);margin-bottom:10px;}
+  .opts{display:grid;gap:8px;}
+  .opts button{font:inherit;font-size:15.5px;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;cursor:pointer;color:var(--navy-deep);transition:border-color .15s ease;}
+  .opts button:hover:not(:disabled){border-color:var(--blue);}
+  .opts button:disabled{cursor:default;}
+  .opts button.right{border-color:var(--ok);background:rgba(47,143,107,0.08);}
+  .opts button.wrong{border-color:var(--bad);background:rgba(192,72,62,0.07);}
+  .fb{display:none;margin-top:10px;font-size:15px;}
+  .fb.show{display:block;}
+
+  .result-box{display:none;margin-top:20px;text-align:center;border-radius:14px;padding:22px 20px;border:2px solid var(--border);background:#fff;}
+  .result-box.show{display:block;animation:pop .45s cubic-bezier(.2,1.4,.4,1);}
+  @keyframes pop{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:none;}}
+  .result-box .emo{font-size:40px;line-height:1;}
+  .result-box .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:32.5px;line-height:1.1;margin:8px 0 4px;}
+  .result-box .detail{font-size:15.5px;color:#345350;margin:0 0 14px;}
+  .result-box.perfect{border-color:var(--gold);background:rgba(244,180,0,0.1);} .result-box.perfect .big{color:#8a5f00;}
+  .result-box.good{border-color:var(--ok);background:rgba(47,143,107,0.07);} .result-box.good .big{color:var(--ok);}
+  .result-box.retry{border-color:var(--blue);background:rgba(20,138,127,0.07);} .result-box.retry .big{color:var(--blue);}
+  .retry-btn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 18px;cursor:pointer;border:none;background:var(--navy);color:#fff;}
+  .retry-btn:hover{background:var(--navy-deep);}
+
+  /* Herramientas interactivas */
+  .tool{margin-top:20px;border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--paper);}
+  .tool-head{display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
+  .tool h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;line-height:1.2;margin:0 0 6px;color:var(--navy);}
+  .tool .hint{font-size:14.5px;color:var(--text-muted);margin:0 0 14px;}
+  .ctrl{margin-bottom:12px;}
+  .ctrl label{display:flex;justify-content:space-between;gap:8px;font-weight:600;color:var(--navy);font-size:15px;}
+  .ctrl input[type=range]{width:100%;accent-color:var(--gold);margin:6px 0 0;}
+  .seg{display:inline-flex;flex-wrap:wrap;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;background:#fff;}
+  .seg button{font:inherit;font-size:14.5px;font-weight:600;padding:8px 14px;border:none;background:transparent;color:var(--navy);cursor:pointer;}
+  .seg button.on{background:var(--navy);color:#fff;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px;}
+  .tbtn{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--navy);}
+  .tbtn:hover:not(:disabled){border-color:var(--blue);}
+  .tbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .tbtn.teal{background:var(--teal-soft);border-color:var(--teal);color:var(--navy-deep);}
+  .tbtn:disabled{opacity:.45;cursor:default;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px;}
+  .stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+  .stat .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .stat .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:21.5px;color:var(--navy);line-height:1.2;}
+  .msg{margin-top:12px;border-radius:10px;padding:10px 14px;font-size:15px;font-weight:600;background:#fff;border:1px solid var(--border);border-left:4px solid var(--blue);color:var(--navy-deep);}
+  .msg.ok{border-left-color:var(--ok);} .msg.warn{border-left-color:var(--bad);} .msg.gold{border-left-color:var(--gold);background:rgba(244,180,0,0.1);}
+
+  /* Medidor de tasas */
+  .gauge{position:relative;height:76px;margin:10px 12px 0;}
+  .gauge-track{position:absolute;left:0;right:0;top:30px;height:8px;border-radius:999px;background:#d6e8e4;}
+  .gauge-band{position:absolute;top:25px;height:18px;border-radius:6px;background:rgba(244,180,0,0.18);border:1px dashed var(--gold);}
+  .gauge-mark{position:absolute;top:20px;width:2px;height:28px;background:var(--navy);transform:translateX(-1px);}
+  .gauge-mark span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11.5px;font-weight:700;white-space:nowrap;color:var(--navy);}
+  .gauge-mark.meta{background:var(--gold);} .gauge-mark.meta span{color:#8a5f00;}
+  .gauge-needle{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:2;transition:left .45s cubic-bezier(.3,1.3,.5,1);}
+  .gauge-needle i{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--blue);box-shadow:0 2px 6px rgba(0,0,0,.2);}
+  .gauge-needle b{margin-top:4px;font-size:12.5px;background:var(--blue);color:#fff;border-radius:999px;padding:1px 8px;white-space:nowrap;}
+  .gauge-needle.hi i{border-color:var(--navy);} .gauge-needle.hi b{background:var(--navy);}
+  .gauge-needle.lo i{border-color:var(--teal);} .gauge-needle.lo b{background:var(--teal-soft);color:var(--navy-deep);}
+  .gauge-needle.ok i{border-color:var(--gold);} .gauge-needle.ok b{background:var(--gold);color:var(--navy-deep);}
+
+  /* Cadena animada */
+  .chain-step .fx{display:block;font-size:12.5px;font-weight:700;color:#8a5f00;opacity:0;max-height:0;transition:opacity .3s ease;}
+  .chain-step .fx.show{opacity:1;max-height:80px;margin-top:4px;}
+  .chain-step.first .fx{color:var(--gold);}
+  .chain-step{transition:box-shadow .2s ease;}
+  .chain-step.lit{box-shadow:0 0 0 3px var(--gold);}
+
+
+  #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100;}
+
+  footer.page-footer{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;}
+
+  /* Componentes con el estilo de la Sala Educativa */
+  nav.secnav{background:rgba(255,255,255,0.95);box-shadow:0 2px 10px rgba(9,41,38,0.06);}
+  .nav-btn{border-radius:14px;}
+  .nav-btn[aria-selected="true"]{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .progress span{background:linear-gradient(90deg,var(--gold),#1aa295);}
+  .card{border-radius:24px;box-shadow:0 10px 28px rgba(9,41,38,0.07);}
+  .summary-card{border-top:none;box-shadow:inset 0 4px 0 var(--gold),0 10px 28px rgba(9,41,38,0.07);}
+  h2.section-title .num{background:#fff3d6;color:#8a5f00;}
+  table.sum th,table.cmp th,table.cmp th:first-child{background:#e2f4f1;color:var(--navy);}
+  table.sum th:first-child,table.cmp th:first-child{border-radius:12px 0 0 12px;}
+  table.sum th:last-child,table.cmp th:last-child{border-radius:0 12px 12px 0;}
+  .pager button{border-radius:999px;padding:11px 22px;font-weight:700;border:2px solid var(--blue);color:#106f67;}
+  .pager button:hover{background:#e2f4f1;}
+  .pager button.next{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);box-shadow:0 10px 24px rgba(244,180,0,0.35);}
+  .pager button.next:hover{background:#ffcb3d;}
+  .chain-step.first{background:linear-gradient(145deg,#106f67,#08403c);border-color:var(--blue);}
+  .chain-step.first .fx{color:#fff3d6;}
+  .callout,.gloss,.dual-card,.sim,.tool,.q,.chain-step{border-radius:16px;}
+  .tbtn,.retry-btn,.seg{border-radius:999px;}
+  .tbtn.primary,.retry-btn{background:var(--blue);border-color:var(--blue);}
+  .tbtn.primary:hover:not(:disabled),.retry-btn:hover{background:var(--navy);}
+
+
+  /* ¿Entra o no entra? */
+  .classify{display:grid;gap:10px;}
+  .cl-item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--border);border-radius:14px;padding:12px 14px;transition:border-color .2s ease,background .2s ease;}
+  .cl-text{font-size:15px;font-weight:600;color:var(--navy-deep);}
+  .cl-fb{display:block;font-weight:500;font-size:13.5px;color:var(--text-muted);margin-top:2px;}
+  .cl-fb:empty{display:none;}
+  .cl-btns{display:flex;gap:6px;flex:0 0 auto;}
+  .cl-btns .tbtn{font-size:13.5px;padding:7px 12px;}
+  .cl-btns .tbtn:disabled{opacity:.4;}
+  .cl-btns .tbtn.picked{opacity:1;}
+  .cl-item.ok{border-left-color:var(--ok);background:rgba(47,143,107,0.06);}
+  .cl-item.ok .tbtn.picked{border-color:var(--ok);background:rgba(47,143,107,0.12);}
+  .cl-item.bad{border-left-color:var(--bad);background:rgba(192,72,62,0.05);}
+  .cl-item.bad .tbtn.picked{border-color:var(--bad);background:rgba(192,72,62,0.1);}
+  @media (max-width:600px){.cl-item{flex-direction:column;align-items:stretch;}.cl-btns .tbtn{flex:1;}}
+
+  /* Barras horizontales */
+  /* Barras horizontales (nominal vs real) */
+  .hbars{display:grid;gap:8px;margin:6px 0 4px;}
+  .hbar{display:grid;grid-template-columns:170px 1fr 84px;align-items:center;gap:10px;font-size:14px;}
+  .hbar-l{font-weight:600;color:var(--navy);}
+  .hbar-t{height:22px;border-radius:999px;background:#fff;border:1px solid var(--border);overflow:hidden;}
+  .hbar-t i{display:block;height:100%;border-radius:999px;transition:width .3s ease;}
+  .hbar.base i{background:#a9c2be;}
+  .hbar.nom i{background:var(--gold);}
+  .hbar.real i{background:var(--blue);}
+  .hbar b{text-align:right;color:var(--navy);}
+  @media (max-width:560px){.hbar{grid-template-columns:1fr 74px;}.hbar-l{grid-column:1 / -1;}}
+
+  /* Barra apilada */
+  /* Barra apilada C + I + G + X − M */
+  .stack{display:grid;gap:6px;margin:6px 0 4px;}
+  .stack-row{display:flex;height:30px;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--border);}
+  .stack-row span{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .25s ease;}
+
+  /* ===== Componentes comunes de las lecturas de Sector Externo ===== */
+  .hbar.c1 i{background:var(--navy);} .hbar.c2 i{background:var(--blue);} .hbar.c3 i{background:var(--teal);}
+  .hbar.c4 i{background:var(--gold);} .hbar.c5 i{background:rgba(192,72,62,0.75);} .hbar.c6 i{background:#a9c2be;}
+  .cl-item.three .cl-btns{flex-wrap:wrap;justify-content:flex-end;}
+  .scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:12px;}
+  .scen .tbtn{text-align:left;font-size:14.5px;line-height:1.3;}
+  .scen .tbtn.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .arrows{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:4px;}
+  .arrow-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px 12px;text-align:center;}
+  .arrow-card .k{font-size:13px;color:var(--text-muted);font-weight:600;line-height:1.3;}
+  .arrow-card .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;line-height:1.2;color:var(--text-muted);}
+  .arrow-card.up .v{color:var(--ok);} .arrow-card.down .v{color:var(--bad);} .arrow-card.eq .v{color:var(--text-muted);}
+  .arrow-card .s{font-size:12.5px;color:var(--text-muted);}
+
+  /* Navegación: 7 pestañas */
+  .secnav-inner{grid-template-columns:repeat(7,1fr);}
+  @media (max-width:640px){.secnav-inner{grid-template-columns:repeat(4,1fr);}}
+
+  /* ===== Componentes de las lecturas de Sector Financiero ===== */
+  .stack-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--text-muted);margin-top:8px;}
+  .stack-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+  .s1{background:var(--navy);color:#fff;} .s2{background:var(--blue);color:#fff;} .s3{background:var(--teal);color:var(--navy-deep);} .s4{background:var(--gold);color:var(--navy-deep);}
+  .big-num{font-family:'Poppins',sans-serif;font-weight:700;font-size:30px;color:var(--navy);line-height:1.1;}
+
+
+  /* ===== Componentes de la lectura ¿Qué es el dinero? ===== */
+  #formChain .chain-step{flex:1 1 96px;}
+
+  /* Mercado del trueque */
+  .barter-bag{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:12px;}
+  .barter-bag .k{font-size:13px;font-weight:600;color:var(--text-muted);}
+  .barter-bag .item{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);}
+  .barter-bag .goal{margin-left:auto;font-size:13.5px;font-weight:600;color:#8a5f00;background:#fff3d6;border-radius:999px;padding:4px 12px;}
+  .traders{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
+  .trader{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center;}
+  .trader .who{font-size:26px;line-height:1;}
+  .trader h5{font-family:'Poppins',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy);margin:2px 0 0;}
+  .trader .has,.trader .wants{font-size:13px;color:var(--text-muted);}
+  .trader .tbtn{margin-top:6px;font-size:13.5px;padding:7px 14px;}
+  .trader.done{border-color:var(--ok);background:rgba(47,143,107,0.06);}
+
+  /* Tarjeta de características */
+  .traits{display:grid;gap:8px;}
+  .trait{display:grid;grid-template-columns:28px 170px 1fr;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--border);border-radius:14px;padding:10px 14px;font-size:14.5px;}
+  .trait .ic{font-size:18px;text-align:center;}
+  .trait b{color:var(--navy);}
+  .trait span{color:#345350;}
+  .trait.yes{border-left-color:var(--ok);} .trait.no{border-left-color:var(--bad);}
+  @media (max-width:560px){.trait{grid-template-columns:28px 1fr;}.trait span{grid-column:2;}}
+
+  /* Línea de tiempo del dinero peruano */
+  .era{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px 18px;}
+  .era .yr{font-family:'Poppins',sans-serif;font-weight:800;font-size:30px;color:#8a5f00;background:#fff3d6;border-radius:14px;padding:8px 14px;line-height:1.1;text-align:center;}
+  .era .yr small{display:block;font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
+  .era h5{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin:0 0 4px;}
+  .era p{font-size:15px;margin:0;}
+  @media (max-width:520px){.era{grid-template-columns:1fr;}}
+
+  /* ¿Cómo pagas? */
+  .price-tag{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  .price-tag .big-num{background:#fff;border:1px solid var(--border);border-radius:14px;padding:6px 16px;}
+  .money-tray{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .money-btn{font:inherit;display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:8px 10px;cursor:pointer;color:var(--navy);font-size:13px;font-weight:700;transition:border-color .15s ease,transform .15s ease;}
+  .money-btn:hover{border-color:var(--blue);transform:translateY(-2px);}
+  .money-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .money-btn img{display:block;height:38px;width:auto;}
+  .money-btn.coin img{width:38px;border-radius:50%;}
+  .paid{display:flex;flex-wrap:wrap;gap:6px;min-height:46px;align-items:center;background:#fff;border:1px dashed var(--border);border-radius:14px;padding:8px 10px;}
+  .paid img{height:30px;width:auto;}
+  .paid img.coin{width:30px;border-radius:50%;}
+  .paid .empty{font-size:13.5px;color:var(--text-muted);}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="../index.html" aria-label="Sala Educativa de Economía — Inicio"><span class="brand-mark" aria-hidden="true">SE</span><span class="brand-text"><strong>Sala Educativa de</strong><em>Economía</em><small>Banco Central de Reserva del Perú</small></span></a>
+    <a class="back-link" href="../billetes.html">← Volver<span class="long"> a Billetes y Monedas</span></a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Billetes y Monedas para secundaria</div>
+    <h1 class="title">¿Qué es el dinero?</h1>
+    <p class="hero-sub">Lo usamos todos los días, pero ¿por qué un billete de papel vale lo que vale? Descubre de dónde viene el dinero, para qué sirve y cómo es el sol, la moneda del Perú.</p>
+    <div class="chips"><span class="chip">⏱ Lectura de 8 minutos</span><span class="chip">🎚 Incluye simuladores</span><span class="chip">✅ Mini quiz al final</span></div>
+  </div>
+</div>
+
+<nav class="secnav" aria-label="Secciones de la lectura">
+  <div class="secnav-inner" role="tablist" id="navList">
+    <button class="nav-btn star" role="tab" data-target="resumen"><span class="n">⚡</span>Resumen</button>
+    <button class="nav-btn" role="tab" data-target="trueque"><span class="n">1</span>Del trueque al dinero</button>
+    <button class="nav-btn" role="tab" data-target="funciones"><span class="n">2</span>¿Para qué sirve?</button>
+    <button class="nav-btn" role="tab" data-target="caracteristicas"><span class="n">3</span>Un buen dinero</button>
+    <button class="nav-btn" role="tab" data-target="historia"><span class="n">4</span>La historia del sol</button>
+    <button class="nav-btn" role="tab" data-target="sol"><span class="n">5</span>El sol hoy</button>
+    <button class="nav-btn star" role="tab" data-target="quiz-sec"><span class="n">✓</span>Quiz</button>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+</nav>
+
+<div class="page">
+
+  <!-- RESUMEN -->
+  <section class="panel" id="resumen" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title">Empecemos con una pregunta</h2>
+      <p>Un billete de S/ 100 es un pedazo de papel. Fabricarlo cuesta mucho menos que cien soles, y aun así cualquier bodega del Perú te dará por él cien soles en productos. ¿Por qué?</p>
+      <p>Porque el dinero vale por la <strong>confianza</strong>: todos aceptamos el billete porque sabemos que los demás también lo aceptarán. En esta lectura vas a descubrir <strong>por qué se inventó el dinero, qué funciones cumple, qué lo hace confiable y cómo es el sol</strong>.</p>
+    </div>
+    <div class="card summary-card">
+      <h2 class="section-title"><span class="num">⚡</span>Resumen en 30 segundos</h2>
+      <p>El <strong>dinero</strong> es cualquier medio de pago que la gente acepta en general para comprar bienes y servicios y para pagar deudas.</p>
+      <table class="sum">
+        <thead><tr><th>Idea</th><th>¿Qué significa?</th></tr></thead>
+        <tbody>
+          <tr><td><a data-goto="trueque">El trueque</a></td><td>Cambiar un bien por otro. Es difícil: hay que encontrar a alguien que quiera justo lo que tú tienes.</td></tr>
+          <tr><td><a data-goto="funciones">Funciones del dinero</a></td><td>Medio de cambio, unidad de cuenta y depósito de valor.</td></tr>
+          <tr><td><a data-goto="caracteristicas">Un buen dinero</a></td><td>Es aceptado por todos, durable, divisible, fácil de llevar y difícil de falsificar.</td></tr>
+          <tr><td><a data-goto="historia">La historia del sol</a></td><td>El Perú ha tenido el sol, el inti y el nuevo sol; desde 2015 su moneda se llama otra vez sol.</td></tr>
+          <tr><td><a data-goto="sol">El sol hoy</a></td><td>El BCRP emite los billetes y monedas del sol y cuida que mantengan su valor.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout idea"><span class="label">🎯 La idea clave</span><p>El dinero no vale por el papel o el metal del que está hecho, sino porque todos confiamos en que podremos usarlo para comprar. Esa confianza depende de que su valor se mantenga estable.</p></div>
+    </div>
+  </section>
+
+  <!-- 1. Del trueque al dinero -->
+  <section class="panel" id="trueque" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">1</span>Del trueque al dinero</h2>
+      <p>Hace miles de años no existía el dinero. Las personas hacían <strong>trueque</strong>: cambiaban directamente un bien por otro, como papas por lana o sal por maíz.</p>
+      <p>El trueque tiene un gran problema: para cambiar, necesitas encontrar a alguien que tenga lo que tú quieres <strong>y</strong> que, al mismo tiempo, quiera lo que tú tienes. Los economistas lo llaman la <strong>doble coincidencia de deseos</strong>. Además, ¿cuántas papas vale un par de zapatos? Sin una medida común, cada cambio es una negociación.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>El mercado del trueque</h4>
+        <p class="hint">Tienes un saco de papas y necesitas unos zapatos. Cada vendedor solo cambia lo que tiene por lo que quiere. Encuentra el camino.</p>
+        <div class="barter-bag"><span class="k">Tienes:</span><span class="item" id="bBag"></span><span class="goal">🎯 Meta: 👞 zapatos</span></div>
+        <div class="traders" id="bTraders"></div>
+        <div class="btn-row" style="margin-top:12px"><button type="button" class="tbtn" id="bReset">↻ Volver a empezar</button><button type="button" class="tbtn teal" id="bMoney">💵 Ahora con dinero</button></div>
+        <div class="msg" id="bMsg"></div>
+      </div>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>Con el dinero, el zapatero acepta tu pago aunque no quiera papas, porque sabe que con ese dinero podrá comprar lo que él necesita. El dinero <strong>rompe la doble coincidencia de deseos</strong>.</p></div>
+    </div>
+  </section>
+
+  <!-- 2. Funciones -->
+  <section class="panel" id="funciones" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">2</span>¿Para qué sirve el dinero?</h2>
+      <p>El dinero cumple tres funciones. Lo usas a diario para las tres, aunque no te des cuenta:</p>
+      <div class="gloss-grid">
+        <div class="gloss"><span class="emoji">🤝</span><h3>Medio de cambio</h3><p>Lo entregamos para comprar bienes y servicios y para pagar deudas.</p><span class="eg">Pagas el menú con un billete de S/ 20.</span></div>
+        <div class="gloss"><span class="emoji">🏷</span><h3>Unidad de cuenta</h3><p>Sirve para poner precio a las cosas y comparar su valor.</p><span class="eg">Un cuaderno cuesta S/ 8 y una mochila, S/ 60.</span></div>
+        <div class="gloss"><span class="emoji">🐷</span><h3>Depósito de valor</h3><p>Permite guardar poder de compra para usarlo en el futuro.</p><span class="eg">Ahorras tus propinas para comprar algo en diciembre.</span></div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Qué función cumple el dinero?</h4>
+        <p class="hint">Elige la función que se usa en cada situación.</p>
+        <div class="classify" id="clsFun"></div>
+        <div class="msg" id="clsFunMsg"></div>
+      </div>
+      <div class="callout think"><span class="label">🤔 Pregúntate</span><p>Si los precios subieran muy rápido, ¿seguirías ahorrando en soles? El dinero solo es un buen <strong>depósito de valor</strong> si su poder de compra se mantiene. Por eso es tan importante que la inflación sea baja y estable.</p></div>
+    </div>
+  </section>
+
+  <!-- 3. Características -->
+  <section class="panel" id="caracteristicas" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">3</span>¿Qué hace que algo sea un buen dinero?</h2>
+      <p>A lo largo de la historia se han usado como dinero la sal, el cacao, las conchas, el ganado y los metales. Algunos funcionaron mejor que otros. Un buen dinero debe ser:</p>
+      <div class="gloss-grid">
+        <div class="gloss"><span class="emoji">🤝</span><h3>Aceptado por todos</h3><p>La gente lo recibe como pago sin dudar.</p></div>
+        <div class="gloss"><span class="emoji">🛡</span><h3>Durable</h3><p>No se malogra ni se pudre con el tiempo ni con el uso.</p></div>
+        <div class="gloss"><span class="emoji">✂</span><h3>Divisible</h3><p>Se puede pagar montos grandes y pequeños.</p></div>
+        <div class="gloss"><span class="emoji">🎒</span><h3>Fácil de llevar</h3><p>Pesa poco y cabe en el bolsillo o en el celular.</p></div>
+        <div class="gloss"><span class="emoji">🔍</span><h3>Difícil de falsificar</h3><p>Nadie puede fabricarlo por su cuenta.</p></div>
+        <div class="gloss"><span class="emoji">⚖</span><h3>Homogéneo</h3><p>Cada unidad vale lo mismo que otra igual.</p></div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Serviría como dinero?</h4>
+        <p class="hint">Elige un objeto y mira si cumple las características de un buen dinero.</p>
+        <div class="seg" id="tSeg" role="group" aria-label="Objetos"></div>
+        <div class="traits" id="tList"></div>
+        <div class="msg" id="tMsg"></div>
+      </div>
+      <div class="callout fact"><span class="label">📌 ¿Sabías que…?</span><p>La palabra <strong>salario</strong> viene del latín <em>salarium</em>, relacionada con la sal, un bien muy valioso en la antigua Roma porque servía para conservar los alimentos.</p></div>
+    </div>
+  </section>
+
+  <!-- 4. Historia del sol -->
+  <section class="panel" id="historia" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">4</span>Del metal al dinero digital: la historia del sol</h2>
+      <p>Con el tiempo, el dinero pasó de ser un bien útil por sí mismo (como la sal) a <strong>monedas de metal</strong>, después a <strong>billetes</strong> de papel y hoy también a <strong>dinero bancario y digital</strong>: los depósitos que movemos con tarjetas, transferencias y billeteras digitales.</p>
+      <div class="chain" id="formChain">
+        <div class="chain-step first"><span class="e">🔄</span>Trueque<span class="fx">Bien por bien</span></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><span class="e">🧂</span>Dinero mercancía<span class="fx">Sal, cacao, conchas</span></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><span class="e">🪙</span>Monedas<span class="fx">Oro, plata y otros metales</span></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><span class="e">💵</span>Billetes<span class="fx">Papel respaldado por la confianza</span></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step last"><span class="e">📲</span>Dinero digital<span class="fx">Depósitos, tarjetas y transferencias</span></div>
+      </div>
+      <div class="btn-row" style="margin-top:12px"><button type="button" class="tbtn primary" id="formPlay">▶ Ver la evolución</button></div>
+      <div class="msg" id="formMsg">Presiona el botón para recorrer la historia del dinero.</div>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>La máquina del tiempo de la moneda peruana</h4>
+        <p class="hint">Viaja por las fechas clave de la moneda del Perú.</p>
+        <div class="seg" id="hSeg" role="group" aria-label="Fechas"></div>
+        <div class="era" id="hEra" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. El sol hoy -->
+  <section class="panel" id="sol" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">5</span>El sol hoy</h2>
+      <p>El <strong>sol</strong> es la moneda oficial del Perú. Se divide en 100 <strong>céntimos</strong> y su símbolo es <strong>S/</strong>. Según la Constitución, la emisión de billetes y monedas es facultad exclusiva del Estado, que la ejerce a través del <strong>Banco Central de Reserva del Perú (BCRP)</strong>.</p>
+      <p>Hoy circulan billetes de <strong>S/ 10, 20, 50, 100 y 200</strong> y monedas de <strong>10, 20 y 50 céntimos</strong> y de <strong>S/ 1, 2 y 5</strong>.</p>
+
+      <div class="tool">
+        <div class="tool-head">🕹 Pruébalo</div>
+        <h4>¿Cómo pagas?</h4>
+        <p class="hint">Paga el precio exacto tocando los billetes y monedas. Intenta usar la menor cantidad posible.</p>
+        <div class="price-tag"><span><span class="k" style="font-weight:600;color:var(--text-muted);font-size:13px;display:block">Precio a pagar</span><span class="big-num" id="payPrice"></span></span><div class="btn-row" style="margin:0"><button type="button" class="tbtn" id="payUndo">↶ Deshacer</button><button type="button" class="tbtn teal" id="payNew">🎲 Otro precio</button></div></div>
+        <div class="money-tray" id="payTray"></div>
+        <div class="paid" id="payPaid" aria-live="polite"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">Llevas pagado</div><div class="v" id="payGiven"></div></div>
+          <div class="stat"><div class="k">Te falta</div><div class="v" id="payLeft"></div></div>
+          <div class="stat"><div class="k">Piezas usadas</div><div class="v" id="payPieces"></div></div>
+        </div>
+        <div class="msg" id="payMsg"></div>
+      </div>
+      <div class="callout idea"><span class="label">🎯 Cuida tu dinero</span><p>Para reconocer un billete auténtico recuerda: <strong>toca</strong> el relieve, <strong>mira</strong> a contraluz la marca de agua y <strong>gira</strong> el billete para ver cómo cambia de color. Explóralo en la <a href="../galeria-billetes.html" style="color:var(--blue);font-weight:600">galería interactiva de billetes</a>.</p></div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="panel" id="quiz-sec" role="tabpanel">
+    <div class="card">
+      <h2 class="section-title"><span class="num">✓</span>Pon a prueba lo que aprendiste</h2>
+      <p>Elige una respuesta en cada pregunta.</p>
+      <div id="quiz"></div>
+      <div class="result-box" id="resultBox" role="status" aria-live="polite">
+        <div class="emo" id="resultEmo"></div>
+        <div class="big" id="resultTitle"></div>
+        <p class="detail" id="resultDetail"></p>
+        <button type="button" class="retry-btn" id="retryBtn">↻ Intentar de nuevo</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">Banco Central de Reserva del Perú · Serie Lecturas · Educación económica</footer>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+  // Ejecuta una inicialización sin que un error detenga al resto de la página
+  function safe(fn){ try { fn(); } catch (e) { console.warn('Error al iniciar herramienta:', e); } }
+
+  /* ===== Navegación por secciones ===== */
+  const panels = [...document.querySelectorAll('.panel')];
+  const navBtns = [...document.querySelectorAll('.nav-btn')];
+  const nav = document.querySelector('nav.secnav');
+  const setNavH = () => document.documentElement.style.setProperty('--nav-h', (nav.offsetHeight + 12) + 'px');
+  safe(setNavH); addEventListener('resize', setNavH);
+  const labels = navBtns.map(b => b.lastChild.textContent.trim());
+
+  // Botones Anterior / Siguiente al final de cada sección
+  panels.forEach((p, i) => {
+    const pager = document.createElement('div'); pager.className = 'pager';
+    if (i > 0) {
+      const prev = document.createElement('button'); prev.type = 'button';
+      prev.textContent = '← ' + labels[i - 1];
+      prev.onclick = () => show(panels[i - 1].id, true);
+      pager.appendChild(prev);
+    }
+    if (i < panels.length - 1) {
+      const next = document.createElement('button'); next.type = 'button'; next.className = 'next';
+      next.textContent = labels[i + 1] + ' →';
+      next.onclick = () => show(panels[i + 1].id, true);
+      pager.appendChild(next);
+    }
+    p.appendChild(pager);
+  });
+
+  function show(id, scroll, init) {
+    const idx = panels.findIndex(p => p.id === id);
+    if (idx < 0) return;
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    navBtns.forEach((b, i) => {
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      b.tabIndex = i === idx ? 0 : -1;
+    });
+    document.getElementById('progressBar').style.width = ((idx + 1) / panels.length * 100) + '%';
+    // Al cargar no se reescribe el #: el navegador saltaría a esa sección y ocultaría la portada.
+    if (!init) try { if (history.replaceState && location.protocol !== 'about:') history.replaceState(null, '', '#' + id); } catch (e) {}
+    if (scroll) window.scrollTo({top: nav.offsetTop, behavior: 'smooth'});
+  }
+
+  navBtns.forEach((b, i) => {
+    b.addEventListener('click', () => show(b.dataset.target, true));
+    b.addEventListener('keydown', e => {
+      let j = null;
+      if (e.key === 'ArrowRight') j = Math.min(i + 1, navBtns.length - 1);
+      if (e.key === 'ArrowLeft') j = Math.max(i - 1, 0);
+      if (j !== null) { e.preventDefault(); navBtns[j].focus(); show(navBtns[j].dataset.target, false); }
+    });
+  });
+  document.querySelectorAll('[data-goto]').forEach(a => a.addEventListener('click', () => show(a.dataset.goto, true)));
+
+  let start = ''; try { start = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+  safe(() => show(panels.some(p => p.id === start) ? start : 'resumen', false, true));
+
+
+  /* ===== Utilidades ===== */
+  const $ = id => document.getElementById(id);
+  const num = (v, d = 0) => v.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d}).replace(/[,.]/g, c => c === ',' ? '\u00a0' : ',');
+  const pct = v => (v > 0 ? '+' : '') + num(v, 1) + ' %';
+  function setMsg(id, text, cls){ const m = $(id); m.textContent = text; m.className = 'msg ' + (cls || ''); }
+
+  /* ===== Herramientas comunes ===== */
+  const usd = (v, d = 0) => (v < 0 ? '− ' : '') + 'US$ ' + num(Math.abs(v), d);
+  const sol = (v, d = 0) => (v < 0 ? '− ' : '') + 'S/ ' + num(Math.abs(v), d);
+  // Clasificador: cada caso tiene el texto (t), la opción correcta (a) y la explicación (e)
+  function classify(boxId, msgId, cases, opts, winText){
+    const box = $(boxId); box.innerHTML = '';
+    let done = 0, ok = 0;
+    setMsg(msgId, `Responde los ${cases.length} casos.`);
+    cases.forEach(c => {
+      const row = document.createElement('div'); row.className = 'cl-item' + (opts.length > 2 ? ' three' : '');
+      row.innerHTML = '<div class="cl-text"><span></span><small class="cl-fb"></small></div><div class="cl-btns"></div>';
+      row.querySelector('.cl-text span').textContent = c.t;
+      const btns = opts.map((o, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'tbtn'; b.textContent = o;
+        b.addEventListener('click', () => {
+          btns.forEach(x => x.disabled = true);
+          const good = i === c.a;
+          row.classList.add(good ? 'ok' : 'bad'); b.classList.add('picked');
+          row.querySelector('.cl-fb').textContent = (good ? '¡Correcto! ' : 'Respuesta: ' + opts[c.a].replace(/^\W+\s*/, '') + '. ') + c.e;
+          done++; if (good) ok++;
+          if (done === cases.length) setMsg(msgId, `Acertaste ${ok} de ${cases.length}. ` + (ok === cases.length ? winText : 'Lee las explicaciones de los casos en rojo.'), ok === cases.length ? 'gold' : 'ok');
+        });
+        row.querySelector('.cl-btns').appendChild(b);
+        return b;
+      });
+      box.appendChild(row);
+    });
+  }
+  // Barras horizontales: filas [etiqueta, valor, clase de color, texto]
+  function drawBars(id, rows, max){
+    $(id).innerHTML = rows.map(([l, v, c, t]) => `<div class="hbar ${c}"><span class="hbar-l">${l}</span><span class="hbar-t"><i style="width:${Math.max(0, Math.min(100, v / max * 100)).toFixed(1)}%"></i></span><b>${t}</b></div>`).join('');
+  }
+  // Tarjeta con flecha: dir = 1 sube, -1 baja, 0 sin cambio
+  function arrowCard(k, dir, s){
+    const cls = dir > 0 ? 'up' : dir < 0 ? 'down' : 'eq', v = dir > 0 ? '▲' : dir < 0 ? '▼' : '＝';
+    return `<div class="arrow-card ${cls}"><div class="k">${k}</div><div class="v">${v}</div>${s ? `<div class="s">${s}</div>` : ''}</div>`;
+  }
+  // Cadena animada: ilumina los pasos uno a uno
+  function chainPlay(btnId, chainId, msgId, endText){
+    const steps = [...document.querySelectorAll('#' + chainId + ' .chain-step')];
+    let timer = null;
+    $(btnId).addEventListener('click', () => {
+      clearInterval(timer);
+      steps.forEach(s => { s.classList.remove('lit'); s.querySelector('.fx') && s.querySelector('.fx').classList.remove('show'); });
+      setMsg(msgId, 'Mira cómo avanza el efecto…');
+      let k = 0;
+      const step = () => {
+        if (k > 0) steps[k - 1].classList.remove('lit');
+        if (k === steps.length) { clearInterval(timer); setMsg(msgId, endText, 'ok'); return; }
+        steps[k].classList.add('lit');
+        const fx = steps[k].querySelector('.fx'); if (fx) fx.classList.add('show');
+        k++;
+      };
+      step(); timer = setInterval(step, 900);
+    });
+  }
+
+
+  /* ===== 1. El mercado del trueque ===== */
+  const TRADERS = [
+    {who: '👞', name: 'Zapatero', has: '👞 zapatos', wants: '🐟 pescado'},
+    {who: '🌽', name: 'Agricultora', has: '🌽 maíz', wants: '👞 zapatos'},
+    {who: '🐟', name: 'Pescador', has: '🐟 pescado', wants: '🧂 sal'},
+    {who: '🧶', name: 'Tejedora', has: '🧶 lana', wants: '🌽 maíz'},
+    {who: '🧂', name: 'Salinero', has: '🧂 sal', wants: '🥔 papas'}
+  ];
+  let bag, trades, tries;
+  function barterReset(){
+    bag = '🥔 papas'; trades = 0; tries = 0;
+    $('bBag').textContent = bag;
+    $('bTraders').innerHTML = '';
+    TRADERS.forEach(t => {
+      const d = document.createElement('div'); d.className = 'trader';
+      d.innerHTML = `<span class="who">${t.who}</span><h5>${t.name}</h5><span class="has">Tiene: ${t.has}</span><span class="wants">Quiere: ${t.wants}</span>`;
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'tbtn'; b.textContent = 'Ofrecer lo que tengo';
+      b.addEventListener('click', () => barterTry(t, d));
+      d.appendChild(b); $('bTraders').appendChild(d);
+    });
+    setMsg('bMsg', 'Empieza ofreciendo tus papas a quien las quiera.');
+  }
+  function barterTry(t, card){
+    if (bag === '👞 zapatos') return;
+    tries++;
+    if (bag !== t.wants) { setMsg('bMsg', `✋ ${t.name}: «No quiero ${bag.slice(2).trim()}, yo quiero ${t.wants.slice(2).trim()}». Busca a otra persona.`, 'warn'); return; }
+    if (bag === t.has) return;
+    bag = t.has; trades++;
+    $('bBag').textContent = bag; card.classList.add('done');
+    if (bag === '👞 zapatos') setMsg('bMsg', `🎉 ¡Conseguiste los zapatos! Necesitaste ${trades} intercambios y ${tries} intentos. Ahora prueba el botón «Ahora con dinero».`, 'gold');
+    else setMsg('bMsg', `🔄 Cambiaste con ${t.name}. Ahora tienes ${bag}. ¿Quién lo quiere?`, 'ok');
+  }
+  safe(barterReset);
+  $('bReset').addEventListener('click', barterReset);
+  $('bMoney').addEventListener('click', () => setMsg('bMsg', '💵 Con dinero: vendes tus papas en el mercado a quien las necesite, y con ese dinero le pagas directamente al zapatero. ¡Un solo paso! El zapatero acepta tu dinero porque sabe que con él podrá comprar pescado.', 'gold'));
+
+  /* ===== 2. Funciones del dinero ===== */
+  safe(() => classify('clsFun', 'clsFunMsg', [
+    {t: '🚌 Pagas S/ 2 por el pasaje del bus', a: 0, e: 'Entregas dinero a cambio de un servicio.'},
+    {t: '🏷 Comparas: unas zapatillas cuestan S/ 150 y otras S/ 220', a: 1, e: 'El dinero sirve para medir y comparar valores.'},
+    {t: '🐷 Guardas S/ 10 cada semana para comprar un regalo en diciembre', a: 2, e: 'Guardas poder de compra para el futuro.'},
+    {t: '📲 Le pagas S/ 15 por billetera digital a tu amigo por un libro usado', a: 0, e: 'El dinero digital también sirve para pagar.'},
+    {t: '📋 Un mercado anota que su mercadería vale S/ 8 000', a: 1, e: 'El dinero es la medida con que se valoran las cosas.'}
+  ], ['🤝 Medio de cambio', '🏷 Unidad de cuenta', '🐷 Depósito de valor'], '¡Dominas las funciones del dinero! 🏆'));
+
+  /* ===== 3. ¿Serviría como dinero? ===== */
+  const TRAITS = ['🤝 Aceptado por todos', '🛡 Durable', '✂ Divisible', '🎒 Fácil de llevar', '🔍 Difícil de falsificar'];
+  const OBJ = [
+    {k: '🥔 Papas', v: [[0, 'No todos las necesitan cuando quieren vender algo.'], [0, 'Se malogran en pocas semanas.'], [1, 'Se pueden dar una o muchas.'], [0, 'Una compra grande pesaría muchos kilos.'], [1, 'Nadie fabrica papas falsas.']]},
+    {k: '🧂 Sal', v: [[1, 'En la antigüedad era muy valorada.'], [1, 'Si se mantiene seca, dura mucho.'], [1, 'Se puede pesar en porciones pequeñas.'], [0, 'Para compras grandes pesa demasiado.'], [0, 'Se puede mezclar con arena sin que se note.']]},
+    {k: '🐄 Ganado', v: [[1, 'En sociedades ganaderas era muy apreciado.'], [0, 'Se enferma, envejece y muere.'], [0, 'No puedes pagar con media vaca.'], [0, '¡Imagina llevarla al mercado!'], [1, 'No se puede falsificar una vaca.']]},
+    {k: '🥇 Oro', v: [[1, 'Ha sido valorado en casi todas las culturas.'], [1, 'No se oxida ni se malogra.'], [1, 'Se puede fundir en piezas de distinto tamaño.'], [1, 'Mucho valor en poco peso.'], [0, 'Se puede mezclar con metales baratos: hay que pesarlo y probarlo.']]},
+    {k: '💵 El sol', v: [[1, 'Es de curso legal: en el Perú se acepta como pago.'], [1, 'Los billetes y monedas resisten años de uso.'], [1, 'Hay céntimos para montos pequeños y billetes para grandes.'], [1, 'Cabe en la billetera o se paga con el celular.'], [1, 'Tiene medidas de seguridad que lo protegen.']]}
+  ];
+  function showObj(i){
+    $('tSeg').querySelectorAll('button').forEach((b, j) => b.classList.toggle('on', j === i));
+    const o = OBJ[i], score = o.v.filter(x => x[0]).length;
+    $('tList').innerHTML = o.v.map(([ok, e], j) => `<div class="trait ${ok ? 'yes' : 'no'}"><span class="ic">${ok ? '✅' : '❌'}</span><b>${TRAITS[j]}</b><span>${e}</span></div>`).join('');
+    if (score === 5) setMsg('tMsg', `🏆 ${o.k.slice(2).trim()}: cumple las 5 características. ¡Por eso es un buen dinero!`, 'gold');
+    else setMsg('tMsg', `${o.k} cumple ${score} de 5 características. ` + (score >= 4 ? 'Funcionó como dinero durante siglos, pero tiene sus problemas.' : 'Sería un dinero poco práctico.'), score >= 4 ? 'ok' : 'warn');
+  }
+  safe(() => {
+    $('tSeg').innerHTML = OBJ.map((o, i) => `<button type="button" data-i="${i}">${o.k}</button>`).join('');
+    $('tSeg').querySelectorAll('button').forEach(b => b.addEventListener('click', () => showObj(+b.dataset.i)));
+    showObj(0);
+  });
+
+  /* ===== 4. Historia ===== */
+  safe(() => chainPlay('formPlay', 'formChain', 'formMsg', '✅ Cada etapa hizo el dinero más fácil de usar. Hoy conviven los billetes, las monedas y el dinero digital.'));
+  const ERAS = [
+    {y: '1565', t: 'Casa de Moneda de Lima', d: 'Se funda en Lima la primera casa de moneda de Sudamérica. Acuñaba monedas de plata llamadas reales. Hoy es la Casa Nacional de Moneda.'},
+    {y: '1863', t: 'Nace el sol', d: 'El Perú adopta el sol como su unidad monetaria, dividido en 100 céntimos.'},
+    {y: '1922', t: 'Se crea el Banco Central', d: 'Se funda el Banco de Reserva del Perú, antecesor del BCRP, encargado de emitir los billetes del país.'},
+    {y: '1985', t: 'Llega el inti', d: 'La inflación había hecho perder mucho valor al sol. Se crea el inti: 1 inti equivalía a 1 000 soles.'},
+    {y: '1991', t: 'El nuevo sol', d: 'Tras la hiperinflación de fines de los ochenta, se crea el nuevo sol: 1 nuevo sol equivalía a 1 000 000 de intis.'},
+    {y: '2015', t: 'Otra vez «sol»', d: 'Con precios estables desde hace años, la moneda pasa a llamarse simplemente sol. Su valor no cambió: solo su nombre.'}
+  ];
+  function showEra(i){
+    $('hSeg').querySelectorAll('button').forEach((b, j) => b.classList.toggle('on', j === i));
+    const e = ERAS[i];
+    $('hEra').innerHTML = `<div class="yr"><small>Año</small>${e.y}</div><div><h5>${e.t}</h5><p>${e.d}</p></div>`;
+  }
+  safe(() => {
+    $('hSeg').innerHTML = ERAS.map((e, i) => `<button type="button">${e.y}</button>`).join('');
+    $('hSeg').querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => showEra(i)));
+    showEra(0);
+  });
+
+  /* ===== 5. ¿Cómo pagas? ===== */
+  // Valores en céntimos para evitar errores de redondeo
+  const PIECES = [
+    {c: 20000, img: '../assets/billetes/miniaturas/billete-200.webp'},
+    {c: 10000, img: '../assets/billetes/miniaturas/billete-100.webp'},
+    {c: 5000, img: '../assets/billetes/miniaturas/billete-50.webp'},
+    {c: 2000, img: '../assets/billetes/miniaturas/billete-20.webp'},
+    {c: 1000, img: '../assets/billetes/miniaturas/billete-10.webp'},
+    {c: 500, img: '../assets/monedas/miniaturas/cinco-soles.webp', coin: 1},
+    {c: 200, img: '../assets/monedas/miniaturas/dos-soles.webp', coin: 1},
+    {c: 100, img: '../assets/monedas/miniaturas/un-sol.webp', coin: 1},
+    {c: 50, img: '../assets/monedas/miniaturas/cincuenta-centimos.webp', coin: 1},
+    {c: 20, img: '../assets/monedas/miniaturas/veinte-centimos.webp', coin: 1},
+    {c: 10, img: '../assets/monedas/miniaturas/diez-centimos.webp', coin: 1}
+  ];
+  const cents = c => sol(c / 100, 2);
+  const face = c => sol(c / 100, c % 100 ? 2 : 0);
+  let price = 0, given = [];
+  const minPieces = c => PIECES.reduce((n, p) => { n += Math.floor(c / p.c); c %= p.c; return n; }, 0);
+  function payDraw(){
+    const tot = given.reduce((s, i) => s + PIECES[i].c, 0), left = price - tot;
+    $('payPrice').textContent = cents(price);
+    $('payPaid').innerHTML = given.length ? given.map(i => `<img src="${PIECES[i].img}" alt="${face(PIECES[i].c)}"${PIECES[i].coin ? ' class="coin"' : ''}>`).join('') : '<span class="empty">Aún no has pagado nada.</span>';
+    $('payGiven').textContent = cents(tot); $('payLeft').textContent = cents(Math.max(left, 0)); $('payPieces').textContent = given.length;
+    const best = minPieces(price);
+    if (left > 0) setMsg('payMsg', given.length ? 'Sigue sumando hasta llegar al precio exacto.' : `Elige billetes y monedas. Se puede pagar con ${best} piezas como mínimo.`);
+    else if (left < 0) setMsg('payMsg', `Te pasaste por ${cents(-left)}: te tendrían que dar vuelto. Usa «Deshacer» e intenta pagar el monto exacto.`, 'warn');
+    else if (given.length === best) setMsg('payMsg', `🏆 ¡Pago exacto con el mínimo de piezas (${best})! Toca «Otro precio» para seguir jugando.`, 'gold');
+    else setMsg('payMsg', `✅ ¡Pago exacto! Usaste ${given.length} piezas; se podía con ${best}. ¿Lo intentas con menos?`, 'ok');
+  }
+  function payNew(){ price = (Math.floor(Math.random() * 3990) + 10) * 10; given = []; payDraw(); }
+  safe(() => {
+    $('payTray').innerHTML = PIECES.map((p, i) => `<button type="button" class="money-btn${p.coin ? ' coin' : ''}" data-i="${i}" aria-label="Agregar ${face(p.c)}"><img src="${p.img}" alt="">${face(p.c)}</button>`).join('');
+    $('payTray').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { if (given.reduce((s, i) => s + PIECES[i].c, 0) < price) { given.push(+b.dataset.i); payDraw(); } }));
+    $('payUndo').addEventListener('click', () => { given.pop(); payDraw(); });
+    $('payNew').addEventListener('click', payNew);
+    payNew();
+  });
+
+  /* ===== Confeti ===== */
+  const cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
+  let pieces = [], rafId = null;
+  function resizeCanvas(){ const d = window.devicePixelRatio || 1; cv.width = innerWidth * d; cv.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+  addEventListener('resize', resizeCanvas); safe(resizeCanvas);
+  function launchConfetti(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const colors = ['#f4b400', '#3fc2b2', '#148a7f', '#0b4f4a', '#c0483e', '#ffffff'];
+    const W = innerWidth, H = innerHeight;
+    for (let k = 0; k < 180; k++) {
+      const fromLeft = k % 2 === 0;
+      pieces.push({
+        x: fromLeft ? -10 : W + 10, y: H * (0.35 + Math.random() * 0.3),
+        vx: (fromLeft ? 1 : -1) * (4 + Math.random() * 8), vy: -(7 + Math.random() * 9),
+        w: 6 + Math.random() * 6, h: 8 + Math.random() * 8,
+        rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.3,
+        c: colors[Math.floor(Math.random() * colors.length)], life: 0
+      });
+    }
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+  function tick(){
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    pieces.forEach(p => {
+      p.vy += 0.25; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - p.life / 220);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life / 8)));
+      ctx.restore();
+    });
+    pieces = pieces.filter(p => p.y < innerHeight + 40 && p.life < 220);
+    if (pieces.length) rafId = requestAnimationFrame(tick);
+    else { rafId = null; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+  }
+
+
+  /* ===== Quiz ===== */
+  const Q = [
+    {q:'1. ¿Cuál es el principal problema del trueque?',
+     o:['Que los bienes no tienen precio en soles','Hay que encontrar a alguien que quiera lo que tienes y tenga lo que quieres','Que está prohibido por ley'], a:1,
+     e:'Es la doble coincidencia de deseos: sin dinero, cada intercambio depende de encontrar a la persona justa.'},
+    {q:'2. Cuando comparas una gaseosa de S/ 3 con un jugo de S/ 5, el dinero funciona como…',
+     o:['Medio de cambio','Unidad de cuenta','Depósito de valor'], a:1,
+     e:'Sirve para medir y comparar el valor de las cosas.'},
+    {q:'3. ¿Por qué el ganado no es un buen dinero?',
+     o:['Porque nadie lo valora','Porque no es divisible ni fácil de llevar','Porque es fácil de falsificar'], a:1,
+     e:'No puedes pagar con media vaca ni llevarla en el bolsillo.'},
+    {q:'4. ¿Quién emite los billetes y monedas del sol?',
+     o:['Los bancos comerciales','El Banco Central de Reserva del Perú','Cada municipalidad'], a:1,
+     e:'La Constitución da al Estado la facultad exclusiva de emitir billetes y monedas, y la ejerce a través del BCRP.'},
+    {q:'5. ¿Por qué aceptamos un billete de papel como pago?',
+     o:['Porque el papel es muy caro','Porque confiamos en que otros lo aceptarán y en que mantendrá su valor','Porque se puede cambiar por oro en cualquier banco'], a:1,
+     e:'El valor del dinero descansa en la confianza, y esa confianza depende de que su valor sea estable.'}
+  ];
+  let answered = 0, correct = 0;
+  const quiz = document.getElementById('quiz');
+  const box = document.getElementById('resultBox');
+
+  function buildQuiz(){
+    answered = 0; correct = 0; quiz.innerHTML = '';
+    box.className = 'result-box';
+    Q.forEach(item => {
+      const qb = document.createElement('div'); qb.className = 'q';
+      qb.innerHTML = `<div class="q-title">${item.q}</div><div class="opts"></div><div class="fb"></div>`;
+      const opts = qb.querySelector('.opts'), fb = qb.querySelector('.fb');
+      item.o.forEach((txt, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = txt;
+        b.addEventListener('click', () => {
+          opts.querySelectorAll('button').forEach((x, j) => { x.disabled = true; if (j === item.a) x.classList.add('right'); });
+          const ok = i === item.a;
+          if (!ok) b.classList.add('wrong');
+          fb.innerHTML = (ok ? '<strong style="color:var(--ok)">¡Correcto!</strong> ' : '<strong style="color:var(--bad)">Casi.</strong> ') + item.e;
+          fb.classList.add('show');
+          answered++; if (ok) correct++;
+          if (answered === Q.length) showResult();
+        });
+        opts.appendChild(b);
+      });
+      quiz.appendChild(qb);
+    });
+  }
+
+  function showResult(){
+    const total = Q.length;
+    let cls, emo, title, detail;
+    if (correct === total) {
+      cls = 'perfect'; emo = '🎉'; title = '¡Perfecto!';
+      detail = `Respondiste bien las ${total} preguntas. ¡Ya sabes qué es el dinero!`;
+    } else if (correct >= total - 2) {
+      cls = 'good'; emo = '👏'; title = '¡Muy bien!';
+      detail = `Obtuviste ${correct} de ${total}. Revisa las explicaciones de las que fallaste.`;
+    } else {
+      cls = 'retry'; emo = '💪'; title = 'Sigue intentando';
+      detail = `Obtuviste ${correct} de ${total}. Repasa las secciones 1 a 5 y vuelve a intentarlo.`;
+    }
+    document.getElementById('resultEmo').textContent = emo;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultDetail').textContent = detail;
+    box.className = 'result-box show ' + cls;
+    box.scrollIntoView({behavior: 'smooth', block: 'center'});
+    if (cls === 'perfect') setTimeout(launchConfetti, 250);
+  }
+
+  document.getElementById('retryBtn').addEventListener('click', () => {
+    buildQuiz();
+    document.getElementById('quiz-sec').scrollIntoView({behavior: 'smooth'});
+  });
+  safe(buildQuiz);
+</script>
+</body>
+</html>

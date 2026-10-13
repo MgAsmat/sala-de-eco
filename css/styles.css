@@ -3640,8 +3640,89 @@ body.ed-no-scroll { overflow: hidden; }
   color: var(--ink-500);
 }
 
+.coin-links--duo {
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  justify-content: center;
+}
+
+/* Enlaces con billete: miniatura rectangular a la izquierda y texto a la derecha */
+.coin-links--notes {
+  grid-template-columns: 1fr;
+}
+
+.coin-link--note {
+  display: grid;
+  grid-template-columns: minmax(110px, 44%) 1fr;
+  grid-template-rows: auto auto;
+  align-content: center;
+  column-gap: 16px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.coin-link--note strong {
+  align-self: end;
+}
+
+.coin-link--note span:last-child {
+  align-self: start;
+}
+
+.coin-link--note .coin-link__img {
+  grid-row: 1 / 3;
+  margin-bottom: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2.15;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--teal-100);
+}
+
+.coin-link--note .coin-link__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coin-link--note:hover .coin-link__img img {
+  transform: scale(1.06);
+}
+
+.coin-link__img {
+  position: relative;
+}
+
+.coin-link__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(9, 41, 38, 0.72);
+  box-shadow: 0 4px 10px rgba(9, 41, 38, 0.25);
+}
+
+.coin-link__play svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
+  fill: #ffffff;
+}
+
 @media (max-width: 420px) {
   .coin-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .coin-links--notes {
+    grid-template-columns: 1fr;
+  }
+
+  .coin-links--duo {
     grid-template-columns: repeat(2, 1fr);
   }
 }
